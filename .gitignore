@@ -10,4 +10,6 @@ backups
 ido.last
 ido.last~
 elpa/*
-.recentf~
+recentf~
+recentf
+.mc-lists.el
