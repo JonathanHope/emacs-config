@@ -1,13 +1,14 @@
-;; Ido for fuzzy matching
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point nil)
-(setq ido-auto-merge-work-directories-length -1)
-(setq ido-use-virtual-buffers t)
-(ido-ubiquitous-mode 1)
+(require 'helm)
+(require 'helm-config)
+(helm-mode 1)
+(set-face-attribute 'helm-selection nil :underline 'unspecified)
+(defadvice helm-display-mode-line (after undisplay-header activate)
+  (setq header-line-format nil))
 
 ;; Enable projectile!
 (projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 ;; Smex for fuzzy matching of commands.
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))

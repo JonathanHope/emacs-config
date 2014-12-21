@@ -20,8 +20,7 @@
 '(
   undo-tree
   projectile
-  ido-ubiquitous
-  smex
+  helm
   multiple-cursors))
 
 ;; Install packages.

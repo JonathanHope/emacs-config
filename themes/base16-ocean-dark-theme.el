@@ -221,3 +221,26 @@
   `(neo-file-link-face ((t (:foreground "#eff1f5" :background "#2b303b")))))
 
 (provide-theme 'base16-ocean-dark)
+
+;; Helm
+(custom-set-variables)
+(custom-set-faces
+ '(helm-M-x-key ((t (:foreground "7FB37B"))))
+ '(helm-buffer-directory ((t (:foreground "#A6ACB6"))))
+ '(helm-buffer-file ((t nil)))
+ '(helm-buffer-not-saved ((t (:foreground "#AA7961"))))
+ '(helm-buffer-process ((t (:foreground "#7FB37B"))))
+ '(helm-buffer-saved-out ((t nil)))
+ '(helm-buffer-size ((t nil)))
+ '(helm-candidate-number ((t (:background "#8FA1B3" :foreground "#2B303B"))))
+ '(helm-ff-directory ((t (:foreground "#A6ACB6"))))
+ '(helm-ff-executable ((t (:foreground "#7FB37B"))))
+ '(helm-ff-file ((t nil)))
+ '(helm-ff-invalid-symlink ((t nil)))
+ '(helm-ff-prefix ((t nil)))
+ '(helm-ff-symlink ((t (:foreground "#AA7961"))))
+ '(helm-grep-match ((t (:foreground "#ebcb8b"))))
+ '(helm-history-remote ((t nil)))
+ '(helm-selection ((t (:background "#343D46"))))
+ '(helm-source-header ((t (:background "#343D46" :foreground "#5A6C6A"))))
+ '(helm-visible-mark ((t nil))))

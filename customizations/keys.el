@@ -8,12 +8,18 @@
 (define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
 
+;; Tab for completion in helm windows.
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+
 ;; Assing the key mappings to minor mode.
 (defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 
 ;; More normal file shorctuts.
 (define-key my-keys-minor-mode-map (kbd "C-s") 'save-buffer)
-(define-key my-keys-minor-mode-map (kbd "C-o") 'find-file)
+(define-key my-keys-minor-mode-map (kbd "C-o") 'helm-find-files)
+
+;; More normal close shortcut.
+(define-key my-keys-minor-mode-map (kbd "C-w") 'save-buffers-kill-emacs)
 
 ; ;; More normal search shortcuts.
 (define-key my-keys-minor-mode-map (kbd "C-f") 'isearch-forward-regexp)
@@ -28,17 +34,17 @@
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
 
 ;; Fuzzy buffer switching by default, ibuffer as secondary.
-(define-key my-keys-minor-mode-map (kbd "C-b") 'switch-to-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-b") 'helm-buffers-list)
 (define-key my-keys-minor-mode-map (kbd "C-x C-b") 'ibuffer)
 
 ;; Go to line.
 (define-key my-keys-minor-mode-map (kbd "C-g") 'goto-line)
 
 ;; Fuzzy command matching.
-(define-key my-keys-minor-mode-map (kbd "M-x") 'smex)
+(define-key my-keys-minor-mode-map (kbd "C-S-p") 'helm-M-x)
 
 ;; Go to file in project.
-(define-key my-keys-minor-mode-map (kbd "C-p") 'projectile-find-file)
+(define-key my-keys-minor-mode-map (kbd "C-p") 'helm-projectile-find-file)
 
 ;; Window management.
 (define-key my-keys-minor-mode-map (kbd "<f1>") 'delete-other-windows)
