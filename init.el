@@ -2,18 +2,14 @@
 (require 'package)
 
 ;; Repositories for packages.
-(add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-  '("tromey" . "http://tromey.com/elpa/") t)
+; (add-to-list 'package-archives
+;   '("marmalade" . "http://marmalade-repo.org/packages/") t)
+; (add-to-list 'package-archives
+;   '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
-
-;; Update packages.
-(when (not package-archive-contents)
-  (package-refresh-contents))
 
 ;; List of packages to install.
 (defvar my-packages
@@ -23,9 +19,10 @@
   helm
   multiple-cursors))
 
-;; Install packages.
+; Install packages.
 (dolist (p my-packages)
   (when (not (package-installed-p p))
+  (package-refresh-contents)
   (package-install p)))
 
 ;; Directories of elisp configurations.

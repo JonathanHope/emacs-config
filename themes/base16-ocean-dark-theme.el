@@ -84,7 +84,7 @@
   '(mode-line           ((t (:foreground "#2b303b" :background "#8fa1b3"   :box nil))))
   '(powerline-active1   ((t (:foreground "#eff1f5" :background "#4f5b66" :box nil))))
   '(powerline-active2   ((t (:foregruond "#eff1f5" :background "#343d46" :box nil))))
-  '(mode-line-inactive  ((t (:foreground "#eff1f5" :background "#65737e" :box nil))))
+  '(mode-line-inactive  ((t (:foreground "#2b303b" :background "#65737e" :box nil))))
   '(powerline-inactive1 ((t (:foreground "#eff1f5" :background "#4f5b66" :box nil))))
   '(powerline-inactive2 ((t (:foreground "#eff1f5" :background "#343d46" :box nil))))
   '(mode-line-highlight ((t (:foreground "#65737e" :background "#a7adba" :box nil))))
@@ -244,3 +244,8 @@
  '(helm-selection ((t (:background "#343D46"))))
  '(helm-source-header ((t (:background "#343D46" :foreground "#5A6C6A"))))
  '(helm-visible-mark ((t nil))))
+
+;; Hide vertical boder
+(set-face-attribute 'vertical-border
+nil
+:foreground "#2B303B")
