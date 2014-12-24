@@ -53,3 +53,7 @@
 (defun shift-left ()
   (interactive)
   (shift-region -2))
+
+;; No tabs, use spaces instead.
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)

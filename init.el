@@ -26,7 +26,10 @@
   paredit
   rainbow-delimiters
   cider
-  company))
+  company
+
+  ;; Markdown
+  markdown-mode))
 
 ; Install packages.
 (dolist (p my-packages)

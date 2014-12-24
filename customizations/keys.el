@@ -1,5 +1,7 @@
 ;; Disable the worthless suspend command.
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-x C-n"))
+(global-unset-key (kbd "C-x C-c"))
 
 ;; Cancel with one press of escape instead of three.
 (global-set-key (kbd "<escape>") 'keyboard-quit)
@@ -77,6 +79,20 @@
 (define-key my-keys-minor-mode-map (kbd "<tab>") 'shift-right)
 (define-key my-keys-minor-mode-map (kbd "<backtab>") 'shift-left)
 
+;; Clojure Specific.
+
+;; Shortcut to start cider.)
+(define-key my-keys-minor-mode-map (kbd "<f5>") 'cider-jack-in)
+
+;; Jump forward an sexp.
+(define-key my-keys-minor-mode-map (kbd "C-S-<right>") 'forward-sexp)
+
+;; Jump backward and sexp.
+(define-key my-keys-minor-mode-map (kbd "C-S-<left>") 'backward-sexp)
+
+;; Delete an sexp.
+(define-key my-keys-minor-mode-map (kbd "C-S-k") 'kill-sexp)
+
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
 (my-keys-minor-mode 1)
@@ -96,3 +112,9 @@
 (eval-after-load "helm"
   '(progn
     (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)))
+
+;; Change cider shorcuts for compilation and setting namespace.
+(eval-after-load "cider"
+  '(progn
+    (define-key cider-mode-map (kbd "C-x C-c") 'cider-load-buffer)
+    (define-key cider-mode-map (kbd "C-x C-n") 'cider-repl-set-ns)))

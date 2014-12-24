@@ -20,9 +20,6 @@
     (define-clojure-indent (fact 1))
     (define-clojure-indent (facts 1))))
 
-;; Shortcut to start cider.
-(global-set-key [f5] 'cider-jack-in)
-
 ;; Minibuffer documentation for cider.
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
