@@ -220,10 +220,10 @@
   `(neo-header-face ((t (:foreground "#b48ead" :background "#2b303b"))))
   `(neo-file-link-face ((t (:foreground "#eff1f5" :background "#2b303b")))))
 
+
 (provide-theme 'base16-ocean-dark)
 
 ;; Helm
-(custom-set-variables)
 (custom-set-faces
  '(helm-M-x-key ((t (:foreground "7FB37B"))))
  '(helm-buffer-directory ((t (:foreground "#A6ACB6"))))
@@ -249,3 +249,24 @@
 (set-face-attribute 'vertical-border
 nil
 :foreground "#2B303B")
+
+;; Company
+(custom-set-faces
+ '(company-preview
+   ((t (:background "#343D46" :foreground "#8FA1B3" :underline t))))
+ '(company-preview-common
+   ((t (:inherit company-preview))))
+ '(company-tooltip
+   ((t (:background "#8FA1B3" :foreground "#2B303B"))))
+ '(company-scrollbar-fg
+   ((t (:background "#65737E"))))
+ '(company-scrollbar-bg
+   ((t (:background "#8FA1B3"))))
+ '(company-tooltip-selection
+   ((t (:background "#65737E" :foreground "#2B303B"))))
+ '(company-tooltip-common
+   ((((type x)) (:inherit company-tooltip :weight bold))
+    (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection
+   ((((type x)) (:inherit company-tooltip-selection :weight bold))
+    (t (:inherit company-tooltip-selection)))))

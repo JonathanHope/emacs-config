@@ -2,7 +2,7 @@
 (global-unset-key (kbd "C-z"))
 
 ;; Cancel with one press of escape instead of three.
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "<escape>") 'keyboard-quit)
 
 ;; Override isearch forward/backward.
 (define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
@@ -80,3 +80,19 @@
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
 (my-keys-minor-mode 1)
+
+;; Remove unwanted paredit bindings.
+(eval-after-load "paredit"
+  '(progn
+    (define-key paredit-mode-map (kbd "C-<left>") nil)
+    (define-key paredit-mode-map (kbd "C-<right>") nil)))
+
+;; Tie escape to closing the autocomplete tooltip.
+(eval-after-load "company"
+  '(progn
+    (define-key company-active-map (kbd "<escape>") 'company-abort)))
+
+;; Tie escape to closing helm.
+(eval-after-load "helm"
+  '(progn
+    (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)))

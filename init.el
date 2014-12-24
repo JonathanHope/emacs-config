@@ -14,10 +14,19 @@
 ;; List of packages to install.
 (defvar my-packages
 '(
+  ;; Core.
   undo-tree
   projectile
   helm
-  multiple-cursors))
+  multiple-cursors
+
+  ;; Clojure.
+  clojure-mode
+  clojure-mode-extra-font-locking
+  paredit
+  rainbow-delimiters
+  cider
+  company))
 
 ; Install packages.
 (dolist (p my-packages)
@@ -42,3 +51,6 @@
 
 ;; Custom keyboard shortcuts.
 (load "keys.el")
+
+;; Support for clojure.
+(load "clojure.el")
