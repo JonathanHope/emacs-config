@@ -1,6 +1,6 @@
 # Emacs Configuration
 
-This is my emacs configuration. It is primarily used for clojure development. The keyboard shortcuts have been remapped to more CUA friendly ones where possible. Much of the functionality is inspired by more moder editors like sublime text.
+This is my emacs configuration. It is primarily used for clojure development. The keyboard shortcuts have been remapped to more CUA friendly ones where possible. Much of the functionality is inspired by more modern editors like sublime text.
 
 ## Packages Used
 
@@ -20,7 +20,7 @@ This is my emacs configuration. It is primarily used for clojure development. Th
 
 ### General
 
-* **Escape** Cancel
+* **ESCAPE** Cancel
 * **Hold SHIFT** Mark region
 * **UP** Up line
 * **DOWN** Down line
