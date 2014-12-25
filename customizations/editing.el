@@ -57,3 +57,8 @@
 ;; No tabs, use spaces instead.
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+
+;; Expand region support.
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C--") 'er/contract-region)

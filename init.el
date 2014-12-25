@@ -20,6 +20,7 @@
   helm
   multiple-cursors
   magit
+  expand-region
 
   ;; Clojure.
   clojure-mode

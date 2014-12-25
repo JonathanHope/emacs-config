@@ -1,6 +1,16 @@
 # Emacs Configuration
 
+## Summary
+
 This is my emacs configuration. It is primarily used for clojure development. The keyboard shortcuts have been remapped to more CUA friendly ones where possible. Much of the functionality is inspired by more modern editors like sublime text.
+
+## Requirements
+
+* Emacs 24.4
+
+## Installation
+
+Check this project out into ~/.emacs.d.
 
 ## Packages Used
 
@@ -49,6 +59,7 @@ This is my emacs configuration. It is primarily used for clojure development. Th
 * **F2** Split window horizontally
 * **F3** Split window vertically
 * **F4** Start terminal
+* **F6** Git status
 * **CTRL + /** Toggle comment line
 * **CTRL + SHIFT + /** Toggle comment region.
 * **CTRL + RETURN** Mark region rectangle.
