@@ -19,6 +19,7 @@
   projectile
   helm
   multiple-cursors
+  magit
 
   ;; Clojure.
   clojure-mode

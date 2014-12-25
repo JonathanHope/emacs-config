@@ -56,6 +56,9 @@
 ;; Open a terminal.
 (define-key my-keys-minor-mode-map (kbd "<f4>") 'ansi-term)
 
+;; Open the magit interface.
+(define-key my-keys-minor-mode-map (kbd "<f6>") 'magit-status)
+
 ;; Comment toggling.
 (define-key my-keys-minor-mode-map (kbd "C-/") 'toggle-comment-on-line)
 (define-key my-keys-minor-mode-map (kbd "C-?") 'comment-or-uncomment-region)
@@ -81,7 +84,7 @@
 
 ;; Clojure Specific.
 
-;; Shortcut to start cider.)
+;; Shortcut to start cider.
 (define-key my-keys-minor-mode-map (kbd "<f5>") 'cider-jack-in)
 
 ;; Jump forward an sexp.
