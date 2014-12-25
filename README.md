@@ -8,6 +8,7 @@ This is my emacs configuration. It is primarily used for clojure development. Th
 * Projectile
 * Helm
 * Multiple Cursors
+* Magit
 * Clojure Mode
 * Clojure Mode Extra Font Locking
 * Paredit
