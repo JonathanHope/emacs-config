@@ -26,6 +26,7 @@ Check this project out into ~/.emacs.d.
 * Cider
 * Company.
 * Markdown Mode.
+* Expand region
 
 ## Keymap
 
@@ -74,7 +75,8 @@ Check this project out into ~/.emacs.d.
 * **CTRL + k** Delete line
 * **CTR + BACKSPACE** Delete word
 * **BACKSPACE** Delete character
-
+* **CTRL + =** Expand region
+* **CTRL + -** Contract region
 
 ### Clojure
 
