@@ -22,11 +22,12 @@ Check this project out into ~/.emacs.d.
 * Clojure Mode
 * Clojure Mode Extra Font Locking
 * Paredit
-* Rainbow delimeters.
+* Rainbow delimeters
 * Cider
-* Company.
-* Markdown Mode.
+* Company
+* Markdown Mode
 * Expand region
+* Ace jump mode
 
 ## Keymap
 
@@ -53,7 +54,8 @@ Check this project out into ~/.emacs.d.
 * **CTRL + c** Copy
 * **CTRL + v** Paste
 * **CTRL + b** Change buffer
-* **CTRL + g** Go to line
+* **CTRL + g** Ace search mode
+* **CTRL + SHIFT + g** Go to line
 * **CTRL + p** Open file in project
 * **CTRL + SHIFT + p** Execute command
 * **F1** Close other windows

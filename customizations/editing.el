@@ -60,5 +60,6 @@
 
 ;; Expand region support.
 (require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C--") 'er/contract-region)
+
+;; Ace jump support.
+(require 'ace-jump-mode)

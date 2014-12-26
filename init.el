@@ -21,6 +21,7 @@
   multiple-cursors
   magit
   expand-region
+  ace-jump-mode
 
   ;; Clojure.
   clojure-mode

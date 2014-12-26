@@ -40,7 +40,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-x C-b") 'ibuffer)
 
 ;; Go to line.
-(define-key my-keys-minor-mode-map (kbd "C-g") 'goto-line)
+(define-key my-keys-minor-mode-map (kbd "C-S-g") 'goto-line)
 
 ;; Fuzzy command matching.
 (define-key my-keys-minor-mode-map (kbd "C-S-p") 'helm-M-x)
@@ -95,6 +95,13 @@
 
 ;; Delete an sexp.
 (define-key my-keys-minor-mode-map (kbd "C-S-k") 'kill-sexp)
+
+;; Expand and contract a region.
+(define-key my-keys-minor-mode-map (kbd "C-=") 'er/expand-region)
+(define-key my-keys-minor-mode-map (kbd "C--") 'er/contract-region)
+
+;;Ace jump mode.
+(define-key my-keys-minor-mode-map (kbd "C-g") 'ace-jump-mode)
 
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
