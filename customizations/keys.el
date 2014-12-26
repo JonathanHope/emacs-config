@@ -111,7 +111,8 @@
 (eval-after-load "paredit"
   '(progn
     (define-key paredit-mode-map (kbd "C-<left>") nil)
-    (define-key paredit-mode-map (kbd "C-<right>") nil)))
+    (define-key paredit-mode-map (kbd "C-<right>") nil)
+    (define-key paredit-mode-map (kbd "C-c") nil)))
 
 ;; Tie escape to closing the autocomplete tooltip.
 (eval-after-load "company"
