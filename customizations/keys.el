@@ -82,6 +82,9 @@
 (define-key my-keys-minor-mode-map (kbd "<tab>") 'shift-right)
 (define-key my-keys-minor-mode-map (kbd "<backtab>") 'shift-left)
 
+;; Delete a region.
+(define-key my-keys-minor-mode-map (kbd "<S-backspace>") 'kill-region)
+
 ;; Clojure Specific.
 
 ;; Shortcut to start cider.
@@ -128,4 +131,5 @@
 (eval-after-load "cider"
   '(progn
     (define-key cider-mode-map (kbd "C-x C-c") 'cider-load-buffer)
-    (define-key cider-mode-map (kbd "C-x C-n") 'cider-repl-set-ns)))
+    (define-key cider-mode-map (kbd "C-x C-n") 'cider-repl-set-ns)
+    (define-key cider-mode-map (kbd "C-c") nil)))

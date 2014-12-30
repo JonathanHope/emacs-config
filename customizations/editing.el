@@ -63,3 +63,6 @@
 
 ;; Ace jump support.
 (require 'ace-jump-mode)
+
+;; Highlight matching parens.
+(show-paren-mode 1)

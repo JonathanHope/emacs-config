@@ -9,3 +9,6 @@
 
 ;; y and n instead of yes and no.
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; No backupt files.
+(setq make-backup-files nil)

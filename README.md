@@ -77,8 +77,10 @@ Check this project out into ~/.emacs.d.
 * **CTRL + k** Delete line
 * **CTR + BACKSPACE** Delete word
 * **BACKSPACE** Delete character
+* **SHIFT + BACKSPACE** Delete region
 * **CTRL + =** Expand region
 * **CTRL + -** Contract region
+* **CTRL + i** Auto indent
 
 ### Clojure
 
