@@ -32,7 +32,10 @@
   company
 
   ;; Markdown
-  markdown-mode))
+  markdown-mode
+
+  ;; YAML
+  yaml-mode))
 
 ; Install packages.
 (dolist (p my-packages)
@@ -60,3 +63,6 @@
 
 ;; Support for clojure.
 (load "clojure.el")
+
+;; Support for yaml.
+(load "yaml.el")
