@@ -2,10 +2,10 @@
 (require 'package)
 
 ;; Repositories for packages.
-; (add-to-list 'package-archives
-;   '("marmalade" . "http://marmalade-repo.org/packages/") t)
-; (add-to-list 'package-archives
-;   '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+  '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+  '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
@@ -35,7 +35,10 @@
   markdown-mode
 
   ;; YAML
-  yaml-mode))
+  yaml-mode
+
+  ;; Docker
+  dockerfile-mode))
 
 ; Install packages.
 (dolist (p my-packages)
@@ -66,3 +69,6 @@
 
 ;; Support for yaml.
 (load "yaml.el")
+
+;; Support for docker.
+(load "docker.el")
