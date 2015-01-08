@@ -72,7 +72,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-S-a") 'mc/mark-all-like-this)
 
 ;; Duplicate a line.
-(define-key my-keys-minor-mode-map (kbd "C-d") 'duplicate-line)
+(define-key my-keys-minor-mode-map (kbd "M-d") 'duplicate-line)
 
 ;; Move line of text up or down.
 (define-key my-keys-minor-mode-map (kbd "C-S-<up>") 'move-line-up)
@@ -83,7 +83,13 @@
 (define-key my-keys-minor-mode-map (kbd "<backtab>") 'shift-left)
 
 ;; Delete a region.
-(define-key my-keys-minor-mode-map (kbd "<S-backspace>") 'kill-region)
+(define-key my-keys-minor-mode-map (kbd "<S-backspace>") 'delete-region)
+
+;; Cut a line.
+(define-key my-keys-minor-mode-map (kbd "C-k") 'kill-whole-line)
+
+;; Delete a line.
+(define-key my-keys-minor-mode-map (kbd "C-d") 'delete-whole-line)
 
 ;; Clojure Specific.
 
@@ -96,8 +102,11 @@
 ;; Jump backward and sexp.
 (define-key my-keys-minor-mode-map (kbd "C-S-<left>") 'backward-sexp)
 
-;; Delete an sexp.
+;; Cut an sexp.
 (define-key my-keys-minor-mode-map (kbd "C-S-k") 'kill-sexp)
+
+;; Delete an sexp.
+(define-key my-keys-minor-mode-map (kbd "C-S-d") 'delete-sexp)
 
 ;; Expand and contract a region.
 (define-key my-keys-minor-mode-map (kbd "C-=") 'er/expand-region)
@@ -105,6 +114,10 @@
 
 ;;Ace jump mode.
 (define-key my-keys-minor-mode-map (kbd "C-g") 'ace-jump-mode)
+
+;; Change casing.
+(define-key my-keys-minor-mode-map (kbd "C-S-u") 'upcase-region)
+(define-key my-keys-minor-mode-map (kbd "C-S-l") 'downcase-region)
 
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)

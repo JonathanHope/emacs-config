@@ -69,18 +69,21 @@ Check this project out into ~/.emacs.d.
 * **CTRL + SHIFT + c** Add cursors to start of selected lined
 * **CTRL + CLICK** Add cursor
 * **CTRL + SHIFT + a** Add cursor to all like this
-* **CTRL + d** Duplicate line
+* **ALT +d** Duplicate line
 * **CTRL + SHIFT + UP** Move line of text up
 * **CTRL + SHIFT + DOWN** Move line of text down
 * **TAB** Indent region
 * **SHIFT + TAB** Unindent a region
-* **CTRL + k** Delete line
+* **CTRL + k** Cut line
+* **CTRL + d** Delete line
 * **CTR + BACKSPACE** Delete word
 * **BACKSPACE** Delete character
 * **SHIFT + BACKSPACE** Delete region
 * **CTRL + =** Expand region
 * **CTRL + -** Contract region
 * **CTRL + i** Auto indent
+* **CTRL + SHIFT + u** Uppercase region
+* **CTRL + SHIFT + l** Lowercase region
 
 ### Clojure
 
@@ -93,7 +96,8 @@ Check this project out into ~/.emacs.d.
 * **CTRL + DOWN** Previous repl command
 * **CTRL + SHIFT + RIGHT** Forward sexp
 * **CTRL + SHIFT + LEFT** Backward sexp
-* **CTRL + SHIFT + k** Kill sexp
+* **CTRL + SHIFT + k** Cut sexp
+* **CTRL + SHIFT + d** Delete sexp
 * **CTRL + x + e** Evaluate sexp
 * **CTRL + x + n** Set repl namespace to buffers.
 * **CTRL + x + c** Load buffer into repl.

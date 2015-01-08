@@ -66,3 +66,62 @@
 
 ;; Highlight matching parens.
 (show-paren-mode 1)
+
+;; Allow up and down casing regions.
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+;; Delete a line
+(defun delete-whole-line ()
+  "Deletes a line, but does not put it in the kill-ring. (kinda)"
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line 1)
+  (setq kill-ring (cdr kill-ring)))
+
+(defun delete-sexp ()
+  "Delete the sexp at point."
+  (interactive)
+  (cond
+   ((paredit-in-comment-p)
+    (call-interactively 'delete-char))
+   ;; Strings don't behave the same as normal sexps in paredit.
+   ((paredit-in-string-p)
+    (delete-region (save-excursion (paredit-backward-up)
+                                   (point))
+                   (save-excursion (paredit-backward-up)
+                                   (paredit-forward)
+                                   (point))))
+   ((paredit-inside-sexp-p)
+    (delete-region (save-excursion (paredit-backward)
+                                   (point))
+                   (save-excursion (paredit-forward)
+                                   (point))))
+   ((paredit-start-of-sexp-p)
+    (delete-region (point)
+                   (save-excursion (paredit-forward)
+                                   (point))))
+   ;; Otherwise we're at the end of a sexp.
+   (t
+    (delete-region (save-excursion (paredit-backward)
+                                   (point))
+                   (save-excursion (paredit-backward)
+                                   (paredit-forward)
+                                   (point))))))
+
+(defun paredit-inside-sexp-p ()
+  "Are we inside the bounds of a sexp?"
+  (= (save-excursion (paredit-forward)
+                     (point))
+     (save-excursion (paredit-backward)
+                     (paredit-forward)
+                     (point))))
+
+(defun paredit-start-of-sexp-p ()
+  "Are we at the start of a sexp?"
+  (= (save-excursion (paredit-forward)
+                     (paredit-backward)
+                     (point))
+     (point)))
+
+(delete-selection-mode 1)
