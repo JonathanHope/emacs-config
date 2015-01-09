@@ -79,6 +79,7 @@
   (kill-line 1)
   (setq kill-ring (cdr kill-ring)))
 
+;; Delete a sexp
 (defun delete-sexp ()
   "Delete the sexp at point."
   (interactive)
@@ -124,4 +125,15 @@
                      (point))
      (point)))
 
+;; Treat selections more like most editors do.
 (delete-selection-mode 1)
+
+;; Delete a word
+(defun delete-word (arg)
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
+
+;; Delete a word backwards.
+(defun backward-delete-word (arg)
+  (interactive "p")
+  (delete-word (- arg)))

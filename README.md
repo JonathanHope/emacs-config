@@ -52,6 +52,7 @@ Check this project out into ~/.emacs.d.
 * **CTRL + z** Undo
 * **CTRL + y** Redo
 * **CTRL + c** Copy
+* **CTRL + x** Cut
 * **CTRL + v** Paste
 * **CTRL + b** Change buffer
 * **CTRL + g** Ace search mode
@@ -69,7 +70,7 @@ Check this project out into ~/.emacs.d.
 * **CTRL + SHIFT + c** Add cursors to start of selected lined
 * **CTRL + CLICK** Add cursor
 * **CTRL + SHIFT + a** Add cursor to all like this
-* **ALT +d** Duplicate line
+* **CTRL +S SHIFT + r** Duplicate line
 * **CTRL + SHIFT + UP** Move line of text up
 * **CTRL + SHIFT + DOWN** Move line of text down
 * **TAB** Indent region
@@ -87,17 +88,17 @@ Check this project out into ~/.emacs.d.
 
 ### Clojure
 
-* **CTRL + SHIFT +09** Forward slurp
+* **CTRL + SHIFT + 0** Forward slurp
 * **CTRL + SHIFT + ]** Forward barf
 * **CTRL + SHIFT + 9** Backward slurp
 * **CTRL + SHIFT + [** Backward barf
-* **ALT + SHIFT + 9** Wrap in parentheses.
+* **ALT + SHIFT + 9** Wrap in parentheses
 * **CTRL + UP** Last repl command
 * **CTRL + DOWN** Previous repl command
 * **CTRL + SHIFT + RIGHT** Forward sexp
 * **CTRL + SHIFT + LEFT** Backward sexp
 * **CTRL + SHIFT + k** Cut sexp
 * **CTRL + SHIFT + d** Delete sexp
-* **CTRL + x + e** Evaluate sexp
-* **CTRL + x + n** Set repl namespace to buffers.
-* **CTRL + x + c** Load buffer into repl.
+* **ALT + x + e** Evaluate selected sexp
+* **ALT + x + n** Set repl namespace to buffers
+* **ALT + x + c** Load buffer into repl

@@ -34,10 +34,10 @@
 ;; More normal copy and paste shorcuts.
 (define-key my-keys-minor-mode-map (kbd "C-c") 'copy-region-as-kill)
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
+(define-key my-keys-minor-mode-map (kbd "C-x") 'kill-region)
 
 ;; Fuzzy buffer switching by default, ibuffer as secondary.
 (define-key my-keys-minor-mode-map (kbd "C-b") 'helm-buffers-list)
-(define-key my-keys-minor-mode-map (kbd "C-x C-b") 'ibuffer)
 
 ;; Go to line.
 (define-key my-keys-minor-mode-map (kbd "C-S-g") 'goto-line)
@@ -72,7 +72,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-S-a") 'mc/mark-all-like-this)
 
 ;; Duplicate a line.
-(define-key my-keys-minor-mode-map (kbd "M-d") 'duplicate-line)
+(define-key my-keys-minor-mode-map (kbd "C-S-r") 'duplicate-line)
 
 ;; Move line of text up or down.
 (define-key my-keys-minor-mode-map (kbd "C-S-<up>") 'move-line-up)
@@ -85,11 +85,28 @@
 ;; Delete a region.
 (define-key my-keys-minor-mode-map (kbd "<S-backspace>") 'delete-region)
 
+;; Delete a word
+(define-key my-keys-minor-mode-map (kbd "<C-backspace>") 'backward-delete-word)
+
 ;; Cut a line.
 (define-key my-keys-minor-mode-map (kbd "C-k") 'kill-whole-line)
 
 ;; Delete a line.
 (define-key my-keys-minor-mode-map (kbd "C-d") 'delete-whole-line)
+
+;; Disable M-x
+(define-key my-keys-minor-mode-map (kbd "M-x") nil)
+
+;; Expand and contract a region.
+(define-key my-keys-minor-mode-map (kbd "C-=") 'er/expand-region)
+(define-key my-keys-minor-mode-map (kbd "C--") 'er/contract-region)
+
+;;Ace jump mode.
+(define-key my-keys-minor-mode-map (kbd "C-g") 'ace-jump-mode)
+
+;; Change casing.
+(define-key my-keys-minor-mode-map (kbd "C-S-u") 'upcase-region)
+(define-key my-keys-minor-mode-map (kbd "C-S-l") 'downcase-region)
 
 ;; Clojure Specific.
 
@@ -108,17 +125,6 @@
 ;; Delete an sexp.
 (define-key my-keys-minor-mode-map (kbd "C-S-d") 'delete-sexp)
 
-;; Expand and contract a region.
-(define-key my-keys-minor-mode-map (kbd "C-=") 'er/expand-region)
-(define-key my-keys-minor-mode-map (kbd "C--") 'er/contract-region)
-
-;;Ace jump mode.
-(define-key my-keys-minor-mode-map (kbd "C-g") 'ace-jump-mode)
-
-;; Change casing.
-(define-key my-keys-minor-mode-map (kbd "C-S-u") 'upcase-region)
-(define-key my-keys-minor-mode-map (kbd "C-S-l") 'downcase-region)
-
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
 (my-keys-minor-mode 1)
@@ -128,6 +134,8 @@
   '(progn
     (define-key paredit-mode-map (kbd "C-<left>") nil)
     (define-key paredit-mode-map (kbd "C-<right>") nil)
+    (define-key paredit-mode-map (kbd "C-d") nil)
+    (define-key paredit-mode-map (kbd "C-k") nil)
     (define-key paredit-mode-map (kbd "C-c") nil)))
 
 ;; Tie escape to closing the autocomplete tooltip.
@@ -143,6 +151,7 @@
 ;; Change cider shorcuts for compilation and setting namespace.
 (eval-after-load "cider"
   '(progn
-    (define-key cider-mode-map (kbd "C-x C-c") 'cider-load-buffer)
-    (define-key cider-mode-map (kbd "C-x C-n") 'cider-repl-set-ns)
+    (define-key cider-mode-map (kbd "M-x M-c") 'cider-load-buffer)
+    (define-key cider-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
+    (define-key cider-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)
     (define-key cider-mode-map (kbd "C-c") nil)))
