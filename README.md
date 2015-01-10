@@ -102,3 +102,7 @@ Check this project out into ~/.emacs.d.
 * **ALT + x + e** Evaluate selected sexp
 * **ALT + x + n** Set repl namespace to buffers
 * **ALT + x + c** Load buffer into repl
+
+## TODO
+
+* Remap CTRL + UP and CTRL + DOWN to ALT + UP AND ALT + DOWN.

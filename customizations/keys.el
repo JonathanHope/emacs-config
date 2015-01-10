@@ -108,6 +108,9 @@
 (define-key my-keys-minor-mode-map (kbd "C-S-u") 'upcase-region)
 (define-key my-keys-minor-mode-map (kbd "C-S-l") 'downcase-region)
 
+;; Command for commit that doesn't clash with anything else.
+(define-key my-keys-minor-mode-map (kbd "M-c") 'git-commit-commit)
+
 ;; Clojure Specific.
 
 ;; Shortcut to start cider.
@@ -155,3 +158,4 @@
     (define-key cider-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
     (define-key cider-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)
     (define-key cider-mode-map (kbd "C-c") nil)))
+
