@@ -139,7 +139,9 @@
     (define-key paredit-mode-map (kbd "C-<right>") nil)
     (define-key paredit-mode-map (kbd "C-d") nil)
     (define-key paredit-mode-map (kbd "C-k") nil)
-    (define-key paredit-mode-map (kbd "C-c") nil)))
+    (define-key paredit-mode-map (kbd "C-c") nil)
+    (define-key paredit-mode-map (kbd "M-<up>") nil)
+    (define-key paredit-mode-map (kbd "M-<down>") nil)))
 
 ;; Tie escape to closing the autocomplete tooltip.
 (eval-after-load "company"
@@ -157,5 +159,9 @@
     (define-key cider-mode-map (kbd "M-x M-c") 'cider-load-buffer)
     (define-key cider-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
     (define-key cider-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)
-    (define-key cider-mode-map (kbd "C-c") nil)))
+    (define-key cider-mode-map (kbd "C-c") nil)
+    (define-key cider-mode-map (kbd "C-x") nil)))
+
+
+
 
