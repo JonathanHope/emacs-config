@@ -111,6 +111,9 @@
 ;; Command for commit that doesn't clash with anything else.
 (define-key my-keys-minor-mode-map (kbd "M-c") 'git-commit-commit)
 
+;; Select all.
+(define-key my-keys-minor-mode-map (kbd "C-a") 'mark-whole-buffer)
+
 ;; Clojure Specific.
 
 ;; Shortcut to start cider.

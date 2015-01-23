@@ -35,6 +35,8 @@ Check this project out into ~/.emacs.d.
 
 * **ESCAPE** Cancel
 * **Hold SHIFT** Mark region
+* **CTRL + SPACE** Set mark
+* **CTRL + a** Select all
 * **UP** Up line
 * **DOWN** Down line
 * **LEFT** Forward character
