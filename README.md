@@ -34,15 +34,15 @@ Check this project out into ~/.emacs.d.
 ### General
 
 * **ESCAPE** Cancel
-* **Hold SHIFT** Mark region
 * **CTRL + SPACE** Set mark
-* **CTRL + a** Select all
 * **UP** Up line
 * **DOWN** Down line
 * **LEFT** Forward character
 * **RIGHT** Backward character
 * **CTRL + LEFT** Forward word
 * **CTRL + RIGHT** Backward word
+* **CTRL + UP** Forward five lines.
+* **CTRL + DOWN** Backward five lines.
 * **RETURN** New line
 * **CTRL + s** Save buffer
 * **CTRL + o** Open file
@@ -51,6 +51,7 @@ Check this project out into ~/.emacs.d.
 * **CTRL + SHIFT + f** Regex search backwards
 * **RETURN** Next search match
 * **SHIFT + RETURN** Previous search match
+* **CTRL + a** Select all
 * **CTRL + z** Undo
 * **CTRL + y** Redo
 * **CTRL + c** Copy
@@ -59,7 +60,7 @@ Check this project out into ~/.emacs.d.
 * **CTRL + b** Change buffer
 * **CTRL + g** Ace search mode
 * **CTRL + SHIFT + g** Go to line
-* **CTRL + p** Open file in project
+* **CTRL + p** Open file 1in project
 * **CTRL + SHIFT + p** Execute command
 * **F1** Close other windows
 * **F2** Split window horizontally
@@ -69,10 +70,9 @@ Check this project out into ~/.emacs.d.
 * **CTRL + /** Toggle comment line
 * **CTRL + SHIFT + /** Toggle comment region.
 * **CTRL + RETURN** Mark region rectangle.
-* **CTRL + SHIFT + c** Add cursors to start of selected lined
 * **CTRL + CLICK** Add cursor
 * **CTRL + SHIFT + a** Add cursor to all like this
-* **CTRL +S SHIFT + r** Duplicate line
+* **CTRL +S SHIFT + r** Replicate line
 * **CTRL + SHIFT + UP** Move line of text up
 * **CTRL + SHIFT + DOWN** Move line of text down
 * **TAB** Indent region
@@ -95,16 +95,14 @@ Check this project out into ~/.emacs.d.
 * **CTRL + SHIFT + 9** Backward slurp
 * **CTRL + SHIFT + [** Backward barf
 * **ALT + SHIFT + 9** Wrap in parentheses
-* **CTRL + UP** Last repl command
-* **CTRL + DOWN** Previous repl command
 * **CTRL + SHIFT + RIGHT** Forward sexp
 * **CTRL + SHIFT + LEFT** Backward sexp
 * **CTRL + SHIFT + k** Cut sexp
 * **CTRL + SHIFT + d** Delete sexp
+* **ALT + UP** Last repl command
+* **ALT + DOWN** Previous repl command
 * **ALT + x + e** Evaluate selected sexp
 * **ALT + x + n** Set repl namespace to buffers
 * **ALT + x + c** Load buffer into repl
 
 ## TODO
-
-* Remap CTRL + UP and CTRL + DOWN to ALT + UP AND ALT + DOWN.

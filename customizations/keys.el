@@ -1,20 +1,8 @@
-;; Disable the worthless suspend command.
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-x C-n"))
-(global-unset-key (kbd "C-x C-c"))
+;; Adding the key mappings to minor mode.
+(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 
 ;; Cancel with one press of escape instead of three.
-(global-set-key (kbd "<escape>") 'keyboard-quit)
-
-;; Override isearch forward/backward.
-(define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
-
-;; Tab for completion in helm windows.
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-
-;; Assing the key mappings to minor mode.
-(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+(define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit)
 
 ;; More normal file shorctuts.
 (define-key my-keys-minor-mode-map (kbd "C-s") 'save-buffer)
@@ -114,7 +102,24 @@
 ;; Select all.
 (define-key my-keys-minor-mode-map (kbd "C-a") 'mark-whole-buffer)
 
+;; Forward/backward word.
+(define-key my-keys-minor-mode-map (kbd "C-<left>") 'backward-word)
+(define-key my-keys-minor-mode-map (kbd "C-<right>") 'forward-word)
+
+;; Jump many lines.
+(define-key my-keys-minor-mode-map (kbd "C-<up>") (lambda () (interactive) (previous-line 5)))
+(define-key my-keys-minor-mode-map (kbd "C-<down>") (lambda () (interactive) (next-line 5)))
+
 ;; Clojure Specific.
+
+;; Cider history.
+(define-key my-keys-minor-mode-map (kbd "M-<up>") 'cider-repl-backward-input)
+(define-key my-keys-minor-mode-map (kbd "M-<down>") 'cider-repl-forward-input)
+
+;; Cider compilation.
+(define-key my-keys-minor-mode-map (kbd "M-x M-c") 'cider-load-buffer)
+(define-key my-keys-minor-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
+(define-key my-keys-minor-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)
 
 ;; Shortcut to start cider.
 (define-key my-keys-minor-mode-map (kbd "<f5>") 'cider-jack-in)
@@ -135,16 +140,23 @@
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
 (my-keys-minor-mode 1)
 
-;; Remove unwanted paredit bindings.
-(eval-after-load "paredit"
-  '(progn
-    (define-key paredit-mode-map (kbd "C-<left>") nil)
-    (define-key paredit-mode-map (kbd "C-<right>") nil)
-    (define-key paredit-mode-map (kbd "C-d") nil)
-    (define-key paredit-mode-map (kbd "C-k") nil)
-    (define-key paredit-mode-map (kbd "C-c") nil)
-    (define-key paredit-mode-map (kbd "M-<up>") nil)
-    (define-key paredit-mode-map (kbd "M-<down>") nil)))
+;; Load my keys first.
+(defadvice load (after give-my-keybindings-priority)
+  "Try to ensure that my keybindings always have priority."
+  (if (not (eq (car (car minor-mode-map-alist)) 'my-keys-minor-mode))
+      (let ((mykeys (assq 'my-keys-minor-mode minor-mode-map-alist)))
+        (assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
+(ad-activate 'load)
+
+;; Override other keymaps.
+
+;; Override isearch forward/backward.
+(define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
+
+;; Tab for completion in helm windows.
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 
 ;; Tie escape to closing the autocomplete tooltip.
 (eval-after-load "company"
@@ -155,16 +167,3 @@
 (eval-after-load "helm"
   '(progn
     (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)))
-
-;; Change cider shorcuts for compilation and setting namespace.
-(eval-after-load "cider"
-  '(progn
-    (define-key cider-mode-map (kbd "M-x M-c") 'cider-load-buffer)
-    (define-key cider-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
-    (define-key cider-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)
-    (define-key cider-mode-map (kbd "C-c") nil)
-    (define-key cider-mode-map (kbd "C-x") nil)))
-
-
-
-
