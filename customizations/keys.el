@@ -138,16 +138,14 @@
 
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
-(my-keys-minor-mode 1)
 
 ;; Load my keys first.
-(defadvice load (after give-my-keybindings-priority)
-  "Try to ensure that my keybindings always have priority."
-  (if (not (eq (car (car minor-mode-map-alist)) 'my-keys-minor-mode))
-      (let ((mykeys (assq 'my-keys-minor-mode minor-mode-map-alist)))
-        (assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
-        (add-to-list 'minor-mode-map-alist mykeys))))
-(ad-activate 'load)
+
+(my-keys-minor-mode 1)
+
+(defconst my-minor-mode-alist (list (cons 'my-keys-minor-mode
+                                              my-keys-minor-mode-map)))
+(setf emulation-mode-map-alists '(my-minor-mode-alist))
 
 ;; Override other keymaps.
 

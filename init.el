@@ -61,9 +61,6 @@
 ;; Customizations that don't fit anywhere else.
 (load "misc.el")
 
-;; Custom keyboard shortcuts.
-(load "keys.el")
-
 ;; Support for clojure.
 (load "clojure.el")
 
@@ -72,3 +69,6 @@
 
 ;; Support for docker.
 (load "docker.el")
+
+;; Custom keyboard shortcuts.
+(load "keys.el")
