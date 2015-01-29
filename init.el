@@ -22,6 +22,7 @@
   magit
   expand-region
   ace-jump-mode
+  window-numbering
 
   ;; Clojure.
   clojure-mode

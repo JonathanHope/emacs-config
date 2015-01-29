@@ -13,3 +13,5 @@
 ;; Smex for fuzzy matching of commands.
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
+
+(window-numbering-mode 1)
