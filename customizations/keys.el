@@ -41,6 +41,7 @@
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'split-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "<f3>") 'split-window-vertically)
 
+
 ;; Open a terminal.
 (define-key my-keys-minor-mode-map (kbd "<f4>") 'ansi-term)
 
@@ -65,10 +66,6 @@
 ;; Move line of text up or down.
 (define-key my-keys-minor-mode-map (kbd "C-S-<up>") 'move-line-up)
 (define-key my-keys-minor-mode-map (kbd "C-S-<down>") 'move-line-down)
-
-;; Indent and unindent regions.
-(define-key my-keys-minor-mode-map (kbd "<tab>") 'shift-right)
-(define-key my-keys-minor-mode-map (kbd "<backtab>") 'shift-left)
 
 ;; Delete a region.
 (define-key my-keys-minor-mode-map (kbd "<S-backspace>") 'delete-region)
@@ -165,3 +162,9 @@
 (eval-after-load "helm"
   '(progn
     (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)))
+
+;; Indent and unindent regions.
+(require 'selected)
+(selected-global-mode 1)
+(define-key selected-keymap (kbd "<tab>") #'shift-right)
+(define-key selected-keymap (kbd "<backtab>") #'shift-left)

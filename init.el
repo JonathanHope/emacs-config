@@ -18,11 +18,14 @@
   undo-tree
   projectile
   helm
+  helm-projectile
+  smex
   multiple-cursors
   magit
   expand-region
   ace-jump-mode
   window-numbering
+  selected
 
   ;; Clojure.
   clojure-mode

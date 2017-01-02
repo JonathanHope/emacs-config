@@ -74,10 +74,8 @@
 
   ;; Is the buffer modified.
   "═══╣ "
-  m/file-status-mode-line
-  m/projectile-mode-line
+  " "
   m/filename-mode-line
-  m/vc-mode-line
   " ╠"
 
   ;; Display the row and column being edited.
@@ -94,3 +92,6 @@
   '(:eval (make-string 400 ?═))
 
   ))
+
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
