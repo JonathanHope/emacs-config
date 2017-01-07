@@ -137,3 +137,8 @@
 (defun backward-delete-word (arg)
   (interactive "p")
   (delete-word (- arg)))
+
+(defun keyboard-quit-all ()
+  (interactive)
+  (cond (helm-alive-p (helm-keyboard-quit))
+        (t (keyboard-quit))))

@@ -1,15 +1,26 @@
+;; Launch a contextual hydra menu..
+(defun launch-hydra-contextual ()
+  (interactive)
+  (if (eq major-mode 'org-mode)
+    (org-hydra-top/body)
+    nil))
+
+;; Disable insert mode
+(define-key global-map [(insert)] nil)
+
 ;; Adding the key mappings to minor mode.
 (defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 
 ;; Cancel with one press of escape instead of three.
-(define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit)
+(define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit-all)
 
 ;; More normal file shorctuts.
 (define-key my-keys-minor-mode-map (kbd "C-s") 'save-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-o") 'helm-find-files)
 
 ;; More normal close shortcut.
-(define-key my-keys-minor-mode-map (kbd "C-w") 'save-buffers-kill-emacs)
+(define-key my-keys-minor-mode-map (kbd "C-w") 'kill-this-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-S-w") 'save-buffers-kill-terminal)
 
 ; ;; More normal search shortcuts.
 (define-key my-keys-minor-mode-map (kbd "C-f") 'isearch-forward-regexp)
@@ -41,9 +52,11 @@
 (define-key my-keys-minor-mode-map (kbd "<f2>") 'split-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "<f3>") 'split-window-vertically)
 
-
 ;; Open a terminal.
 (define-key my-keys-minor-mode-map (kbd "<f4>") 'ansi-term)
+
+;; Open a org-mode.
+(define-key my-keys-minor-mode-map (kbd "<f5>") 'org-mode-launch)
 
 ;; Open the magit interface.
 (define-key my-keys-minor-mode-map (kbd "<f6>") 'magit-status)
@@ -94,7 +107,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-S-l") 'downcase-region)
 
 ;; Command for commit that doesn't clash with anything else.
-(define-key my-keys-minor-mode-map (kbd "M-c") 'git-commit-commit)
+(define-key my-keys-minor-mode-map (kbd "M-c") 'with-editor-finish)
 
 ;; Select all.
 (define-key my-keys-minor-mode-map (kbd "C-a") 'mark-whole-buffer)
@@ -107,31 +120,38 @@
 (define-key my-keys-minor-mode-map (kbd "C-<up>") (lambda () (interactive) (previous-line 5)))
 (define-key my-keys-minor-mode-map (kbd "C-<down>") (lambda () (interactive) (next-line 5)))
 
+;; Launch the contextual hydra.
+(define-key my-keys-minor-mode-map (kbd "C-<tab>") 'launch-hydra-contextual)
+
 ;; Clojure Specific.
 
-;; Cider history.
-(define-key my-keys-minor-mode-map (kbd "M-<up>") 'cider-repl-backward-input)
-(define-key my-keys-minor-mode-map (kbd "M-<down>") 'cider-repl-forward-input)
+(eval-after-load "cider"
+  '(progn
+    ;; Cider history.
+    (define-key cider-mode-map (kbd "M-<up>") 'cider-repl-backward-input)
+    (define-key cider-mode-map (kbd "M-<down>") 'cider-repl-forward-input)
 
-;; Cider compilation.
-(define-key my-keys-minor-mode-map (kbd "M-x M-c") 'cider-load-buffer)
-(define-key my-keys-minor-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
-(define-key my-keys-minor-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)
+    ;; Cider compilation.
+    (define-key cider-mode-map (kbd "M-x M-c") 'cider-load-buffer)
+    (define-key cider-mode-map (kbd "M-x M-n") 'cider-repl-set-ns)
+    (define-key cider-mode-map (kbd "M-x M-e") 'cider-eval-last-sexp)))
 
-;; Shortcut to start cider.
-(define-key my-keys-minor-mode-map (kbd "<f5>") 'cider-jack-in)
+(eval-after-load "clojure-mode"
+  '(progn
+    ;; Shortcut to start cider.
+    (define-key clojure-mode-map (kbd "<f7>") 'cider-jack-in)
 
-;; Jump forward an sexp.
-(define-key my-keys-minor-mode-map (kbd "C-S-<right>") 'forward-sexp)
+    ;; Jump forward an sexp.
+    (define-key clojure-mode-map (kbd "C-S-<right>") 'forward-sexp)
 
-;; Jump backward and sexp.
-(define-key my-keys-minor-mode-map (kbd "C-S-<left>") 'backward-sexp)
+    ;; Jump backward and sexp.
+    (define-key clojure-mode-map (kbd "C-S-<left>") 'backward-sexp)
 
-;; Cut an sexp.
-(define-key my-keys-minor-mode-map (kbd "C-S-k") 'kill-sexp)
+    ;; Cut an sexp.
+    (define-key clojure-mode-map (kbd "C-S-k") 'kill-sexp)
 
-;; Delete an sexp.
-(define-key my-keys-minor-mode-map (kbd "C-S-d") 'delete-sexp)
+    ;; Delete an sexp.
+    (define-key clojure-mode-map (kbd "C-S-d") 'delete-sexp)))
 
 ;; Enable the minor mode with the key mappings.
 (define-minor-mode my-keys-minor-mode t " my-keys" 'my-keys-minor-mode-map)
@@ -153,15 +173,10 @@
 ;; Tab for completion in helm windows.
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 
-;; Tie escape to closing the autocomplete tooltip.
+; Tie escape to closing the autocomplete tooltip.
 (eval-after-load "company"
   '(progn
     (define-key company-active-map (kbd "<escape>") 'company-abort)))
-
-;; Tie escape to closing helm.
-(eval-after-load "helm"
-  '(progn
-    (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)))
 
 ;; Indent and unindent regions.
 (require 'selected)

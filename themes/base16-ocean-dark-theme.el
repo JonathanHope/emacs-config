@@ -81,13 +81,8 @@
   '(whitespace-trailing    ((t (:foreground "#a7adba" :background "#4f5b66"))))
 
   ;; Powerline & modeline
-  '(mode-line           ((t (:foreground "#2b303b" :background "#8fa1b3"   :box nil))))
-  '(powerline-active1   ((t (:foreground "#eff1f5" :background "#4f5b66" :box nil))))
-  '(powerline-active2   ((t (:foregruond "#eff1f5" :background "#343d46" :box nil))))
-  '(mode-line-inactive  ((t (:foreground "#2b303b" :background "#65737e" :box nil))))
-  '(powerline-inactive1 ((t (:foreground "#eff1f5" :background "#4f5b66" :box nil))))
-  '(powerline-inactive2 ((t (:foreground "#eff1f5" :background "#343d46" :box nil))))
-  '(mode-line-highlight ((t (:foreground "#65737e" :background "#a7adba" :box nil))))
+  '(mode-line           ((t (:foreground "#b48ead" :background "#343D46"   :box nil))))
+  '(mode-line-inactive  ((t (:foreground "#4f5b66" :background "#343D46"   :box nil))))
 
   ;; Parentheses
   '(show-paren-match    ((t (:background "#8fa1b3"   :foreground "#eff1f5"))))
@@ -193,8 +188,8 @@
   '(org-agenda-structure    ((t (:foreground "#8fa1b3"))))
   '(org-agenda-done         ((t (:foreground "#a3be8c"))))
   '(org-date                ((t (:foreground "#8fa1b3" :underline t))))
-  '(org-done                ((t (:foreground "#a3be8c" :weight bold))))
-  '(org-drawer              ((t (:foregruond "#b48ead"))))
+  '(org-done                ((t (:foreground "#eff1f5"))))
+  '(org-drawer              ((t (:foreground "#8fa1b3"))))
   '(org-ellipsis            ((t (:foreground "#eff1f5" :underline t))))
   '(org-footnote            ((t (:foreground "#96b5b4" :underline t))))
   '(org-hide                ((t (:foreground "#343d46"))))
@@ -202,8 +197,16 @@
   '(org-list-dt             ((t (:foreground "#dfe1e8" :weight bold))))
   '(org-scheduled           ((t (:foreground "#a3be8c"))))
   '(org-scheduled-today     ((t (:foreground "#a3be8c" :weight bold))))
-  '(org-table               ((t (:foreground "#b48ead"))))
-  '(org-todo                ((t (:foreground "#bf616a" :weight bold))))
+  '(org-table               ((t (:foreground "#d08770"))))
+  '(org-todo                ((t (:foreground "#eff1f5"))))
+  '(org-level-1             ((t (:foreground "#a3be8c" :weight bold))))
+  '(org-level-2             ((t (:foreground "#a3be8c" :weight bold))))
+  '(org-level-3             ((t (:foreground "#a3be8c" :weight bold))))
+  '(org-level-4             ((t (:foreground "#a3be8c" :weight bold))))
+  '(org-level-5             ((t (:foreground "#a3be8c" :weight bold))))
+  '(org-level-6             ((t (:foreground "#a3be8c" :weight bold))))
+  '(org-tag                 ((t (:foreground "#ebcb8b" :weight bold))))
+
 
   ;; Flyspell
   '(flyspell-duplicate ((t (:foreground "#eff1f5" :weight normal :underline (:color "#ebcb8b" :style wave)))))

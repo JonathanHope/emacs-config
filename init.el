@@ -26,6 +26,10 @@
   ace-jump-mode
   window-numbering
   selected
+  hydra
+  company
+
+  ;; Lisp
 
   ;; Clojure.
   clojure-mode
@@ -33,7 +37,6 @@
   paredit
   rainbow-delimiters
   cider
-  company
 
   ;; Markdown
   markdown-mode
@@ -42,7 +45,11 @@
   yaml-mode
 
   ;; Docker
-  dockerfile-mode))
+  dockerfile-mode
+
+  ;; Org-mode
+  org-bullets
+  ))
 
 ; Install packages.
 (dolist (p my-packages)
@@ -53,17 +60,23 @@
 ;; Directories of elisp configurations.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
-;; Customizations of the look and feel of emacs.
-(load "ui.el")
+;; Hydra menus.
+(load "hydraconfig.el")
 
 ;; Change how emacs edits text.
 (load "editing.el")
+
+;; Customizations of the look and feel of emacs.
+(load "ui.el")
 
 ;; Change how we get around in emacs.
 (load "navigation.el")
 
 ;; Customizations that don't fit anywhere else.
 (load "misc.el")
+
+;; Support for org mode.
+(load "orgmode.el")
 
 ;; Support for clojure.
 (load "clojure.el")
@@ -76,3 +89,6 @@
 
 ;; Custom keyboard shortcuts.
 (load "keys.el")
+
+;; How to start emacs up.
+(load "startup.el")
