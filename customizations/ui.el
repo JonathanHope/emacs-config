@@ -1,18 +1,15 @@
 ;; Hide menu and toobar.
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(set-fringe-mode 0)
+
+(setq initial-scratch-message "")
 
 ;; Disable redundant scroll bars.
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-(set-fringe-mode 1)
-
-(setq initial-scratch-message "")
-
 ;; Set font
-;;(set-default-font "PragmataPro Mono-10")
-;;(set-face-attribute 'default nil :family "PragmataPro Mono" :height 120 :weight 'normal)
 (defvar Input-font '(:family "Input" :size 14))
 (defvar PragmataPro-font '(:family "PragmataPro" :size 14))
 
@@ -36,15 +33,9 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 (load-theme 'base16-ocean-dark t)
 
-(defun my-change-window-divider ()
-  (let ((display-table (or buffer-display-table standard-display-table)))
-    (set-display-table-slot display-table 5 ?│)
-    (set-window-display-table (selected-window) display-table)))
-
-(add-hook 'window-configuration-change-hook 'my-change-window-divider)
-
 (set-face-background 'vertical-border "#343D46")
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
+
 ;; Highlight the current line
 (global-hl-line-mode 1)
 
@@ -127,3 +118,6 @@
 ;; Enable pretty utf8 char replacements.
 (global-prettify-symbols-mode +1)
 (setq prettify-symbols-unprettify-at-point 'right-edge)
+
+;; Visualize colors
+(require 'rainbow-mode)

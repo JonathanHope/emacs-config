@@ -28,8 +28,7 @@
   selected
   hydra
   company
-
-  ;; Lisp
+  rainbow-mode
 
   ;; Clojure.
   clojure-mode
