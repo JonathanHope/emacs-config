@@ -235,7 +235,7 @@
  '(helm-buffer-process ((t (:foreground "#7FB37B"))))
  '(helm-buffer-saved-out ((t nil)))
  '(helm-buffer-size ((t nil)))
- '(helm-candidate-number ((t (:background "#8FA1B3" :foreground "#2B303B"))))
+ '(helm-candidate-number ((t (:background "#343D46" :foreground "#b48ead"))))
  '(helm-ff-directory ((t (:foreground "#A6ACB6"))))
  '(helm-ff-executable ((t (:foreground "#7FB37B"))))
  '(helm-ff-file ((t nil)))
@@ -245,8 +245,10 @@
  '(helm-grep-match ((t (:foreground "#ebcb8b"))))
  '(helm-history-remote ((t nil)))
  '(helm-selection ((t (:background "#343D46"))))
- '(helm-source-header ((t (:background "#343D46" :foreground "#5A6C6A"))))
- '(helm-visible-mark ((t nil))))
+ '(helm-source-header ((t (:background "#343D46" :foreground "#7FB37B"))))
+ '(helm-visible-mark ((t nil)))
+ '(helm-ff-dotted-directory ((t (:foreground "#A6ACB6")))))
+
 
 ;; Hide vertical boder
 (set-face-attribute 'vertical-border
