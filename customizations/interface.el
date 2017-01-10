@@ -1,21 +1,20 @@
-;; Hide menu and toobar.
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+;; Configuration of the emacs interface.
 
-;; Disable redundant scroll bars.
+;; Hide menu, toolbar, and fringe.
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(set-fringe-mode 0)
+
+;; Hide the initial scratch menu.
+(setq initial-scratch-message "")
+
+;; Disable the scrollbar.
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-(set-fringe-mode 1)
-
-(setq initial-scratch-message "")
-
 ;; Set font
-;;(set-default-font "PragmataPro Mono-10")
-;;(set-face-attribute 'default nil :family "PragmataPro Mono" :height 120 :weight 'normal)
 (defvar Input-font '(:family "Input" :size 14))
 (defvar PragmataPro-font '(:family "PragmataPro" :size 14))
-
 (set-frame-font (apply 'font-spec PragmataPro-font) nil t)
 
 ;; Disable bell
@@ -36,45 +35,16 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 (load-theme 'base16-ocean-dark t)
 
-(defun my-change-window-divider ()
-  (let ((display-table (or buffer-display-table standard-display-table)))
-    (set-display-table-slot display-table 5 ?│)
-    (set-window-display-table (selected-window) display-table)))
-
-(add-hook 'window-configuration-change-hook 'my-change-window-divider)
-
 (set-face-background 'vertical-border "#343D46")
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
+
 ;; Highlight the current line
 (global-hl-line-mode 1)
-
-;; Get the current project.
-(defvar m/projectile-mode-line
-  '(:propertize
-    (:eval (if (ignore-errors (projectile-project-root))
-    (concat (projectile-project-name) "/")))))
-(put 'm/custom-projectile-mode-line 'risky-local-variable t)
-
-;; Get the current branch.
-(defvar m/vc-mode-line
-  '((:propertize
-    (:eval (let ((backend (symbol-name (vc-backend (buffer-file-name)))))
-    (concat " - " (substring vc-mode (+ (length backend) 2))))))))
-(put 'm/vc-mode-line 'risky-local-variable t)
 
 ;; The name of the file being edited.
 (defvar m/filename-mode-line
   '(:eval (propertize "%b" 'help-echo (buffer-file-name))))
 (put 'm/filename-mode-line 'risky-local-variable t)
-
-;; The status of the file being edited.
-(defvar m/file-status-mode-line
-  '(:eval
-  (if (buffer-modified-p)
-    "● "
-  (if buffer-read-only
-    "! "))))
-(put 'm/file-status-mode-line 'risky-local-variable t)
 
 ;; The current row and column being edited.
 (defvar m/row-column-mode-line
@@ -111,6 +81,7 @@
 
   ))
 
+;; Start in full screen.
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
@@ -120,7 +91,7 @@
 ;; y and n instead of yes and no.
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Hide advertisement from minibuffer
+;; Hide initial minibuffer text.
 (defun display-startup-echo-area-message ()
   (message ""))
 

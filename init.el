@@ -1,94 +1,68 @@
-;; Use emacs package management.
+;; Set Emacs to use UTF8
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
+;; Use Emac's package management.
 (require 'package)
-
-;; Repositories for packages.
-(add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-  '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-;; List of packages to install.
-(defvar my-packages
-'(
-  ;; Core.
-  undo-tree
-  projectile
-  helm
-  helm-projectile
-  smex
-  multiple-cursors
-  magit
-  expand-region
-  ace-jump-mode
-  window-numbering
-  selected
-  hydra
-  company
+;; Prevent custom from polluting my init file.
+(setq custom-file "~/.emacs.d/custom.el")
 
-  ;; Lisp
-
-  ;; Clojure.
-  clojure-mode
-  clojure-mode-extra-font-locking
-  paredit
-  rainbow-delimiters
-  cider
-
-  ;; Markdown
-  markdown-mode
-
-  ;; YAML
-  yaml-mode
-
-  ;; Docker
-  dockerfile-mode
-
-  ;; Org-mode
-  org-bullets
-  ))
-
-; Install packages.
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
+;; Install just use package.
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install p)))
+  (package-install 'use-package))
 
-;; Directories of elisp configurations.
+;; Enable use package.
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+
+;; Add directory for local packages.
+(add-to-list 'load-path "~/.emacs.d/local")
+
+;; Add directory for various customizations.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
-;; Hydra menus.
-(load "hydraconfig.el")
+;; Load up constants used throughout emacs.
+(load "constants.el")
 
-;; Change how emacs edits text.
-(load "editing.el")
+;; Configure packages using use-package.
+(add-to-list 'load-path "~/.emacs.d/packages")
+(require 'init-custom-keymap)
+(require 'init-undo-tree)
+(require 'init-async)
+(require 'init-helm)
+(require 'init-projectile)
+(require 'init-multiple-cursors)
+(require 'init-expand-region)
+(require 'init-ace-jump-mode)
+(require 'init-window-numbering)
+(require 'init-hydra)	
+(require 'init-company)
+(require 'init-rainbow-mode)
+(require 'init-isearch)
+(require 'init-org-mode)
+(require 'init-magit)
+(require 'init-paredit)
+(require 'init-rainbow-delimiters)
+(require 'init-clojure-mode)
+(require 'init-cider)
 
-;; Customizations of the look and feel of emacs.
-(load "ui.el")
+;; Load up the custom functions.
+(load "functions.el")
 
-;; Change how we get around in emacs.
-(load "navigation.el")
+;; Configure Emac's behavior.
+(load "behavior.el")
 
-;; Customizations that don't fit anywhere else.
-(load "misc.el")
+;; Configure Emac's interface.
+(load "interface.el")
 
-;; Support for org mode.
-(load "orgmode.el")
+;; Configure the keyboard driven menus.
+(load "hydra-menus.el")
 
-;; Support for clojure.
-(load "clojure.el")
-
-;; Support for yaml.
-(load "yaml.el")
-
-;; Support for docker.
-(load "docker.el")
-
-;; Custom keyboard shortcuts.
-(load "keys.el")
-
-;; How to start emacs up.
-(load "startup.el")
+;; Run the startup function.
+(startup)

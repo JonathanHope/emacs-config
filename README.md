@@ -13,6 +13,7 @@ This is my emacs configuration. It is primarily used for clojure development. Th
 Check this project out into ~/.emacs.d. 
 On windows be sure to set your home: setx HOME C:/Users/you.
 On windows you can add a Magit context menu using the following startup: C:\Program Files\emacs\bin\runemacs.exe --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)
+On windows be sure to install GNU Find Utils (http://gnuwin32.sourceforge.net/packages/findutils.htm) and put C:\Program Files (x86)\GnuWin32\bin at the start of PATH.
 
 ## Keymap
 
@@ -93,7 +94,7 @@ On windows you can add a Magit context menu using the following startup: C:\Prog
 #### Regex Searching
 
 * **CTRL + f** Regex search
-* **CTRL + SHIFT + f** Regex search backwards
+* **CTRL + SHIFT + f Regex search in project
 * **RETURN** Next search match
 * **SHIFT + RETURN** Previous search match
 
@@ -117,7 +118,7 @@ On windows you can add a Magit context menu using the following startup: C:\Prog
 
 ### General - Windowing
 
-#### Cose Emacs
+#### Close Emacs
 
 * **CTRL + SHIFT + w** Close emacs
 
@@ -127,11 +128,9 @@ On windows you can add a Magit context menu using the following startup: C:\Prog
 * **F2** Split window horizontally
 * **F3** Split window vertically
 
-#### Launching Emacs Modes
+### Launch Apps Menu
 
-* **F4** Start terminal
-* **F5** Launch Org-mode
-* **F6** Launch magit
+* **CTRL + TAB** Launch apps menu
 
 #### Launch Contextual Menu
 
