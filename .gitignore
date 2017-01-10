@@ -15,3 +15,5 @@ recentf
 .mc-lists.el
 .org-id-locations
 custom.el
+server/*
+org-clock-save.el
