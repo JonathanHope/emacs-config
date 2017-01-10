@@ -2,18 +2,24 @@
 
 ## Summary
 
-This is my emacs configuration. It is primarily used for clojure development. The keyboard shortcuts have been remapped to more CUA friendly ones where possible. Much of the functionality is inspired by more modern editors like sublime text.
+This is my Emacs configuration. The keyboard shortcuts have been remapped to more CUA friendly ones where possible. Much of the functionality is inspired by more modern editors like Sublime Text.
 
 ## Requirements
 
-* Emacs 24.4
+* Emacs 25.1
 
 ## Installation
 
 Check this project out into ~/.emacs.d. 
+
 On windows be sure to set your home: setx HOME C:/Users/you.
-On windows you can add a Magit context menu using the following startup: C:\Program Files\emacs\bin\runemacs.exe --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)
-On windows be sure to install GNU Find Utils (http://gnuwin32.sourceforge.net/packages/findutils.htm) and put C:\Program Files (x86)\GnuWin32\bin at the start of PATH.
+
+On windows you can add a Magit context menu using the following startup: C:\Program Files\emacs\bin\runemacs.exe --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows). The same command could be an alias on Linux.
+
+On Windows 10 be sure to install grep/find through Cygwin and add them to your PATH.
+
+To preview markdown be sure to install MultiMarkdown (https://github.com/fletcher/MultiMarkdown-5/releases). Add it to your path on Windows.
+
 
 ## Keymap
 
@@ -150,12 +156,8 @@ On windows be sure to install GNU Find Utils (http://gnuwin32.sourceforge.net/pa
 
 ### Clojure - REPL
 
-* **F7** Launch REPL
 * **ALT + UP** Last repl command
 * **ALT + DOWN** Previous repl command
-* **ALT + x + e** Evaluate selected sexp
-* **ALT + x + n** Set repl namespace to buffers
-* **ALT + x + c** Load buffer into repl
 
 ### Magit - General
 

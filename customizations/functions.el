@@ -122,7 +122,8 @@
   (interactive)
   (cond 
     ((eq major-mode 'org-mode) (org-hydra-top/body))
-    ((eq major-mode 'clojure-mode) (clojure-hydra/body))))
+    ((eq major-mode 'clojure-mode) (clojure-hydra/body))
+    ((or (eq major-mode 'markdown-mode) (eq major-mode 'gfm-mode)) (markdown-hydra/body))))
 
 (defun launch-hydra-apps ()
   "Launch a apps hydra menu."

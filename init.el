@@ -51,6 +51,7 @@
 (require 'init-rainbow-delimiters)
 (require 'init-clojure-mode)
 (require 'init-cider)
+(require 'init-markdown-mode)
 
 ;; Load up the custom functions.
 (load "functions.el")

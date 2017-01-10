@@ -141,3 +141,10 @@
   ("n" cider-repl-set-ns "Set REPL namespace")
   ("l" cider-load-buffer "Load buffer in REPL")
   ("q" nil "Exit"))
+
+;; Markdown Hydra
+(defhydra markdown-hydra (:color blue :columns 4)
+  "Markdown"
+  ("l" markdown-live-preview-mode "Live Preview")
+  ("p" markdown-preview "Preview")
+  ("q" nil "Exit"))
