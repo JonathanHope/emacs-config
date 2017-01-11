@@ -123,6 +123,7 @@
   (cond 
     ((eq major-mode 'org-mode) (org-hydra-top/body))
     ((eq major-mode 'clojure-mode) (clojure-hydra/body))
+    ((eq major-mode 'sql-mode) (sql-hydra/body))
     ((or (eq major-mode 'markdown-mode) (eq major-mode 'gfm-mode)) (markdown-hydra/body))))
 
 (defun launch-hydra-apps ()
@@ -161,9 +162,19 @@
 (defun startup ()
   "Custom startup function. Defaults to org mode in the notes directory."
   (make-directory notes-directory :parents)
-  (if (not (file-exists-p (concat notes-directory ".projectile")))
-    (write-region "" nil (concat notes-directory ".projectile"))
-    nil)
+  (make-directory scratch-directory :parents)
+  (let ((projectile-file (concat notes-directory ".projectile")))
+    (if (not (file-exists-p projectile-file))
+        (write-region "" nil projectile-file)
+      nil))
+  (let ((clojure-scratch-file (concat scratch-directory "scratch.clj")))
+    (if (not (file-exists-p clojure-scratch-file))
+        (write-region "" nil clojure-scratch-file)
+      nil))
+  (let ((sql-scratch-file (concat scratch-directory "scratch.sql")))
+    (if (not (file-exists-p sql-scratch-file))
+        (write-region "" nil sql-scratch-file)
+      nil))
   (setq default-directory notes-directory)
   (org-mode))
 
@@ -180,3 +191,20 @@
   (let ((x (pop hydra-stack)))
     (when x
       (funcall x))))
+
+(defun sql-add-newline-first (output)
+  (remove-hook 'comint-preoutput-filter-functions
+           'sql-add-newline-first)
+  (concat "\n\n" output))
+
+(defun sql-send-buffer-ss ()
+  (interactive)
+  (add-hook 'comint-preoutput-filter-functions 'sql-add-newline-first)
+  (let ((sql-str (buffer-substring-no-properties (point-min) (point-max))))
+    (let ((sql-str-flattened (concat (replace-regexp-in-string "\n" " " sql-str t t) " SENDQUERY")))
+      (sql-send-string sql-str-flattened))))
+
+(defun start-sql-ss ()
+  (interactive)
+  (sql-ss)
+  (select-window-1))

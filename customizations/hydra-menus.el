@@ -140,6 +140,8 @@
   ("r" cider-jack-in "Launch REPL")
   ("n" cider-repl-set-ns "Set REPL namespace")
   ("l" cider-load-buffer "Load buffer in REPL")
+  ("s" cider-eval-last-sexp "Evaluate sexp")
+  ("k" cider-quit "Close the REPL")
   ("q" nil "Exit"))
 
 ;; Markdown Hydra
@@ -147,4 +149,11 @@
   "Markdown"
   ("l" markdown-live-preview-mode "Live Preview")
   ("p" markdown-preview "Preview")
+  ("q" nil "Exit"))
+
+;; SQL Hydra
+(defhydra sql-hydra (:color blue :columns 4)
+  "SQL"
+  ("s" start-sql-ss "Connect to Microsoft SQL Server")
+  ("b" sql-send-buffer-ss "Load buffer in REPL")
   ("q" nil "Exit"))

@@ -41,7 +41,7 @@
 (require 'init-expand-region)
 (require 'init-ace-jump-mode)
 (require 'init-window-numbering)
-(require 'init-hydra)	
+(require 'init-hydra) 
 (require 'init-company)
 (require 'init-rainbow-mode)
 (require 'init-isearch)
@@ -52,6 +52,7 @@
 (require 'init-clojure-mode)
 (require 'init-cider)
 (require 'init-markdown-mode)
+(require 'init-sql)
 
 ;; Load up the custom functions.
 (load "functions.el")

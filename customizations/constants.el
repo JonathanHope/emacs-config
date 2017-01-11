@@ -2,3 +2,4 @@
 
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
+(setq scratch-directory "~/Notes/Scratch/")

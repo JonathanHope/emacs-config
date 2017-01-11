@@ -10,16 +10,33 @@ This is my Emacs configuration. The keyboard shortcuts have been remapped to mor
 
 ## Installation
 
-Check this project out into ~/.emacs.d. 
+### General
+
+Check this project out into ~/.emacs.d.
 
 On windows be sure to set your home: setx HOME C:/Users/you.
 
-On windows you can add a Magit context menu using the following startup: C:\Program Files\emacs\bin\runemacs.exe --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows). The same command could be an alias on Linux.
+The command "emacs --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)" can be used as an alise or a context menu item to launch magit.
 
-On Windows 10 be sure to install grep/find through Cygwin and add them to your PATH.
+On Windows be sure to install grep/find through Cygwin and add them to your PATH.
+
+### Clojure
+
+Install Java.
+
+Install Leiningen.
+
+Add {:user {:plugins [[cider/cider-nrepl "0.15.0-snapshot"]]}} to your ~/.lein/profiles.clj.
+
+### Markdown
 
 To preview markdown be sure to install MultiMarkdown (https://github.com/fletcher/MultiMarkdown-5/releases). Add it to your path on Windows.
 
+### SQL
+
+Install Java.
+
+Add ~/.emacs.d/lib/jisql/ to the path.
 
 ## Keymap
 

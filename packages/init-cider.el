@@ -18,11 +18,7 @@
   ;; Disable the REPL welcome message.
   (setq cider-repl-display-help-banner nil)
 
-  ;; enable paredit in cider.
-  (add-hook 'cider-repl-mode-hook 'paredit-mode)
-
-  ;; Company mode autocomplete.
-  (add-hook 'cider-repl-mode-hook 'company-mode)
-  (add-hook 'cider-mode-hook 'company-mode))
+  ;; Allow the REPL to be used without a project.
+  (setq cider-allow-jack-in-without-project t))
 
 (provide 'init-cider)
