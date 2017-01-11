@@ -30,6 +30,15 @@
 ;; Load up constants used throughout emacs.
 (load "constants.el")
 
+;; Load up top level functions.
+(load "functions.el")
+
+;; Configure Emac's behavior.
+(load "behavior.el")
+
+;; Configure Emac's interface.
+(load "interface.el")
+
 ;; Configure packages using use-package.
 (add-to-list 'load-path "~/.emacs.d/packages")
 (require 'init-custom-keymap)
@@ -53,18 +62,6 @@
 (require 'init-cider)
 (require 'init-markdown-mode)
 (require 'init-sql)
-
-;; Load up the custom functions.
-(load "functions.el")
-
-;; Configure Emac's behavior.
-(load "behavior.el")
-
-;; Configure Emac's interface.
-(load "interface.el")
-
-;; Configure the keyboard driven menus.
-(load "hydra-menus.el")
 
 ;; Run the startup function.
 (startup)

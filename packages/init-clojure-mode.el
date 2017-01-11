@@ -4,6 +4,10 @@
 (use-package clojure-mode
 	:ensure t
 
+  :bind
+  (:map  clojure-mode-map
+    ("C-<tab>" . clojure-hydra/body))
+
   :config
   ;; Paredit for clojure.
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)

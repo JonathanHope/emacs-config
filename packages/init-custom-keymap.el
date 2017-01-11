@@ -129,11 +129,100 @@
     ;; Move down ten lines.
     ("C-<down>" down-ten)
 
-    ;; Launch a contextual keyboard driven menu.
-    ("C-<tab>" launch-hydra-contextual)
-
     ;; Launch general apps hydra.
-    ("C-S-<tab>" launch-hydra-apps)
-    )))
+    ("C-S-<tab>" launch-hydra-apps)))
+
+  (defun duplicate-line()
+    "Duplicate the current line."
+    (interactive)
+    (move-beginning-of-line 1)
+    (kill-line)
+    (yank)
+    (open-line 1)
+    (next-line 1)
+    (yank))
+
+  (defun move-line-up ()
+    "Move the current line up one line."
+    (interactive)
+    (transpose-lines 1)
+    (previous-line 2))
+
+  (defun move-line-down ()
+    "Move the current line down one line."
+    (interactive)
+    (next-line 1)
+    (transpose-lines 1)
+    (previous-line 1))
+
+  (defun delete-whole-line ()
+    "Delete the current line."
+    (interactive)
+    (move-beginning-of-line 1)
+    (kill-line 1)
+    (setq kill-ring (cdr kill-ring)))
+
+  (defun delete-word (arg)
+    "Delete a word."
+    (interactive "p")
+    (delete-region (point) (progn (forward-word arg) (point))))
+
+  (defun backward-delete-word (arg)
+    "Delete a word moving backwards."
+    (interactive "p")
+    (delete-word (- arg)))
+
+  (defun keyboard-quit-all ()
+    "Quit out of whatever is currently going on."
+    (interactive)
+    (cond (helm-alive-p (helm-keyboard-quit))
+          (t (keyboard-quit))))
+
+  (defun up-ten ()
+    "Move up ten lines."
+    (interactive) 
+    (previous-line 10))
+
+  (defun down-ten ()
+    "Move down ten lines."
+    (interactive) 
+    (next-line 10))
+
+  (defun launch-hydra-apps ()
+    "Launch a apps hydra menu."
+    (interactive)
+    (apps-hydra/body))
+
+  (defun is-region-active? ()
+    "Is there an active region?"
+    (and mark-active
+      (/= (point) (mark))))
+
+  (defun toggle-comment ()
+    "Toggle the comment status of a line or a region."
+    (interactive)
+    (if (is-region-active?)
+      (comment-or-uncomment-region (region-beginning) (region-end))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
+
+  )
 
 (provide 'init-custom-keymap)
+
+; (defun shift-region (distance)
+;   "Shift an entire region by distance."
+;   (let ((mark (mark)))
+;     (save-excursion
+;       (indent-rigidly (region-beginning) (region-end) distance)
+;       (push-mark mark t t)
+;       (setq deactivate-mark nil))))
+
+; (defun shift-right ()
+;   "Shift an entire region 2 spaces to the right."
+;   (interactive)
+;   (shift-region 2))
+
+; (defun shift-left ()
+;   "Shift an entire region 2 spaces to the left."
+;   (interactive)
+;   (shift-region -2))

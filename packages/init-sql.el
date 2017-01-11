@@ -1,6 +1,10 @@
 ;; Package configuration for sql.
 
 (use-package sql
+  :bind
+  (:map  sql-mode-map
+    ("C-<tab>" . sql-hydra/body))
+
   :config
   (defcustom sql-ss-program "jisql"
     "Command to start Microsoft SQL Server by jisql."

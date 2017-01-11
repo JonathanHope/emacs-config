@@ -1,6 +1,10 @@
 ;; Package configuration for org-mode.
 
 (use-package org
+  :bind
+  (:map  org-mode-map
+    ("C-<tab>" . org-hydra-top/body))
+
     :config
     ;; Add a timestamp when completing something.
     (setq org-log-done t)
@@ -9,8 +13,7 @@
     (setq org-startup-folded 0)
 
     ;; Set the folder the notes are kept in.
-    ;; TODO: Use the constant here.
-    (setq org-agenda-files '("~/Notes/"))
+    (setq org-agenda-files (list notes-directory))
 
     ;; Save clock history across emacs sessions.
     (setq org-clock-persist 'history)

@@ -16,9 +16,9 @@ Check this project out into ~/.emacs.d.
 
 On windows be sure to set your home: setx HOME C:/Users/you.
 
-The command "emacs --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)" can be used as an alise or a context menu item to launch magit.
+Git needs to be installed. On windows just install it from https://git-scm.com/download/win. On windows make sure that the git paths with git.exe, find.exe, and grep.exe are at the very top of the system wide path.
 
-On Windows be sure to install grep/find through Cygwin and add them to your PATH.
+The command "emacs --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)" can be used as an alias or a context menu item to launch magit.
 
 ### Clojure
 
