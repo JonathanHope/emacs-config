@@ -166,8 +166,9 @@
   (defhydra javascript-hydra (:color blue :columns 4)
     "Javascript"
     ("r" launch-js-repl "Launch REPL")
-    ("b" send-buffer-skewer "Load buffer")
-    ("e" skewer-eval-defun "Evaluate form")
+    ("b" nodejs-repl-send-buffer "Load buffer")
+    ("s" nodejs-repl-send-region "Send selection")
+    ("i" install-npm-package "Install NPM package")
     ("q" nil "Exit"))
 
   ;; Emacs Lisp Hydra
@@ -210,7 +211,7 @@
     (magit-status)
     (delete-other-windows))
 
-  (defun sql-add-newline-first (output)
+  (defun sql-add-newline-fi rst (output)
     "Add two new lines to ths tart of comint output."
     (remove-hook 'comint-preoutput-filter-functions
              'sql-add-newline-first)
@@ -240,14 +241,14 @@
   (defun launch-js-repl ()
     "Launch a javascript REPL."
     (interactive)
-    (run-skewer)
-    (skewer-repl)
+    (nodejs-repl)
     (select-window-1))
 
-  (defun send-buffer-skewer ()
-    "Send an entire buffer to a skewer REPL."
-    (interactive)
-    (skewer-load-buffer)
-    (skewer-repl)))
+  (defun install-npm-package (arg)
+    "Install a npm package."
+    (interactive
+      (list
+       (read-string "Package: ")))
+    (shell-command-to-string (concat "npm install " arg))))
 
 (provide 'init-hydra)

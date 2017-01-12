@@ -276,13 +276,13 @@ nil
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
     (t (:inherit company-tooltip-selection)))))
 
-;; JS2 Mode
+;; JS3 Mode
 (custom-set-faces
- '(js2-warning
+ '(js3-warning-face
    ((t (:foreground "#bf616a" :underline t))))
- '(js2-error
+ '(js3-error-face
    ((t (:foreground "#ebcb8b" :underline t))))
- '(js2-external-variable
+ '(js3-external-variable-face
    ((t (:foreground "#d08770" :underline t))))
- '(js2-function-param
+ '(js3-function-param-face
    ((t (:foreground "#8fa1b3")))))

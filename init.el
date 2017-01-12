@@ -55,9 +55,9 @@
 (require 'init-cider)
 (require 'init-markdown-mode)
 (require 'init-sql)
-(require 'init-js2-mode)
-(require 'init-skewer-mode)
-(require 'init-ac-js2)
+(require 'init-js3-mode)
+(require 'init-nodejs-repl)
+(require 'init-company-tern)
 
 ;; Run the startup function.
 (startup)
