@@ -139,7 +139,7 @@
 
     (let ((projectile-file (concat notes-directory ".projectile")))
       (if (not (file-exists-p projectile-file))
-          (write-region "" nil projectile-file)
+          (write-region "-/Scratch/node_modules" nil projectile-file)
         nil))
 
     (dolist (scratch-file scratch-files) 
