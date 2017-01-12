@@ -286,3 +286,10 @@ nil
    ((t (:foreground "#d08770" :underline t))))
  '(js3-function-param-face
    ((t (:foreground "#8fa1b3")))))
+
+;; Ace jump mode
+(custom-set-faces
+ '(ace-jump-face-foreground
+   ((t (:foreground "#bf616a" :weight bold :underline t)))))
+
+
