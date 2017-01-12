@@ -54,6 +54,7 @@
 (require 'init-clojure-mode)
 (require 'init-cider)
 (require 'init-markdown-mode)
+(require 'init-livedown)
 (require 'init-sql)
 (require 'init-js3-mode)
 (require 'init-nodejs-repl)

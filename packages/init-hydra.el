@@ -151,8 +151,8 @@
   ;; Markdown Hydra
   (defhydra markdown-hydra (:color blue :columns 4)
     "Markdown"
-    ("l" markdown-live-preview-mode "Live Preview")
-    ("p" markdown-preview "Preview")
+    ("l" livedown-preview "Live Preview")
+    ("k" livedown-kill "End Live Preview")
     ("q" nil "Exit"))
 
   ;; SQL Hydra

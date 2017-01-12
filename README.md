@@ -22,6 +22,8 @@ The command "emacs --eval (revert-default-directory) --eval (magit-status) --eva
 
 On windows 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3.
 
+It uses the pragmata fonts.
+
 ### Clojure
 
 Install Java.
@@ -32,7 +34,9 @@ Add {:user {:plugins [[cider/cider-nrepl "0.15.0-snapshot"]]}} to your ~/.lein/p
 
 ### Markdown
 
-To preview markdown be sure to install MultiMarkdown (https://github.com/fletcher/MultiMarkdown-5/releases). Add it to your path on Windows.
+Install node.js and npm. Add them to your path on windows.
+
+Install livedown with the following command: npm install -g livedown.
 
 ### SQL
 
@@ -42,7 +46,9 @@ Add ~/.emacs.d/lib/jisql/ to the path.
 
 ### Javascript
 
-You need to have a browser installed.
+Install node.js and npm. Add them to your path on windows.
+
+Install tern with the following: npm install -g tern.
 
 ## Keymap
 
