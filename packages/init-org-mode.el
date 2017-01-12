@@ -2,11 +2,12 @@
 
 (use-package org
   :defer t
+  :mode (("\\.org$" . org-mode))
   
   :bind
   (:map  org-mode-map
-    ("C-<tab>" . org-hydra-top/body))
-
+         ("C-<tab>" . org-hydra-top/body))
+  
     :config
     ;; Add a timestamp when completing something.
     (setq org-log-done t)

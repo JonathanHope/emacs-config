@@ -162,6 +162,14 @@
     ("b" sql-send-buffer-ss "Load buffer in REPL")
     ("q" nil "Exit"))
 
+  ;; Javascript Hydra
+  (defhydra javascript-hydra (:color blue :columns 4)
+    "Javascript"
+    ("r" launch-js-repl "Launch REPL")
+    ("b" send-buffer-skewer "Load buffer")
+    ("e" skewer-eval-defun "Evaluate form")
+    ("q" nil "Exit"))
+
   ;; Emacs Lisp Hydra
   (defhydra elisp-hydra (:color blue :columns 4)
     "Emacs Lisp"
@@ -223,9 +231,23 @@
     (select-window-1))
 
   (defun launch-elisp-repl ()
+    "Launch an elisp REPL."
     (interactive)
     (split-window-horizontally)
     (select-window-2)
-    (ielm)))
+    (ielm))
+
+  (defun launch-js-repl ()
+    "Launch a javascript REPL."
+    (interactive)
+    (run-skewer)
+    (skewer-repl)
+    (select-window-1))
+
+  (defun send-buffer-skewer ()
+    "Send an entire buffer to a skewer REPL."
+    (interactive)
+    (skewer-load-buffer)
+    (skewer-repl)))
 
 (provide 'init-hydra)

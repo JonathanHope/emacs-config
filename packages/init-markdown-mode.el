@@ -5,14 +5,14 @@
 
   :mode 
   (("README\\.md\\'" . gfm-mode)
-    ("\\.md\\'" . markdown-mode)
-    ("\\.markdown\\'" . markdown-mode))
+   ("\\.md\\'" . markdown-mode)
+   ("\\.markdown\\'" . markdown-mode))
 
   :bind
   (:map markdown-mode-map
-    ("C-<tab>" . markdown-hydra/body)
+        ("C-<tab>" . markdown-hydra/body)
    :map gfm-mode-map
-   ("C-<tab>" . markdown-hydra/body))
+        ("C-<tab>" . markdown-hydra/body))
 
   :init 
   (setq markdown-command "multimarkdown"))

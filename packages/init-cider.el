@@ -5,8 +5,8 @@
 
   :bind 
   (:map cider-repl-mode-map
-    ("M-<up>" . cider-repl-backward-input)
-    ("M-<down>" . cider-repl-forward-input))
+        ("M-<up>" . cider-repl-backward-input)
+        ("M-<down>" . cider-repl-forward-input))
 
   :config
   ;; When there's a cider error, show its buffer and switch to it

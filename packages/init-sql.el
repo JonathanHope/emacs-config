@@ -2,10 +2,11 @@
 
 (use-package sql
   :defer t
-
+  :mode (("\\.sql$" . sql-mode))
+  
   :bind
-  (:map  sql-mode-map
-    ("C-<tab>" . sql-hydra/body))
+  (:map sql-mode-map
+        ("C-<tab>" . sql-hydra/body))
 
   :config
   (defcustom sql-ss-program "jisql"

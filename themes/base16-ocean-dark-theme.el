@@ -275,3 +275,14 @@ nil
  '(company-tooltip-common-selection
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
     (t (:inherit company-tooltip-selection)))))
+
+;; JS2 Mode
+(custom-set-faces
+ '(js2-warning
+   ((t (:foreground "#bf616a" :underline t))))
+ '(js2-error
+   ((t (:foreground "#ebcb8b" :underline t))))
+ '(js2-external-variable
+   ((t (:foreground "#d08770" :underline t))))
+ '(js2-function-param
+   ((t (:foreground "#8fa1b3")))))

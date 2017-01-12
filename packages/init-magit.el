@@ -4,6 +4,6 @@
   
   :bind 
   (:map with-editor-mode-map
-    ("M-c" . with-editor-finish)))
+        ("M-c" . with-editor-finish)))
 
 (provide 'init-magit)

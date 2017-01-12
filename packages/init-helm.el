@@ -5,7 +5,7 @@
   
   :bind 
   (:map helm-map
-    ("<tab>" . helm-execute-persistent-action)))
+        ("<tab>" . helm-execute-persistent-action)))
 
 (use-package helm-config
   :config

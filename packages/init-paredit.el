@@ -5,18 +5,20 @@
   :defer t
 
   :bind
-  (:map  paredit-mode-map
-    ("M-<up>" . nil)
-    ("M-<down>" . nil)
-    ("C-S-<right>" . forward-sexp)
-    ("C-S-<left>" . backward-sexp)
-    ("C-S-k" . kill-sexp)
-    ("C-S-d" . delete-sexp))
+  (:map paredit-mode-map
+        ("M-<up>" . nil)
+        ("M-<down>" . nil)
+        ("C-S-<right>" . forward-sexp)
+        ("C-S-<left>" . backward-sexp)
+        ("C-S-k" . kill-sexp)
+        ("C-S-d" . delete-sexp)
+        ("C-)" . paredit-forward-slurp-sexp)
+        ("<backspace>" . paredit-kill-region-or-backward-delete))
 
   :init
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode))
+  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
 
   :config
   (defun paredit-inside-sexp-p ()
@@ -61,5 +63,11 @@
                      (save-excursion (paredit-backward)
                                      (paredit-forward)
                                      (point))))))
+
+  (defun paredit-kill-region-or-backward-delete ()
+    (interactive)
+    (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+      (paredit-backward-delete))))
 
 (provide 'init-paredit)

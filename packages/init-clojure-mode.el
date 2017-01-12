@@ -3,12 +3,13 @@
   :defer t)
 
 (use-package clojure-mode
-	:ensure t
+  :ensure t
   :defer t
-
+  :mode (("\\.clj$" . clojure-mode))
+  
   :bind
-  (:map  clojure-mode-map
-    ("C-<tab>" . clojure-hydra/body))
+  (:map clojure-mode-map
+        ("C-<tab>" . clojure-hydra/body))
 
   :config
   ;; Paredit for clojure.

@@ -20,6 +20,8 @@ Git needs to be installed. On windows just install it from https://git-scm.com/d
 
 The command "emacs --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)" can be used as an alias or a context menu item to launch magit.
 
+On windows 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3.
+
 ### Clojure
 
 Install Java.
@@ -37,6 +39,10 @@ To preview markdown be sure to install MultiMarkdown (https://github.com/fletche
 Install Java.
 
 Add ~/.emacs.d/lib/jisql/ to the path.
+
+### Javascript
+
+You need to have a browser installed.
 
 ## Keymap
 
