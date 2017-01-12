@@ -1,6 +1,8 @@
 ;; Package configuration for sql.
 
 (use-package sql
+  :defer t
+
   :bind
   (:map  sql-mode-map
     ("C-<tab>" . sql-hydra/body))

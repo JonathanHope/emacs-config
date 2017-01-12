@@ -2,6 +2,7 @@
 
 (use-package window-numbering
   :ensure t
+  
   :config
   (window-numbering-mode 1))
 

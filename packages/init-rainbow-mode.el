@@ -2,6 +2,7 @@
 
 (use-package rainbow-mode
   :ensure t
+  :defer t
 
   :init
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)

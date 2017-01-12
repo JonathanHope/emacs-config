@@ -162,6 +162,13 @@
     ("b" sql-send-buffer-ss "Load buffer in REPL")
     ("q" nil "Exit"))
 
+  ;; Emacs Lisp Hydra
+  (defhydra elisp-hydra (:color blue :columns 4)
+    "Emacs Lisp"
+    ("r" launch-elisp-repl "Launch REPL")
+    ("q" nil "Exit"))
+
+  
   ;; Support for nested hydras.
   (defvar hydra-stack nil)
 
@@ -213,6 +220,12 @@
     "Connect to a Microsoft SQL Server database."
     (interactive)
     (sql-ss)
-    (select-window-1)))
+    (select-window-1))
+
+  (defun launch-elisp-repl ()
+    (interactive)
+    (split-window-horizontally)
+    (select-window-2)
+    (ielm)))
 
 (provide 'init-hydra)

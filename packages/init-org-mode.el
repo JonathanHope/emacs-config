@@ -1,6 +1,8 @@
 ;; Package configuration for org-mode.
 
 (use-package org
+  :defer t
+  
   :bind
   (:map  org-mode-map
     ("C-<tab>" . org-hydra-top/body))

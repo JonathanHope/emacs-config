@@ -24,23 +24,16 @@
 ;; Add directory for local packages.
 (add-to-list 'load-path "~/.emacs.d/local")
 
-;; Add directory for various customizations.
-(add-to-list 'load-path "~/.emacs.d/customizations")
-
-;; Load up constants used throughout emacs.
-(load "constants.el")
-
-;; Load up top level functions.
-(load "functions.el")
-
-;; Configure Emac's behavior.
-(load "behavior.el")
-
-;; Configure Emac's interface.
-(load "interface.el")
-
 ;; Configure packages using use-package.
 (add-to-list 'load-path "~/.emacs.d/packages")
+
+;; Constants
+(setq old-default-directory default-directory)
+(setq notes-directory "~/Notes/")
+(setq scratch-directory "~/Notes/Scratch/")
+(setq scratch-files (list "scratch.sql" "scratch.clj"))
+
+(require 'init-emacs)
 (require 'init-custom-keymap)
 (require 'init-undo-tree)
 (require 'init-async)

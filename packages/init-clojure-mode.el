@@ -1,8 +1,10 @@
 (use-package clojure-mode-extra-font-locking
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package clojure-mode
 	:ensure t
+  :defer t
 
   :bind
   (:map  clojure-mode-map

@@ -2,6 +2,7 @@
 
 (use-package company
   :ensure t
+  :defer t
 
   :bind 
   (:map company-active-map

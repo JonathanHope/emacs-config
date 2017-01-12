@@ -2,6 +2,7 @@
 
 (use-package paredit
   :ensure t
+  :defer t
 
   :bind
   (:map  paredit-mode-map
