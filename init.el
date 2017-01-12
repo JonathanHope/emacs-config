@@ -57,6 +57,7 @@
 (require 'init-sql)
 (require 'init-js2-mode)
 (require 'init-skewer-mode)
+(require 'init-ac-js2)
 
 ;; Run the startup function.
 (startup)
