@@ -27,14 +27,17 @@
                              ;; Redo last action.
                              ("C-y" undo-tree-redo)
 
-                             ;; Copy the current selection.
-                             ("C-c" copy-region-as-kill)
+                             ;; Copy the current selection to the clipboard.
+                             ("C-c" copy-clear-selection)
 
-                             ;; Cut the current selection.
-                             ("C-x" kill-region)
+                             ;; Cut the current selection to the clipboard.
+                             ("C-x" simpleclip-cut)
 
-                                        ; Paste whatever is on the clipboard.
-                             ("C-v" yank)
+                             ;; Paste whatever is on the clipboard.
+                             ("C-v" simpleclip-paste)
+
+                             ;; Paste whatever is n the kill ring.
+                             ("C-S-v" yank)
    
                              ;; Regex search in a file.
                              ("C-f" isearch-forward-regexp)
@@ -43,10 +46,10 @@
                              ("C-S-f" helm-projectile-grep)
 
                              ;; Jump to a line in a file.
-                             ("C-g" goto-line)
+                             ("C-S-g" goto-line)
 
                              ;; Jump anywhere visible.
-                             ("C-S-g" ace-jump-mode)
+                             ("C-g" ace-jump-mode)
 
                              ;; Open a file in a project.
                              ("C-p" helm-projectile-find-file)
@@ -73,7 +76,7 @@
                              ("C-<return>" rectangle-mark-mode)
 
                              ;; Edit all lines that are marked.
-                             ("C-S-c" mc/edit-lines)
+                             ("C-S-c" mc/edit-beginnings-of-lines)
 
                              ;; Add another cursor.
                              ("C-<down-mouse-1>" mc/add-cursor-on-click)
@@ -95,9 +98,6 @@
 
                              ;; Cut an entire line.
                              ("C-k" kill-whole-line)
-
-                             ;; Delete an entire line.
-                             ("C-d" delete-whole-line)
 
                              ;; Disable the built in M-x function.
                              ("M-x" nil)
@@ -155,13 +155,6 @@
     (transpose-lines 1)
     (previous-line 1))
 
-  (defun delete-whole-line ()
-    "Delete the current line."
-    (interactive)
-    (move-beginning-of-line 1)
-    (kill-line 1)
-    (setq kill-ring (cdr kill-ring)))
-
   (defun delete-word (arg)
     "Delete a word."
     (interactive "p")
@@ -203,6 +196,11 @@
     (interactive)
     (if (is-region-active?)
       (comment-or-uncomment-region (region-beginning) (region-end))
-      (comment-or-uncomment-region (line-beginning-position) (line-end-position)))))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
+
+  (defun copy-clear-selection (beg end)
+    (interactive "r")
+    (simpleclip-copy beg end)
+    (keyboard-quit)))
 
 (provide 'init-custom-keymap)

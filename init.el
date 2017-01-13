@@ -31,7 +31,7 @@
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
 (setq scratch-directory "~/Notes/Scratch/")
-(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js"))
+(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt"))
 
 (require 'init-emacs)
 (require 'init-custom-keymap)
@@ -43,7 +43,6 @@
 (require 'init-expand-region)
 (require 'init-ace-jump-mode)
 (require 'init-window-numbering)
-(require 'init-paredit)
 (require 'init-isearch)
 (require 'init-rainbow-mode)
 (require 'init-hydra) 
@@ -59,6 +58,9 @@
 (require 'init-js3-mode)
 (require 'init-nodejs-repl)
 (require 'init-company-tern)
+(require 'init-smartparens)
+(require 'init-simpleclip)
+(require 'init-re-builder)
 
 ;; Run the startup function.
 (startup)

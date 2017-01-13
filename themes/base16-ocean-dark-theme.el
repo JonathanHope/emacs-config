@@ -287,9 +287,21 @@ nil
  '(js3-function-param-face
    ((t (:foreground "#8fa1b3")))))
 
-;; Ace jump mode
+;; Ace Jump Mode
 (custom-set-faces
  '(ace-jump-face-foreground
    ((t (:foreground "#bf616a" :weight bold :underline t)))))
 
+;; Smartparens
+(custom-set-faces
+ '(sp-pair-overlay-face
+   ((t (:background "#2b303b"))))
+ '(sp-wrap-overlay-face
+   ((t (:background "#2b303b"))))
+ '(sp-wrap-tag-overlay-face
+   ((t (:background "#2b303b")))))
 
+;; Multiple Cursors
+(custom-set-faces 
+ '(mc/cursor-bar-face
+   ((t (:background "#2b303b" :foreground "#a3c6d0" :weight bold :height 1)))))

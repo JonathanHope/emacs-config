@@ -42,8 +42,8 @@
     (scroll-bar-mode -1))
 
   ;; Set font
-  (defvar Input-font '(:family "Input" :size 12))
-  (defvar PragmataPro-font '(:family "PragmataPro" :size 12))
+  (defvar Input-font '(:family "Input" :size 14))
+  (defvar PragmataPro-font '(:family "PragmataPro" :size 14))
   (set-frame-font (apply 'font-spec PragmataPro-font) nil t)
 
   ;; Disable bell
@@ -119,6 +119,13 @@
 
   ;; y and n instead of yes and no.
   (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; XML Support
+  (setq auto-mode-alist
+        (cons
+         '("\\.\\(xml\\|edmx\\|config\\)\\'"
+           . nxml-mode)
+         auto-mode-alist))
 
   ;; Hide initial minibuffer text.
   (defun display-startup-echo-area-message ()

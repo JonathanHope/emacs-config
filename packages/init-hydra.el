@@ -10,6 +10,7 @@
     ("o" org-mode-launch "Org-mode")
     ("m" magit-mode-launch "Magit")
     ("r" rainbow-mode "Rainbow Mode")
+    ("b" re-builder "Regex Builder")
     ("q" nil "Exit"))
 
   ;; Org-mode Hydras
