@@ -7,7 +7,7 @@
         ("M-<right>" . nxml-forward-tag)
         ("<tab>" . nxml-finish-element-new-line)
         ("<backtab>" . nxml-finish-element-same-line)
-        ("<return>" . newline-and-indent))
+        ("<return>" . nxml-newline-and-indent))
 
   :init
   (setq auto-mode-alist
@@ -64,6 +64,18 @@
     (sp-forward-sexp)
     (insert ">")
     (nxml-finish-element)
-    (move-line-up)))
+    (move-line-up))
+
+  (defun nxml-newline-and-indent ()
+    "Either inserts a newline and indents or adds two newlines and indents."
+    (interactive)
+    (if (and (char-equal (char-after) ?<)
+             (char-equal (char-before) ?>))
+        (progn
+          (newline-and-indent)
+          (previous-line)
+          (sp-down-sexp)
+          (newline-and-indent))
+      (newline-and-indent))))
 
 (provide 'init-nxml-mode)
