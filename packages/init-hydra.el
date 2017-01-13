@@ -9,8 +9,10 @@
     "Apps"
     ("o" org-mode-launch "Org-mode")
     ("m" magit-mode-launch "Magit")
-    ("r" rainbow-mode "Rainbow Mode")
-    ("b" re-builder "Regex Builder")
+    ("r" rainbow-mode "Rainbow mode")
+    ("b" re-builder "Regex builder")
+    ("k" describe-key "Describe key")
+    ("f" describe-function "Describe function")
     ("q" nil "Exit"))
 
   ;; Org-mode Hydras
