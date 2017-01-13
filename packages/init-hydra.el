@@ -177,7 +177,6 @@
     "Emacs Lisp"
     ("r" launch-elisp-repl "Launch REPL")
     ("q" nil "Exit"))
-
   
   ;; Support for nested hydras.
   (defvar hydra-stack nil)

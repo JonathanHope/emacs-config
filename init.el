@@ -61,6 +61,7 @@
 (require 'init-smartparens)
 (require 'init-simpleclip)
 (require 'init-re-builder)
+(require 'init-nxml-mode)
 
 ;; Run the startup function.
 (startup)

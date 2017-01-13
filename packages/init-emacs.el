@@ -120,13 +120,6 @@
   ;; y and n instead of yes and no.
   (fset 'yes-or-no-p 'y-or-n-p)
 
-  ;; XML Support
-  (setq auto-mode-alist
-        (cons
-         '("\\.\\(xml\\|edmx\\|config\\)\\'"
-           . nxml-mode)
-         auto-mode-alist))
-
   ;; Hide initial minibuffer text.
   (defun display-startup-echo-area-message ()
     (message ""))

@@ -16,6 +16,7 @@
   (add-hook 'clojure-mode-hook #'smartparens-mode)
   (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
   (add-hook 'cider-repl-mode-hook #'smartparens-mode)
+  (add-hook 'nxml-mode-hook #'smartparens-mode)
   
   :config
   (defadvice js3-enter-key (after fix-sp-state activate)
@@ -31,7 +32,14 @@
   (sp-use-paredit-bindings)
 
   (sp-with-modes sp-lisp-modes
-                 (sp-local-pair "'" nil :actions nil))
+    (sp-local-pair "'" nil :actions nil))
+
+  (setq sp-navigate-consider-sgml-tags '(nxml-mode))
+
+  (sp-with-modes '(html-mode sgml-mode nxml-mode)
+    (sp-local-pair "<" ">"))
+
+  (sp-pair "*" "*" :wrap "C-S-8")
   
   (defun sp-kill-region-or-backward-delete ()
     (interactive)
