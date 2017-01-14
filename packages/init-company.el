@@ -10,7 +10,7 @@
   :init
   (add-hook 'cider-repl-mode-hook 'company-mode)
   (add-hook 'cider-mode-hook 'company-mode)
-  (add-hook 'js3-mode-hook 'company-mode)
+  (add-hook 'js-mode-hook 'company-mode)
   (add-hook 'nxml-mode-hook 'company-mode)
   (add-hook 'emacs-lisp-mode-hook 'company-mode)
 

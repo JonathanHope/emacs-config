@@ -40,7 +40,7 @@
                              ("C-S-v" yank)
    
                              ;; Regex search in a file.
-                             ("C-f" isearch-forward-regexp)
+                             ("C-f" helm-swoop)
 
                              ;; Regex search in a project.
                              ("C-S-f" helm-projectile-grep)

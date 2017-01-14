@@ -9,8 +9,10 @@
     "Apps"
     ("o" org-mode-launch "Org-mode")
     ("m" magit-mode-launch "Magit")
-    ("r" rainbow-mode "Rainbow mode")
     ("b" re-builder "Regex builder")
+    ("d" dired "Dired")
+    ("s" eshell "Shell")
+    ("r" rainbow-mode "Rainbow mode")
     ("k" describe-key "Describe key")
     ("f" describe-function "Describe function")
     ("q" nil "Exit"))
@@ -178,6 +180,19 @@
   (defhydra elisp-hydra (:color blue :columns 4)
     "Emacs Lisp"
     ("r" launch-elisp-repl "Launch REPL")
+    ("q" nil "Exit"))
+
+  ;; Dired Hydra
+  (defhydra dired-hydra (:color blue :columns 4)
+    "Dired"
+    ("m" dired-mark "Mark file")
+    ("u" unmark-file "Unmark file")
+    ("U" dired-unmark-all-marks "Unmark all")
+    ("<enter>" dired-find-file "Open")
+    ("C" dired-do-copy "Copy")
+    ("R" dired-do-rename "Rename")
+    ("D" dired-do-delete "Delete")
+    ("+" dired "Create directory")
     ("q" nil "Exit"))
   
   ;; Support for nested hydras.

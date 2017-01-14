@@ -12,7 +12,7 @@
         ("<backspace>" . sp-kill-region-or-backward-delete))
 
   :init
-  (add-hook 'js3-mode-hook #'smartparens-mode)
+  (add-hook 'js-mode-hook #'smartparens-mode)
   (add-hook 'clojure-mode-hook #'smartparens-mode)
   (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
   (add-hook 'cider-repl-mode-hook #'smartparens-mode)

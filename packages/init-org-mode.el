@@ -59,6 +59,8 @@
         (push '("TODO" . ?⬜) prettify-symbols-alist)
         (push '("DONE" . ?⬛) prettify-symbols-alist)
 
+        (push '("->" . ?➔) prettify-symbols-alist)
+
         (push '("*" . (?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
         (push '("**" . (?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
         (push '("***" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)

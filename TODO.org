@@ -1,2 +1,5 @@
 * TODO Monkey patch jisql to limit rows and columns returned.
-* TODO JSON support.
+* TODO SQL mode company completion.
+* TODO HTML/CSS support.
+* TODO C# support with omnisharp?
+* TODO Can I use prettify preficates to theme tables?

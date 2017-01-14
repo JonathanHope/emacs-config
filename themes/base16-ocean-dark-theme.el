@@ -85,8 +85,8 @@
   '(mode-line-inactive  ((t (:foreground "#4f5b66" :background "#343D46"   :box nil))))
 
   ;; Parentheses
-  '(show-paren-match    ((t (:background "#8fa1b3"   :foreground "#eff1f5"))))
-  '(show-paren-mismatch ((t (:background "#d08770" :foreground "#eff1f5"))))
+  '(show-paren-match    ((t (:foreground "#eff1f5" :weight bold))))
+  '(show-paren-mismatch ((t (:foreground "#eff1f5" :background "#bf616a" :weight bold))))
 
   '(rainbow-delimiters-depth-1-face   ((t (:foreground "#bf616a"))))
   '(rainbow-delimiters-depth-2-face   ((t (:foreground "#ebcb8b"))))
@@ -228,7 +228,7 @@
 
 ;; Helm
 (custom-set-faces
- '(helm-M-x-key ((t (:foreground "7FB37B"))))
+ '(helm-M-x-key ((t (:foreground "#7FB37B"))))
  '(helm-buffer-directory ((t (:foreground "#A6ACB6"))))
  '(helm-buffer-file ((t nil)))
  '(helm-buffer-not-saved ((t (:foreground "#AA7961"))))
@@ -242,7 +242,9 @@
  '(helm-ff-invalid-symlink ((t nil)))
  '(helm-ff-prefix ((t nil)))
  '(helm-ff-symlink ((t (:foreground "#AA7961"))))
- '(helm-grep-match ((t (:foreground "#ebcb8b"))))
+ '(helm-grep-match ((t (:foreground "#AA7961"))))
+ '(helm-grep-file ((t (:foreground "#7FB37B"))))
+ '(helm-grep-lineno ((t (:foreground "#ebcb8b"))))
  '(helm-history-remote ((t nil)))
  '(helm-selection ((t (:background "#343D46"))))
  '(helm-source-header ((t (:background "#343D46" :foreground "#7FB37B"))))
@@ -276,17 +278,6 @@ nil
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
     (t (:inherit company-tooltip-selection)))))
 
-;; JS3 Mode
-(custom-set-faces
- '(js3-warning-face
-   ((t (:foreground "#bf616a" :underline t))))
- '(js3-error-face
-   ((t (:foreground "#ebcb8b" :underline t))))
- '(js3-external-variable-face
-   ((t (:foreground "#d08770" :underline t))))
- '(js3-function-param-face
-   ((t (:foreground "#8fa1b3")))))
-
 ;; Ace Jump Mode
 (custom-set-faces
  '(ace-jump-face-foreground
@@ -305,3 +296,12 @@ nil
 (custom-set-faces 
  '(mc/cursor-bar-face
    ((t (:background "#2b303b" :foreground "#a3c6d0" :weight bold :height 1)))))
+
+;; Helm swoop
+(custom-set-faces 
+ '(helm-swoop-target-line-face
+   ((t (:background "#343d46"))))
+ '(helm-swoop-target-line-block-face
+   ((t (:background "#a3be8c"))))
+ '(helm-swoop-target-word-face
+   ((t (:background "#343d46" :weight bold :underline t)))))

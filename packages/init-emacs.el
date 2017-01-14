@@ -120,6 +120,9 @@
   ;; y and n instead of yes and no.
   (fset 'yes-or-no-p 'y-or-n-p)
 
+  ;; Don't delete prompts.
+  (setq comint-prompt-read-only t)
+
   ;; Hide initial minibuffer text.
   (defun display-startup-echo-area-message ()
     (message ""))
