@@ -12,6 +12,7 @@
     ("b" re-builder "Regex builder")
     ("d" dired "Dired")
     ("s" eshell "Shell")
+    ("c" launch-calc "Calculator")
     ("r" rainbow-mode "Rainbow mode")
     ("k" describe-key "Describe key")
     ("f" describe-function "Describe function")
@@ -266,6 +267,11 @@
     (interactive
       (list
        (read-string "Package: ")))
-    (shell-command-to-string (concat "npm install " arg))))
+    (shell-command-to-string (concat "npm install " arg)))
+
+  (defun launch-calc ()
+    (interactive)
+    (calc)
+    (calc-trail-display 0)))
 
 (provide 'init-hydra)
