@@ -67,8 +67,7 @@
 (require 'init-dired)
 (require 'init-eshell)
 (require 'init-yasnippet)
-
-(setq stack-trace-on-error t)
+(require 'init-golden-ratio)
 
 ;; Run the startup function.
 (startup)
