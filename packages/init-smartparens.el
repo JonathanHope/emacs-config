@@ -3,6 +3,7 @@
 (use-package smartparens
   :ensure t
   :defer t
+  :diminish smartparens-mode
   
   :bind
   (:map smartparens-mode-map
@@ -12,11 +13,9 @@
         ("<backspace>" . sp-kill-region-or-backward-delete))
 
   :init
-  (add-hook 'js-mode-hook #'smartparens-mode)
-  (add-hook 'clojure-mode-hook #'smartparens-mode)
-  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
-  (add-hook 'cider-repl-mode-hook #'smartparens-mode)
-  (add-hook 'nxml-mode-hook #'smartparens-mode)
+  (progn
+    (add-hook 'prog-mode-hook #'smartparens-mode)
+    (add-hook 'nxml-mode-hook #'smartparens-mode))
   
   :config
   (defadvice js3-enter-key (after fix-sp-state activate)

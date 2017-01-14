@@ -2,6 +2,7 @@
 
 (use-package helm
   :ensure t
+  :diminish helm-mode
   
   :bind 
   (:map helm-map
@@ -10,8 +11,5 @@
 (use-package helm-config
   :config
   (helm-mode 1))
-
-(use-package helm-projectile
-  :ensure t)
 
 (provide 'init-helm)

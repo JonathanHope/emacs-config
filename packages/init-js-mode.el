@@ -1,7 +1,8 @@
 (use-package js
   :defer t
-  :mode (("\\.js$|\\.json$" . js-mode))
-
+  :mode 
+  (("\\.js$" . js-mode)
+   ("\\.json$" . js-mode))
   :bind
   (:map js-mode-map
         ("C-<tab>" . javascript-hydra/body))

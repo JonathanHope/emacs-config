@@ -1,7 +1,6 @@
 (use-package markdown-mode
   :ensure t
-
-  :commands (markdown-mode gfm-mode)
+  :defer t
 
   :mode 
   (("README\\.md\\'" . gfm-mode)
@@ -12,9 +11,6 @@
   (:map markdown-mode-map
         ("C-<tab>" . markdown-hydra/body)
    :map gfm-mode-map
-        ("C-<tab>" . markdown-hydra/body))
-
-  :init 
-  (setq markdown-command "multimarkdown"))
-
+   ("C-<tab>" . markdown-hydra/body)))
+  
 (provide 'init-markdown-mode)

@@ -1,6 +1,11 @@
 ;; Package configuration for nxml-mode.
 
 (use-package "nxml-mode"
+  :defer t
+
+  :mode (("\\.xml$" . nxml-mode))
+  
+  
   :bind 
   (:map nxml-mode-map
         ("M-<left>" . nxml-backward-tag)

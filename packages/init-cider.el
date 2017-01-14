@@ -1,7 +1,6 @@
 (use-package cider
 	:ensure t
   :defer t
-  :commands (cider cider-connect cider-jack-in)
 
   :bind 
   (:map cider-repl-mode-map

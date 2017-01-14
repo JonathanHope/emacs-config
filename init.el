@@ -19,6 +19,7 @@
 ;; Enable use package.
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
 (require 'bind-key)
 
 ;; Add directory for local packages.
@@ -34,6 +35,7 @@
 (setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt"))
 (setq projects-directory "~/Projects/")
 
+;; Core
 (require 'init-emacs)
 (require 'init-custom-keymap)
 (require 'init-undo-tree)
@@ -50,6 +52,12 @@
 (require 'init-hydra) 
 (require 'init-company)
 (require 'init-rainbow-delimiters)
+(require 'init-smartparens)
+(require 'init-simpleclip)
+(require 'init-yasnippet)
+(require 'init-golden-ratio)
+
+;; Languages
 (require 'init-org-mode)
 (require 'init-magit)
 (require 'init-clojure-mode)
@@ -60,14 +68,10 @@
 (require 'init-js-mode)
 (require 'init-nodejs-repl)
 (require 'init-company-tern)
-(require 'init-smartparens)
-(require 'init-simpleclip)
 (require 'init-re-builder)
 (require 'init-nxml-mode)
 (require 'init-dired)
 (require 'init-eshell)
-(require 'init-yasnippet)
-(require 'init-golden-ratio)
 
 ;; Run the startup function.
 (startup)
