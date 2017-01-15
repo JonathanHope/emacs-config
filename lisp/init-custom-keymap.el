@@ -88,7 +88,7 @@
                              ("C-S-a" mc/mark-all-like-this)
 
                              ;; Duplicate the current line.
-                             ("C-S-r" duplicate-line)
+                             ("C-S-d" duplicate-line)
 
                              ;; Move a line one line up.
                              ("C-S-<up>" move-line-up)
@@ -132,11 +132,11 @@
                              ;; Move backward a word.
                              ("C-<right>" forward-word)
 
-                             ;; Move up ten lines.
-                             ("C-<up>" up-ten)
+                             ;; Move up five lines.
+                             ("C-<up>" up-five)
 
-                             ;; Move down ten lines.
-                             ("C-<down>" down-ten)
+                             ;; Move down five lines.
+                             ("C-<down>" down-five)
 
                              ;; Launch general apps hydra.
                              ("C-S-<tab>" launch-hydra-apps)
@@ -183,15 +183,15 @@
     (cond (helm-alive-p (helm-keyboard-quit))
           (t (keyboard-quit))))
 
-  (defun up-ten ()
-    "Move up ten lines."
+  (defun up-five ()
+    "Move up five lines."
     (interactive) 
-    (previous-line 10))
+    (previous-line 5))
 
-  (defun down-ten ()
-    "Move down ten lines."
+  (defun down-five ()
+    "Move down five lines."
     (interactive) 
-    (next-line 10))
+    (next-line 5))
 
   (defun launch-hydra-apps ()
     "Launch a apps hydra menu."
@@ -223,10 +223,10 @@
     (set-mark (line-end-position)))
 
   (defun join-lines (arg)
-  (interactive "p")
-  (end-of-line)
-  (delete-char 1)
-  (delete-horizontal-space)
-  (insert " ")))
+    (interactive "p")
+    (end-of-line)
+    (delete-char 1)
+    (delete-horizontal-space)
+    (insert " ")))
 
 (provide 'init-custom-keymap)

@@ -15,6 +15,7 @@
     ("r" rainbow-mode "Rainbow mode")
     ("k" describe-key "Describe key")
     ("f" describe-function "Describe function")
+    ("e" describe-mode "Describe mode")
     ("q" nil "Exit"))
 
   ;; Org-mode Hydras

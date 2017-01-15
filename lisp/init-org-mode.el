@@ -23,7 +23,7 @@
     (org-clock-persistence-insinuate)
 
     ;; Change ellipsis to something else.
-    (setq org-ellipsis " ⯈")
+    (setq org-ellipsis " …")
 
     ;; Substitute a wide variety of characters for prettier characters.
     (add-hook 'org-mode-hook

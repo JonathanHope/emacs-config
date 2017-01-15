@@ -57,7 +57,9 @@ Install tern with the following: npm install -g tern.
 #### Selections
 
 * **CTRL + SPACE** Set mark
-* **CTRL + RETURN** Mark region rectangle.
+* **CTRL + RETURN** Mark region rectangle
+* **CTRL + d** Select word
+* **CTRL + l** Select line
 * **CTRL + a** Select all
 * **CTRL + CLICK** Add cursor
 * **CTRL + SHIFT + a** Add cursor to all like this
@@ -78,36 +80,64 @@ Install tern with the following: npm install -g tern.
 * **CTRL + c** Copy
 * **CTRL + x** Cut
 * **CTRL + v** Paste
-* **CTRL + k** Cut line
+* **CTRL + SHIFT + v** Paste from kill ring
+* **CTRL + k** Kill line
 
 #### Comments
 
-* **CTRL + /** Toggle comment line
-* **CTRL + SHIFT + /** Toggle comment region.
+* **CTRL + /** Toggle comment
 
 #### Lines
 
-* **CTRL +S SHIFT + r** Replicate line
+* **CTRL + SHIFT + d** Duplicate line
+* **CTRL + j** Join line
 * **CTRL + SHIFT + UP** Move line of text up
 * **CTRL + SHIFT + DOWN** Move line of text down
 
 #### Indentation
 
-* **TAB** Indent region
-* **SHIFT + TAB** Unindent a region
 * **CTRL + i** Auto indent
 
 #### Deletions
 
-* **CTRL + d** Delete line
-* **CTR + BACKSPACE** Delete word
+* **CTRL + BACKSPACE** Delete word
 * **BACKSPACE** Delete character
-* **SHIFT + BACKSPACE** Delete region
 
 #### Casing 
 
 * **CTRL + SHIFT + u** Uppercase region
 * **CTRL + SHIFT + l** Lowercase region
+
+#### Structural Editing
+
+* **CTRL + SHIFT + 0** Forward slurp
+* **CTRL + SHIFT + ]** Forward barf
+* **CTRL + SHIFT + 9** Backward slurp
+* **CTRL + SHIFT + [** Backward barf
+* **ALT + SHIFT + 9** Wrap in parentheses
+* **CTRL + SHIFT + RIGHT** Forward sexp
+* **CTRL + SHIFT + LEFT** Backward sexp
+* **CTRL + SHIFT + k** Kill sexp
+
+#### Code Folding
+
+* **ALT + RETURN** Toggle code folding
+
+#### Multiple Cursors
+
+* **CTRL + SHFIT + c** Add cursors to lines
+* **CTRL + SHFIT + a** Mark all like this
+* **CTRL + CLICK** Add cursor
+
+#### Snippets
+
+* **TAB** Expand snippet
+
+#### Completion
+
+* **UP** Previous candidate
+* **DOWN** Next candidate
+* **ENTER** Select candidate
 
 ### General - Navigation
 
@@ -123,15 +153,14 @@ Install tern with the following: npm install -g tern.
 * **RIGHT** Backward character
 * **CTRL + LEFT** Forward word
 * **CTRL + RIGHT** Backward word
-* **CTRL + UP** Forward five lines
-* **CTRL + DOWN** Backward five lines
+* **CTRL + UP** Up five lines
+* **CTRL + DOWN** Down five lines
 
 #### Regex Searching
 
 * **CTRL + f** Regex search
-* **CTRL + SHIFT + f Regex search in project
-* **RETURN** Next search match
-* **SHIFT + RETURN** Previous search match
+* **CTRL + SHIFT + f** Regex search in project
+* **CTRL + h** Regex search and replace
 
 #### Buffer Switching
 
@@ -142,7 +171,6 @@ Install tern with the following: npm install -g tern.
 * **CTRL + g** Ace search mode
 * **CTRL + SHIFT + g** Go to line
 * **CTRL + p** Go to file in project
-
 * **CTRL + SHIFT + p** Execute command
 
 ### General - Files
@@ -165,23 +193,11 @@ Install tern with the following: npm install -g tern.
 
 ### Launch Apps Menu
 
-* **CTRL + TAB** Launch apps menu
+* **CTRL + SHIFT + TAB** Launch apps menu
 
 #### Launch Contextual Menu
 
 * **CTRL + TAB** Launch contextual menu
-
-### Clojure - Editing
-
-* **CTRL + SHIFT + 0** Forward slurp
-* **CTRL + SHIFT + ]** Forward barf
-* **CTRL + SHIFT + 9** Backward slurp
-* **CTRL + SHIFT + [** Backward barf
-* **ALT + SHIFT + 9** Wrap in parentheses
-* **CTRL + SHIFT + RIGHT** Forward sexp
-* **CTRL + SHIFT + LEFT** Backward sexp
-* **CTRL + SHIFT + k** Cut sexp
-* **CTRL + SHIFT + d** Delete sexp
 
 ### Clojure - REPL
 

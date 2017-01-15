@@ -57,6 +57,7 @@
 (require 'init-yasnippet)
 (require 'init-golden-ratio)
 (require 'init-visual-regexp)
+(require 'init-yafolding)
 
 ;; Languages
 (require 'init-org-mode)

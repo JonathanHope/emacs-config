@@ -1,3 +1,5 @@
+;; Package configuration for visual-regexp.
+
 (use-package pcre2el
   :ensure t)
 
