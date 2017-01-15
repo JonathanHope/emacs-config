@@ -7,7 +7,7 @@
   :config 
   (configure-custom-keymap '(
                              ;; Cancel with one press of escape instead of three. Also cancel out of many different interfaces.
-                             ("<escape>" keyboard-quit-all)
+                             ("<escape>" keyboard-escape-quit)
 
                              ;; Save the current file.
                              ("C-s" save-buffer)
@@ -44,6 +44,9 @@
 
                              ;; Regex search in a project.
                              ("C-S-f" helm-projectile-grep)
+
+                             ;; Regex search and replace in file.
+                             ("C-h" vr/replace)
 
                              ;; Jump to a line in a file.
                              ("C-S-g" goto-line)

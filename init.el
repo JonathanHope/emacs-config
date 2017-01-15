@@ -56,6 +56,7 @@
 (require 'init-simpleclip)
 (require 'init-yasnippet)
 (require 'init-golden-ratio)
+(require 'init-visual-regexp)
 
 ;; Languages
 (require 'init-org-mode)

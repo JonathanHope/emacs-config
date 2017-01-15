@@ -9,7 +9,6 @@
     "Apps"
     ("o" org-mode-launch "Org-mode")
     ("m" magit-mode-launch "Magit")
-    ("b" re-builder "Regex builder")
     ("d" dired "Dired")
     ("s" eshell "Shell")
     ("c" launch-calc "Calculator")

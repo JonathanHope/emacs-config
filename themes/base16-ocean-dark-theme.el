@@ -305,3 +305,17 @@ nil
    ((t (:background "#a3be8c"))))
  '(helm-swoop-target-word-face
    ((t (:background "#343d46" :weight bold :underline t)))))
+
+;; Visual regexp
+
+(custom-set-faces 
+ '(vr/match-0
+   ((t (:background "#343d46" :weight bold :underline t))))
+ '( vr/match-1
+   ((t (:background "#343d46" :weight bold :underline t))))
+ '(vr/group-0
+   ((t ())))
+ '(vr/group-1
+   ((t ())))
+ '(vr/group-2
+   ((t ()))))
