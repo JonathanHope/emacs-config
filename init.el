@@ -23,10 +23,10 @@
 (require 'bind-key)
 
 ;; Add directory for local packages.
-(add-to-list 'load-path "~/.emacs.d/local")
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 ;; Configure packages using use-package.
-(add-to-list 'load-path "~/.emacs.d/packages")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; Constants
 (setq old-default-directory default-directory)
