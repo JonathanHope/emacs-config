@@ -319,3 +319,9 @@ nil
    ((t ())))
  '(vr/group-2
    ((t ()))))
+
+;; Flyspell
+
+(custom-set-faces
+   '(flyspell-duplicate ((t (:foreground "#ebcb8b" :underline t :weight bold))))
+   '(flyspell-incorrect ((t (:foreground "#bf616a" :underline t :weight bold)))))

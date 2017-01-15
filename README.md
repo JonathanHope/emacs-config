@@ -24,6 +24,8 @@ On windows 10 the shortcut C-) will not work unless you change some default lang
 
 It uses the pragmata fonts.
 
+On Linux you need to install ispell and on Windows you need to install aspell (http://aspell.net/win32/). On windows add aspell to your path.
+
 ### Clojure
 
 Install Java.
@@ -44,7 +46,7 @@ Install Java.
 
 Add ~/.emacs.d/lib/jisql/ to the path.
 
-### Javascript
+### JavaScript
 
 Install node.js and npm. Add them to your path on windows.
 

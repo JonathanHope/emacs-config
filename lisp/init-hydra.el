@@ -13,6 +13,7 @@
     ("s" eshell "Shell")
     ("c" launch-calc "Calculator")
     ("r" rainbow-mode "Rainbow mode")
+    ("l" flyspell-mode "Spell check")
     ("k" describe-key "Describe key")
     ("f" describe-function "Describe function")
     ("e" describe-mode "Describe mode")

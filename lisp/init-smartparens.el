@@ -18,9 +18,6 @@
     (add-hook 'nxml-mode-hook #'smartparens-mode))
   
   :config
-  (defadvice js3-enter-key (after fix-sp-state activate)
-    (setq sp-last-operation 'sp-self-insert))
-  
   (setq
    smartparens-strict-mode t
    sp-autoinsert-if-followed-by-word t
@@ -37,8 +34,6 @@
 
   (sp-with-modes '(html-mode sgml-mode nxml-mode)
     (sp-local-pair "<" ">"))
-
-  (sp-pair "*" "*" :wrap "C-S-8")
   
   (defun sp-kill-region-or-backward-delete ()
     (interactive)
