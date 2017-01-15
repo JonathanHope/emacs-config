@@ -117,6 +117,12 @@
                              ;; Select an entire buffer.
                              ("C-a" mark-whole-buffer)
 
+                             ;; Select a word.
+                             ("C-d" er/mark-word)
+
+                             ;; Select a line.
+                             ("C-l" select-current-line)
+
                              ;; Move forward a word.
                              ("C-<left>" backward-word)
 
@@ -199,8 +205,15 @@
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
   (defun copy-clear-selection (beg end)
+    "Copy with smartclip and then clear the selection."
     (interactive "r")
     (simpleclip-copy beg end)
-    (keyboard-quit)))
+    (keyboard-quit))
+  
+  (defun select-current-line ()
+    "Select the current line"
+    (interactive)
+    (beginning-of-line) ; move to end of line
+    (set-mark (line-end-position))))
 
 (provide 'init-custom-keymap)
