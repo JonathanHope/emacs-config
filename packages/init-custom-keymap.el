@@ -136,7 +136,10 @@
                              ("C-<down>" down-ten)
 
                              ;; Launch general apps hydra.
-                             ("C-S-<tab>" launch-hydra-apps)))
+                             ("C-S-<tab>" launch-hydra-apps)
+
+                             ;; Join lines.
+                             ("C-j" join-lines)))
 
   (defun duplicate-line()
     "Duplicate the current line."
@@ -214,6 +217,13 @@
     "Select the current line"
     (interactive)
     (beginning-of-line) ; move to end of line
-    (set-mark (line-end-position))))
+    (set-mark (line-end-position)))
+
+  (defun join-lines (arg)
+  (interactive "p")
+  (end-of-line)
+  (delete-char 1)
+  (delete-horizontal-space)
+  (insert " ")))
 
 (provide 'init-custom-keymap)
