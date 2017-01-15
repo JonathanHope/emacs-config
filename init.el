@@ -69,7 +69,6 @@
 (require 'init-js-mode)
 (require 'init-nodejs-repl)
 (require 'init-company-tern)
-(require 'init-re-builder)
 (require 'init-nxml-mode)
 (require 'init-dired)
 (require 'init-eshell)
