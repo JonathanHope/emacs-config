@@ -1,6 +1,5 @@
 ;; Package configuration for helm-swoop
 
-
 (use-package helm-swoop
   :ensure t
 

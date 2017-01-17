@@ -60,6 +60,7 @@
 (require 'init-golden-ratio)
 (require 'init-visual-regexp)
 (require 'init-yafolding)
+(require 'init-polymode)
 
 ;; Languages
 (require 'init-org-mode)
@@ -72,9 +73,16 @@
 (require 'init-js-mode)
 (require 'init-nodejs-repl)
 (require 'init-company-tern)
-(require 'init-nxml-mode)
 (require 'init-dired)
 (require 'init-eshell)
+(require 'init-sgml-mode)
+(require 'init-css-mode)
+
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
 ;; Run the startup function.
 (startup)
