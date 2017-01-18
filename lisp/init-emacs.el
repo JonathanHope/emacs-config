@@ -3,7 +3,7 @@
 (use-package "emacs"
   :bind
   (:map emacs-lisp-mode-map
-    ("C-<tab>" . elisp-hydra/body))
+        ("C-<tab>" . elisp-hydra/body))
   
   :init
   ;; No tabs, use spaces instead.
@@ -51,10 +51,10 @@
 
   ;; Scroll one line at a time.
   (setq redisplay-dont-pause t
-    scroll-margin 1
-    scroll-step 1
-    scroll-conservatively 10000
-    scroll-preserve-screen-position 1)
+        scroll-margin 1
+        scroll-step 1
+        scroll-conservatively 10000
+        scroll-preserve-screen-position 1)
 
   ;; Set cursor type.
   (setq-default cursor-type 'bar)
@@ -69,46 +69,6 @@
 
   ;; Highlight the current line
   (global-hl-line-mode 1)
-
-  ;; The name of the file being edited.
-  (defvar m/filename-mode-line
-    '(:eval (propertize "%b" 'help-echo (buffer-file-name))))
-  (put 'm/filename-mode-line 'risky-local-variable t)
-
-  ;; The current row and column being edited.
-  (defvar m/row-column-mode-line
-    (concat (propertize "%01l") "," (propertize "%01c")))
-  (put 'm/row-column-mode-line 'risky-local-variable t)
-
-  ;; The current major mode.
-  (defvar m/major-mode-mode-line
-    '(:eval mode-name))
-  (put 'm/major-mode-mode-line 'risky-local-variable t)
-
-  ;; Custom mode line.
-  (setq-default mode-line-format
-    (list
-
-    ;; Is the buffer modified.
-    "━━━⬢ "
-    " "
-    m/filename-mode-line
-    " ⬢"
-
-    ;; Display the row and column being edited.
-    "━━━⬢ "
-    m/row-column-mode-line
-    " ⬢"
-
-    ;; Display the current major mode
-    "━━━⬢ " 
-    m/major-mode-mode-line
-    " ⬢"
-
-    ;; Fill in the end of the modeline
-    '(:eval (make-string 400 ?━))
-
-    ))
 
   ;; Start in full screen.
   (custom-set-variables

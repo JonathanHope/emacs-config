@@ -36,20 +36,20 @@
 (setq projects-directory "~/Projects/")
 
 ;; Core
+(require 'init-projectile)
 (require 'init-emacs)
+(require 'init-mode-line)
 (require 'init-custom-keymap)
 (require 'init-undo-tree)
 (require 'init-async)
 (require 'init-helm)
 (require 'init-helm-swoop)
 (require 'init-helm-flyspell)
-(require 'init-flyspell)
-(require 'init-projectile)
 (require 'init-helm-projectile)
 (require 'init-multiple-cursors)
 (require 'init-expand-region)
 (require 'init-ace-jump-mode)
-(require 'init-window-numbering)
+(require 'init-winum)
 (require 'init-rainbow-mode)
 (require 'init-hydra) 
 (require 'init-company)
@@ -77,12 +77,7 @@
 (require 'init-eshell)
 (require 'init-sgml-mode)
 (require 'init-css-mode)
-
-(defun what-face (pos)
-  (interactive "d")
-  (let ((face (or (get-char-property (point) 'read-face-name)
-                  (get-char-property (point) 'face))))
-    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+(require 'init-flyspell)
 
 ;; Run the startup function.
 (startup)

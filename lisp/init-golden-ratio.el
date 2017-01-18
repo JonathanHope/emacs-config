@@ -8,15 +8,15 @@
   (golden-ratio-mode 1)
   (setq golden-ratio-extra-commands
       (append golden-ratio-extra-commands
-              '(select-window-0
-                select-window-1
-                select-window-2
-                select-window-3
-                select-window-4
-                select-window-5
-                select-window-6
-                select-window-7
-                select-window-8
-                select-window-9))))
+              '(winum-select-window-0
+                winum-select-window-1
+                winum-select-window-2
+                winum-select-window-3
+                winum-select-window-4
+                winum-select-window-5
+                winum-select-window-6
+                winum-select-window-7
+                winum-select-window-8
+                winum-select-window-9))))
 
 (provide 'init-golden-ratio)
