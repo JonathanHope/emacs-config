@@ -326,7 +326,7 @@
  '(flyspell-duplicate ((t (:foreground "#ebcb8b" :underline t :weight bold))))
  '(flyspell-incorrect ((t (:foreground "#bf616a" :underline t :weight bold)))))
 
-;; Window Numbering
+;; Mode line
 
 (custom-set-faces
  '(mode-line-inactive-face ((t (:foreground "#4f5b66" :weight bold))))
@@ -335,7 +335,8 @@
  '(mode-line-buffer-name-face ((t (:foreground "#a3be8c" :weight bold))))
  '(mode-line-projectile-vc-face ((t (:foreground "#8fa1b3" :weight bold))))
  '(mode-line-mode-face ((t (:foreground "#AA7961" :weight bold))))
- '(mode-line-row-column-face ((t (:foreground "#96b5b4" :weight bold)))))
+ '(mode-line-row-column-face ((t (:foreground "#96b5b4" :weight bold))))
+ '(mode-line-scroll-bar-face ((t (:foreground "#dfe1e8")))))
 
 ;; Web Mode
 (custom-set-faces

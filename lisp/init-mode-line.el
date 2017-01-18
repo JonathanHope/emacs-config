@@ -36,12 +36,17 @@
 
   (defface mode-line-mode-face
     '()
-    "Face used for the modes the modeline."
+    "Face used for the modes in the modeline."
     :group 'mode-line)
 
   (defface mode-line-row-column-face
     '()
-    "Face used for the row/column the modeline."
+    "Face used for the row/column in the modeline."
+    :group 'mode-line)
+
+  (defface mode-line-scroll-bar-face
+    '()
+    "Face used for the scroll bar in the modeline."
     :group 'mode-line)
 
   ;; Abstraction to figure out if mode-line is the selected window or not.
@@ -89,7 +94,7 @@
   
   ;; Bits of the mode-line.
 
-  ;; Modeline start
+  ;; The start of the mode line.
   (defvar m/mode-line-start
     '(:eval (propertize "━━" 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
   (put 'm/mode-line-start 'risky-local-variable t)
@@ -104,6 +109,16 @@
     '(:eval (propertize " ⬢━━" 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
   (put 'm/section-end 'risky-local-variable t)
 
+  ;; Start of a active only section.
+  (defvar m/active-section-start
+    '(:eval (propertize (if (mode-line-selected-window-active) "⬢ " "") 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
+  (put 'm/active-section-start 'risky-local-variable t)
+
+  ;; End of a active only section.
+  (defvar m/active-section-end
+    '(:eval (propertize (if (mode-line-selected-window-active) " ⬢━━" "") 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
+  (put 'm/active-section-end 'risky-local-variable t)
+  
   ;; The number tied to the window the buffer is residing in.
   (defvar m/window-number-mode-line
     '(:eval ""))
@@ -122,25 +137,69 @@
 
   ;; What project we are in.
   (defvar m/projectile-mode-line
-    '(:eval (if (projectile-project-p)
-                (propertize (projectile-project-name) 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face))
-              (propertize "N/A" 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face)))))
+    '(:eval  (if (mode-line-selected-window-active)
+                 (if (projectile-project-p)
+                     (propertize (projectile-project-name) 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face))
+                   (propertize "N/A" 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face)))
+               (""))))
   (put 'm/custom-projectile-mode-line 'risky-local-variable t)
 
   ;; The current major mode.
   (defvar m/major-mode-mode-line
-    '(:eval (propertize mode-name 'face (if (mode-line-selected-window-active) 'mode-line-mode-face 'mode-line-inactive-face))))
+    '(:eval (propertize (if (mode-line-selected-window-active) mode-name "") 'face (if (mode-line-selected-window-active) 'mode-line-mode-face 'mode-line-inactive-face))))
   (put 'm/major-mode-mode-line 'risky-local-variable t)
   
+  (defun what-line-no-print ()
+    "Get the current buffer line number and narrowed line number of point."
+    (let ((start (point-min))
+          (n (line-number-at-pos)))
+      (if (= start 1)
+          n
+        (save-excursion
+          (save-restriction
+            (widen)
+            (+ n (line-number-at-pos start) -1))))))
+  
+  (defun get-scroll-percent ()
+    "Calculate how far down the buffer the cursor is by line."
+    (let ((current-line (- (what-line-no-print) 1))
+          (max-line (count-lines (point-min) (point-max))))
+      (if (= 0 max-line)
+          0
+        (* 100.0 (/ (float current-line) (float max-line))))))
+  
+  (defun get-scroll-bar ()
+    "Build an text based horizontal scroll bar."
+    (let* ((p (get-scroll-percent))
+           (s (cond ((and (> p 0) (<= p 10)) "❰━         ❱")
+                    ((and (> p 10) (<= p 20)) "❰━━        ❱")
+                    ((and (> p 20) (<= p 30)) "❰━━━       ❱")
+                    ((and (> p 30) (<= p 40)) "❰━━━━      ❱")
+                    ((and (> p 40) (<= p 50)) "❰━━━━━     ❱")
+                    ((and (> p 50) (<= p 60)) "❰━━━━━━    ❱")
+                    ((and (> p 60) (<= p 70)) "❰━━━━━━━   ❱")
+                    ((and (> p 70) (<= p 80)) "❰━━━━━━━━  ❱")
+                    ((and (> p 80) (<= p 90)) "❰━━━━━━━━━ ❱")
+                    ((> p 90) "❰━━━━━━━━━━❱")
+                    (t "❰          ❱"))))
+      (propertize s 'face (if (mode-line-selected-window-active) 'mode-line-scroll-bar-face 'mode-line-inactive-face))))
+
+  ;; A horizontal scroll line.
+  (defvar m/scroll-bar-mode-line
+    '(:eval (if (mode-line-selected-window-active) (get-scroll-bar) "")))
+  (put 'm/scroll-bar-mode-line 'risky-local-variable t)
+
   ;; The current row and column being edited.
   (defvar m/row-column-mode-line
     '(:eval 
-      (concat (propertize "%01l" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
-              (propertize "," 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
-              (propertize "%01c" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face)))))
+      (if (mode-line-selected-window-active)
+          (concat (propertize "%01l" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
+                  (propertize "," 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
+                  (propertize "%01c" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face)))
+        (""))))
   (put 'm/row-column-mode-line 'risky-local-variable t)
   
-  ;; Modeline end
+  ;; The end of the mode line.
   (defvar m/mode-line-end
     '(:eval (propertize (make-string 400 ?━) 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
   (put 'm/mode-line-end 'risky-local-variable t)
@@ -161,18 +220,26 @@
                  m/filename-mode-line
                  m/section-end
 
-                 m/section-start
+                 m/active-section-start
                  m/projectile-mode-line
-                 m/section-end
+                 m/active-section-end
 
-                 m/section-start
+                 m/active-section-start
                  m/major-mode-mode-line
-                 m/section-end
+                 m/active-section-end
 
-                 m/section-start
+                 m/active-section-start
+                 m/scroll-bar-mode-line
+                 m/active-section-end
+
+                 m/active-section-start
                  m/row-column-mode-line
-                 m/section-end
+                 m/active-section-end
                  
                  m/mode-line-end)))
+
+;; This is a hack to add spacing to the mode-line.
+(setq-default mode-line-format
+              (cons (propertize "\u200b" 'display '((raise -0.08) (height 1.1))) mode-line-format))
 
 (provide 'init-mode-line)
