@@ -7,8 +7,7 @@
   :init
   (progn
     (add-hook 'prog-mode-hook #'yas-minor-mode)
-    (add-hook 'html-mode-hook #'yas-minor-mode)
-    (add-hook 'css-mode-hook #'yas-minor-mode))
+    (add-hook 'web-mode-hook #'yas-minor-mode))
 
   :config
   (progn

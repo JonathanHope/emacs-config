@@ -60,24 +60,24 @@
 (require 'init-golden-ratio)
 (require 'init-visual-regexp)
 (require 'init-yafolding)
-(require 'init-polymode)
 
 ;; Languages
 (require 'init-org-mode)
 (require 'init-magit)
 (require 'init-clojure-mode)
 (require 'init-cider)
-(require 'init-markdown-mode)
-(require 'init-livedown)
-(require 'init-sql)
-(require 'init-js-mode)
-(require 'init-nodejs-repl)
-(require 'init-company-tern)
 (require 'init-dired)
 (require 'init-eshell)
-(require 'init-sgml-mode)
-(require 'init-css-mode)
 (require 'init-flyspell)
+(require 'init-markdown-mode)
+(require 'init-livedown)
+(require 'init-sgml-mode)
+
+(require 'init-web-mode)
+(require 'init-impatient-mode)
+(require 'init-js-mode)
+(require 'init-nodejs-repl)
+(require 'init-css-mode)
 
 ;; Run the startup function.
 (startup)

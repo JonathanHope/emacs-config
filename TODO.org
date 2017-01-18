@@ -1,8 +1,4 @@
-* TODO HTML/CSS support using web-mode and skewer.
 * TODO C# support with omnisharp?
-* TODO Monkey patch jisql to limit rows and columns returned.
-* TODO SQL mode company completion.
 * TODO Can I use prettify predicates to theme tables?
 * TODO Sort lines alphabetically.
-* TODO C-h visual-regex.el.
-* TODO Spell checker.
+* TODO Will polymode ever be stable enought to use?

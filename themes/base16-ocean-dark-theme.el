@@ -335,5 +335,13 @@
  '(mode-line-buffer-name-face ((t (:foreground "#a3be8c" :weight bold))))
  '(mode-line-projectile-vc-face ((t (:foreground "#8fa1b3" :weight bold))))
  '(mode-line-mode-face ((t (:foreground "#AA7961" :weight bold))))
- '(mode-line-row-column-face ((t (:foreground "#96b5b4" :weight bold))))
- )
+ '(mode-line-row-column-face ((t (:foreground "#96b5b4" :weight bold)))))
+
+;; Web Mode
+(custom-set-faces
+ '(web-mode-html-tag-face ((t (:foreground "#b48ead"))))
+ '(web-mode-html-tag-bracket-face ((t (:foreground "#8fa1b3"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "#ebcb8b"))))
+ '(web-mode-html-attr-equal-face ((t (:foreground "#d08770"))))
+ '(web-mode-css-selector-face ((t (:foreground "#ebcb8b")))))
+

@@ -12,8 +12,7 @@
   (progn
     (add-hook 'prog-mode-hook #'company-mode)
     (add-hook 'sgml-mode-hook #'company-mode)
-    (add-hook 'html-mode-hook #'company-mode)
-    (add-hook 'css-mode-hook #'company-mode))
+    (add-hook 'web-mode-hook #'company-mode))
 
   :config
   (add-to-list 'company-backends 'company-tern))

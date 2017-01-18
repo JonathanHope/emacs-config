@@ -16,8 +16,7 @@
   (progn
     (add-hook 'prog-mode-hook #'smartparens-mode)
     (add-hook 'sgml-mode-hook #'smartparens-mode)
-    (add-hook 'html-mode-hook #'smartparens-mode)
-    (add-hook 'css-mode-hook #'smartparens-mode))
+    (add-hook 'web-mode-hook #'smartparens-mode))
   
   :config
   (setq
@@ -32,9 +31,9 @@
   (sp-with-modes sp-lisp-modes
     (sp-local-pair "'" nil :actions nil))
 
-  (setq sp-navigate-consider-sgml-tags '(html-mode sgml-mode))
+  (setq sp-navigate-consider-sgml-tags '(web-mode sgml-mode))
 
-  (sp-with-modes '(html-mode sgml-mode)
+  (sp-with-modes '(web-mode sgml-mode)
     (sp-local-pair "<" ">"))
   
   (defun sp-kill-region-or-backward-delete ()

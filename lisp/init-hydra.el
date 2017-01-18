@@ -196,6 +196,12 @@
     ("D" dired-do-delete "Delete")
     ("+" dired "Create directory")
     ("q" nil "Exit"))
+
+    ;; HTML Hydra
+  (defhydra html-hydra (:color blue :columns 4)
+    "Dired"
+    ("r" launch-browser-repl "Launch REPL")
+    ("q" nil "Exit"))
   
   ;; Support for nested hydras.
   (defvar hydra-stack nil)
@@ -273,6 +279,12 @@
   (defun launch-calc ()
     (interactive)
     (calc)
-    (calc-trail-display 0)))
+    (calc-trail-display 0))
+
+  (defun launch-browser-repl ()
+    (interactive)
+    (httpd-start)
+    (impatient-mode)
+    (shell-command-to-string "start http://localhost:8080/imp/")))
 
 (provide 'init-hydra)
