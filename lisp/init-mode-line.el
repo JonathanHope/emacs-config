@@ -109,7 +109,7 @@
     '(:eval ""))
   (put 'm/window-number-mode-line 'risky-local-variable t)
 
-  ;; Whether the file has been edited since hte last save.
+  ;; Whether the file has been edited since the last save.
   (defvar m/file-status-mode-line
     '(:eval
       (propertize (if (buffer-modified-p) "● " "") 'face (if (mode-line-selected-window-active) 'mode-line-file-status-face 'mode-line-inactive-face))))
@@ -122,10 +122,9 @@
 
   ;; What project we are in.
   (defvar m/projectile-mode-line
-    '(:propertize
-      (:eval (if (projectile-project-p)
-                 (propertize (projectile-project-name) 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face))
-               (propertize "N/A" 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face))))))
+    '(:eval (if (projectile-project-p)
+                (propertize (projectile-project-name) 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face))
+              (propertize "N/A" 'face (if (mode-line-selected-window-active) 'mode-line-projectile-vc-face 'mode-line-inactive-face)))))
   (put 'm/custom-projectile-mode-line 'risky-local-variable t)
 
   ;; The current major mode.
@@ -140,7 +139,7 @@
               (propertize "," 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
               (propertize "%01c" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face)))))
   (put 'm/row-column-mode-line 'risky-local-variable t)
-   
+  
   ;; Modeline end
   (defvar m/mode-line-end
     '(:eval (propertize (make-string 400 ?━) 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
