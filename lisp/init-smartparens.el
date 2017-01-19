@@ -35,6 +35,8 @@
 
   (sp-with-modes '(web-mode sgml-mode)
     (sp-local-pair "<" ">"))
+
+  (show-smartparens-global-mode t)
   
   (defun sp-kill-region-or-backward-delete ()
     (interactive)

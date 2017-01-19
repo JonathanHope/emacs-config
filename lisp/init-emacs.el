@@ -10,9 +10,6 @@
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
 
-  ;; Highlight matching parens.
-  (show-paren-mode 1)
-
   ;; Allow up and down casing regions.
   (put 'downcase-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
