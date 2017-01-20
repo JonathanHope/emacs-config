@@ -2,29 +2,14 @@
 
 (use-package smartparens
   :ensure t
-  :defer t
   :diminish smartparens-mode
-  
-  :bind
-  (:map smartparens-mode-map
-        ("C-S-<right>" . sp-forward-sexp)
-        ("C-S-<left>" . sp-backward-sexp)
-        ("C-S-k" . sp-kill-sexp)
-        ("<backspace>" . sp-kill-region-or-backward-delete))
 
   :init
-  (progn
-    (add-hook 'prog-mode-hook #'smartparens-mode)
-    (add-hook 'sgml-mode-hook #'smartparens-mode)
-    (add-hook 'web-mode-hook #'smartparens-mode))
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
+  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
   
   :config
-  (setq
-   smartparens-strict-mode t
-   sp-autoinsert-if-followed-by-word t
-   sp-autoskip-closing-pair 'always
-   sp-base-key-bindings 'paredit
-   sp-hybrid-kill-entire-symbol nil)
+  (setq sp-base-key-bindings 'paredit)
 
   (sp-use-paredit-bindings)
 
@@ -37,11 +22,7 @@
     (sp-local-pair "<" ">"))
 
   (show-smartparens-global-mode t)
-  
-  (defun sp-kill-region-or-backward-delete ()
-    (interactive)
-    (if (region-active-p)
-        (kill-region (region-beginning) (region-end))
-      (sp-backward-delete-char))))
+
+  (smartparens-global-mode t))
 
 (provide 'init-smartparens)

@@ -1,0 +1,4 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :<embed type="..." src="...">...</embed>
+# --
+<embed type="$1" src="$2">$3</embed>

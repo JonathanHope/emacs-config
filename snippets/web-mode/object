@@ -1,0 +1,4 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :<object type="..." data="...">...</object>
+# --
+<object type="$1" data="$2">$3</object>

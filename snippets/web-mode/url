@@ -1,0 +1,4 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :<input type="url" pattern="...">
+# --
+<input type="url" pattern="$1">$2

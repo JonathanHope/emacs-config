@@ -6,11 +6,7 @@
   :mode (("\\.xml$" . sgml-mode))
   
   :bind 
-  (:map html-mode-map
-        ("<return>" . tag-newline-and-indent)
-        ("<tab>" . nil)
-        ("<backtab>" . nil)
-   :map sgml-mode-map
+  (:map sgml-mode-map
         ("<return>" . tag-newline-and-indent)
         ("<tab>" . xml-finish-element-new-line)
         ("<backtab>" . xml-finish-element-same-line))
@@ -49,8 +45,8 @@
     "Wrap an arbitrary identifier in brackets, complete it, create a new line, and apply indentation."
     (interactive "p")
     (when (string-match "[A-Za-z0-9\_\.\-]" (char-to-string (char-before)))
-      (insert "<")
       (backward-symbol arg)
+      (insert "<")
       (forward-symbol arg)
       (insert ">")
       (sgml-close-tag)

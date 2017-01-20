@@ -1,0 +1,4 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :<link href="..." rel="stylesheet">
+# --
+<link href="$1" rel="stylesheet">

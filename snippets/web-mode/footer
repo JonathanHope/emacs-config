@@ -1,0 +1,4 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :<footer>...</footer>
+# --
+<footer>$1</footer>

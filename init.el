@@ -32,7 +32,7 @@
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
 (setq scratch-directory "~/Notes/Scratch/")
-(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt"))
+(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt" "scratch.html"))
 (setq projects-directory "~/Projects/")
 
 ;; Core

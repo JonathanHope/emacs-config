@@ -102,6 +102,9 @@
                              ;; Cut an entire line.
                              ("C-k" kill-whole-line)
 
+                             ;; Cut a sexp
+                             ("C-S-k" sp-kill-sexp)
+                             
                              ;; Disable the built in M-x function.
                              ("M-x" nil)
 
@@ -126,11 +129,11 @@
                              ;; Select a line.
                              ("C-l" select-current-line)
 
-                             ;; Move forward a word.
-                             ("C-<left>" backward-word)
+                             ;; Move forward a symbol.
+                             ("C-<left>" sp-backward-symbol)
 
-                             ;; Move backward a word.
-                             ("C-<right>" forward-word)
+                             ;; Move backward a symbol.
+                             ("C-<right>" sp-forward-symbol)
 
                              ;; Move up five lines.
                              ("C-<up>" up-five)
@@ -138,6 +141,12 @@
                              ;; Move down five lines.
                              ("C-<down>" down-five)
 
+                             ;; Move forward a sexp.
+                             ("C-S-<left>" sp-backward-sexp)
+
+                             ;; Move backward a sexp.
+                             ("C-S-<right>" sp-forward-sexp)
+                             
                              ;; Launch general apps hydra.
                              ("C-S-<tab>" launch-hydra-apps)
 
