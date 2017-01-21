@@ -40,17 +40,9 @@ Install node.js and npm. Add them to your path on windows.
 
 Install livedown with the following command: npm install -g livedown.
 
-### SQL
-
-Install Java.
-
-Add ~/.emacs.d/lib/jisql/ to the path.
-
 ### JavaScript
 
 Install node.js and npm. Add them to your path on windows.
-
-Install tern with the following: npm install -g tern.
 
 ## Keymap
 

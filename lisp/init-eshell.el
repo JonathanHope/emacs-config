@@ -1,7 +1,11 @@
 ;; Package configuration for eshell.
 
 (use-package "eshell"
-  :init 
+  :defer t
+  :commands (eshell)
+  
+  
+  :config 
   (setq eshell-prompt-function
         (lambda nil
           (concat

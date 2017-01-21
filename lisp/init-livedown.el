@@ -1,8 +1,7 @@
 ;; Package configuration for livedown.
 
-(load "livedown.el")
-
 (use-package livedown
-  :defer t)
+  :defer t
+  :commands (livedown-preview))
 
 (provide 'init-livedown)

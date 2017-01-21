@@ -1,8 +1,5 @@
 ;; Package configuration for custom-keymap.
 
-;; This is a local package.
-(load "custom-keymap.el")
-
 (use-package custom-keymap
   :config 
   (configure-custom-keymap '(

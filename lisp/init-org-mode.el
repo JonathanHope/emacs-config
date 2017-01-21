@@ -17,11 +17,7 @@
 
     ;; Set the folder the notes are kept in.
     (setq org-agenda-files (list notes-directory))
-
-    ;; Save clock history across emacs sessions.
-    (setq org-clock-persist 'history)
-    (org-clock-persistence-insinuate)
-
+    
     ;; Change ellipsis to something else.
     (setq org-ellipsis " …")
 
