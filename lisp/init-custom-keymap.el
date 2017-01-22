@@ -40,7 +40,7 @@
                              ("C-f" helm-swoop)
 
                              ;; Regex search in a project.
-                             ("C-S-f" helm-projectile-grep)
+                             ("C-S-f" helm-projectile-ag)
 
                              ;; Regex search and replace in file.
                              ("C-h" vr/replace)

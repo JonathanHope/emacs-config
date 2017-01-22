@@ -44,6 +44,7 @@
 (require 'init-async)
 (require 'init-helm)
 (require 'init-helm-swoop)
+(require 'init-helm-ag)
 (require 'init-helm-flyspell)
 (require 'init-helm-projectile)
 (require 'init-multiple-cursors)

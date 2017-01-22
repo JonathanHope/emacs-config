@@ -26,6 +26,8 @@ It uses the pragmata fonts.
 
 On Linux you need to install ispell and on Windows you need to install aspell (http://aspell.net/win32/). On windows add aspell to your path.
 
+Ag needs to be installed. On windows run the following commands in admin powershell CLI: Set-ExecutionPolicy RemoteSigned, iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex, choco install ag.
+
 ### Clojure
 
 Install Java.
