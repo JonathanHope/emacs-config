@@ -88,6 +88,9 @@
   (global-prettify-symbols-mode +1)
   ;; TODO: Seems buggy.
   ;;(setq prettify-symbols-unprettify-at-point 'right-edge)
+
+  ;; No newlines at end of file.
+  (setq require-final-newline nil)
   
   (defun revert-default-directory ()
     "Revert the default directory to the directory that emacs was started in."

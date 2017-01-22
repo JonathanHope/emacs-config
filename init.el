@@ -62,23 +62,41 @@
 (require 'init-visual-regexp)
 (require 'init-yafolding)
 (require 'init-move-text)
+(require 'init-flyspell)
+(require 'init-ws-butler)
 
-;; Languages
+;; Org file support.
 (require 'init-org-mode)
+
+;; File browser.
+(require 'init-dired)
+
+;; Git support.
 (require 'init-magit)
+
+;; Shell
+(require 'init-eshell)
+
+;; Clojure support.
 (require 'init-clojure-mode)
 (require 'init-cider)
-(require 'init-dired)
-(require 'init-eshell)
-(require 'init-flyspell)
+
+;; Markdown support.
 (require 'init-markdown-mode)
 (require 'init-livedown)
+
+;; XML support.
 (require 'init-sgml-mode)
 
+;; HTML support.
 (require 'init-web-mode)
 (require 'init-impatient-mode)
+
+;; Javascript support.
 (require 'init-js-mode)
 (require 'init-nodejs-repl)
+
+;; CSS support.
 (require 'init-css-mode)
 
 ;; Run the startup function.
