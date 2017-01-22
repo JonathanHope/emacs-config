@@ -15,6 +15,6 @@
     (add-hook 'web-mode-hook #'company-mode))
 
   :config
-  (add-to-list 'company-backends 'company-tern))
+  (setq company-idle-delay .3))
 
 (provide 'init-company)

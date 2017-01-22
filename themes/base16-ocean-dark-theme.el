@@ -251,7 +251,8 @@
  '(helm-visible-mark ((t nil)))
  '(helm-ff-dotted-directory ((t (:foreground "#A6ACB6"))))
  '(helm-match ((t (:weight bold :underline t))))
- '(helm-moccur-buffer ((t (:foreground "#A6ACB6")))))
+ '(helm-moccur-buffer ((t (:foreground "#A6ACB6"))))
+ '(helm-grep-finish ((t (:foreground "#7FB37B")))))
 
 
 ;; Hide vertical boder
