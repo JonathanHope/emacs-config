@@ -10,6 +10,9 @@
 
 (use-package helm-config
   :config
+  (setq helm-M-x-fuzzy-match t
+        helm-buffers-fuzzy-matching t)
+  
   (helm-mode 1))
 
 (provide 'init-helm)
