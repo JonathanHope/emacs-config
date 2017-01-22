@@ -54,7 +54,7 @@
    ("C-S-g" . goto-line)
 
    ;; Jump anywhere visible.
-   ("C-g" ace-jump-mode)
+   ("C-g" . ace-jump-mode)
 
    ;; Open a file in a project.
    ("C-p" . helm-projectile-find-file)
