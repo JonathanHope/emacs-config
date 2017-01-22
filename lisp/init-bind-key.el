@@ -93,10 +93,10 @@
    ("C-S-d" . duplicate-line)
 
    ;; Move a line one line up.
-   ("C-S-<up>" . move-line-up)
+   ("C-S-<up>" . move-text-up)
 
    ;; Move a line one line down.
-   ("C-S-<down>" . move-line-down)
+   ("C-S-<down>" . move-text-down)
 
    ;; Delete a word.
    ("<C-backspace>" . backward-delete-word)
@@ -164,19 +164,6 @@
     (open-line 1)
     (next-line 1)
     (yank))
-
-  (defun move-line-up ()
-    "Move the current line up one line."
-    (interactive)
-    (transpose-lines 1)
-    (previous-line 2))
-
-  (defun move-line-down ()
-    "Move the current line down one line."
-    (interactive)
-    (next-line 1)
-    (transpose-lines 1)
-    (previous-line 1))
 
   (defun delete-word (arg)
     "Delete a word."

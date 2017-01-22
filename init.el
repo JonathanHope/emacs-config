@@ -61,6 +61,7 @@
 (require 'init-golden-ratio)
 (require 'init-visual-regexp)
 (require 'init-yafolding)
+(require 'init-move-text)
 
 ;; Languages
 (require 'init-org-mode)
