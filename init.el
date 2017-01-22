@@ -39,7 +39,7 @@
 (require 'init-projectile)
 (require 'init-emacs)
 (require 'init-mode-line)
-(require 'init-custom-keymap)
+(require 'init-bind-key)
 (require 'init-undo-tree)
 (require 'init-async)
 (require 'init-helm)
