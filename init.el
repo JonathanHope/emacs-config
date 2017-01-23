@@ -52,7 +52,7 @@
 (require 'init-ace-jump-mode)
 (require 'init-winum)
 (require 'init-rainbow-mode)
-(require 'init-hydra) 
+(require 'init-hydra)
 (require 'init-company)
 (require 'init-rainbow-delimiters)
 (require 'init-smartparens)
@@ -63,7 +63,7 @@
 (require 'init-yafolding)
 (require 'init-move-text)
 (require 'init-flyspell)
-(require 'init-ws-butler)
+(require 'init-aggressive-indent)
 
 ;; Org file support.
 (require 'init-org-mode)

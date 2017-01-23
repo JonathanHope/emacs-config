@@ -4,7 +4,7 @@
   :bind
   (:map emacs-lisp-mode-map
         ("C-<tab>" . elisp-hydra/body))
-  
+
   :init
   ;; No tabs, use spaces instead.
   (setq-default indent-tabs-mode nil)
@@ -90,8 +90,23 @@
   ;;(setq prettify-symbols-unprettify-at-point 'right-edge)
 
   ;; No newlines at end of file.
-  (setq require-final-newline nil)
-  
+  (setq require-final-newline t)
+
+  ;; Remove trailing whitespace.
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+  ;; Remove blank lines.
+  (add-hook 'before-save-hook 'my-delete-trailing-blank-lines)
+
+  (defun my-delete-trailing-blank-lines ()
+    "Deletes all blank lines at the end of the file."
+    (interactive)
+    (save-excursion
+      (save-restriction
+        (widen)
+        (goto-char (point-max))
+        (delete-blank-lines))))
+
   (defun revert-default-directory ()
     "Revert the default directory to the directory that emacs was started in."
     (setq default-directory old-default-directory))
@@ -106,12 +121,12 @@
           (write-region "-/Scratch/node_modules" nil projectile-file)
         nil))
 
-    (dolist (scratch-file scratch-files) 
+    (dolist (scratch-file scratch-files)
       (let ((scratch-file-path (concat scratch-directory scratch-file)))
         (if (not (file-exists-p scratch-file-path))
             (write-region "" nil scratch-file-path)
           nil)))
-    
+
     (setq default-directory notes-directory)
     (org-mode)))
 
