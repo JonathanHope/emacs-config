@@ -8,6 +8,10 @@ This is my Emacs configuration. The keyboard shortcuts have been remapped to mor
 
 * Emacs 25.1
 
+## Supported Languages
+
+Emacs Lisp, Clojure, HTML, CSS, JavaScript, XML, JSON.
+
 ## Installation
 
 ### General
@@ -99,7 +103,7 @@ Install node.js and npm. Add them to your path on windows.
 * **CTRL + BACKSPACE** Delete word
 * **BACKSPACE** Delete character
 
-#### Casing 
+#### Casing
 
 * **CTRL + SHIFT + u** Uppercase region
 * **CTRL + SHIFT + l** Lowercase region

@@ -64,6 +64,7 @@
 (require 'init-move-text)
 (require 'init-flyspell)
 (require 'init-aggressive-indent)
+(require 'init-highlight-numbers)
 
 ;; Org file support.
 (require 'init-org-mode)
