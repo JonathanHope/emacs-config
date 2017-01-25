@@ -21,37 +21,37 @@
     ("q" nil "Exit"))
 
   ;; Org-mode Hydras
-  	
+
   ;; Top org-mode hydra, serves as a launcher for other hydras.
   (defhydra org-hydra-top (:color blue :columns 4)
     "Org-mode"
     ("a" org-agenda "Agenda")
-    ("b" (progn 
+    ("b" (progn
            (org-hydra-tables/body)
            (hydra-push '(org-hydra-top/body))) "Table")
-    ("c" (progn 
+    ("c" (progn
            (org-hydra-checkbox/body)
            (hydra-push '(org-hydra-top/body))) "Checkbox")
     ("e" org-attach "Attach file")
-    ("f" (progn 
+    ("f" (progn
            (org-hydra-footnotes/body)
            (hydra-push '(org-hydra-top/body))) "Footnote")
-    ("g" (progn 
+    ("g" (progn
            (org-hydra-tags/body)
            (hydra-push '(org-hydra-top/body))) "Tag")
-    ("l" (progn 
+    ("l" (progn
            (org-hydra-link/body)
            (hydra-push '(org-hydra-top/body))) "Link")
-    ("o" (progn 
+    ("o" (progn
            (org-hydra-time/body)
            (hydra-push '(org-hydra-top/body))) "Time")
-    ("p" (progn 
+    ("p" (progn
            (org-hydra-properties/body)
            (hydra-push '(org-hydra-top/body))) "Properties")
     ("t" (progn
            (org-hydra-todo/body)
            (hydra-push '(org-hydra-top/body))) "Todo")
-    ("s" (progn 
+    ("s" (progn
            (org-hydra-subtree/body)
            (hydra-push '(org-hydra-top/body))) "Subtree")
     ("v" (progn
@@ -198,12 +198,17 @@
     ("U" dired-unmark-all-marks "Unmark all")
     ("q" nil "Exit"))
 
-    ;; HTML Hydra
   (defhydra html-hydra (:color blue :columns 4)
     "Dired"
     ("r" launch-browser-repl "Launch REPL")
     ("q" nil "Exit"))
-  
+
+  (defhydra bat-hydra (:color blue :columns 4)
+    "Bat"
+    ("r" bat-run "Run")
+    ("a" bat-run-args "Run with args")
+    ("q" nil "Exit"))
+
   ;; Support for nested hydras.
   (defvar hydra-stack nil)
 
@@ -219,9 +224,9 @@
         (funcall x))))
 
   (defun org-footnote-reference (arg)
-  "Insert a reference to a org-mode footnote."
+    "Insert a reference to a org-mode footnote."
     (interactive
-      (list
+     (list
       (read-string "Footnote: ")))
     (insert "[fn:" arg "]"))
 
@@ -238,10 +243,10 @@
     (delete-other-windows))
 
   (defun sql-add-newline-fi rst (output)
-    "Add two new lines to ths tart of comint output."
-    (remove-hook 'comint-preoutput-filter-functions
-             'sql-add-newline-first)
-    (concat "\n\n" output))
+         "Add two new lines to ths tart of comint output."
+         (remove-hook 'comint-preoutput-filter-functions
+                      'sql-add-newline-first)
+         (concat "\n\n" output))
 
   (defun sql-send-buffer-ss ()
     "Sends a buffer to Microsft SQL Server interpreter. Removes line breaks and adds the end of query identifier."
@@ -273,8 +278,8 @@
   (defun install-npm-package (arg)
     "Install a npm package."
     (interactive
-      (list
-       (read-string "Package: ")))
+     (list
+      (read-string "Package: ")))
     (shell-command-to-string (concat "npm install " arg)))
 
   (defun launch-calc ()

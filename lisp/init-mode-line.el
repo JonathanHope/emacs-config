@@ -1,10 +1,10 @@
 ;; Package configuration for the mode-line.
 
 (use-package "mode-line"
-  :init 
+  :init
 
   ;; Custom faces.
-  
+
   (defgroup mode-line nil
     "Custom mode-line faces."
     :group 'convenience)
@@ -13,7 +13,7 @@
     '()
     "Face used for the inactive modeline."
     :group 'mode-line)
-  
+
   (defface mode-line-window-number-face
     '()
     "Face used for the window number in the modeline."
@@ -23,7 +23,7 @@
     '()
     "Face used for the file status in the modeline."
     :group 'mode-line)
-  
+
   (defface mode-line-buffer-name-face
     '()
     "Face used for the buffer name in the modeline."
@@ -50,7 +50,7 @@
     :group 'mode-line)
 
   ;; Abstraction to figure out if mode-line is the selected window or not.
-  
+
   (defvar mode-line-selected-window (frame-selected-window))
 
   (defun mode-line-set-selected-window ()
@@ -90,15 +90,15 @@
                                            ((string= (int-to-string n) "8") "❽")
                                            ((string= (int-to-string n) "9") "❾")
                                            (t (int-to-string n))))))
-           (propertize s 'face (if (mode-line-selected-window-active) 'mode-line-window-number-face 'mode-line-inactive-face))))))  
-  
+           (propertize s 'face (if (mode-line-selected-window-active) 'mode-line-window-number-face 'mode-line-inactive-face))))))
+
   ;; Bits of the mode-line.
 
   ;; The start of the mode line.
   (defvar m/mode-line-start
     '(:eval (propertize "━━" 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
   (put 'm/mode-line-start 'risky-local-variable t)
-  
+
   ;; Start of a section.
   (defvar m/section-start
     '(:eval (propertize "⬢ " 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
@@ -118,7 +118,7 @@
   (defvar m/active-section-end
     '(:eval (propertize (if (mode-line-selected-window-active) " ⬢━━" "") 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
   (put 'm/active-section-end 'risky-local-variable t)
-  
+
   ;; The number tied to the window the buffer is residing in.
   (defvar m/window-number-mode-line
     '(:eval ""))
@@ -129,7 +129,7 @@
     '(:eval
       (propertize (if (buffer-modified-p) "● " "") 'face (if (mode-line-selected-window-active) 'mode-line-file-status-face 'mode-line-inactive-face))))
   (put 'm/file-status-mode-line 'risky-local-variable t)
-  
+
   ;; The name of the file being edited.
   (defvar m/filename-mode-line
     '(:eval (propertize "%b" 'face (if (mode-line-selected-window-active) 'mode-line-buffer-name-face 'mode-line-inactive-face))))
@@ -148,7 +148,7 @@
   (defvar m/major-mode-mode-line
     '(:eval (propertize (if (mode-line-selected-window-active) mode-name "") 'face (if (mode-line-selected-window-active) 'mode-line-mode-face 'mode-line-inactive-face))))
   (put 'm/major-mode-mode-line 'risky-local-variable t)
-  
+
   (defun what-line-no-print ()
     "Get the current buffer line number and narrowed line number of point."
     (let ((start (point-min))
@@ -159,7 +159,7 @@
           (save-restriction
             (widen)
             (+ n (line-number-at-pos start) -1))))))
-  
+
   (defun get-scroll-percent ()
     "Calculate how far down the buffer the cursor is by line."
     (let ((current-line (- (what-line-no-print) 1))
@@ -167,7 +167,7 @@
       (if (= 0 max-line)
           0
         (* 100.0 (/ (float current-line) (float max-line))))))
-  
+
   (defun get-scroll-bar ()
     "Build an text based horizontal scroll bar."
     (let* ((p (get-scroll-percent))
@@ -191,30 +191,30 @@
 
   ;; The current row and column being edited.
   (defvar m/row-column-mode-line
-    '(:eval 
+    '(:eval
       (if (mode-line-selected-window-active)
           (concat (propertize "%01l" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
                   (propertize "," 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face))
                   (propertize "%01c" 'face (if (mode-line-selected-window-active) 'mode-line-row-column-face 'mode-line-inactive-face)))
         (""))))
   (put 'm/row-column-mode-line 'risky-local-variable t)
-  
+
   ;; The end of the mode line.
   (defvar m/mode-line-end
     '(:eval (propertize (make-string 400 ?━) 'face (if (mode-line-selected-window-active) 'mode-line 'mode-line-inactive))))
   (put 'm/mode-line-end 'risky-local-variable t)
-  
+
   ;; The mode-line.
 
   (setq-default mode-line-format
                 (list
 
                  m/mode-line-start
-                 
-                 m/section-start         
+
+                 m/section-start
                  m/window-number-mode-line
                  m/section-end
-                 
+
                  m/section-start
                  m/file-status-mode-line
                  m/filename-mode-line
@@ -235,7 +235,7 @@
                  m/active-section-start
                  m/row-column-mode-line
                  m/active-section-end
-                 
+
                  m/mode-line-end)))
 
 ;; This is a hack to add spacing to the mode-line.

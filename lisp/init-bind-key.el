@@ -4,6 +4,9 @@
   :ensure t
 
   :config
+  ;; Leave no way to enable overwrite mode.
+  (unbind-key "<insert>" global-map)
+
   (bind-keys*
    ;; Cancel with one press of escape instead of three. Also cancel out of many different interfaces.
    ("<escape>" . keyboard-escape-quit)
@@ -37,15 +40,18 @@
 
    ;; Paste whatever is n the kill ring.
    ("C-S-v" . yank)
-   
+
    ;; Regex search in a file.
    ("C-f" . helm-swoop)
 
    ;; Regex search in a project.
    ("C-S-f" . helm-projectile-ag)
 
-   ;; Regex search in a project.
-   ("M-f" . helm-do-ag-buffers)
+   ;; Regex search buffers.
+   ("M-F" . helm-do-ag-buffers)
+
+   ;; Regex search file quickly without follow.
+   ("M-f" . helm-do-ag-this-file)
 
    ;; Regex search and replace in file.
    ("C-h" . vr/replace)
@@ -106,7 +112,7 @@
 
    ;; Cut a sexp
    ("C-S-k" . sp-kill-sexp)
-   
+
    ;; Disable the built in M-x function.
    ("M-x" . nil)
 
@@ -148,7 +154,7 @@
 
    ;; Move backward a sexp.
    ("C-S-<right>". sp-forward-sexp)
-   
+
    ;; Launch general apps hydra.
    ("C-S-<tab>". launch-hydra-apps)
 
@@ -183,12 +189,12 @@
 
   (defun up-five ()
     "Move up five lines."
-    (interactive) 
+    (interactive)
     (previous-line 5))
 
   (defun down-five ()
     "Move down five lines."
-    (interactive) 
+    (interactive)
     (next-line 5))
 
   (defun launch-hydra-apps ()
@@ -213,7 +219,7 @@
     (interactive "r")
     (simpleclip-copy beg end)
     (keyboard-quit))
-  
+
   (defun select-current-line ()
     "Select the current line"
     (interactive)

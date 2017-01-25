@@ -29,7 +29,7 @@
   ;; Hide menu, toolbar, and fringe.
   (menu-bar-mode 0)
   (tool-bar-mode 0)
-  (set-fringe-mode 0)
+  (fringe-mode '(4 . 0))
 
   ;; Hide the initial scratch menu.
   (setq initial-scratch-message "")
@@ -37,6 +37,10 @@
   ;; Disable the scrollbar.
   (when (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
+
+  ;; Disable the pointless vertical bar.
+  (set-display-table-slot standard-display-table
+                          'vertical-border (make-glyph-code 8203))
 
   ;; Set font
   (defvar Input-font '(:family "Input" :size 14))

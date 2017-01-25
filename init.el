@@ -32,7 +32,7 @@
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
 (setq scratch-directory "~/Notes/Scratch/")
-(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt" "scratch.html"))
+(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt" "scratch.html" "scratch.css" "scratch.bat" "scratch.cs"))
 (setq projects-directory "~/Projects/")
 
 ;; Core
@@ -65,6 +65,7 @@
 (require 'init-flyspell)
 (require 'init-aggressive-indent)
 (require 'init-highlight-numbers)
+(require 'init-shackle)
 
 ;; Org file support.
 (require 'init-org-mode)
@@ -99,6 +100,12 @@
 
 ;; CSS support.
 (require 'init-css-mode)
+
+;; Bat support.
+(require 'init-bat-mode)
+
+;; C# support.
+(require 'init-csharp-mode)
 
 ;; Run the startup function.
 (startup)
