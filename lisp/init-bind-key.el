@@ -9,7 +9,7 @@
 
   (bind-keys*
    ;; Cancel with one press of escape instead of three. Also cancel out of many different interfaces.
-   ("<escape>" . keyboard-escape-quit)
+   ("<escape>" . keyboard-quit-all)
 
    ;; Save the current file.
    ("C-s" . save-buffer)
@@ -184,7 +184,8 @@
   (defun keyboard-quit-all ()
     "Quit out of whatever is currently going on."
     (interactive)
-    (cond (helm-alive-p (helm-keyboard-quit))
+    (cond ((equal major-mode 'help-mode) (quit-window))
+          (helm-alive-p (helm-keyboard-quit))
           (t (keyboard-quit))))
 
   (defun up-five ()

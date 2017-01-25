@@ -18,7 +18,6 @@
                   winum-select-window-6
                   winum-select-window-7
                   winum-select-window-8
-                  winum-select-window-9
-                  select-window))))
+                  winum-select-window-9))))
 
 (provide 'init-golden-ratio)

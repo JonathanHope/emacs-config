@@ -9,8 +9,7 @@
   (setq shackle-rules
         '((compilation-mode :select nil)
           ("[Hh]elm" :regexp t :align bottom :size 0.333)
-          ;;("*Help*" :select t :align right)
-          ))
+          ("*Help*" :select t :align right)))
 
   :config
   (shackle-mode 1))

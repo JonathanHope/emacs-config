@@ -235,7 +235,7 @@
  '(helm-buffer-process ((t (:foreground "#7FB37B"))))
  '(helm-buffer-saved-out ((t nil)))
  '(helm-buffer-size ((t nil)))
- '(helm-candidate-number ((t (:background "#343D46" :foreground "#b48ead"))))
+ '(helm-candidate-number ((t (:foreground "#AA7961"))))
  '(helm-ff-directory ((t (:foreground "#A6ACB6"))))
  '(helm-ff-executable ((t (:foreground "#7FB37B"))))
  '(helm-ff-file ((t nil)))
@@ -245,13 +245,14 @@
  '(helm-grep-match ((t (:foreground "#AA7961"))))
  '(helm-grep-file ((t (:foreground "#7FB37B"))))
  '(helm-grep-lineno ((t (:foreground "#ebcb8b"))))
+ '(helm-grep-colno ((t (:foreground "#ebcb8b"))))
  '(helm-history-remote ((t nil)))
  '(helm-selection ((t (:background "#343D46"))))
  '(helm-source-header ((t (:background "#343D46" :foreground "#7FB37B"))))
  '(helm-visible-mark ((t nil)))
  '(helm-ff-dotted-directory ((t (:foreground "#A6ACB6"))))
  '(helm-match ((t (:weight bold :underline t))))
- '(helm-moccur-buffer ((t (:foreground "#A6ACB6"))))
+ '(helm-moccur-buffer ((t (:foreground "#AA7961"))))
  '(helm-grep-finish ((t (:foreground "#7FB37B")))))
 
 
@@ -296,12 +297,12 @@
    ((t (:background "#2b303b")))))
 
 ;; Multiple Cursors
-(custom-set-faces 
+(custom-set-faces
  '(mc/cursor-bar-face
    ((t (:background "#2b303b" :foreground "#a3c6d0" :weight bold :height 1)))))
 
 ;; Helm swoop
-(custom-set-faces 
+(custom-set-faces
  '(helm-swoop-target-line-face
    ((t (:background "#343d46"))))
  '(helm-swoop-target-line-block-face
@@ -311,7 +312,7 @@
 
 ;; Visual regexp
 
-(custom-set-faces 
+(custom-set-faces
  '(vr/match-0
    ((t (:background "#343d46" :weight bold :underline t))))
  '( vr/match-1
@@ -348,4 +349,3 @@
  '(web-mode-html-attr-name-face ((t (:foreground "#ebcb8b"))))
  '(web-mode-html-attr-equal-face ((t (:foreground "#d08770"))))
  '(web-mode-css-selector-face ((t (:foreground "#ebcb8b")))))
-
