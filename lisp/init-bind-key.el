@@ -165,7 +165,13 @@
    ("<home>". beginning-of-buffer)
 
    ;; Move to beginning of buffer.
-   ("<end>". end-of-buffer))
+   ("<end>". end-of-buffer)
+
+   ;; Move to end of line.
+   ("S-<right>". end-of-visual-line)
+
+   ;; Move to beginning of line.
+   ("S-<left>". beginning-of-visual-line))
 
   (defun duplicate-line()
     "Duplicate the current line."

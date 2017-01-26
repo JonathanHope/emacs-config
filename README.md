@@ -151,10 +151,14 @@ Install node.js and npm. Add them to your path on windows.
 * **DOWN** Down line
 * **LEFT** Forward character
 * **RIGHT** Backward character
-* **CTRL + LEFT** Forward word
-* **CTRL + RIGHT** Backward word
+* **CTRL + LEFT** Forward symbol
+* **CTRL + RIGHT** Backward symbol
 * **CTRL + UP** Up five lines
 * **CTRL + DOWN** Down five lines
+* **SHIFT + LEFT** Beginning of line
+* **SHIFT + RIGHT** End of line
+* **HOME** Beginning of buffer
+* **END** End of buffer
 
 #### Regex Searching
 
