@@ -18,6 +18,7 @@
     ("e" describe-mode "Describe mode")
     ("f" describe-function "Describe function")
     ("k" describe-key "Describe key")
+    ("v" describe-variable "Describe key")
     ("q" nil "Exit"))
 
   ;; Org-mode Hydras

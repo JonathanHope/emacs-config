@@ -102,6 +102,9 @@
   ;; Remove blank lines.
   (add-hook 'before-save-hook 'my-delete-trailing-blank-lines)
 
+  ;; Wrap lines everywhere.
+  (global-visual-line-mode t)
+
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)

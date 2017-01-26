@@ -2,4 +2,3 @@
 * TODO Can I use prettify predicates to theme tables?
 * TODO Will polymode ever be stable enought to use?
 * TODO Improve C# auto indenting.
-* TODO Improve auto sizing behavior of help windows.

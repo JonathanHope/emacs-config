@@ -159,7 +159,13 @@
    ("C-S-<tab>". launch-hydra-apps)
 
    ;; Join lines.
-   ("C-j". join-lines))
+   ("C-j". join-lines)
+
+   ;; Move to end of buffer.
+   ("<home>". beginning-of-buffer)
+
+   ;; Move to beginning of buffer.
+   ("<end>". end-of-buffer))
 
   (defun duplicate-line()
     "Duplicate the current line."
