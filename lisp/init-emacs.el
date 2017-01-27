@@ -3,7 +3,8 @@
 (use-package "emacs"
   :bind
   (:map emacs-lisp-mode-map
-        ("C-<tab>" . elisp-hydra/body))
+        ("C-<tab>" . elisp-hydra/body)
+        ("<return>". newline-and-indent))
 
   :init
   ;; No tabs, use spaces instead.
@@ -104,6 +105,9 @@
 
   ;; Wrap lines everywhere.
   (global-visual-line-mode t)
+
+  ;; Don't show the cursor in windows that are not selected.
+  (setq-default cursor-in-non-selected-windows nil)
 
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."

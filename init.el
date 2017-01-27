@@ -47,7 +47,6 @@
 (require 'init-helm-ag)
 (require 'init-helm-flyspell)
 (require 'init-helm-projectile)
-(require 'init-multiple-cursors)
 (require 'init-expand-region)
 (require 'init-ace-jump-mode)
 (require 'init-winum)
@@ -66,6 +65,7 @@
 (require 'init-aggressive-indent)
 (require 'init-highlight-numbers)
 (require 'init-shackle)
+(require 'init-iedit)
 
 ;; Org file support.
 (require 'init-org-mode)

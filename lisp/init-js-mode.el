@@ -1,11 +1,14 @@
 (use-package js
   :defer t
+  
   :mode 
   (("\\.js$" . js-mode)
    ("\\.json$" . js-mode))
+
   :bind
   (:map js-mode-map
-        ("C-<tab>" . javascript-hydra/body))
+        ("C-<tab>" . javascript-hydra/body)
+        ("<return>". newline-and-indent))
 
   :init
   (setq js-indent-level 2))

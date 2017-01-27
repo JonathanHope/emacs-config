@@ -21,6 +21,8 @@
     ;; Change ellipsis to something else.
     (setq org-ellipsis " …")
 
+    (setq org-src-fontify-natively t)
+
     ;; Substitute a wide variety of characters for prettier characters.
     (add-hook 'org-mode-hook
       (lambda ()

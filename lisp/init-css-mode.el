@@ -4,6 +4,10 @@
 
   :mode (("\\.css$" . css-mode))
   
+  :bind
+  (:map css-mode-map
+        ("<return>". newline-and-indent))
+
   :config
   (setq css-indent-offset '2))
 

@@ -87,13 +87,10 @@
    ("C-<return>" . rectangle-mark-mode)
 
    ;; Edit all lines that are marked.
-   ("C-S-c" . mc/edit-beginnings-of-lines)
+   ("C-S-c" . iedit-rectangle-mode)
 
-   ;; Add another cursor.
-   ("C-<down-mouse-1>" . mc/add-cursor-on-click)
-
-   ;; Mark everything matching the selection.
-   ("C-S-a" . mc/mark-all-like-this)
+   ;; Edit everything matching selection.
+   ("C-S-a" . iedit-mode)
 
    ;; Duplicate the current line.
    ("C-S-d" . duplicate-line)
@@ -198,6 +195,8 @@
     (interactive)
     (cond ((equal major-mode 'help-mode) (quit-window))
           (helm-alive-p (helm-keyboard-quit))
+          ((bound-and-true-p iedit-mode) (iedit-mode))
+          ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           (t (keyboard-quit))))
 
   (defun up-five ()

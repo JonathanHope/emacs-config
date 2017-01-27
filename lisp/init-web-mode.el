@@ -8,8 +8,9 @@
 
   :bind
   (:map web-mode-map
-        ("C-<tab>" . html-hydra/body))
-  
+        ("C-<tab>" . html-hydra/body)
+        ("<return>". newline-and-indent))
+
   :init
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-style-padding 2)

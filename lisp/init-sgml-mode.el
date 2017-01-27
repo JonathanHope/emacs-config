@@ -32,8 +32,8 @@
   (defun tag-newline-and-indent (&optional arg)
     "Either inserts a newline and indents or adds two newlines and indents."
     (interactive "p")
-    (if (and (char-equal (char-after) ?<)
-             (char-equal (char-before) ?>))
+    (if (and (and (char-after) (char-equal (char-after) ?<))
+             (and (char-before) (char-equal (char-before) ?>)))
         (progn
           (newline-and-indent)
           (previous-line)

@@ -9,7 +9,8 @@
   
   :bind
   (:map clojure-mode-map
-        ("C-<tab>" . clojure-hydra/body))
+        ("C-<tab>" . clojure-hydra/body)
+        ("<return>". newline-and-indent))
 
   :config
   
