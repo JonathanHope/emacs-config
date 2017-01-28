@@ -57,10 +57,10 @@
    ("C-h" . vr/replace)
 
    ;; Jump to a line in a file.
-   ("C-S-g" . goto-line)
+   ("C-S-g" . avy-goto-line)
 
    ;; Jump anywhere visible.
-   ("C-g" . ace-jump-mode)
+   ("C-g" . avy-goto-char-2)
 
    ;; Open a file in a project.
    ("C-p" . helm-projectile-find-file)

@@ -282,10 +282,13 @@
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
     (t (:inherit company-tooltip-selection)))))
 
-;; Ace Jump Mode
+;; Avy
 (custom-set-faces
- '(ace-jump-face-foreground
-   ((t (:foreground "#bf616a" :weight bold :underline t)))))
+ '(avy-lead-face ((t (:foreground "#bf616a" :weight bold :underline t))))
+ '(avy-lead-face-0 ((t (:foreground "#bf616a" :weight bold :underline t))))
+ '(avy-lead-face-2 ((t (:foreground "#bf616a" :weight bold :underline t))))
+
+ )
 
 ;; Smartparens
 (custom-set-faces
@@ -311,7 +314,6 @@
    ((t (:background "#343d46" :weight bold :underline t)))))
 
 ;; Visual regexp
-
 (custom-set-faces
  '(vr/match-0
    ((t (:background "#343d46" :weight bold :underline t))))
@@ -325,13 +327,11 @@
    ((t ()))))
 
 ;; Flyspell
-
 (custom-set-faces
  '(flyspell-duplicate ((t (:foreground "#ebcb8b" :underline t :weight bold))))
  '(flyspell-incorrect ((t (:foreground "#bf616a" :underline t :weight bold)))))
 
 ;; Mode line
-
 (custom-set-faces
  '(mode-line-inactive-face ((t (:foreground "#4f5b66" :weight bold))))
  '(mode-line-window-number-face ((t (:foreground "#ebcb8b" :weight bold))))

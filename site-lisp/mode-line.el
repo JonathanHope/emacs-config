@@ -146,7 +146,7 @@
 
 ;; The current major mode.
 (defvar m/major-mode-mode-line
-  '(:eval (propertize (if (mode-line-selected-window-active) mode-name "") 'face (if (mode-line-selected-window-active) 'mode-line-mode-face 'mode-line-inactive-face))))
+  '(:eval (if (mode-line-selected-window-active) (propertize "%m" 'face (if (mode-line-selected-window-active) 'mode-line-mode-face 'mode-line-inactive-face)) "")))
 (put 'm/major-mode-mode-line 'risky-local-variable t)
 
 (defun what-line-no-print ()

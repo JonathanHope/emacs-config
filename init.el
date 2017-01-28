@@ -48,7 +48,7 @@
 (require 'init-helm-flyspell)
 (require 'init-helm-projectile)
 (require 'init-expand-region)
-(require 'init-ace-jump-mode)
+(require 'init-avy)
 (require 'init-winum)
 (require 'init-rainbow-mode)
 (require 'init-hydra)

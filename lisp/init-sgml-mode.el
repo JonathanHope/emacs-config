@@ -3,20 +3,23 @@
 (use-package sgml-mode
   :defer t
 
-  :mode (("\\.xml$" . sgml-mode))
-  
-  :bind 
+  :mode (("\\.xml$" . sgml-mode)
+         ("\\.config$" . sgml-mode)
+         ("\\.csproj$" . sgml-mode)
+         ("\\.sln$" . sgml-mode))
+
+  :bind
   (:map sgml-mode-map
         ("<return>" . tag-newline-and-indent)
         ("<tab>" . xml-finish-element-new-line)
         ("<backtab>" . xml-finish-element-same-line))
-  
+
   :config
   (defun backward-symbol (&optional arg)
     "Move backward until encountering the beginning of a symbol."
     (interactive "p")
     (forward-symbol (- (or arg 1))))
-  
+
   (defun forward-start-end-tag (&optional arg)
     "Move forward over a tag start or end."
     (interactive "p")
