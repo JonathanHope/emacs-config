@@ -154,6 +154,7 @@
 
    ;; Launch general apps hydra.
    ("C-S-<tab>". launch-hydra-apps)
+   ("C-S-<iso-lefttab>" . launch-hydra-apps)
 
    ;; Join lines.
    ("C-j". join-lines)
