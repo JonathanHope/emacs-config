@@ -54,7 +54,7 @@
    ("M-f" . helm-do-ag-this-file)
 
    ;; Regex search and replace in file.
-   ("C-h" . vr/replace)
+   ("C-h" . vr-replace-whole-buffer)
 
    ;; Jump to a line in a file.
    ("C-S-g" . avy-goto-line)
@@ -197,6 +197,7 @@
           (helm-alive-p (helm-keyboard-quit))
           ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
+          ((active-minibuffer-window) (keyboard-escape-quit))
           (t (keyboard-quit))))
 
   (defun up-five ()

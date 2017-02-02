@@ -103,8 +103,28 @@
   ;; Remove blank lines.
   (add-hook 'before-save-hook 'my-delete-trailing-blank-lines)
 
-  ;; Wrap lines everywhere.
-  (global-visual-line-mode t)
+  ;; Hide the arrows that appear in the fringe for continued lines.
+  (define-fringe-bitmap 'right-curly-arrow
+    [#b00000000
+     #b00000000
+     #b00000000
+     #b00000000
+     #b01110000
+     #b00010000
+     #b00010000
+     #b00000000])
+  (define-fringe-bitmap 'left-curly-arrow
+    [#b00000000
+     #b00001000
+     #b00001000
+     #b00001110
+     #b00000000
+     #b00000000
+     #b00000000
+     #b00000000])
+
+  ;; Hide the slash that appears at the end of lines that are going to wrap.
+  (set-display-table-slot standard-display-table 'wrap ?\ )
 
   ;; Don't show the cursor in windows that are not selected.
   (setq-default cursor-in-non-selected-windows nil)
