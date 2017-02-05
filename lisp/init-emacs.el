@@ -109,15 +109,15 @@
      #b00000000
      #b00000000
      #b00000000
-     #b01110000
-     #b00010000
-     #b00010000
+     #b00000000
+     #b00000000
+     #b00000000
      #b00000000])
   (define-fringe-bitmap 'left-curly-arrow
     [#b00000000
-     #b00001000
-     #b00001000
-     #b00001110
+     #b00000000
+     #b00000000
+     #b00000000
      #b00000000
      #b00000000
      #b00000000
@@ -128,6 +128,9 @@
 
   ;; Don't show the cursor in windows that are not selected.
   (setq-default cursor-in-non-selected-windows nil)
+
+  ;; Change the frame title to show the buffer name.
+  (setq frame-title-format "%b - Emacs")
 
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
