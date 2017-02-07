@@ -49,12 +49,15 @@
     ("p" (progn
            (org-hydra-properties/body)
            (hydra-push '(org-hydra-top/body))) "Properties")
-    ("t" (progn
-           (org-hydra-todo/body)
-           (hydra-push '(org-hydra-top/body))) "Todo")
+    ("r" (progn
+           (org-hydra-source/body)
+           (hydra-push '(org-hydra-top/body))) "Source")
     ("s" (progn
            (org-hydra-subtree/body)
            (hydra-push '(org-hydra-top/body))) "Subtree")
+    ("t" (progn
+           (org-hydra-todo/body)
+           (hydra-push '(org-hydra-top/body))) "Todo")
     ("v" (progn
            (org-hydra-visibility/body)
            (hydra-push '(org-hydra-top/body))) "Visibility")
@@ -145,6 +148,13 @@
     ("o" org-clock-out "Clock out")
     ("r" org-evaluate-time-range "Refresh range")
     ("t" org-clock-report "Generate Report")
+    ("q" hydra-pop "Exit"))
+
+  ;; Hydra for source related items.
+  (defhydra org-hydra-source (:color blue :columns 4)
+    "Org-mode source"
+    ("e" org-edit-src-code "Edit source")
+    ("n" org-insert-src-block "New source")
     ("q" hydra-pop "Exit"))
 
   ;; Clojure Hydra
@@ -292,6 +302,22 @@
     (interactive)
     (httpd-start)
     (impatient-mode)
-    (shell-command-to-string "start http://localhost:8080/imp/")))
+    (shell-command-to-string "start http://localhost:8080/imp/"))
+
+  (setq org-insert-src-block-helm-source
+        '((name . "Source block language")
+          (candidates . ("emacs-lisp"  "C" "sh" "js" "clojure" "C++" "css" "csharp"))
+          (action . (lambda (src-code-type)
+                      (progn
+                        (newline-and-indent)
+                        (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+                        (newline-and-indent)
+                        (insert "#+END_SRC\n")
+                        (previous-line 2)
+                        (org-edit-src-code))))))
+
+  (defun org-insert-src-block ()
+    (interactive
+     (helm :sources '(org-insert-src-block-helm-source)))))
 
 (provide 'init-hydra)

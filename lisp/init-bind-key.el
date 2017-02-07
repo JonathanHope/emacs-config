@@ -199,6 +199,7 @@
           ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           ((active-minibuffer-window) (keyboard-escape-quit))
+          ((bound-and-true-p org-src-mode) (org-edit-src-exit))
           (t (keyboard-quit))))
 
   (defun up-five ()
