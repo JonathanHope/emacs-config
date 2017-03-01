@@ -1,4 +1,2 @@
-* TODO C# support with omnisharp/cscript?
 * TODO Can I use prettify predicates to theme tables?
 * TODO Will polymode ever be stable enought to use?
-* TODO Improve C# auto indenting.

@@ -107,5 +107,8 @@
 ;; C# support.
 (require 'init-csharp-mode)
 
+;; EBNF support.
+(require 'init-ebnf-mode)
+
 ;; Run the startup function.
 (startup)
