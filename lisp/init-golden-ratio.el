@@ -6,7 +6,7 @@
 
   :config
   (golden-ratio-mode 1)
-  (setq golden-ratio-exclude-buffer-names '("*Helm Swoop*"))
+  (setq golden-ratio-exclude-buffer-names '("*helm M-x*" "*helm find files*" "*helm buffers*" "*helm projectile*" "*helm-ag*" "*Helm Swoop*" "*helm-mode-describe-variable*" "*helm-mode-describe-function*" "*helm*"))
   (setq golden-ratio-exclude-modes '("magit-mode" "magit-popup-mode"))
   (setq golden-ratio-extra-commands
         (append golden-ratio-extra-commands

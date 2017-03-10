@@ -15,7 +15,7 @@
    ("C-s" . save-buffer)
 
    ;; Open or create a file.
-   ("C-o" . counsel-find-file)
+   ("C-o" . helm-find-files)
 
    ;; Close the current buffer.
    ("C-w" . kill-this-buffer)
@@ -48,7 +48,13 @@
    ("C-f" . helm-swoop)
 
    ;; Regex search in a project.
-   ("C-S-f" . counsel-projectile-ag)
+   ("C-S-f" . helm-projectile-ag)
+
+   ;; Regex search file quickly without follow.
+   ("M-f" . helm-do-ag-this-file)
+
+   ;; Regex search buffers.
+   ("M-F" . helm-do-ag-buffers)
 
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
@@ -60,13 +66,13 @@
    ("C-g" . avy-goto-char-2)
 
    ;; Open a file in a project.
-   ("C-p" . counsel-projectile)
+   ("C-p" . helm-projectile-find-file)
 
    ;; Change the active buffer for the window.
-   ("C-b" . ivy-switch-buffer)
+   ("C-b" . helm-buffers-list)
 
    ;; Execute any function.
-   ("C-S-p" . counsel-M-x)
+   ("C-S-p" . helm-M-x)
 
    ;; Close all other windows.
    ("<f1>" . delete-other-windows)
