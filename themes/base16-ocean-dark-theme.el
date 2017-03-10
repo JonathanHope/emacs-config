@@ -349,3 +349,12 @@
  '(web-mode-html-attr-name-face ((t (:foreground "#ebcb8b"))))
  '(web-mode-html-attr-equal-face ((t (:foreground "#d08770"))))
  '(web-mode-css-selector-face ((t (:foreground "#ebcb8b")))))
+
+;; Ivy
+(custom-set-faces
+ '(ivy-current-match ((t (:background "#343d46" :weight bold))))
+ '(ivy-minibuffer-match-face-1 ((t (:underline t))))
+ '(ivy-minibuffer-match-face-2 ((t (:underline t))))
+ '(ivy-minibuffer-match-face-3 ((t (:underline t))))
+ '(ivy-minibuffer-match-face-4 ((t (:underline t))))
+ )

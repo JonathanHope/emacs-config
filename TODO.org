@@ -1,2 +1,3 @@
 * TODO Can I use prettify predicates to theme tables?
 * TODO Will polymode ever be stable enought to use?
+* TODO Will swiper ever be performant?

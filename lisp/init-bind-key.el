@@ -15,7 +15,7 @@
    ("C-s" . save-buffer)
 
    ;; Open or create a file.
-   ("C-o" . helm-find-files)
+   ("C-o" . counsel-find-file)
 
    ;; Close the current buffer.
    ("C-w" . kill-this-buffer)
@@ -35,6 +35,9 @@
    ;; Cut the current selection to the clipboard.
    ("C-x" . simpleclip-cut)
 
+   ;; cut the current line.
+   ("C-S-x" . cut-current-line)
+
    ;; Paste whatever is on the clipboard.
    ("C-v" . simpleclip-paste)
 
@@ -45,13 +48,7 @@
    ("C-f" . helm-swoop)
 
    ;; Regex search in a project.
-   ("C-S-f" . helm-projectile-ag)
-
-   ;; Regex search buffers.
-   ("M-F" . helm-do-ag-buffers)
-
-   ;; Regex search file quickly without follow.
-   ("M-f" . helm-do-ag-this-file)
+   ("C-S-f" . counsel-projectile-ag)
 
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
@@ -63,13 +60,13 @@
    ("C-g" . avy-goto-char-2)
 
    ;; Open a file in a project.
-   ("C-p" . helm-projectile-find-file)
+   ("C-p" . counsel-projectile)
 
    ;; Change the active buffer for the window.
-   ("C-b" . helm-buffers-list)
+   ("C-b" . ivy-switch-buffer)
 
    ;; Execute any function.
-   ("C-S-p" . helm-M-x)
+   ("C-S-p" . counsel-M-x)
 
    ;; Close all other windows.
    ("<f1>" . delete-other-windows)
@@ -123,7 +120,7 @@
    ("C-S-u" . upcase-region)
 
    ;; Lowercase the current selection.
-   ("C-S-u" . downcase-region)
+   ("C-S-l" . downcase-region)
 
    ;; Select an entire buffer.
    ("C-a" . mark-whole-buffer)
@@ -160,16 +157,10 @@
    ("C-j". join-lines)
 
    ;; Move to end of buffer.
-   ("<home>". beginning-of-buffer)
+   ("C-<home>". beginning-of-buffer)
 
    ;; Move to beginning of buffer.
-   ("<end>". end-of-buffer)
-
-   ;; Move to end of line.
-   ("S-<right>". end-of-visual-line)
-
-   ;; Move to beginning of line.
-   ("S-<left>". beginning-of-visual-line))
+   ("C-<end>". end-of-buffer))
 
   (defun duplicate-line()
     "Duplicate the current line."
@@ -195,7 +186,6 @@
     "Quit out of whatever is currently going on."
     (interactive)
     (cond ((equal major-mode 'help-mode) (quit-window))
-          (helm-alive-p (helm-keyboard-quit))
           ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           ((active-minibuffer-window) (keyboard-escape-quit))
@@ -246,6 +236,11 @@
     (end-of-line)
     (delete-char 1)
     (delete-horizontal-space)
-    (insert " ")))
+    (insert " "))
+
+  (defun cut-current-line ()
+    (interactive)
+    (select-current-line)
+    (simpleclip-cut (region-beginning) (region-end))))
 
 (provide 'init-bind-key)

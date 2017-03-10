@@ -56,174 +56,173 @@ Install node.js and npm. Add them to your path on windows.
 
 #### Selections
 
-* **CTRL + SPACE** Set mark
-* **CTRL + RETURN** Mark region rectangle
-* **CTRL + d** Select word
-* **CTRL + l** Select line
-* **CTRL + a** Select all
-* **CTRL + CLICK** Add cursor
-* **CTRL + SHIFT + a** Add cursor to all like this
-* **CTRL + =** Expand region
-* **CTRL + -** Contract region
+* **CTRL + SPACE:** Set mark
+* **CTRL + RETURN:** Mark region rectangle
+* **CTRL + d:** Select word
+* **CTRL + l:** Select line
+* **CTRL + a:** Select all
+* **CTRL + CLICK:** Add cursor
+* **CTRL + SHIFT + a:** Add cursor to all like this
+* **CTRL + =:** Expand region
+* **CTRL + -:** Contract region
 
 #### Adding lines
 
-* **RETURN** New line
+* **RETURN:** New line
 
 #### Undo/Redo
 
-* **CTRL + z** Undo
-* **CTRL + y** Redo
+* **CTRL + z:** Undo
+* **CTRL + y:** Redo
 
 #### Cut/Copy/Paste
 
-* **CTRL + c** Copy
-* **CTRL + x** Cut
-* **CTRL + v** Paste
-* **CTRL + SHIFT + v** Paste from kill ring
-* **CTRL + k** Kill line
+* **CTRL + c:** Copy
+* **CTRL + x:** Cut
+* **CTRL + SHIFT + x:** Cut line
+* **CTRL + v:** Paste
+* **CTRL + SHIFT + v:** Paste from kill ring
 
 #### Comments
 
-* **CTRL + /** Toggle comment
+* **CTRL + /:** Toggle comment
 
 #### Lines
 
-* **CTRL + SHIFT + d** Duplicate line
-* **CTRL + j** Join line
-* **CTRL + SHIFT + UP** Move line of text up
-* **CTRL + SHIFT + DOWN** Move line of text down
+* **CTRL + SHIFT + d:** Duplicate line
+* **CTRL + j:** Join line
+* **CTRL + SHIFT + UP:** Move line of text up
+* **CTRL + SHIFT + DOWN:** Move line of text down
 
 #### Indentation
 
-* **CTRL + i** Auto indent
+* **CTRL + i:** Auto indent
 
 #### Deletions
 
-* **CTRL + BACKSPACE** Delete word
-* **BACKSPACE** Delete character
+* **CTRL + BACKSPACE:** Delete word
+* **BACKSPACE:** Delete character
 
 #### Casing
 
-* **CTRL + SHIFT + u** Uppercase region
-* **CTRL + SHIFT + l** Lowercase region
+* **CTRL + SHIFT + u:** Uppercase region
+* **CTRL + SHIFT + l:** Lowercase region
 
 #### Structural Editing
 
-* **CTRL + SHIFT + 0** Forward slurp
-* **CTRL + SHIFT + ]** Forward barf
-* **CTRL + SHIFT + 9** Backward slurp
-* **CTRL + SHIFT + [** Backward barf
-* **ALT + SHIFT + 9** Wrap in parentheses
-* **CTRL + SHIFT + RIGHT** Forward sexp
-* **CTRL + SHIFT + LEFT** Backward sexp
-* **CTRL + SHIFT + k** Kill sexp
+* **CTRL + SHIFT + 0:** Forward slurp
+* **CTRL + SHIFT + ]:** Forward barf
+* **CTRL + SHIFT + 9:** Backward slurp
+* **CTRL + SHIFT + [:** Backward barf
+* **ALT + SHIFT + 9:** Wrap in parentheses
+* **CTRL + SHIFT + RIGHT:** Forward sexp
+* **CTRL + SHIFT + LEFT:** Backward sexp
+* **CTRL + SHIFT + k:** Kill sexp
 
 #### Code Folding
 
-* **ALT + RETURN** Toggle code folding
+* **ALT + RETURN:** Toggle code folding
 
 #### Multiple Cursors
 
-* **CTRL + SHFIT + c** Add cursors to lines
-* **CTRL + SHFIT + a** Mark all like this
-* **CTRL + CLICK** Add cursor
+* **CTRL + SHFIT + c:** Add cursors to lines
+* **CTRL + SHFIT + a:** Mark all like this
 
 #### Snippets
 
-* **TAB** Expand snippet
+* **TAB:** Expand snippet
 
 #### Completion
 
-* **UP** Previous candidate
-* **DOWN** Next candidate
-* **ENTER** Select candidate
+* **UP:** Previous candidate
+* **DOWN:** Next candidate
+* **ENTER:** Select candidate
 
 ### General - Navigation
 
 #### Canceling
 
-* **ESCAPE** Cancel
+* **ESCAPE:** Cancel
 
 #### Directional Movement
 
-* **UP** Up line
-* **DOWN** Down line
-* **LEFT** Forward character
-* **RIGHT** Backward character
-* **CTRL + LEFT** Forward symbol
-* **CTRL + RIGHT** Backward symbol
-* **CTRL + UP** Up five lines
-* **CTRL + DOWN** Down five lines
-* **SHIFT + LEFT** Beginning of line
-* **SHIFT + RIGHT** End of line
-* **HOME** Beginning of buffer
-* **END** End of buffer
+* **UP:** Up line
+* **DOWN:** Down line
+* **LEFT:** Forward character
+* **RIGHT:** Backward character
+* **CTRL + LEFT:** Forward symbol
+* **CTRL + RIGHT:** Backward symbol
+* **CTRL + UP:** Up five lines
+* **CTRL + DOWN:** Down five lines
+* **CTRL + HOME:** Beginning of buffer
+* **CTRL + END:** End of buffer
+* **HOME:** Beginning of line
+* **END:** End of line
 
 #### Regex Searching
 
-* **CTRL + f** Regex search
-* **CTRL + SHIFT + f** Regex search in project
-* **CTRL + h** Regex search and replace
+* **CTRL + f:** Regex search
+* **CTRL + SHIFT + f:** Regex search in project
+* **CTRL + h:** Regex search and replace
 
 #### Buffer Switching
 
-* **CTRL + b** Change buffer
+* **CTRL + b:** Change buffer
 
 #### High Level Navigation
 
-* **CTRL + g** Ace search mode
-* **CTRL + SHIFT + g** Go to line
-* **CTRL + p** Go to file in project
-* **CTRL + SHIFT + p** Execute command
+* **CTRL + g:** Ace search mode
+* **CTRL + SHIFT + g:** Go to line
+* **CTRL + p:** Go to file in project
+* **CTRL + SHIFT + p:** Execute command
 
 ### General - Files
 
-* **CTRL + s** Save file
-* **CTRL + o** Open file
-* **CTRL + w** Close file
+* **CTRL + s:** Save file
+* **CTRL + o:** Open file
+* **CTRL + w:** Close file
 
 ### General - Windowing
 
 #### Close Emacs
 
-* **CTRL + SHIFT + w** Close emacs
+* **CTRL + SHIFT + w:** Close emacs
 
 #### Adding and Removing Windows
 
-* **F1** Close other windows
-* **F2** Split window horizontally
-* **F3** Split window vertically
+* **F1:** Close other windows
+* **F2:** Split window horizontally
+* **F3:** Split window vertically
 
 ### Launch Apps Menu
 
-* **CTRL + SHIFT + TAB** Launch apps menu
+* **CTRL + SHIFT + TAB:** Launch apps menu
 
 #### Launch Contextual Menu
 
-* **CTRL + TAB** Launch contextual menu
+* **CTRL + TAB:** Launch contextual menu
 
 ### Clojure - REPL
 
-* **ALT + UP** Last repl command
-* **ALT + DOWN** Previous repl command
+* **ALT + UP:** Last repl command
+* **ALT + DOWN:** Previous repl command
 
 ### Magit - General
 
-* **ALT + c** Commit with the entered commit message
+* **ALT + c:** Commit with the entered commit message
 
 ### Org-mode - Editing
 
-* **ALT + RETURN** Add heading/item
-* **ALT + SHIFT + RETURN** Add todo/checkbox
-* **TAB** Next field in table
-* **SHIFT + TAB** Previous field in table
-* **ALT + LEFT** Demote headline
-* **ALT + RIGHT** Promote headline
-* **ALT + UP** Move item up
-* **ALT + DOWN** Move item down
-* **SHIFT + LEFT** Toggle todo status and toggle list style
-* **SHIFT + RIGHT** Toggle todo status and toggle list style
-* **SHIFT + UP** Toggle todo priority
-* **SHIFT + DOWN** Toggle todo priority
-* **TAB** Toggle visibility
+* **ALT + RETURN:** Add heading/item
+* **ALT + SHIFT + RETURN:** Add todo/checkbox
+* **TAB:** Next field in table
+* **SHIFT + TAB:** Previous field in table
+* **ALT + LEFT:** Demote headline
+* **ALT + RIGHT:** Promote headline
+* **ALT + UP:** Move item up
+* **ALT + DOWN:** Move item down
+* **SHIFT + LEFT:** Toggle todo status and toggle list style
+* **SHIFT + RIGHT:** Toggle todo status and toggle list style
+* **SHIFT + UP:** Toggle todo priority
+* **SHIFT + DOWN:** Toggle todo priority
+* **TAB:** Toggle visibility
