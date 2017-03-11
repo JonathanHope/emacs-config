@@ -15,7 +15,7 @@
    ("C-s" . save-buffer)
 
    ;; Open or create a file.
-   ("C-o" . helm-find-files)
+   ("C-o" . counsel-find-file)
 
    ;; Close the current buffer.
    ("C-w" . kill-this-buffer)
@@ -60,28 +60,31 @@
    ("C-h" . vr-replace-whole-buffer)
 
    ;; Jump to a line in a file.
-   ("C-S-g" . avy-goto-line)
+   ("C-g" . avy-goto-line)
 
    ;; Jump anywhere visible.
-   ("C-g" . avy-goto-char-2)
+   ("C-S-g" . avy-goto-char-2)
+
+   ;; Jump to a function.
+   ("C-r" . imenu)
 
    ;; Open a file in a project.
-   ("C-p" . helm-projectile-find-file)
+   ("C-p" . counsel-projectile)
 
    ;; Change the active buffer for the window.
-   ("C-b" . helm-buffers-list)
+   ("C-b" . ivy-switch-buffer)
 
    ;; Execute any function.
-   ("C-S-p" . helm-M-x)
+   ("C-S-p" . counsel-M-x)
 
    ;; Close all other windows.
-   ("<f1>" . delete-other-windows)
+   ("M-!" . delete-other-windows)
 
    ;; Split the current window horizontally.
-   ("<f2>" . split-window-horizontally)
+   ("M-@" . split-window-horizontally)
 
    ;; Split the current window vertically.
-   ("<f3>" . split-window-vertically)
+   ("M-*" . split-window-vertically)
 
    ;; Toggle the comment status of a line.
    ("C-/" . toggle-comment)

@@ -353,8 +353,7 @@
 ;; Ivy
 (custom-set-faces
  '(ivy-current-match ((t (:background "#343d46" :weight bold))))
- '(ivy-minibuffer-match-face-1 ((t (:underline t))))
- '(ivy-minibuffer-match-face-2 ((t (:underline t))))
- '(ivy-minibuffer-match-face-3 ((t (:underline t))))
- '(ivy-minibuffer-match-face-4 ((t (:underline t))))
- )
+ '(ivy-minibuffer-match-face-1 ((t (:underline t :weight bold))))
+ '(ivy-minibuffer-match-face-2 ((t (:underline t :weight bold))))
+ '(ivy-minibuffer-match-face-3 ((t (:underline t :weight bold))))
+ '(ivy-minibuffer-match-face-4 ((t (:underline t :weight bold)))))

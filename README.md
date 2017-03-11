@@ -171,9 +171,10 @@ Install node.js and npm. Add them to your path on windows.
 
 #### High Level Navigation
 
-* **CTRL + g:** Ace search mode
-* **CTRL + SHIFT + g:** Go to line
+* **CTRL + g:** Go to line
 * **CTRL + p:** Go to file in project
+* **CTRL + r:** Go to function
+* **CTRL + SHIFT + g:** Ace search mode
 * **CTRL + SHIFT + p:** Execute command
 
 ### General - Files

@@ -16,11 +16,6 @@
 
   :config
   (setq helm-display-header-line nil)
-  (setq helm-mode-line-string "")
-
-
-  (helm-mode 1)
-  (helm-flx-mode 1)
-  (helm-fuzzier-mode 1))
+  (setq helm-mode-line-string ""))
 
 (provide 'init-helm)

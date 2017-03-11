@@ -1,3 +1,4 @@
 * TODO Can I use prettify predicates to theme tables?
-* TODO Will polymode ever be stable enought to use?
-* TODO Will swiper ever be performant?
+* TODO Will polymode ever be stable enought to use? Would be nice to use instead of web-mode.
+* TODO Will swiper ever be performant? Would be nice to remove helm entirely.
+* TODO Will counsel-ag ever be performant? Would be nice to remove helm entirely.
