@@ -1,6 +1,7 @@
 ;; Package configuration for org-mode.
 
 (use-package org
+  :ensure org-plus-contrib
   :defer t
   :mode (("\\.org$" . org-mode))
 
@@ -53,9 +54,11 @@
               (push '("***" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
               (push '("****" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
               (push '("*****" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
-              (push '("******" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist))))
+              (push '("******" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)))
 
-(add-hook 'org-mode-hook (lambda ()
-                           (visual-line-mode t)))
+  (add-hook 'org-mode-hook (lambda ()
+                             (visual-line-mode t)))
+
+  (require 'ox-confluence))
 
 (provide 'init-org-mode)

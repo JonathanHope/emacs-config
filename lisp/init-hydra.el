@@ -1,3 +1,4 @@
+
 ;; Package configuration for hydra.
 
 (use-package hydra
@@ -14,12 +15,19 @@
     ("s" eshell "Shell")
     ("l" flyspell-mode "Spell check")
     ("r" rainbow-mode "Rainbow mode")
-    ("t" sort-lines "Sort lines")
-    ("e" describe-mode "Describe mode")
+    ("h" (progn
+           (apps-hydra-describe/body)
+           (hydra-push '(apps-hydra/body))) "Describe")
+    ("q" nil "Exit"))
+
+  (defhydra apps-hydra-describe (:color blue :columns 4)
+    "Org-mode todo"
+    ("m" describe-mode "Describe mode")
     ("f" counsel-describe-function "Describe function")
     ("k" counsel-descbinds "Describe key")
     ("v" counsel-describe-variable "Describe variable")
-    ("q" nil "Exit"))
+    ("a" counsel-faces "Describe face")
+    ("q" hydra-pop "Exit"))
 
   ;; Org-mode Hydras
 
@@ -58,10 +66,13 @@
     ("t" (progn
            (org-hydra-todo/body)
            (hydra-push '(org-hydra-top/body))) "Todo")
+    ("u" counsel-outline "Outline")
     ("v" (progn
            (org-hydra-visibility/body)
            (hydra-push '(org-hydra-top/body))) "Visibility")
-    ("x" org-export-dispatch "Export file")
+    ("x" (progn
+           (org-hydra-export/body)
+           (hydra-push '(org-hydra-top/body))) "Export")
     ("q" hydra-pop "Exit"))
 
   ;; Hydra for org-mode todo related items.
@@ -155,6 +166,14 @@
     "Org-mode source"
     ("e" org-edit-src-code "Edit source")
     ("n" org-insert-src-block "New source")
+    ("q" hydra-pop "Exit"))
+
+  ;; Hydra for source related items.
+  (defhydra org-hydra-export (:color blue :columns 4)
+    "Org-mode source"
+    ("c" org-confluence-export-as-confluence "Export as confluence")
+    ("h" org-html-export-as-html "Export as html")
+    ("l" org-latex-export-as-latex "Export as LaTeX")
     ("q" hydra-pop "Exit"))
 
   ;; Clojure Hydra
@@ -304,20 +323,18 @@
     (impatient-mode)
     (shell-command-to-string "start http://localhost:8080/imp/"))
 
-  (setq org-insert-src-block-helm-source
-        '((name . "Source block language")
-          (candidates . ("emacs-lisp"  "C" "sh" "js" "clojure" "C++" "css" "csharp"))
-          (action . (lambda (src-code-type)
-                      (progn
-                        (newline-and-indent)
-                        (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-                        (newline-and-indent)
-                        (insert "#+END_SRC\n")
-                        (previous-line 2)
-                        (org-edit-src-code))))))
-
   (defun org-insert-src-block ()
-    (interactive
-     (helm :sources '(org-insert-src-block-helm-source)))))
+    (interactive)
+    (ivy-read "Source  block language: "
+              '("emacs-lisp"  "C" "sh" "js" "clojure" "C++" "css" "csharp")
+              :require-match t
+              :sort t
+              :action (lambda (src-code-type)
+                        (progn
+                          (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+                          (newline-and-indent)
+                          (insert "#+END_SRC\n")
+                          (previous-line 2)
+                          (org-edit-src-code))))))
 
 (provide 'init-hydra)

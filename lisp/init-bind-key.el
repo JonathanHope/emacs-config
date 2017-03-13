@@ -169,7 +169,10 @@
    ("C-<home>". beginning-of-buffer)
 
    ;; Move to beginning of buffer.
-   ("C-<end>". end-of-buffer))
+   ("C-<end>". end-of-buffer)
+
+   ;; Sort lines.
+   ("<f9>" . sort-lines))
 
   (defun duplicate-line()
     "Duplicate the current line."
@@ -199,6 +202,7 @@
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           ((active-minibuffer-window) (keyboard-escape-quit))
           ((bound-and-true-p org-src-mode) (org-edit-src-exit))
+          ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))
           (t (keyboard-quit))))
 
   (defun up-five ()
