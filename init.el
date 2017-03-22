@@ -46,6 +46,7 @@
 (require 'init-flx)
 (require 'init-helm)
 (require 'init-helm-swoop)
+(require 'init-helm-projectile)
 (require 'init-helm-ag)
 (require 'init-ivy)
 (require 'init-counsel)

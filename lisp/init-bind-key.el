@@ -69,7 +69,7 @@
    ("C-r" . imenu)
 
    ;; Open a file in a project.
-   ("C-p" . counsel-projectile)
+   ("C-p" . counsel-projectile-find-file)
 
    ;; Change the active buffer for the window.
    ("C-b" . ivy-switch-buffer)

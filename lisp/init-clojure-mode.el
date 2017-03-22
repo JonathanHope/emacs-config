@@ -13,7 +13,6 @@
         ("<return>". newline-and-indent))
 
   :config
-
   ;; Even more syntax highlighting in clojure mode.
   (require 'clojure-mode-extra-font-locking))
 

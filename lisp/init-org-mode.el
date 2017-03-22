@@ -22,7 +22,21 @@
   ;; Change ellipsis to something else.
   (setq org-ellipsis " …")
 
-  (setq org-src-fontify-natively t)
+  ;; Source code highlighting in source blocks.
+  (setq org-src-fontify-natively t
+        org-confirm-babel-evaluate nil)
+
+  ;; Allow fontification through markup characters.
+  (setq org-hide-emphasis-markers t)
+
+  ;; Supported org babel languages.
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((clojure . t)))
+
+  ;; Configure clojure babel support.
+  (require 'ob-clojure)
+  (setq org-babel-clojure-backend 'cider)
 
   ;; Substitute a wide variety of characters for prettier characters.
   (add-hook 'org-mode-hook

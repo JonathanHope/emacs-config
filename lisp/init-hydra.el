@@ -166,6 +166,8 @@
     "Org-mode source"
     ("e" org-edit-src-code "Edit source")
     ("n" org-insert-src-block "New source")
+    ("x" org-babel-execute-src-block "Execute source")
+    ("c" cider-jack-in "Start Clojure backend")
     ("q" hydra-pop "Exit"))
 
   ;; Hydra for source related items.
@@ -191,13 +193,6 @@
     "Markdown"
     ("k" livedown-kill "End Live Preview")
     ("l" livedown-preview "Live Preview")
-    ("q" nil "Exit"))
-
-  ;; SQL Hydra
-  (defhydra sql-hydra (:color blue :columns 4)
-    "Microsoft SQL Server"
-    ("b" sql-send-buffer-ss "Load buffer in REPL")
-    ("s" start-sql-ss "Connect to Database")
     ("q" nil "Exit"))
 
   ;; Javascript Hydra
@@ -272,26 +267,6 @@
     (magit-status)
     (delete-other-windows))
 
-  (defun sql-add-newline-fi rst (output)
-         "Add two new lines to ths tart of comint output."
-         (remove-hook 'comint-preoutput-filter-functions
-                      'sql-add-newline-first)
-         (concat "\n\n" output))
-
-  (defun sql-send-buffer-ss ()
-    "Sends a buffer to Microsft SQL Server interpreter. Removes line breaks and adds the end of query identifier."
-    (interactive)
-    (add-hook 'comint-preoutput-filter-functions 'sql-add-newline-first)
-    (let ((sql-str (buffer-substring-no-properties (point-min) (point-max))))
-      (let ((sql-str-flattened (concat (replace-regexp-in-string "\n" " " sql-str t t) " SENDQUERY")))
-        (sql-send-string sql-str-flattened))))
-
-  (defun start-sql-ss ()
-    "Connect to a Microsoft SQL Server database."
-    (interactive)
-    (sql-ss)
-    (select-window-1))
-
   (defun launch-elisp-repl ()
     "Launch an elisp REPL."
     (interactive)
@@ -331,7 +306,7 @@
               :sort t
               :action (lambda (src-code-type)
                         (progn
-                          (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+                          (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
                           (newline-and-indent)
                           (insert "#+END_SRC\n")
                           (previous-line 2)

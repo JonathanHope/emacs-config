@@ -54,7 +54,7 @@
  ;; Emacs interface
  '(cursor              ((t (:foreground "#8fa1b3" :background "#a3c6d0"))))
  '(fringe              ((t (:background "#343d46"))))
- '(linum               ((t (:foreground "#65737e" :background "#343d46"))))
+ '(linum               ((t (:foreground "#65737e" :background "#2b303b"))))
  '(hl-line             ((t (:background "#343d46"))))
  '(border              ((t (:background "#343d46"))))
  '(border-glyph        ((t (:background "#343d46"))))
@@ -206,6 +206,7 @@
  '(org-level-5             ((t (:foreground "#a3be8c" :weight bold))))
  '(org-level-6             ((t (:foreground "#a3be8c" :weight bold))))
  '(org-tag                 ((t (:foreground "#ebcb8b" :weight bold))))
+ '(org-block               ((t (:foreground "#eff1f5"))))
 
 
  ;; Flyspell

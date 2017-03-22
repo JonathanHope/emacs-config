@@ -132,6 +132,9 @@
   ;; Change the frame title to show the buffer name.
   (setq frame-title-format "%b - Emacs")
 
+  ;; Don't track recent files.
+  (recentf-mode -1)
+
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
