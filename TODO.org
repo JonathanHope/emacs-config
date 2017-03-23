@@ -2,6 +2,5 @@
 * TODO Will polymode ever be stable enought to use? Would be nice to use instead of web-mode.
 * TODO Will swiper ever be performant? Would be nice to remove helm entirely.
 * TODO Will counsel-ag ever be performant? Would be nice to remove helm entirely.
-* TODO Pressing C-p in a directory that is not a project adds all files to the project. How to preven this.
-* TODO Syntax highlighting is off on clojure blocks in org documents.
+* TODO Pressing C-p in a directory that is not a project adds all files to the project. How to prevent this.
 * TODO How to override current ob-clojure file with newer one.

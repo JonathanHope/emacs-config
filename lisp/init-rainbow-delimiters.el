@@ -1,3 +1,5 @@
+;; Package configuration for rainbow delimiters.
+
 (use-package rainbow-delimiters
   :ensure t
   :defer t

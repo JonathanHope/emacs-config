@@ -3,6 +3,7 @@
 (use-package org
   :ensure org-plus-contrib
   :defer t
+
   :mode (("\\.org$" . org-mode))
 
   :bind
@@ -73,6 +74,7 @@
   (add-hook 'org-mode-hook (lambda ()
                              (visual-line-mode t)))
 
+  ;; Support for confluence exporting.
   (require 'ox-confluence))
 
 (provide 'init-org-mode)

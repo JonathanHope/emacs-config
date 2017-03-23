@@ -1,8 +1,10 @@
+;; Package configuration for cider
+
 (use-package cider
 	:ensure t
   :defer t
 
-  :bind 
+  :bind
   (:map cider-repl-mode-map
         ("M-<up>" . cider-repl-backward-input)
         ("M-<down>" . cider-repl-forward-input))

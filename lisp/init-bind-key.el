@@ -11,6 +11,9 @@
    ;; Cancel with one press of escape instead of three. Also cancel out of many different interfaces.
    ("<escape>" . keyboard-quit-all)
 
+   ;; Quit an org source buffer if open.
+   ("M-<escape>" . quit-org-source)
+
    ;; Save the current file.
    ("C-s" . save-buffer)
 
@@ -59,11 +62,14 @@
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
 
-   ;; Jump to a line in a file.
-   ("C-g" . avy-goto-line)
+   ;; Jump to a line in a file file number.
+   ("C-g" . goto-line)
+
+   ;; Jump to a line in a file visually.
+   ("M-g" . avy-goto-line)
 
    ;; Jump anywhere visible.
-   ("C-S-g" . avy-goto-char-2)
+   ("M-G" . avy-goto-char-2)
 
    ;; Jump to a function.
    ("C-r" . imenu)
@@ -201,9 +207,12 @@
           ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           ((active-minibuffer-window) (keyboard-escape-quit))
-          ((bound-and-true-p org-src-mode) (org-edit-src-exit))
           ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))
           (t (keyboard-quit))))
+
+  (defun quit-org-source ()
+    (interactive)
+    (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))))
 
   (defun up-five ()
     "Move up five lines."

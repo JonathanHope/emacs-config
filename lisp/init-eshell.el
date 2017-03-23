@@ -3,9 +3,8 @@
 (use-package "eshell"
   :defer t
   :commands (eshell)
-  
-  
-  :config 
+
+  :config
   (setq eshell-prompt-function
         (lambda nil
           (concat

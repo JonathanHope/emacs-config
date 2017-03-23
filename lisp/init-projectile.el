@@ -2,6 +2,7 @@
 
 (use-package projectile
   :ensure t
+
   :diminish projectile-mode
 
   :config

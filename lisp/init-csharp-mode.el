@@ -1,8 +1,8 @@
 ;; Package configuration for csharp-mode
 
 (use-package csharp-mode
-  :defer t
   :ensure t
+  :defer t
 
   :mode
   (("\\.cs$" . csharp-mode))

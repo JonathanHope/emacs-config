@@ -1,8 +1,8 @@
-
 ;; Package configuration for hydra.
 
 (use-package hydra
   :ensure t
+  :defer t
 
   :config
   ;; Apps Hydra

@@ -1,4 +1,4 @@
-;; Package configuration for dired.
+;; Package configuration for golden-ratio.
 
 (use-package golden-ratio
   :ensure t

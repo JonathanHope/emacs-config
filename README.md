@@ -10,7 +10,7 @@ This is my Emacs configuration. The keyboard shortcuts have been remapped to mor
 
 ## Supported Languages
 
-Emacs Lisp, Clojure, HTML, CSS, JavaScript, XML, JSON.
+Emacs Lisp, Clojure, HTML, CSS, JavaScript, XML, JSON, Markdown, EBNF Grammars.
 
 ## Installation
 
@@ -174,7 +174,8 @@ Install node.js and npm. Add them to your path on windows.
 * **CTRL + g:** Go to line
 * **CTRL + p:** Go to file in project
 * **CTRL + r:** Go to function
-* **CTRL + SHIFT + g:** Ace search mode
+* **ALT + g:** Avy jump to line
+* **ALT + SHIFT + g:** Avy jump to chars
 * **CTRL + SHIFT + p:** Execute command
 
 ### General - Files
@@ -227,3 +228,4 @@ Install node.js and npm. Add them to your path on windows.
 * **SHIFT + UP:** Toggle todo priority
 * **SHIFT + DOWN:** Toggle todo priority
 * **TAB:** Toggle visibility
+* **SHIFT + ESC:** Exit source editing

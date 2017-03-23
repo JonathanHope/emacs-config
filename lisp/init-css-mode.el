@@ -1,9 +1,10 @@
 ;; Package configuration for css mode.
 
 (use-package css-mode
+  :defer t
 
   :mode (("\\.css$" . css-mode))
-  
+
   :bind
   (:map css-mode-map
         ("<return>". newline-and-indent))

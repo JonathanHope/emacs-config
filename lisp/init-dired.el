@@ -1,7 +1,9 @@
 ;; Package configuration for dired.
 
 (use-package "dired"
-  :bind 
+  :defer t
+
+  :bind
   (:map dired-mode-map
         ("?" . dired-hydra/body)))
 

@@ -1,9 +1,7 @@
-;; Package configuration for helm-flyspell.
+;; Package configuration for flyspell.
 
-(use-package flyspell  
-  :bind
-  (:map flyspell-mode-map
-        ("C-;" . helm-flyspell-correct))
+(use-package flyspell
+  :defer t
 
   :init
   (add-hook 'flyspell-mode-hook 'flyspell-buffer))

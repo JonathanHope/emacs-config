@@ -1,8 +1,11 @@
+;; Package configuration for aggressive-indent.
+
 (use-package aggressive-indent
   :ensure t
+  :defer t
   :diminish aggressive-indent-mode
 
-  :config
+  :init
   (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
   (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
   (add-hook 'js-mode-hook 'aggressive-indent-mode)

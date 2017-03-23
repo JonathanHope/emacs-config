@@ -1,7 +1,9 @@
+;; Package configuration for js.
+
 (use-package js
   :defer t
-  
-  :mode 
+
+  :mode
   (("\\.js$" . js-mode)
    ("\\.json$" . js-mode))
 
@@ -12,6 +14,5 @@
 
   :init
   (setq js-indent-level 2))
-
 
 (provide 'init-js-mode)

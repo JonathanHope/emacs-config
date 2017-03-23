@@ -3,7 +3,7 @@
 (use-package pcre2el
   :ensure t
 
-  :config
+  :init
   (defun vr-replace-whole-buffer ()
     (interactive)
     (save-excursion
@@ -12,6 +12,9 @@
 
 (use-package visual-regexp-steroids
   :ensure t
+  :defer t
+
+  :commands (vr-replace-whole-buffer)
 
   :config
   (setq vr/engine 'pcre2el))

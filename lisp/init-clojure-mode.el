@@ -5,6 +5,7 @@
 (use-package clojure-mode
   :ensure t
   :defer t
+
   :mode (("\\.clj$" . clojure-mode))
 
   :bind
