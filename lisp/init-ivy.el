@@ -21,7 +21,8 @@
           (counsel-describe-variable . ivy--regex-fuzzy)
           (counsel-describe-function . ivy--regex-fuzzy)
           (ivy-switch-buffer . ivy--regex-fuzzy)
-          (counsel-projectile . ivy--regex-fuzzy)
+          (counsel-projectile-find-file . ivy--regex-fuzzy)
+          (counsel-find-file-name . ivy--regex-fuzzy)
           (t . ivy--regex-plus))))
 
 (provide 'init-ivy)

@@ -71,6 +71,7 @@
 (require 'init-shackle)
 (require 'init-iedit)
 (require 'init-dumb-jump)
+(require 'init-flyspell-correct)
 
 ;; Org file support.
 (require 'init-org-mode)

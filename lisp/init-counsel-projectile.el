@@ -2,9 +2,9 @@
 
 (use-package counsel-projectile
   :ensure t
-  :defer t
 
   :config
-  (setq projectile-switch-project-action 'counsel-projectile-find-file-or-buffer))
+  ;;(setq projectile-switch-project-action 'counsel-projectile-find-file-or-buffer)
+  )
 
 (provide 'init-counsel-projectile)

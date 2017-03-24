@@ -165,6 +165,6 @@
           nil)))
 
     (setq default-directory notes-directory)
-    (org-mode)))
+    (text-mode)))
 
 (provide 'init-emacs)

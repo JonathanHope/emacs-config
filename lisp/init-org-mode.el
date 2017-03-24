@@ -39,6 +39,12 @@
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
 
+  ;; Enable inline images for org.
+  (defun turn-on-org-show-all-inline-images ()
+    (org-display-inline-images t t))
+
+  (add-hook 'org-mode-hook 'turn-on-org-show-all-inline-images)
+
   ;; Substitute a wide variety of characters for prettier characters.
   (add-hook 'org-mode-hook
             (lambda ()

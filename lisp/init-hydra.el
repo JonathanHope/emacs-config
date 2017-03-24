@@ -34,13 +34,18 @@
   ;; Top org-mode hydra, serves as a launcher for other hydras.
   (defhydra org-hydra-top (:color blue :columns 4)
     "Org-mode"
-    ("a" org-agenda "Agenda")
+    ("a" (progn
+           (org-hydra-agenda/body)
+           (hydra-push '(org-hydra-top/body))) "Agenda")
     ("b" (progn
            (org-hydra-tables/body)
            (hydra-push '(org-hydra-top/body))) "Table")
     ("c" (progn
            (org-hydra-checkbox/body)
            (hydra-push '(org-hydra-top/body))) "Checkbox")
+    ("d" (progn
+           (org-hydra-drawer/body)
+           (hydra-push '(org-hydra-top/body))) "Drawer")
     ("e" org-attach "Attach file")
     ("f" (progn
            (org-hydra-footnotes/body)
@@ -48,6 +53,9 @@
     ("g" (progn
            (org-hydra-tags/body)
            (hydra-push '(org-hydra-top/body))) "Tag")
+    ("i" (progn
+           (org-hydra-priority/body)
+           (hydra-push '(org-hydra-top/body))) "Priority")
     ("l" (progn
            (org-hydra-link/body)
            (hydra-push '(org-hydra-top/body))) "Link")
@@ -87,10 +95,18 @@
     ("u" org-do-promote "Promote todo")
     ("q" hydra-pop "Exit"))
 
+  ;; Hydra for org-mode agenda related items.
+  (defhydra org-hydra-agenda (:color blue :columns 4)
+    "Org-mode agenda"
+    ("t" org-todo-list "TODO List")
+    ("g" org-tags-list "Tags List")
+    ("q" hydra-pop "Exit"))
+
   ;; Hydra for org-mode link related items.
   (defhydra org-hydra-link (:color blue :columns 4)
     "Org-mode link"
     ("n" org-insert-link "New link")
+    ("f" org-insert-file-link "New file link")
     ("o" org-open-at-point "Open link")
     ("q" hydra-pop "Exit"))
 
@@ -161,7 +177,7 @@
     ("t" org-clock-report "Generate Report")
     ("q" hydra-pop "Exit"))
 
-  ;; Hydra for source related items.
+  ;; Hydra for org-mode source related items.
   (defhydra org-hydra-source (:color blue :columns 4)
     "Org-mode source"
     ("e" org-edit-src-code "Edit source")
@@ -170,12 +186,26 @@
     ("c" cider-jack-in "Start Clojure backend")
     ("q" hydra-pop "Exit"))
 
-  ;; Hydra for source related items.
+  ;; Hydra for org-mode export related items.
   (defhydra org-hydra-export (:color blue :columns 4)
     "Org-mode source"
     ("c" org-confluence-export-as-confluence "Export as confluence")
     ("h" org-html-export-as-html "Export as html")
     ("l" org-latex-export-as-latex "Export as LaTeX")
+    ("q" hydra-pop "Exit"))
+
+  ;; Hydra for org-mode priority related items.
+  (defhydra org-hydra-priority (:color blue :columns 4)
+    "Org-mode priority"
+    ("s" org-priority "Set priority")
+    ("u" org-priority-up "Priority up")
+    ("d" org-priority-down "Priority down")
+    ("q" hydra-pop "Exit"))
+
+  ;; Hydra for org-mode drawer related items.
+  (defhydra org-hydra-drawer (:color blue :columns 4)
+    "Org-mode drawers"
+    ("n" org-insert-drawer "Org insert drawer")
     ("q" hydra-pop "Exit"))
 
   ;; Clojure Hydra
@@ -301,7 +331,7 @@
   (defun org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("emacs-lisp"  "C" "sh" "js" "clojure" "C++" "css" "csharp")
+              '("clojure" "csharp")
               :require-match t
               :sort t
               :action (lambda (src-code-type)
@@ -310,6 +340,18 @@
                           (newline-and-indent)
                           (insert "#+END_SRC\n")
                           (previous-line 2)
-                          (org-edit-src-code))))))
+                          (org-edit-src-code)))))
+
+  (defun org-insert-file-link ()
+    (interactive)
+    (ivy-read "File: "
+              'read-file-name-internal
+              :matcher #'counsel--find-file-matcher
+              :require-match t
+              :sort t
+              :action (lambda (file-name)
+                        (progn
+                          (insert (format "[[file:%s]]" file-name))
+                          (org-redisplay-inline-images))))))
 
 (provide 'init-hydra)
