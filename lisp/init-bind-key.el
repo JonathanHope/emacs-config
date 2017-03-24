@@ -178,7 +178,10 @@
    ("C-<end>". end-of-buffer)
 
    ;; Sort lines.
-   ("<f9>" . sort-lines))
+   ("<f9>" . sort-lines)
+
+   ;; Jump to definition.
+   ("<f12>" . dumb-jump-go))
 
   (defun duplicate-line()
     "Duplicate the current line."

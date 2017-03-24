@@ -70,6 +70,7 @@
 (require 'init-highlight-numbers)
 (require 'init-shackle)
 (require 'init-iedit)
+(require 'init-dumb-jump)
 
 ;; Org file support.
 (require 'init-org-mode)
