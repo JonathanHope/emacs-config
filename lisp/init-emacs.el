@@ -135,6 +135,9 @@
   ;; Don't track recent files.
   (recentf-mode -1)
 
+  ;; Disable shift to select.
+  (setq shift-select-mode nil)
+
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
@@ -165,6 +168,12 @@
           nil)))
 
     (setq default-directory notes-directory)
-    (text-mode)))
+    (text-mode))
+
+  (defun what-face (pos)
+    (interactive "d")
+    (let ((face (or (get-char-property (point) 'read-face-name)
+                    (get-char-property (point) 'face))))
+      (if face (message "Face: %s" face) (message "No face at %d" pos)))))
 
 (provide 'init-emacs)

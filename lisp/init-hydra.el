@@ -74,7 +74,6 @@
     ("t" (progn
            (org-hydra-todo/body)
            (hydra-push '(org-hydra-top/body))) "Todo")
-    ("u" counsel-outline "Outline")
     ("v" (progn
            (org-hydra-visibility/body)
            (hydra-push '(org-hydra-top/body))) "Visibility")
@@ -100,6 +99,7 @@
     "Org-mode agenda"
     ("t" org-todo-list "TODO List")
     ("g" org-tags-list "Tags List")
+    ("h" counsel-org-agenda-headlines "Headline List")
     ("q" hydra-pop "Exit"))
 
   ;; Hydra for org-mode link related items.
@@ -331,7 +331,7 @@
   (defun org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("clojure" "csharp")
+              '("clojure" "csharp" "sql" "restclient")
               :require-match t
               :sort t
               :action (lambda (src-code-type)

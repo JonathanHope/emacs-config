@@ -18,7 +18,13 @@
   (setq org-startup-folded 0)
 
   ;; Set the folder the notes are kept in.
-  (setq org-agenda-files (list notes-directory))
+  (require 'f)
+  (require 's)
+  (setq org-agenda-files (setq org-agenda-files
+                               (f-entries "~/Notes/"
+                                          (lambda (filename)
+                                            (s-ends-with-p ".org" filename))
+                                          t)))
 
   ;; Change ellipsis to something else.
   (setq org-ellipsis " …")
@@ -30,14 +36,21 @@
   ;; Allow fontification through markup characters.
   (setq org-hide-emphasis-markers t)
 
+  ;; Don't change indentation of source code. Just bring it over as is.
+  (setq org-src-preserve-indentation t)
+
   ;; Supported org babel languages.
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((clojure . t)))
+   '((clojure . t)
+     (restclient . t)))
 
   ;; Configure clojure babel support.
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
+
+  ;; Configure restclient babel support.
+  (require 'ob-restclient)
 
   ;; Enable inline images for org.
   (defun turn-on-org-show-all-inline-images ()
@@ -76,9 +89,6 @@
               (push '("****" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
               (push '("*****" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)
               (push '("******" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)))
-
-  (add-hook 'org-mode-hook (lambda ()
-                             (visual-line-mode t)))
 
   ;; Support for confluence exporting.
   (require 'ox-confluence))

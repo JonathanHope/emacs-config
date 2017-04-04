@@ -52,10 +52,10 @@
  '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold))))
 
  ;; Emacs interface
- '(cursor              ((t (:foreground "#8fa1b3" :background "#a3c6d0"))))
+ '(cursor              ((t (:foreground "#eff1f5" :background "#a3c6d0"))))
  '(fringe              ((t (:background "#343d46"))))
  '(linum               ((t (:foreground "#65737e" :background "#2b303b"))))
- '(hl-line             ((t (:background "#343d46"))))
+ '(hl-line             ((t (:background "#4f5b66"))))
  '(border              ((t (:background "#343d46"))))
  '(border-glyph        ((t (:background "#343d46"))))
  '(highlight           ((t (:foreground "#2b303b" :background "#8fa1b3"))))
@@ -207,6 +207,8 @@
  '(org-level-6             ((t (:foreground "#a3be8c" :weight bold))))
  '(org-tag                 ((t (:foreground "#ebcb8b" :weight bold))))
  '(org-block               ((t (:foreground "#eff1f5"))))
+ '(org-block-begin-line    ((t (:background "#343d46" :foreground "#c0c5ce" :weight bold))))
+ '(org-block-end-line      ((t (:background "#343d46" :foreground "#c0c5ce" :weight bold))))
 
 
  ;; Flyspell
@@ -243,7 +245,7 @@
  '(helm-ff-invalid-symlink ((t nil)))
  '(helm-ff-prefix ((t nil)))
  '(helm-ff-symlink ((t (:foreground "#AA7961"))))
- '(helm-grep-match ((t (:foreground "#AA7961"))))
+ '(helm-grep-match ((t (:foreground "#AA7961" :weight bold))))
  '(helm-grep-file ((t (:foreground "#7FB37B"))))
  '(helm-grep-lineno ((t (:foreground "#ebcb8b"))))
  '(helm-grep-colno ((t (:foreground "#ebcb8b"))))

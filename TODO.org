@@ -1,6 +1,4 @@
 * TODO Can I use prettify predicates to theme tables?
 * TODO Will polymode ever be stable enought to use? Would be nice to use instead of web-mode.
-* TODO Will swiper ever be performant? Would be nice to remove helm entirely.
-* TODO Will counsel-ag ever be performant? Would be nice to remove helm entirely.
 * TODO Pressing C-p in a directory that is not a project adds all files to the project. How to prevent this.
-* TODO How to override current ob-clojure file with newer one.
+* TODO When will the new org mode come out so I don't have to manually replace ob-clojue?

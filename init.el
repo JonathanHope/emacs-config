@@ -44,10 +44,6 @@
 (require 'init-undo-tree)
 (require 'init-async)
 (require 'init-flx)
-(require 'init-helm)
-(require 'init-helm-swoop)
-(require 'init-helm-projectile)
-(require 'init-helm-ag)
 (require 'init-ivy)
 (require 'init-counsel)
 (require 'init-counsel-projectile)
@@ -115,6 +111,9 @@
 
 ;; EBNF support.
 (require 'init-ebnf-mode)
+
+;; Restclient support.
+(require 'init-restclient)
 
 ;; Run the startup function.
 (startup)

@@ -12,7 +12,7 @@
    ("<escape>" . keyboard-quit-all)
 
    ;; Quit an org source buffer if open.
-   ("M-<escape>" . quit-org-source)
+   ("S-<escape>" . quit-org-source)
 
    ;; Save the current file.
    ("C-s" . save-buffer)
@@ -48,10 +48,10 @@
    ("C-S-v" . yank)
 
    ;; Regex search in a file.
-   ("C-f" . helm-swoop)
+   ("C-f" . swiper)
 
    ;; Regex search in a project.
-   ("C-S-f" . helm-projectile-ag)
+   ("C-S-f" . counsel-projectile-ag)
 
    ;; Regex search file quickly without follow.
    ("M-f" . helm-do-ag-this-file)
@@ -181,7 +181,19 @@
    ("<f9>" . sort-lines)
 
    ;; Jump to definition.
-   ("<f12>" . dumb-jump-go))
+   ("<f12>" . dumb-jump-go)
+
+   ;; Move to beginning of line.
+   ("S-<left>" . beginning-of-line)
+
+   ;; Move to end of line.
+   ("S-<right>" . end-of-line)
+
+   ;; Move to beginning of buffer.
+   ("<home>" . beginning-of-buffer)
+
+   ;; Move to end of buffer.
+   ("<end>" . end-of-buffer))
 
   (defun duplicate-line()
     "Duplicate the current line."
