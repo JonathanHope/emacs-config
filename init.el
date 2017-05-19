@@ -37,36 +37,85 @@
 (setq projects-directory "~/Projects/")
 
 ;; Core
-(require 'init-projectile)
+
+;; Non-package related emacs config.
 (require 'init-emacs)
+
+;; Setting up the mode-line.
 (require 'init-mode-line)
+
+;; Support for projects.
+(require 'init-projectile)
+
+;; Setting up top level keybindings
+;; I prefer CUA style bindings.
 (require 'init-bind-key)
-(require 'init-undo-tree)
+
+;; Completion.
+;; Most things should have fuzzy completion in a minibuffer.
 (require 'init-async)
 (require 'init-flx)
 (require 'init-ivy)
 (require 'init-counsel)
 (require 'init-counsel-projectile)
 (require 'init-expand-region)
-(require 'init-avy)
-(require 'init-winum)
-(require 'init-rainbow-mode)
-(require 'init-hydra)
 (require 'init-company)
-(require 'init-rainbow-delimiters)
-(require 'init-smartparens)
-(require 'init-simpleclip)
-(require 'init-yasnippet)
+
+;; More intuitive undo and redo behavior.
+(require 'init-undo-tree)
+
+;; A more intuitive window management solution.
+;; Numbers windows for easy window changing.
+;; The currently focused window will always be the largest.
+(require 'init-winum)
 (require 'init-golden-ratio)
-(require 'init-visual-regexp)
-(require 'init-yafolding)
-(require 'init-move-text)
-(require 'init-flyspell)
-(require 'init-aggressive-indent)
-(require 'init-highlight-numbers)
 (require 'init-shackle)
+
+;; A way to move around in the current page of the buffer without a mouse.
+(require 'init-avy)
+
+;; Simple keyboard driven popup menus.
+(require 'init-hydra)
+
+;; Structural editing everywhere.
+(require 'init-smartparens)
+
+;; Better integration with system clipboards.
+(require 'init-simpleclip)
+
+;; Snippet expansion.
+(require 'init-yasnippet)
+
+;; More intuitive regexp replace.
+(require 'init-visual-regexp)
+
+;; Generic code folding solution.
+(require 'init-yafolding)
+
+;; A way to move lines or selected text around.
+(require 'init-move-text)
+
+;; Enforce constant indentation correction.
+(require 'init-aggressive-indent)
+
+;; Quckly jump between functions in a buffer.
 (require 'init-iedit)
+
+;; Jump to the definition of things.
 (require 'init-dumb-jump)
+
+;; Special syntax highlighting.
+(require 'init-rainbow-delimiters)
+(require 'init-highlight-numbers)
+(require 'init-color-identifiers-mode)
+
+;; Modes
+
+;; Show the color of color codes as a background color.
+(require 'init-rainbow-mode)
+
+;; Spell checking.
+(require 'init-flyspell)
 (require 'init-flyspell-correct)
 
 ;; Org file support.

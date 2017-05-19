@@ -51,13 +51,7 @@
    ("C-f" . swiper)
 
    ;; Regex search in a project.
-   ("C-S-f" . counsel-projectile-ag)
-
-   ;; Regex search file quickly without follow.
-   ("M-f" . helm-do-ag-this-file)
-
-   ;; Regex search buffers.
-   ("M-F" . helm-do-ag-buffers)
+   ("C-S-f" . my-counsel-projectile-ag)
 
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)

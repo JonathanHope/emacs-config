@@ -33,24 +33,6 @@
  '(outline-7 ((t (:foreground "#d08770"))))
  '(outline-8 ((t (:foreground "#b48ead"))))
 
- ;; Font-lock stuff
- '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
- '(font-lock-comment-delimiter-face    ((t (:foreground "#a7adba" :slant italic))))
- '(font-lock-comment-face              ((t (:foreground "#a7adba" :slant italic))))
- '(font-lock-constant-face             ((t (:foreground "#96b5b4"))))
- '(font-lock-doc-face                  ((t (:foreground "#a7adba"))))
- '(font-lock-doc-string-face           ((t (:foreground "#ebcb8b"))))
- '(font-lock-function-name-face        ((t (:foreground "#8fa1b3"))))
- '(font-lock-keyword-face              ((t (:foreground "#b48ead"))))
- '(font-lock-negation-char-face        ((t (:foreground "#a3be8c"))))
- '(font-lock-preprocessor-face         ((t (:foreground "#b48ead"))))
- '(font-lock-regexp-grouping-backslash ((t (:foreground "#ebcb8b"))))
- '(font-lock-regexp-grouping-construct ((t (:foreground "#b48ead"))))
- '(font-lock-string-face               ((t (:foreground "#a3be8c"))))
- '(font-lock-type-face                 ((t (:foreground "#ebcb8b"))))
- '(font-lock-variable-name-face        ((t (:foreground "#d08770"))))
- '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold))))
-
  ;; Emacs interface
  '(cursor              ((t (:foreground "#eff1f5" :background "#a3c6d0"))))
  '(fringe              ((t (:background "#343d46"))))
@@ -360,3 +342,84 @@
  '(ivy-minibuffer-match-face-2 ((t (:underline t :weight bold))))
  '(ivy-minibuffer-match-face-3 ((t (:underline t :weight bold))))
  '(ivy-minibuffer-match-face-4 ((t (:underline t :weight bold)))))
+
+
+;; Fontification of numbers.
+(custom-set-faces
+ '(highlight-numbers-number ((t (:foreground "#96b5b4" :slant italic)))))
+
+;; There are two styles of font locking. I use the old keyword based style for non programming modes and a more modern approac colorizing varaiables and constants for programming modes.
+
+;; Default font locking.
+(custom-set-faces
+ '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
+ '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))
+ '(font-lock-comment-face              ((t (:foreground "#65737e" :slant italic))))
+ '(font-lock-constant-face             ((t (:foreground "#96b5b4"))))
+ '(font-lock-doc-face                  ((t (:foreground "#a7adba" :slant italic))))
+ '(font-lock-doc-string-face           ((t (:foreground "#ebcb8b" :slant italic))))
+ '(font-lock-function-name-face        ((t (:foreground "#8fa1b3"))))
+ '(font-lock-keyword-face              ((t (:foreground "#b48ead"))))
+ '(font-lock-negation-char-face        ((t (:foreground "#a3be8c"))))
+ '(font-lock-preprocessor-face         ((t (:foreground "#b48ead"))))
+ '(font-lock-regexp-grouping-backslash ((t (:foreground "#ebcb8b"))))
+ '(font-lock-regexp-grouping-construct ((t (:foreground "#b48ead"))))
+ '(font-lock-string-face               ((t (:foreground "#a3be8c" :slant italic))))
+ '(font-lock-type-face                 ((t (:foreground "#ebcb8b"))))
+ '(font-lock-variable-name-face        ((t (:foreground "#d08770"))))
+ '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold)))))
+
+;; Per buffer font locking that removes most colors for prog mode.
+;; Instead variables and certain delimeters are highlighted.
+
+(make-face 'prog-mode-font-lock-constant-face)
+(set-face-attribute 'prog-mode-font-lock-constant-face nil :foreground nil :weight 'bold :slant 'normal)
+
+(make-face 'prog-mode-font-lock-type-face)
+(set-face-attribute 'prog-mode-font-lock-type-face nil :foreground nil :weight 'normal :slant 'normal)
+
+(make-face 'prog-mode-font-lock-function-name-face)
+(set-face-attribute 'prog-mode-font-lock-function-name-face nil :foreground nil :weight 'normal :slant 'normal)
+
+(make-face 'prog-mode-font-lock-variable-name-face)
+(set-face-attribute 'prog-mode-font-lock-variable-name-face nil :foreground nil :weight 'normal :slant 'normal)
+
+(make-face 'prog-mode-font-lock-keyword-face)
+(set-face-attribute 'prog-mode-font-lock-keyword-face nil :foreground nil :weight 'bold :slant 'normal)
+
+(make-face 'prog-mode-font-lock-builtin-face)
+(set-face-attribute 'prog-mode-font-lock-builtin-face nil :foreground nil :weight 'bold :slant 'normal)
+
+(make-face 'prog-mode-font-lock-preprocessor-face)
+(set-face-attribute 'prog-mode-font-lock-preprocessor-face nil :foreground nil :weight 'bold :slant 'normal)
+
+(make-face 'prog-mode-font-lock-warning-face)
+(set-face-attribute 'prog-mode-font-lock-warning-face nil :foreground nil :weight 'normal :slant 'normal)
+
+(defun disable-syntax-highlighting ()
+  (set (make-local-variable 'font-lock-constant-face)
+       'prog-mode-font-lock-constant-face)
+
+  (set (make-local-variable 'font-lock-type-face)
+       'prog-mode-font-lock-type-face)
+
+  (set (make-local-variable 'font-lock-function-name-face)
+       'prog-mode-font-lock-function-name-face)
+
+  (set (make-local-variable 'font-lock-variable-name-face)
+       'prog-mode-font-lock-variable-name-face)
+
+  (set (make-local-variable 'font-lock-keyword-face)
+       'prog-mode-font-lock-keyword-face)
+
+  (set (make-local-variable 'font-lock-builtin-face)
+       'prog-mode-font-lock-builtin-face)
+
+  (set (make-local-variable 'font-lock-preprocessor-face)
+       'prog-mode-font-lock-preprocessor-face)
+
+  (set (make-local-variable 'font-lock-font-lock-warning-face)
+       'prog-mode-font-lock-font-lock-warning-face))
+
+(add-hook 'clojure-mode-hook 'disable-syntax-highlighting)
+(add-hook 'js-mode-hook 'disable-syntax-highlighting)

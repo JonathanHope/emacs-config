@@ -11,9 +11,6 @@
          ("C-<tab>" . org-hydra-top/body))
 
   :config
-  ;; Add a timestamp when completing something.
-  (setq org-log-done t)
-
   ;; Don't start the documents up folded.
   (setq org-startup-folded 0)
 
@@ -56,21 +53,23 @@
   (defun turn-on-org-show-all-inline-images ()
     (org-display-inline-images t t))
 
+  (setq org-startup-truncated nil)
+
   (add-hook 'org-mode-hook 'turn-on-org-show-all-inline-images)
 
   ;; Substitute a wide variety of characters for prettier characters.
   (add-hook 'org-mode-hook
             (lambda ()
-              (push '("1." . ?❶) prettify-symbols-alist)
-              (push '("2." . ?❷) prettify-symbols-alist)
-              (push '("3." . ?❸) prettify-symbols-alist)
-              (push '("4." . ?❹) prettify-symbols-alist)
-              (push '("5." . ?❺) prettify-symbols-alist)
-              (push '("6." . ?❻) prettify-symbols-alist)
-              (push '("7." . ?❼) prettify-symbols-alist)
-              (push '("8." . ?❽) prettify-symbols-alist)
-              (push '("9." . ?❾) prettify-symbols-alist)
-              (push '("10." . ?❿) prettify-symbols-alist)
+              (push '("1)" . ?❶) prettify-symbols-alist)
+              (push '("2)" . ?❷) prettify-symbols-alist)
+              (push '("3)" . ?❸) prettify-symbols-alist)
+              (push '("4)" . ?❹) prettify-symbols-alist)
+              (push '("5)" . ?❺) prettify-symbols-alist)
+              (push '("6)" . ?❻) prettify-symbols-alist)
+              (push '("7)" . ?❼) prettify-symbols-alist)
+              (push '("8)" . ?❽) prettify-symbols-alist)
+              (push '("9)" . ?❾) prettify-symbols-alist)
+              (push '("10)" . ?❿) prettify-symbols-alist)
 
               (push '("-" . ?➖) prettify-symbols-alist)
               (push '("+" . ?➕) prettify-symbols-alist)
@@ -91,6 +90,7 @@
               (push '("******" . (?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?━ (Br . Bl) ?⬢)) prettify-symbols-alist)))
 
   ;; Support for confluence exporting.
+  (require 'cl)
   (require 'ox-confluence))
 
 (provide 'init-org-mode)
