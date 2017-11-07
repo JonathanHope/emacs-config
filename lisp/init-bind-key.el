@@ -63,7 +63,7 @@
    ("M-g" . avy-goto-line)
 
    ;; Jump anywhere visible.
-   ("M-G" . avy-goto-char-2)
+   ("M-p" . avy-goto-char-2)
 
    ;; Jump to a function.
    ("C-r" . imenu)
@@ -176,6 +176,9 @@
 
    ;; Jump to definition.
    ("<f12>" . dumb-jump-go)
+
+   ;; Jump back.
+   ("S-<f12>" . dumb-jump-back)
 
    ;; Move to beginning of line.
    ("S-<left>" . beginning-of-line)

@@ -164,5 +164,16 @@
 ;; Restclient support.
 (require 'init-restclient)
 
+;; Dot support.
+(require 'init-graphviz-dot-mode)
+
+;; C++ Support
+(require 'init-cc-mode)
+(require 'init-cmake-mode)
+(require 'init-doxygen)
+
+;; Rust Support
+(require 'init-rust-mode)
+
 ;; Run the startup function.
 (startup)

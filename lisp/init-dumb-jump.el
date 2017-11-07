@@ -2,6 +2,9 @@
 
 (use-package dumb-jump
   :ensure t
-  :defer t)
+  :defer t
+
+  :config
+  (setq dumb-jump-selector 'ivy))
 
 (provide 'init-dumb-jump)

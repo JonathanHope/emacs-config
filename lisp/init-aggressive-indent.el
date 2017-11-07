@@ -11,6 +11,7 @@
   (add-hook 'js-mode-hook 'aggressive-indent-mode)
   (add-hook 'css-mode-hook 'aggressive-indent-mode)
   (add-hook 'csharp-mode-hook 'aggressive-indent-mode)
-  (add-hook 'sgml-mode-hook 'aggressive-indent-mode))
+  (add-hook 'sgml-mode-hook 'aggressive-indent-mode)
+  (add-hook 'c++-mode-hook 'aggressive-indent-mode))
 
 (provide 'init-aggressive-indent)

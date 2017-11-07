@@ -21,7 +21,7 @@
 
   (setq sp-navigate-consider-sgml-tags '(web-mode sgml-mode))
 
-  (sp-with-modes '(web-mode sgml-mode)
+  (sp-with-modes '(web-mode sgml-mode c++-mode)
     (sp-local-pair "<" ">"))
 
   (show-smartparens-global-mode t)

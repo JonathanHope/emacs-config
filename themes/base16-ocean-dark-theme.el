@@ -36,7 +36,7 @@
  ;; Emacs interface
  '(cursor              ((t (:foreground "#eff1f5" :background "#a3c6d0"))))
  '(fringe              ((t (:background "#343d46"))))
- '(linum               ((t (:foreground "#65737e" :background "#2b303b"))))
+ '(linum               ((t (:foreground "#65737e" :background "#2b303b" :weight normal))))
  '(hl-line             ((t (:background "#4f5b66"))))
  '(border              ((t (:background "#343d46"))))
  '(border-glyph        ((t (:background "#343d46"))))
@@ -372,54 +372,27 @@
 ;; Per buffer font locking that removes most colors for prog mode.
 ;; Instead variables and certain delimeters are highlighted.
 
-(make-face 'prog-mode-font-lock-constant-face)
-(set-face-attribute 'prog-mode-font-lock-constant-face nil :foreground nil :weight 'bold :slant 'normal)
-
-(make-face 'prog-mode-font-lock-type-face)
-(set-face-attribute 'prog-mode-font-lock-type-face nil :foreground nil :weight 'normal :slant 'normal)
-
-(make-face 'prog-mode-font-lock-function-name-face)
-(set-face-attribute 'prog-mode-font-lock-function-name-face nil :foreground nil :weight 'normal :slant 'normal)
-
-(make-face 'prog-mode-font-lock-variable-name-face)
-(set-face-attribute 'prog-mode-font-lock-variable-name-face nil :foreground nil :weight 'normal :slant 'normal)
-
-(make-face 'prog-mode-font-lock-keyword-face)
-(set-face-attribute 'prog-mode-font-lock-keyword-face nil :foreground nil :weight 'bold :slant 'normal)
-
-(make-face 'prog-mode-font-lock-builtin-face)
-(set-face-attribute 'prog-mode-font-lock-builtin-face nil :foreground nil :weight 'bold :slant 'normal)
-
-(make-face 'prog-mode-font-lock-preprocessor-face)
-(set-face-attribute 'prog-mode-font-lock-preprocessor-face nil :foreground nil :weight 'bold :slant 'normal)
-
-(make-face 'prog-mode-font-lock-warning-face)
-(set-face-attribute 'prog-mode-font-lock-warning-face nil :foreground nil :weight 'normal :slant 'normal)
-
 (defun disable-syntax-highlighting ()
-  (set (make-local-variable 'font-lock-constant-face)
-       'prog-mode-font-lock-constant-face)
+  (face-remap-add-relative 'font-lock-constant-face '((:foreground "#FFFFFF" :weight bold :slant normal)))
 
-  (set (make-local-variable 'font-lock-type-face)
-       'prog-mode-font-lock-type-face)
+  (face-remap-add-relative 'font-lock-type-face '((:foreground "#FFFFFF" :weight bold :slant normal)))
 
-  (set (make-local-variable 'font-lock-function-name-face)
-       'prog-mode-font-lock-function-name-face)
+  (face-remap-add-relative 'font-lock-function-name-face '((:foreground "#FFFFFF" :weight normal :slant normal)))
 
-  (set (make-local-variable 'font-lock-variable-name-face)
-       'prog-mode-font-lock-variable-name-face)
+  (face-remap-add-relative 'font-lock-variable-name-face '((:foreground "#FFFFFF" :weight normal :slant normal)))
 
-  (set (make-local-variable 'font-lock-keyword-face)
-       'prog-mode-font-lock-keyword-face)
+  (face-remap-add-relative 'font-lock-keyword-face '((:foreground "#FFFFFF" :weight bold :slant normal)))
 
-  (set (make-local-variable 'font-lock-builtin-face)
-       'prog-mode-font-lock-builtin-face)
+  (face-remap-add-relative 'font-lock-builtin-face '((:foreground "#FFFFFF" :weight bold :slant normal)))
 
-  (set (make-local-variable 'font-lock-preprocessor-face)
-       'prog-mode-font-lock-preprocessor-face)
+  (face-remap-add-relative 'font-lock-reference-face '((:foreground "#FFFFFF" :weight bold :slant normal)))
 
-  (set (make-local-variable 'font-lock-font-lock-warning-face)
-       'prog-mode-font-lock-font-lock-warning-face))
+  (face-remap-add-relative 'font-lock-preprocessor-face '((:foreground "#FFFFFF" :weight bold :slant normal)))
+
+  (face-remap-add-relative 'font-lock-warning-face '((:foreground "#FFFFFF" :weight normal :slant normal))))
 
 (add-hook 'clojure-mode-hook 'disable-syntax-highlighting)
 (add-hook 'js-mode-hook 'disable-syntax-highlighting)
+(add-hook 'lua-mode-hook 'disable-syntax-highlighting)
+(add-hook 'c++-mode-hook 'disable-syntax-highlighting)
+(add-hook 'rust-mode-hook 'disable-syntax-highlighting)

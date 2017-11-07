@@ -40,11 +40,14 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((clojure . t)
-     (restclient . t)))
+     (restclient . t)
+     (dot . t)))
 
   ;; Configure clojure babel support.
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
+
+  (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
   ;; Configure restclient babel support.
   (require 'ob-restclient)
@@ -52,10 +55,10 @@
   ;; Enable inline images for org.
   (defun turn-on-org-show-all-inline-images ()
     (org-display-inline-images t t))
+  (add-hook 'org-mode-hook 'turn-on-org-show-all-inline-images)
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 
   (setq org-startup-truncated nil)
-
-  (add-hook 'org-mode-hook 'turn-on-org-show-all-inline-images)
 
   ;; Substitute a wide variety of characters for prettier characters.
   (add-hook 'org-mode-hook

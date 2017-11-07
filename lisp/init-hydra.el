@@ -331,7 +331,7 @@
   (defun org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("clojure" "csharp" "sql" "restclient")
+              '("clojure" "csharp" "sql" "restclient" "javascript" "dot")
               :require-match t
               :sort t
               :action (lambda (src-code-type)

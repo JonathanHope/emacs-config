@@ -138,6 +138,12 @@
   ;; Disable shift to select.
   (setq shift-select-mode nil)
 
+  ;; Windows performance tweaks
+  (when (boundp 'w32-pipe-read-delay)
+    (setq w32-pipe-read-delay 0))
+  (when (boundp 'w32-pipe-buffer-size)
+    (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
+
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
@@ -145,7 +151,8 @@
       (save-restriction
         (widen)
         (goto-char (point-max))
-        (delete-blank-lines))))
+        (delete-blank-lines
+         ))))
 
   (defun revert-default-directory ()
     "Revert the default directory to the directory that emacs was started in."
