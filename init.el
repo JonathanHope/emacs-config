@@ -71,9 +71,6 @@
 ;; Ability to expand selections based on syntax.
 (require 'init-expand-region)
 
-;; Highlight errors
-(require 'init-flycheck)
-
 ;; More intuitive undo and redo behavior.
 (require 'init-undo-tree)
 
