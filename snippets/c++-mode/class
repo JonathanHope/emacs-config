@@ -1,0 +1,8 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :class
+# --
+class $1
+{
+public:
+  $2
+};

@@ -1,0 +1,7 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :namespace
+# --
+namespace $1
+{
+  $2
+}

@@ -15,7 +15,8 @@
 ;; Install just use package.
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (package-install 'diminish))
 
 ;; Enable use package.
 (eval-when-compile
@@ -24,16 +25,23 @@
 (require 'bind-key)
 
 ;; Add directory for local packages.
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/packages")
 
 ;; Configure packages using use-package.
-(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/package-config")
+
+;; Language server support.
+;; These aren't in melpa yet.
+;; (add-to-list 'load-path "~/.emacs.d/lsp-mode")
+;; (add-to-list 'load-path "~/.emacs.d/lsp-ui")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-cquery")
+;; (add-to-list 'load-path "~/.emacs.d/company-lsp")
 
 ;; Constants
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
 (setq scratch-directory "~/Notes/Scratch/")
-(setq scratch-files (list "scratch.sql" "scratch.clj" "scratch.js" "scratch.txt" "scratch.html" "scratch.css" "scratch.bat" "scratch.cs"))
+(setq scratch-files (list "scratch.txt"))
 (setq projects-directory "~/Projects/")
 
 ;; Core
@@ -42,7 +50,7 @@
 (require 'init-emacs)
 
 ;; Setting up the mode-line.
-(require 'init-mode-line)
+(require 'init-mainspring-mode-line)
 
 ;; Support for projects.
 (require 'init-projectile)
@@ -56,10 +64,15 @@
 (require 'init-async)
 (require 'init-flx)
 (require 'init-ivy)
+(require 'init-ivy-xref)
 (require 'init-counsel)
 (require 'init-counsel-projectile)
+
+;; Ability to expand selections based on syntax.
 (require 'init-expand-region)
-(require 'init-company)
+
+;; Highlight errors
+(require 'init-flycheck)
 
 ;; More intuitive undo and redo behavior.
 (require 'init-undo-tree)
@@ -70,9 +83,6 @@
 (require 'init-winum)
 (require 'init-golden-ratio)
 (require 'init-shackle)
-
-;; A way to move around in the current page of the buffer without a mouse.
-(require 'init-avy)
 
 ;; Simple keyboard driven popup menus.
 (require 'init-hydra)
@@ -107,9 +117,8 @@
 ;; Special syntax highlighting.
 (require 'init-rainbow-delimiters)
 (require 'init-highlight-numbers)
-(require 'init-color-identifiers-mode)
 
-;; Modes
+;; Apps
 
 ;; Show the color of color codes as a background color.
 (require 'init-rainbow-mode)
@@ -120,6 +129,10 @@
 
 ;; Org file support.
 (require 'init-org-mode)
+(require 'init-mainspring-org-prettify)
+(require 'init-org-pretty-table)
+(require 'init-restclient)
+(require 'init-graphviz-dot-mode)
 
 ;; File browser.
 (require 'init-dired)
@@ -130,50 +143,50 @@
 ;; Shell
 (require 'init-eshell)
 
-;; Clojure support.
-(require 'init-clojure-mode)
-(require 'init-cider)
-
-;; Markdown support.
-(require 'init-markdown-mode)
-(require 'init-livedown)
+;; Config file formats.
 
 ;; XML support.
 (require 'init-sgml-mode)
 
-;; HTML support.
-(require 'init-web-mode)
-(require 'init-impatient-mode)
-
 ;; Javascript support.
 (require 'init-js-mode)
-(require 'init-nodejs-repl)
 
-;; CSS support.
-(require 'init-css-mode)
+;; YAML support.
+(require 'init-yaml-mode)
 
-;; Bat support.
-(require 'init-bat-mode)
+;; Programming languages
 
-;; C# support.
-(require 'init-csharp-mode)
+;; C++ Support
+(require 'init-doxygen)
+(require 'init-cc-mode)
+(require 'init-cmake-mode)
 
 ;; EBNF support.
 (require 'init-ebnf-mode)
 
-;; Restclient support.
-(require 'init-restclient)
+;; Clojure support.
+;; (require 'init-clojure-mode)
+;; (require 'init-cider)
+;; (require 'init-nrepl-puget)
 
-;; Dot support.
-(require 'init-graphviz-dot-mode)
+;; Markdown support.
+;; (require 'init-markdown-mode)
+;; (require 'init-livedown)
 
-;; C++ Support
-(require 'init-cc-mode)
-(require 'init-cmake-mode)
-(require 'init-doxygen)
+;; HTML support.
+;; (require 'init-web-mode)
+;; (require 'init-impatient-mode)
 
-;; Rust Support
-(require 'init-rust-mode)
+;; (require 'init-nodejs-repl)
+
+;; CSS support.
+;; (require 'init-css-mode)
+
+;; Bat support.
+;; (require 'init-bat-mode)
+
+;; C# support.
+;; (require 'init-csharp-mode)
 
 ;; Run the startup function.
 (startup)

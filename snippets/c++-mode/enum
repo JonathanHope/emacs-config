@@ -1,0 +1,6 @@
+#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
+#name :enum
+# --
+enum class $1 {
+  $2
+};

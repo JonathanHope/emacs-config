@@ -6,11 +6,7 @@ This is my Emacs configuration. The keyboard shortcuts have been remapped to mor
 
 ## Requirements
 
-* Emacs 25.1
-
-## Supported Languages
-
-Emacs Lisp, Clojure, HTML, CSS, JavaScript, XML, JSON, Markdown, EBNF Grammars.
+* Emacs 26.1
 
 ## Installation
 
@@ -20,35 +16,21 @@ Check this project out into ~/.emacs.d.
 
 On windows be sure to set your home: setx HOME C:/Users/you.
 
+Linux has nice package managers for installing random tools, but Windows does not. To get a package manager on Windows run Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')).
+
 Git needs to be installed. On windows just install it from https://git-scm.com/download/win. On windows make sure that the git paths with git.exe, find.exe, and grep.exe are at the very top of the system wide path.
 
 The command "emacs --eval (revert-default-directory) --eval (magit-status) --eval (delete-other-windows)" can be used as an alias or a context menu item to launch magit.
 
-On windows 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3.
+On windows 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3. See more about this here: https://superuser.com/a/631324.
 
-It uses the pragmata fonts.
+It uses the pragmata fonts by default.
 
 On Linux you need to install ispell and on Windows you need to install aspell (http://aspell.net/win32/). On windows add aspell to your path.
 
-Ag needs to be installed. On windows run the following commands in admin powershell CLI: Set-ExecutionPolicy RemoteSigned, iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex, choco install ag.
+Ripgrep needs to be installed. On windows run the following command: choco install ripgrep.
 
-### Clojure
-
-Install Java.
-
-Install Leiningen.
-
-Add {:user {:plugins [[cider/cider-nrepl "0.15.0-snapshot"]]}} to your ~/.lein/profiles.clj.
-
-### Markdown
-
-Install node.js and npm. Add them to your path on windows.
-
-Install livedown with the following command: npm install -g livedown.
-
-### JavaScript
-
-Install node.js and npm. Add them to your path on windows.
+Graphviz needs to be installed. On windows run the following command: choco install graphviz.
 
 ## Keymap
 
@@ -61,8 +43,6 @@ Install node.js and npm. Add them to your path on windows.
 * **CTRL + d:** Select word
 * **CTRL + l:** Select line
 * **CTRL + a:** Select all
-* **CTRL + CLICK:** Add cursor
-* **CTRL + SHIFT + a:** Add cursor to all like this
 * **CTRL + =:** Expand region
 * **CTRL + -:** Contract region
 
@@ -96,7 +76,7 @@ Install node.js and npm. Add them to your path on windows.
 
 #### Indentation
 
-* **CTRL + i:** Auto indent
+* **TAB:** Auto indent
 
 #### Deletions
 
@@ -131,12 +111,6 @@ Install node.js and npm. Add them to your path on windows.
 #### Snippets
 
 * **TAB:** Expand snippet
-
-#### Completion
-
-* **UP:** Previous candidate
-* **DOWN:** Next candidate
-* **ENTER:** Select candidate
 
 ### General - Navigation
 
@@ -174,9 +148,9 @@ Install node.js and npm. Add them to your path on windows.
 * **CTRL + g:** Go to line
 * **CTRL + p:** Go to file in project
 * **CTRL + r:** Go to function
-* **ALT + g:** Avy jump to line
-* **ALT + SHIFT + g:** Avy jump to chars
 * **CTRL + SHIFT + p:** Execute command
+* **F12:** Jump to definition
+* **SHFIT + F12:** Jump back
 
 ### General - Files
 
@@ -192,9 +166,9 @@ Install node.js and npm. Add them to your path on windows.
 
 #### Adding and Removing Windows
 
-* **F1:** Close other windows
-* **F2:** Split window horizontally
-* **F3:** Split window vertically
+* **ALT + SHIFT + 1:** Close other windows
+* **ALT + SHIFT + 2:** Split window horizontally
+* **ALT + SHIFT + 3:** Split window vertically
 
 ### Launch Apps Menu
 
@@ -204,14 +178,10 @@ Install node.js and npm. Add them to your path on windows.
 
 * **CTRL + TAB:** Launch contextual menu
 
-### Clojure - REPL
-
-* **ALT + UP:** Last repl command
-* **ALT + DOWN:** Previous repl command
-
 ### Magit - General
 
 * **ALT + c:** Commit with the entered commit message
+* **?*:** Show shortcuts
 
 ### Org-mode - Editing
 
