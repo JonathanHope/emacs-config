@@ -23,12 +23,14 @@
 
   ;; No auto save.
   (setq auto-save-default nil)
+  (setq auto-save-list-file-prefix nil)
 
   ;; No backup files.
   (setq make-backup-files nil)
 
   ;; Disable recentf mode.
-  (recentf-mode -1)
+  (when (fboundp 'scroll-bar-mode)
+    (recentf-mode -1))
 
   ;; Hide menu, toolbar, and fringe.
   (menu-bar-mode 0)
@@ -67,12 +69,13 @@
   ;; Random performance stuff.
   (setq bidi-display-reordering nil
         idle-update-delay 2
-        jit-lock-defer-time nil
-        jit-lock-stealth-nice 0.1
-        jit-lock-stealth-time 0.2
-        jit-lock-stealth-verbose nil
-        gc-cons-threshold 16777216
-        gc-cons-percentage 0.1)
+        ;; jit-lock-defer-time nil
+        ;; jit-lock-stealth-nice 0.1
+        ;; jit-lock-stealth-time 0.2
+        ;; jit-lock-stealth-verbose nil
+        ;; gc-cons-threshold 16777216
+        ;; gc-cons-percentage 0.1
+        )
 
   ;; Set cursor type.
   (setq-default cursor-type 'bar)
@@ -140,18 +143,11 @@
   (setq-default cursor-in-non-selected-windows nil)
 
   ;; Change the frame title to show the buffer name.
-  (setq frame-title-format "%b - Emacs")
+  (setq frame-title-format "%b - Mainspring")
 
   ;; Disable shift to select.
   (setq shift-select-mode nil)
 
-  ;; Windows performance tweaks
-  (when (boundp 'w32-pipe-read-delay)
-    (setq w32-pipe-read-delay 0))
-  (when (boundp 'w32-pipe-buffer-size)
-    (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
-
-  ;; Remove blank lines.
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)

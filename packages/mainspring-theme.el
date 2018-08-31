@@ -91,6 +91,7 @@
  '(magit-diff-context-highlight       ((t (:foreground "#65737e"))))
  '(magit-diff-hunk-heading            ((t (:background "#4f5b66"))))
  '(magit-diff-hunk-heading-highlight  ((t (:background "#4f5b66"))))
+ '(magit-diff-whitespace-warning      ((t (:background "#bf616a"))))
  '(magit-diff-none                    ((t (:slant italic))))
  '(magit-header                       ((t (:background "#343d46" :weight bold))))
  '(magit-item-highlight               ((t (:foreground "#2b303b" :background "#8fa1b3"))))

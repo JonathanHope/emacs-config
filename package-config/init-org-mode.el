@@ -71,6 +71,10 @@
               (push '("->" . ?➔) prettify-symbols-alist)
               ))
 
+  ;; Open Excel files with Excel
+  (add-to-list 'org-file-apps '("\\.xls\\'" . default))
+  (add-to-list 'org-file-apps '("\\.xlsx\\'" . default))
+
   ;; Support for confluence exporting.
   (require 'cl)
   (require 'ox-confluence))

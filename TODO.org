@@ -1,4 +1,4 @@
 * TODO Will polymode ever be stable enought to use? Would be nice to use instead of web-mode.
-* TODO Pressing C-p in a directory that is not a project adds all files to the project. How to prevent this?
+* TODO Pressing C-p in a directory that is not a project adds all files to the project. How to prevent this? Windows only.
 * TODO The dash plain lists in org mode are not being prettified properly.
 * TODO The TODO/DONE prettification in org documents gets out of sync sometimes.

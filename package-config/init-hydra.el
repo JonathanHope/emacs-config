@@ -202,7 +202,7 @@
   (defhydra org-hydra-export (:color blue :columns 4)
     "Org-mode source"
     ("c" org-confluence-export-as-confluence "Export as confluence")
-    ("c" org-confluence-export-as-markdown "Export as markdown")
+    ("m" org-md-export-as-markdown "Export as markdown")
     ("h" org-html-export-as-html "Export as html")
     ("l" org-latex-export-as-latex "Export as LaTeX")
     ("q" hydra-pop "Exit"))
@@ -222,15 +222,15 @@
     ("q" hydra-pop "Exit"))
 
   ;; Clojure Hydra
-  ;; (defhydra clojure-hydra (:color blue :columns 4)
-  ;;   "Clojure"
-  ;;   ("k" cider-quit "Close the REPL")
-  ;;   ("l" cider-load-buffer "Load buffer in REPL")
-  ;;   ("n" cider-repl-set-ns "Set REPL namespace")
-  ;;   ("r" cider-jack-in "Launch REPL")
-  ;;   ("s" cider-eval-last-sexp "Evaluate sexp")
-  ;;   ("c" (lambda () (interactive) (cider-find-and-clear-repl-output t)) nil)
-  ;;   ("q" nil "Exit"))
+  (defhydra clojure-hydra (:color blue :columns 4)
+    "Clojure"
+    ("k" cider-quit "Close the REPL")
+    ("l" cider-load-buffer "Load buffer in REPL")
+    ("n" cider-repl-set-ns "Set REPL namespace")
+    ("r" cider-jack-in "Launch REPL")
+    ("s" cider-eval-last-sexp "Evaluate sexp")
+    ("c" (lambda () (interactive) (cider-find-and-clear-repl-output t)) nil)
+    ("q" nil "Exit"))
 
   ;; C++ Hydra
   (defhydra cpp-hydra (:color blue :columns 4)

@@ -10,6 +10,7 @@
 
   :init
   (add-hook 'c++-mode-hook (lambda () (yafolding-mode)))
+  (add-hook 'rust-mode-hook (lambda () (yafolding-mode)))
 
   :config
   (setq yafolding-ellipsis-content "…"))

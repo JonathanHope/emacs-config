@@ -1,0 +1,176 @@
+* Mainspring - An Emacs Configuration
+
+Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
+
+** Philosophy
+
+  * *Use CUA key bindings:* CUA bindings are used by most applications on most operating systems. Rather than spend the time to make every other application behave like Vim or Emacs or increase my cognitive overhead by constantly switching between different key binding styles I simply use CUA style key bindings in emacs.
+  * *Per mode functionality should be discoverable:* It is impossible to remember a bunch of mode specific key bindings for a lot of modes. Key bindings that are for a specific mode should generally be discoverable in a visual way.
+  * *Reward imprecision:* Using techniques like fuzzy matching everywhere, automatic whitespace cleanup, and automatic indenting means that less time can be spent thinking about perfectly entering and formatting data and more time can be spent thinking about solving the problem at hand.
+  * *Window management should be simple:* Instead of having to configure complicated workspaces window management should be simple and intuitive. The selected window is always largest and the windows are numbered for easy window switching.
+  * *Startup time matters:* Having to run an emacs server is an unnecessary complication. Instead effort should be made for it start quickly.
+  * *Stability matters:* If something is useful but not stable I won't bring it in until it becomes stable.
+  * *Performance matters:* If something is useful but impacts performance too much in a negative way I won't bring it in until is performant.
+  * *Use structural editing:* Structural editing, navigation, and selection should be implemented wherever possible as it is incredibly useful.
+  * *Less is more:* The fewer things to distract the user from the actual act of editing text the better. Things like tree views and scrollbars are not necessary.
+  * *Looks matter:* I spend way too much time editing text in my life, the text editor should be a nice place to live.
+
+** Installation
+
+You obviously need Emacs. On Linux use whatever package manager is provided by your OS. On Windows the recommended distribution can be found here: https://ntemacs.sourceforge.io/. Whatever Emacs you install should have been compiled with image support.
+
+Some of the configuration relies on the idea of a home directory. You get this for free on Linux but not on Windows. Run the following command on Windows to set your home directory: setx HOME C:/Users/you.
+
+Git and a number of standard Linux tools are required. On Linux all you have to do is install git using your distributions package manager. On the Windows side run this installer: https://git-scm.com/download/win. Then make sure the path to git.exe and find.exe are the first entry in the system wide path variable. Projectile will not work if that is not the case.
+
+On windows 8 and 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3. See more about this here: https://superuser.com/a/631324.
+
+Hunspell is required for spell checking. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://sourceforge.net/projects/ezwinports/.
+
+Ripgrep is required for textual searching. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/BurntSushi/ripgrep/releases.
+
+Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be installed for windows here: http://www.graphviz.org/download/.
+
+It uses the pragmata fonts by default. These are non-free fonts.
+
+** Keymap
+
+Because the shortcuts for this config are so drastically different than standard emacs I detail them here.
+
+*** General - Editing
+
+**** Selections
+    * *CTRL + SPACE:* Set mark
+    * *CTRL + RETURN:* Mark region rectangle
+    * *CTRL + d:* Select word
+    * *CTRL + l:* Select line
+    * *CTRL + a:* Select all
+    * *CTRL + =:* Expand region
+    * *CTRL + -:* Contract region
+
+**** Undo/Redo
+    * *CTRL + z:* Undo
+    * *CTRL + y:* Redo
+
+**** Cut/Copy/Paste
+    * *CTRL + c:* Copy
+    * *CTRL + x:* Cut
+    * *CTRL + SHIFT + x:* Cut line
+    * *CTRL + v:* Paste
+    * *CTRL + SHIFT + v:* Paste from kill ring
+
+**** Comments
+    * *CTRL + /:* Toggle comment
+
+**** Lines
+    * *RETURN:* New line
+    * *CTRL + SHIFT + d:* Duplicate line
+    * *CTRL + j:* Join line
+    * *CTRL + SHIFT + UP:* Move line of text up
+    * *CTRL + SHIFT + DOWN:* Move line of text down
+
+**** Indentation
+    * *TAB:* Auto indent
+
+**** Deletions
+    * *CTRL + BACKSPACE:* Delete word
+    * *BACKSPACE:* Delete character
+    * *CTRL + k:* Delete a line
+
+**** Casing
+    * *CTRL + SHIFT + u:* Uppercase region
+    * *CTRL + SHIFT + l:* Lowercase region
+
+**** Structural Editing
+    * *CTRL + SHIFT + 0:* Forward slurp
+    * *CTRL + SHIFT + ]:* Forward barf
+    * *CTRL + SHIFT + 9:* Backward slurp
+    * *CTRL + SHIFT + [:* Backward barf
+    * *ALT + SHIFT + 9:* Wrap in parentheses
+    * *CTRL + SHIFT + k:* Kill sexp
+
+**** Code Folding
+    * *ALT + RETURN:* Toggle code folding
+
+**** Multiple Cursors
+    * *CTRL + SHFIT + c:* Add cursors to lines
+    * *CTRL + SHFIT + a:* Mark all like this
+
+**** Snippets
+    * *TAB:* Expand snippet
+
+*** General - Navigation
+
+**** Cancellation
+    * *ESCAPE:* Cancel
+
+**** Directional Movement
+    * *UP:* Up line
+    * *DOWN:* Down line
+    * *LEFT:* Forward character
+    * *RIGHT:* Backward character
+    * *CTRL + LEFT:* Forward symbol
+    * *CTRL + RIGHT:* Backward symbol
+    * *CTRL + UP:* Up five lines
+    * *CTRL + DOWN:* Down five lines
+    * *SHIFT + LEFT:* Beginning of line
+    * *SHIFT + RIGHT:* End of line
+    * *HOME:* Beginning of buffer
+    * *END:* End of buffer
+
+**** Regex Searching
+    * *CTRL + f:* Regex search
+    * *CTRL + SHIFT + f:* Regex search in project
+    * *CTRL + h:* Regex search and replace
+
+**** Structural Navigation
+    * *CTRL + SHIFT + RIGHT:* Forward sexp
+    * *CTRL + SHIFT + LEFT:* Backward sexp
+
+**** High Level Navigation
+    * *CTRL + g:* Go to line
+    * *CTRL + p:* Go to file in project
+    * *CTRL + SHIFT + p:* Execute command
+    * *F12:* Jump to definition
+    * *SHFIT + F12:* Jump back
+
+*** General - Files
+   * *CTRL + s:* Save file
+   * *CTRL + o:* Open file
+   * *CTRL + w:* Close file
+
+*** General - Windowing
+
+**** Closing
+    * *CTRL + SHIFT + w:* Close emacs
+    * *ESCAPE:* Close popup window
+
+**** Adding and Removing Windows
+    * *CTRL + b:* Change buffer
+    * *ALT + SHIFT + 1:* Close other windows
+    * *ALT + SHIFT + 2:* Split window horizontally
+    * *ALT + SHIFT + 3:* Split window vertically
+
+*** Menus
+   * *CTRL + SHIFT + TAB:* Launch apps menu
+   * *CTRL + TAB:* Launch contextual menu
+
+*** Magit
+   * *ALT + c:* Commit with the entered commit message
+   * *?:* Show shortcuts
+
+*** Org mode
+   * *ALT + RETURN:* Add heading/item
+   * *ALT + SHIFT + RETURN:* Add todo/checkbox
+   * *TAB:* Next field in table
+   * *SHIFT + TAB:* Previous field in table
+   * *ALT + LEFT:* Demote headline
+   * *ALT + RIGHT:* Promote headline
+   * *ALT + UP:* Move item up
+   * *ALT + DOWN:* Move item down
+   * *SHIFT + LEFT:* Toggle todo status and toggle list style
+   * *SHIFT + RIGHT:* Toggle todo status and toggle list style
+   * *SHIFT + UP:* Toggle todo priority
+   * *SHIFT + DOWN:* Toggle todo priority
+   * *TAB:* Toggle visibility
+   * *SHIFT + ESC:* Exit source editing

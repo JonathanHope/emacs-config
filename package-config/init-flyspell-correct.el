@@ -3,9 +3,10 @@
 (use-package flyspell-correct-ivy
   :ensure t
   :defer t
+  :after flyspell
 
   :bind
   (:map flyspell-mode-map
-        ("C-;" . flyspell-correct-previous-word-generic)))
+        ("C-;" . flyspell-correct-word-generic)))
 
 (provide 'init-flyspell-correct)

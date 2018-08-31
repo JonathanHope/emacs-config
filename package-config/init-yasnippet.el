@@ -6,7 +6,8 @@
 
   :init
   (progn
-    (add-hook 'c++-mode-hook 'yas-minor-mode))
+    (add-hook 'c++-mode-hook 'yas-minor-mode)
+    (add-hook 'rust-mode-hook 'yas-minor-mode))
 
   :config
   (progn

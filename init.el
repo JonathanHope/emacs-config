@@ -30,13 +30,6 @@
 ;; Configure packages using use-package.
 (add-to-list 'load-path "~/.emacs.d/package-config")
 
-;; Language server support.
-;; These aren't in melpa yet.
-;; (add-to-list 'load-path "~/.emacs.d/lsp-mode")
-;; (add-to-list 'load-path "~/.emacs.d/lsp-ui")
-;; (add-to-list 'load-path "~/.emacs.d/emacs-cquery")
-;; (add-to-list 'load-path "~/.emacs.d/company-lsp")
-
 ;; Constants
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
@@ -67,6 +60,7 @@
 (require 'init-ivy-xref)
 (require 'init-counsel)
 (require 'init-counsel-projectile)
+;; (require 'init-company)
 
 ;; Ability to expand selections based on syntax.
 (require 'init-expand-region)
@@ -158,32 +152,15 @@
 (require 'init-cc-mode)
 (require 'init-cmake-mode)
 
+;; Rust Support
+(require 'init-rust-mode)
+
 ;; EBNF support.
 (require 'init-ebnf-mode)
 
 ;; Clojure support.
-;; (require 'init-clojure-mode)
-;; (require 'init-cider)
-;; (require 'init-nrepl-puget)
-
-;; Markdown support.
-;; (require 'init-markdown-mode)
-;; (require 'init-livedown)
-
-;; HTML support.
-;; (require 'init-web-mode)
-;; (require 'init-impatient-mode)
-
-;; (require 'init-nodejs-repl)
-
-;; CSS support.
-;; (require 'init-css-mode)
-
-;; Bat support.
-;; (require 'init-bat-mode)
-
-;; C# support.
-;; (require 'init-csharp-mode)
+(require 'init-clojure-mode)
+(require 'init-cider)
 
 ;; Run the startup function.
 (startup)
