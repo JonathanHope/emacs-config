@@ -5,7 +5,8 @@
 
   :bind
   (:map company-active-map
-        ("<escape>" . company-abort))
+        ("<escape>" . company-abort)
+        ("<tab>" . company-complete-selection))
   :init
   (progn
     (add-hook 'cider-repl-mode-hook #'company-mode)

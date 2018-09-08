@@ -178,12 +178,13 @@
  '(mc/cursor-bar-face ((t (:background "#2b303b" :foreground "#a3c6d0" :weight bold :height 1))))
 
  ;; Company
+ '(company-tooltip-annotation ((t (:foreground "#2B303B"))))
  '(company-preview ((t (:background "#343D46" :foreground "#8FA1B3" :underline t))))
  '(company-preview-common ((t (:inherit company-preview))))
- '(company-tooltip ((t (:background "#8FA1B3" :foreground "#2B303B"))))
- '(company-scrollbar-fg ((t (:background "#65737E"))))
- '(company-scrollbar-bg ((t (:background "#8FA1B3"))))
- '(company-tooltip-selection ((t (:background "#65737E" :foreground "#2B303B"))))
+ '(company-tooltip ((t (:background "#65737E" :foreground "#eff1f5"))))
+ '(company-scrollbar-fg ((t (:background "#a3c6d0"))))
+ '(company-scrollbar-bg ((t (:background "#343D46"))))
+ '(company-tooltip-selection ((t (:background "#8FA1B3" :foreground "#eff1f5"))))
  '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
 

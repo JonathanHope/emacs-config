@@ -60,7 +60,7 @@
 (require 'init-ivy-xref)
 (require 'init-counsel)
 (require 'init-counsel-projectile)
-;; (require 'init-company)
+(require 'init-company)
 
 ;; Ability to expand selections based on syntax.
 (require 'init-expand-region)
