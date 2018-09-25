@@ -109,6 +109,9 @@
 (require 'init-rainbow-delimiters)
 (require 'init-highlight-numbers)
 
+;; Allow shortcuts to be tied to a region being selected.
+(require 'init-selected)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.
@@ -161,6 +164,10 @@
 ;; Clojure support.
 (require 'init-clojure-mode)
 (require 'init-cider)
+
+;; Octave mode.
+
+(require 'init-octave-mode)
 
 ;; Run the startup function.
 (startup)

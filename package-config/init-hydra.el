@@ -281,6 +281,13 @@
   ;;   ("a" bat-run-args "Run with args")
   ;;   ("q" nil "Exit"))
 
+  (defhydra octave-hydra (:color blue :columns 4)
+    "Octave"
+    ("r" run-octave "Start Octave REPL.")
+    ("l" octave-source-file "Send file to Octave REPL.")
+    ("c" octave-clear "Clear Octave REPL.")
+    ("q" nil "Exit"))
+
   ;; Support for nested hydras.
   (defvar hydra-stack nil)
 
@@ -395,5 +402,15 @@
         (insert char)
         (goto-char beg)
         (insert char))))
+
+(defun octave-clear ()
+  "Clear octave"
+  (interactive)
+  (let ((origin-buffer (current-buffer))
+        (inhibit-read-only t))
+    (switch-to-buffer (get-buffer "*Inferior Octave*"))
+    (erase-buffer)
+    (comint-send-input)
+    (switch-to-buffer origin-buffer)))
 
 (provide 'init-hydra)
