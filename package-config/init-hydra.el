@@ -83,6 +83,9 @@
     ("f" (progn
            (org-hydra-formatting/body)
            (hydra-push '(org-hydra-top/body))) "Formatting")
+    ("k" (progn
+           (org-hydra-latex/body)
+           (hydra-push '(org-hydra-top/body))) "Latex")
     ("q" hydra-pop "Exit"))
 
   ;; Hydra for org-mode todo related items.
@@ -221,6 +224,12 @@
     ("n" org-insert-drawer "Org insert drawer")
     ("q" hydra-pop "Exit"))
 
+  ;; Hydra for org-mode tag related items.
+  (defhydra org-hydra-latex (:color blue :columns 4)
+    "Org-mode Latex"
+    ("t" org-toggle-latex-fragment "Toggle Latex fragment")
+    ("q" hydra-pop "Exit"))
+
   ;; Clojure Hydra
   (defhydra clojure-hydra (:color blue :columns 4)
     "Clojure"
@@ -355,16 +364,29 @@
   (defun org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("sql" "restclient" "javascript" "dot" "c++" "css" "html" "csharp")
+              '("sql" "restclient" "javascript" "dot" "c++" "css" "html" "csharp" "clojure" "octave")
               :require-match t
               :sort t
               :action (lambda (src-code-type)
-                        (progn
-                          (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
-                          (newline-and-indent)
-                          (insert "#+END_SRC\n")
-                          (previous-line 2)
-                          (org-edit-src-code)))))
+                        (cond ((equal src-code-type "dot")
+                               (progn
+                                 (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
+                                 (insert "digraph graphname {\n")
+                                 (insert "graph [bgcolor=\"#2b303b\", resolution=100, fontname=PragmataPro, fontcolor=\"#eff1f5\", fontsize=9];\n")
+                                 (insert "node [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
+                                 (insert "edge [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
+                                 (insert "}\n")
+                                 (newline-and-indent)
+                                 (insert "#+END_SRC\n")
+                                 (previous-line 2)
+                                 (org-edit-src-code)))
+                              (t
+                               (progn
+                                 (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
+                                 (newline-and-indent)
+                                 (insert "#+END_SRC\n")
+                                 (previous-line 2)
+                                 (org-edit-src-code)))))))
 
   (defun org-insert-file-link ()
     (interactive)

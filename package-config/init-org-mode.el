@@ -43,7 +43,8 @@
    'org-babel-load-languages
    '(
      ;; (restclient . t)
-     (dot . t)))
+     (dot . t)
+     (octave . t)))
 
   (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
 
@@ -69,11 +70,14 @@
               ;; (push '("DONE" . ?⬛) prettify-symbols-alist)
 
               (push '("->" . ?➔) prettify-symbols-alist)
+              (push '("=>" . ?⇒) prettify-symbols-alist)
               ))
 
   ;; Open Excel files with Excel
   (add-to-list 'org-file-apps '("\\.xls\\'" . default))
   (add-to-list 'org-file-apps '("\\.xlsx\\'" . default))
+
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.3))
 
   ;; Support for confluence exporting.
   (require 'cl)
