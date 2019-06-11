@@ -168,8 +168,8 @@
  '(org-block-end-line        ((t (:background "#343d46" :foreground "#c0c5ce" :weight bold))))
  '(org-priority              ((t (:foreground "#ebcb8b" :weight bold))))
  '(org-special-keyword       ((t (:foreground "#65737e" :slant italic))))
- '(org-document-info-keyword ((t (:foreground "#b48eae" :weight bold))))
- '(org-document-title        ((t (:foreground "#a3be8c" :slant italic))))
+ '(org-document-info-keyword ((t (:foreground "#65737e" :slant italic))))
+ '(org-document-title        ((t (:foreground "#65737e" :slant italic))) )
 
  ;; Flyspell
  '(flyspell-duplicate ((t (:foreground "#ebcb8b" :underline t :weight bold))))

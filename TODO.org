@@ -1,4 +1,4 @@
-* TODO Dot source blocks in org files not highlighting.
+* TODO Bring graphviz dot mode back in when it's more stable.
 * TODO The dash plain lists in org mode are not being prettified properly.
 * TODO Calculator splitting window incorrectly.
 * TODO Pressing C-p in a directory that is not a project adds all files to the project. How to prevent this? Windows only.

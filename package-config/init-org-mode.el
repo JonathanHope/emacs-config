@@ -45,7 +45,7 @@
      (octave . t)
      (clojure . t)))
 
-  (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
+  (add-to-list 'org-src-lang-modes '("dot" . mainspring-graphviz-dot))
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
 
   ;; Configure clojure babel support.

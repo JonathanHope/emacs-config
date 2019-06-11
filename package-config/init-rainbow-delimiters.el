@@ -7,6 +7,7 @@
   :init
   (add-hook 'js-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'mainspring-graphviz-dot-mode-hook #'rainbow-delimiters-mode))
 
 (provide 'init-rainbow-delimiters)
