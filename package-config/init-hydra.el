@@ -9,7 +9,6 @@
   ;; Apps Hydra
   (defhydra apps-hydra (:color blue :columns 4)
     "Apps"
-    ("c" launch-calc "Calculator")
     ("d" dired "Dired")
     ("m" magit-mode-launch "Magit")
     ("o" org-mode-launch "Org-mode")
@@ -303,11 +302,6 @@
     (interactive)
     (magit-status)
     (delete-other-windows))
-
-  (defun launch-calc ()
-    (interactive)
-    (calc)
-    (calc-trail-display 0))
 
   (defun launch-browser-repl ()
     (interactive)
