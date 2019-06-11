@@ -39,6 +39,14 @@
 
 ;; Core
 
+;; Org file support.
+;; This has to be done first so everything compiles agains the right org version.
+(require 'init-org-mode)
+(require 'init-mainspring-org-prettify)
+(require 'init-org-pretty-table)
+(require 'init-mainspring-graphviz-dot-mode)
+(require 'init-deft)
+
 ;; Shouldn't need this.
 (require 'subr-x)
 
@@ -123,13 +131,6 @@
 ;; Spell checking.
 (require 'init-flyspell)
 (require 'init-flyspell-correct)
-
-;; Org file support.
-(require 'init-org-mode)
-(require 'init-mainspring-org-prettify)
-(require 'init-org-pretty-table)
-(require 'init-mainspring-graphviz-dot-mode)
-(require 'init-deft)
 
 ;; File browser.
 (require 'init-dired)

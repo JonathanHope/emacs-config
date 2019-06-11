@@ -1,6 +1,7 @@
 ;; Package configuration for org-mode.
 
 (use-package org
+  :ensure org-plus-contrib
   :defer t
 
   :mode (("\\.org$" . org-mode))
