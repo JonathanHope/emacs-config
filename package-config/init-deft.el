@@ -17,12 +17,13 @@
   (setq deft-filter-only-filenames t)
   (setq deft-use-filter-string-for-filename t)
   (setq deft-default-extension "org")
-  (setq deft-strip-summary-regexp (concat 
-  	"\\("
-    "[\n\t]" ;; blank
-    "\\|^#\\+[[:upper:]_]+:.*$" ;; org-mode metadata
-    "\\|^\\*..*$" ;; org-mode headers
-    "\\)"))
+  (setq deft-auto-save-interval 0)
+  (setq deft-strip-summary-regexp (concat
+                                   "\\("
+                                   "[\n\t]" ;; blank
+                                   "\\|^#\\+[[:upper:]_]+:.*$" ;; org-mode metadata
+                                   "\\|^\\*..*$" ;; org-mode headers
+                                   "\\)"))
   (setq deft-file-naming-rules '((noslash . "-")
                                  (nospace . "-")
                                  (case-fn . downcase))))
