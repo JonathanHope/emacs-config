@@ -61,13 +61,6 @@
 
   (setq org-startup-truncated nil)
 
-  ;; Substitute a wide variety of characters for prettier characters.
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (push '("->" . ?➔) prettify-symbols-alist)
-              (push '("=>" . ?⇒) prettify-symbols-alist)
-              ))
-
   ;; Open Excel files with Excel
   (add-to-list 'org-file-apps '("\\.xls\\'" . default))
   (add-to-list 'org-file-apps '("\\.xlsx\\'" . default))
