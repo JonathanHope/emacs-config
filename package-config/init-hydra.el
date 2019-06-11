@@ -5,6 +5,7 @@
   :defer t
 
   :config
+
   ;; Apps Hydra
   (defhydra apps-hydra (:color blue :columns 4)
     "Apps"
@@ -241,36 +242,6 @@
     ("c" (lambda () (interactive) (cider-find-and-clear-repl-output t)) nil)
     ("q" nil "Exit"))
 
-  ;; C++ Hydra
-  (defhydra cpp-hydra (:color blue :columns 4)
-    "C++"
-    ("c" doxygen-insert-comment "Insert doxygen comment.")
-    ("f" doxygen-insert-file-comment "Insert doxygen file comment.")
-    ("x" doxygen-insert-function-comment "Insert doxygen function comment.")
-    ("q" nil "Exit"))
-
-  ;; ;; Markdown Hydra
-  ;; (defhydra markdown-hydra (:color blue :columns 4)
-  ;;   "Markdown"
-  ;;   ("k" livedown-kill "End Live Preview")
-  ;;   ("l" livedown-preview "Live Preview")
-  ;;   ("q" nil "Exit"))
-
-  ;; ;; Javascript Hydra
-  ;; (defhydra javascript-hydra (:color blue :columns 4)
-  ;;   "Javascript"
-  ;;   ("b" nodejs-repl-send-buffer "Load buffer")
-  ;;   ("i" install-npm-package "Install NPM package")
-  ;;   ("r" launch-js-repl "Launch REPL")
-  ;;   ("s" nodejs-repl-send-region "Send selection")
-  ;;   ("q" nil "Exit"))
-
-  ;; ;; Emacs Lisp Hydra
-  ;; (defhydra elisp-hydra (:color blue :columns 4)
-  ;;   "Emacs Lisp"
-  ;;   ("r" launch-elisp-repl "Launch REPL")
-  ;;   ("q" nil "Exit"))
-
   ;; Dired Hydra
   (defhydra dired-hydra (:color blue :columns 4)
     "Dired"
@@ -284,17 +255,20 @@
     ("U" dired-unmark-all-marks "Unmark all")
     ("q" nil "Exit"))
 
-  ;; (defhydra bat-hydra (:color blue :columns 4)
-  ;;   "Bat"
-  ;;   ("r" bat-run "Run")
-  ;;   ("a" bat-run-args "Run with args")
-  ;;   ("q" nil "Exit"))
-
   (defhydra octave-hydra (:color blue :columns 4)
     "Octave"
     ("r" run-octave "Start Octave REPL.")
     ("l" octave-source-file "Send file to Octave REPL.")
     ("c" octave-clear "Clear Octave REPL.")
+    ("q" nil "Exit"))
+
+  (defhydra deft-hydra (:color blue :columns 4)
+    "Octave"
+    ("d" deft-delete-file "Delete file.")
+    ("e" deft-rename-file "Rename file.")
+    ("a" deft-archive-file "Archive file.")
+    ("n" deft-new-file "New File.")
+    ("r" deft-refresh "Refresh.")
     ("q" nil "Exit"))
 
   ;; Support for nested hydras.
@@ -330,26 +304,6 @@
     (magit-status)
     (delete-other-windows))
 
-  (defun launch-elisp-repl ()
-    "Launch an elisp REPL."
-    (interactive)
-    (split-window-horizontally)
-    (select-window-2)
-    (ielm))
-
-  (defun launch-js-repl ()
-    "Launch a javascript REPL."
-    (interactive)
-    (nodejs-repl)
-    (select-window-1))
-
-  (defun install-npm-package (arg)
-    "Install a npm package."
-    (interactive
-     (list
-      (read-string "Package: ")))
-    (shell-command-to-string (concat "npm install " arg)))
-
   (defun launch-calc ()
     (interactive)
     (calc)
@@ -364,7 +318,7 @@
   (defun org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("sql" "restclient" "javascript" "dot" "c++" "css" "html" "csharp" "clojure" "octave")
+              '("sql" "dot" "clojure" "octave")
               :require-match t
               :sort t
               :action (lambda (src-code-type)

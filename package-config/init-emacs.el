@@ -68,14 +68,7 @@
 
   ;; Random performance stuff.
   (setq bidi-display-reordering nil
-        idle-update-delay 2
-        ;; jit-lock-defer-time nil
-        ;; jit-lock-stealth-nice 0.1
-        ;; jit-lock-stealth-time 0.2
-        ;; jit-lock-stealth-verbose nil
-        ;; gc-cons-threshold 16777216
-        ;; gc-cons-percentage 0.1
-        )
+        idle-update-delay 2)
 
   ;; Set cursor type.
   (setq-default cursor-type 'bar)
@@ -148,6 +141,9 @@
   ;; Disable shift to select.
   (setq shift-select-mode nil)
 
+  ;; Speed up font drawing a bit.
+  (setq inhibit-compacting-font-cache t)
+
   (defun my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
@@ -179,7 +175,7 @@
           nil)))
 
     (setq default-directory notes-directory)
-    (text-mode))
+    (deft))
 
   (defun what-face (pos)
     "Get the face in use at the current position."

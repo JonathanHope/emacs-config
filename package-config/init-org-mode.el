@@ -1,7 +1,6 @@
 ;; Package configuration for org-mode.
 
 (use-package org
-  :ensure org-plus-contrib
   :defer t
 
   :mode (("\\.org$" . org-mode))
@@ -42,14 +41,16 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '(
-     ;; (restclient . t)
      (dot . t)
-     (octave . t)))
+     (octave . t)
+     (clojure . t)))
 
   (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
+  (add-to-list 'org-src-lang-modes '("xml" . sgml))
 
-  ;; Configure restclient babel support.
-  (require 'ob-restclient)
+  ;; Configure clojure babel support.
+  (require 'ob-clojure)
+  (setq org-babel-clojure-backend 'cider)
 
   ;; Enable inline images for org.
   (defun turn-on-org-show-all-inline-images ()
@@ -63,11 +64,11 @@
   ;; TODO: Why do these get out of sync sometimes?
   (add-hook 'org-mode-hook
             (lambda ()
-              ;; (push '("[ ]" . ?⚪) prettify-symbols-alist)
-              ;; (push '("[X]" . ?⚫) prettify-symbols-alist)
+              (push '("[ ]" . ?⚪) prettify-symbols-alist)
+              (push '("[X]" . ?⚫) prettify-symbols-alist)
 
-              ;; (push '("TODO" . ?⬜) prettify-symbols-alist)
-              ;; (push '("DONE" . ?⬛) prettify-symbols-alist)
+              (push '("TODO" . ?⬜) prettify-symbols-alist)
+              (push '("DONE" . ?⬛) prettify-symbols-alist)
 
               (push '("->" . ?➔) prettify-symbols-alist)
               (push '("=>" . ?⇒) prettify-symbols-alist)
@@ -77,10 +78,6 @@
   (add-to-list 'org-file-apps '("\\.xls\\'" . default))
   (add-to-list 'org-file-apps '("\\.xlsx\\'" . default))
 
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.3))
-
-  ;; Support for confluence exporting.
-  (require 'cl)
-  (require 'ox-confluence))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.3)))
 
 (provide 'init-org-mode)

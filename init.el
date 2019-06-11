@@ -39,6 +39,9 @@
 
 ;; Core
 
+;; Shouldn't need this.
+(require 'subr-x)
+
 ;; Non-package related emacs config.
 (require 'init-emacs)
 
@@ -72,7 +75,7 @@
 ;; Numbers windows for easy window changing.
 ;; The currently focused window will always be the largest.
 (require 'init-winum)
-(require 'init-golden-ratio)
+(require 'init-zoom)
 (require 'init-shackle)
 
 ;; Simple keyboard driven popup menus.
@@ -125,8 +128,8 @@
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
 (require 'init-org-pretty-table)
-(require 'init-restclient)
 (require 'init-graphviz-dot-mode)
+(require 'init-deft)
 
 ;; File browser.
 (require 'init-dired)
@@ -142,21 +145,16 @@
 ;; XML support.
 (require 'init-sgml-mode)
 
-;; Javascript support.
+;; JSON support.
 (require 'init-js-mode)
 
 ;; YAML support.
 (require 'init-yaml-mode)
 
-;; Programming languages
-
-;; C++ Support
-(require 'init-doxygen)
-(require 'init-cc-mode)
+;; CMake support.
 (require 'init-cmake-mode)
 
-;; Rust Support
-(require 'init-rust-mode)
+;; Programming languages
 
 ;; EBNF support.
 (require 'init-ebnf-mode)
@@ -165,8 +163,7 @@
 (require 'init-clojure-mode)
 (require 'init-cider)
 
-;; Octave mode.
-
+;; Octave support.
 (require 'init-octave-mode)
 
 ;; Run the startup function.

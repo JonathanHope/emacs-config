@@ -17,6 +17,9 @@
    ;; Save the current file.
    ("C-s" . save-buffer)
 
+   ;; Save all files.
+   ("C-S-s" . save-some-buffers)
+
    ;; Open or create a file.
    ("C-o" . counsel-find-file)
 
@@ -55,6 +58,9 @@
 
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
+
+   ;; Seach and replace in project.
+   ("C-S-h" . projectile-replace)
 
    ;; Jump to a line in a file file number.
    ("C-g" . goto-line)

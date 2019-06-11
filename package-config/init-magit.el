@@ -5,8 +5,13 @@
   :defer t
 
   :bind
-  (:map with-editor-mode-map
-        ("M-c" . with-editor-finish))
+  (:map with-editor-mode-map ("M-c" . with-editor-finish))
+  (:map transient-base-map ("q" . transient-quit-one))
+  (:map transient-base-map ("<escape>" . transient-quit-one))
+  (:map transient-edit-map ("q" . transient-quit-one))
+  (:map transient-edit-map ("<escape>" . transient-quit-one))
+  (:map transient-sticky-map ("q" . transient-quit-one))
+  (:map transient-sticky-map ("<escape>" . transient-quit-one))
 
   :config
   (if (eq system-type 'windows-nt)

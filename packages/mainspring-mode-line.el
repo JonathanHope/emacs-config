@@ -173,26 +173,29 @@
 
 ;; Abstraction to figure out if mode-line is the selected window or not.
 
-(defvar mainspring-mode-line-selected-window (frame-selected-window))
 
-(defun mainspring-mode-line-set-selected-window ()
-  "Set the currently selected window for use by the mode-line."
-  (when (not (minibuffer-window-active-p (frame-selected-window)))
-    (setq mainspring-mode-line-selected-window (frame-selected-window))))
+(defvar mainspring-mode-line-selected-window
+  (frame-selected-window))
 
-(add-hook 'window-configuration-change-hook 'mainspring-mode-line-set-selected-window)
-(add-hook 'focus-in-hook 'mainspring-mode-line-set-selected-window)
+(defun mainspring-mode-line-set-selected-window
+    (&optional window)
+  (setq-default
+    mainspring-mode-line-selected-window (or window (frame-selected-window))))
 
-(defadvice mainspring-mode-line-handle-switch-frame (after mode-line-set-selected-window-after-switch-frame activate)
-  "Set selected window after frame switch."
-  (mainspring-mode-line-set-selected-window))
+(defun mainspring-mode-line-selected-window-p
+    (&optional window)
+  (eq (or window (selected-window))
+      (default-value 'mainspring-mode-line-selected-window)))
 
-(defadvice mainspring-mode-line-select-window (after mode-line-select-window activate)
-  "Set selected window after window switch."
-  (mainspring-mode-line-set-selected-window))
+(defun mainspring-mode-line-maybe
+    (&optional arg)
+  (interactive "p")
+  (unless (mainspring-mode-line-selected-window-p)
+    (mainspring-mode-line-set-selected-window)))
+
+(add-hook 'buffer-list-update-hook #'mainspring-mode-line-maybe)
 
 (defun mainspring-mode-line-selected-window-active ()
-  "Check if the mode-line is in the selected window."
   (eq mainspring-mode-line-selected-window (selected-window)))
 
 ;; Force winum to behave like the rest of the modeline.
