@@ -42,6 +42,22 @@
   "What character to demark a plain list using minuses with."
   :group 'mainspring-org-prettify)
 
+(defcustom mainspring-org-prettify-todo ?⬜
+  "What character to demark a TODO in a headline."
+  :group 'mainspring-org-prettify)
+
+(defcustom mainspring-org-prettify-done ?⬛
+  "What character to demark a DONE in a headline."
+  :group 'mainspring-org-prettify)
+
+(defcustom mainspring-org-prettify-checkbox-unchecked ?⚪
+  "What character to demark a unchecked checkbox in a plain list."
+  :group 'mainspring-org-prettify)
+
+(defcustom mainspring-org-prettify-checkbox-checked ?⚫
+  "What character to demark a checked checkbox in a plain list."
+  :group 'mainspring-org-prettify)
+
 (defun mainspring-org-prettify-add-to-list (list-var element)
   "Adds an element to the end of a list."
   (set list-var
@@ -68,6 +84,20 @@
                                   (mainspring-org-prettify-get-headline-char level))
                   nil)))))
 
+         (todo
+          `(("^\\*+ TODO "
+             (0 (prog1 () (compose-region
+                           (- (match-end 0) 5)
+                           (- (match-end 0) 1)
+                           mainspring-org-prettify-todo))))))
+
+         (done
+          `(("^\\*+ DONE "
+             (0 (prog1 () (compose-region
+                           (- (match-end 0) 5)
+                           (- (match-end 0) 1)
+                           mainspring-org-prettify-done))))))
+
          (plain-list-plus
           `(("^ +\\+ "
              (0
@@ -90,14 +120,34 @@
               (prog1 () (compose-region
                          (- (match-end 0) 2)
                          (- (match-end 0) 1)
-                         mainspring-org-prettify-plain-list-minus-char)))))))
+                         mainspring-org-prettify-plain-list-minus-char))))))
+
+         (checkbox-unchecked
+          `(("^ +\\(\\-\\|\\+\\|\\*\\) \\[ \\] "
+             (0
+              (prog1 () (compose-region
+                         (- (match-end 0) 4)
+                         (- (match-end 0) 1)
+                         mainspring-org-prettify-checkbox-unchecked))))))
+
+         (checkbox-checked
+          `(("^ +\\(\\-\\|\\+\\|\\*\\) \\[X\\] "
+             (0
+              (prog1 () (compose-region
+                         (- (match-end 0) 4)
+                         (- (match-end 0) 1)
+                         mainspring-org-prettify-checkbox-checked)))))))
 
     (if mainspring-org-prettify-mode
         (progn
           (font-lock-add-keywords nil headlines)
+          (font-lock-add-keywords nil todo)
+          (font-lock-add-keywords nil done)
           (font-lock-add-keywords nil plain-list-plus)
           (font-lock-add-keywords nil plain-list-asterisk)
-          (font-lock-add-keywords nil plain-list-minus)))))
+          (font-lock-add-keywords nil plain-list-minus)
+          (font-lock-add-keywords nil checkbox-unchecked)
+          (font-lock-add-keywords nil checkbox-checked)))))
 
 (provide 'mainspring-org-prettify)
 

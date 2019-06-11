@@ -62,15 +62,8 @@
   (setq org-startup-truncated nil)
 
   ;; Substitute a wide variety of characters for prettier characters.
-  ;; TODO: Why do these get out of sync sometimes?
   (add-hook 'org-mode-hook
             (lambda ()
-              (push '("[ ]" . ?⚪) prettify-symbols-alist)
-              (push '("[X]" . ?⚫) prettify-symbols-alist)
-
-              (push '("TODO" . ?⬜) prettify-symbols-alist)
-              (push '("DONE" . ?⬛) prettify-symbols-alist)
-
               (push '("->" . ?➔) prettify-symbols-alist)
               (push '("=>" . ?⇒) prettify-symbols-alist)
               ))
