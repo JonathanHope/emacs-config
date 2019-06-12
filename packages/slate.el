@@ -15,7 +15,7 @@
   :safe 'stringp
   :group 'slate)
 
-(defcustom slate-todo-char ?⬜
+(defcustom slate-todo-indicator "⬜"
   "What character to demark a TODO."
   :group 'slate)
 
@@ -31,9 +31,9 @@
   "Face for Slate header."
   :group 'slate-faces)
 
-(defface slate-todo-char-face
+(defface slate-todo-indicator-face
   '((t :inherit font-lock-variable-name-face :bold t))
-  "Face for Slate TODO character."
+  "Face for Slate TODO indicator."
   :group 'slat-faces)
 
 (defface slate-file-name-face
@@ -52,7 +52,7 @@
   :group 'slate-faces)
 
 (defface slate-todo-face
-  '((t :inherit font-lock-string-face :bold t))
+  '((t :inherit font-lock-string-face))
   "Face for Slate TODO."
   :group 'slate-faces)
 
@@ -65,23 +65,40 @@
 
 (defvar slate-todos nil)
 
+(defvar slate-max-file-name-length nil)
+
 ;; Helpers
 
-(defun find-todos ()
+(defun slate-zip-with (list1 list2 fn)
+  (let ((r nil))
+    (while (and list1 list2)
+      (!cons (funcall fn (car list1) (car list2)) r)
+      (!cdr list1)
+      (!cdr list2))
+    (nreverse r)))
+
+(defun slate-find-max-file-name-length ()
+  (let ((file-name-lengths (mapcar (lambda (elt) (+ (length (nth 0 elt))
+                                               (length (number-to-string (nth 1 elt)))
+                                               1)) slate-todos)))
+    (setq slate-max-file-name-length (reduce #'max file-name-lengths))
+    (setq slate-todos (slate-zip-with slate-todos file-name-lengths (lambda (e1 e2) (append e1 (list e2)))))))
+
+(defun slate-find-todos ()
   (let* ((rg-output (shell-command-to-string (concat "rg -n \"^\*. TODO \" " default-directory)))
          (todo-lines (split-string rg-output "\n"))
-         (todo-lines-non-empty (seq-filter (lambda (elt) (not (string= elt ""))) todo-lines))
-         (todos-tokens (mapcar (lambda (elt) (split-string elt ":")) todo-lines-non-empty))
-         (todos (mapcar (lambda (elt) (let ((file-name (nth 0 elt))
-                                       (line-number (nth 1 elt))
-                                       (todo (nth 2 elt)))
-                                   (list
-                                    (file-name-nondirectory file-name)
-                                    (string-to-number  line-number)
-                                    (string-trim
-                                     (replace-regexp-in-string "^\\*. TODO "
-                                                               ""
-                                                               todo))))) todos-tokens)))
+         (todo-lines-non-empty (seq-filter (lambda (elt)
+                                             (not (string= elt ""))) todo-lines))
+         (todos-tokens (mapcar (lambda (elt)
+                                 (split-string elt ":")) todo-lines-non-empty))
+         (todos (mapcar (lambda (elt)
+                          (let ((file-name (nth 0 elt))
+                                (line-number (nth 1 elt))
+                                (todo (nth 2 elt)))
+                            (list
+                             (file-name-nondirectory file-name)
+                             (string-to-number line-number)
+                             (string-trim (replace-regexp-in-string "^\\*. ?TODO " "" todo))))) todos-tokens)))
     (setq slate-todos todos)))
 
 (defun slate-buffer-visible-p ()
@@ -96,13 +113,15 @@
 (defun slate-todo-widget (todo)
   (let ((file-name (nth 0 todo))
         (line-number (nth 1 todo))
-        (todo (nth 2 todo)))
+        (todo (nth 2 todo))
+        (file-name-length (nth 3 todo)))
     (progn
-      (widget-insert (propertize (char-to-string slate-todo-char) 'face 'slate-todo-char-face))
+      (widget-insert (propertize slate-todo-indicator 'face 'slate-todo-indicator-face))
       (widget-insert " ")
       (widget-insert (propertize file-name 'face 'slate-file-name-face))
       (widget-insert (propertize ":" 'face 'slate-divider-face))
       (widget-insert (propertize (number-to-string line-number) 'face 'slate-line-number-face))
+      (widget-insert (make-string (- slate-max-file-name-length file-name-length) ? ))
       (widget-insert " ")
       (widget-insert (propertize todo 'face 'slate-todo-face))
       (widget-insert "\n"))))
@@ -139,7 +158,8 @@
     (visual-line-mode 0))
   (setq major-mode 'slate-mode)
   (setq mode-name "Slate")
-  (find-todos)
+  (slate-find-todos)
+  (slate-find-max-file-name-length)
   (slate-buffer-setup)
   )
 
