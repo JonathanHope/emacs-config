@@ -15,6 +15,8 @@
     ("s" eshell "Shell")
     ("l" flyspell-mode "Spell check")
     ("r" rainbow-mode "Rainbow mode")
+    ("n" deft "Deft")
+    ("t" slate "Slate")
     ("h" (progn
            (apps-hydra-describe/body)
            (hydra-push '(apps-hydra/body))) "Describe")

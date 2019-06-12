@@ -175,7 +175,7 @@
           nil)))
 
     (setq default-directory notes-directory)
-    (deft))
+    (text-mode))
 
   (defun what-face (pos)
     "Get the face in use at the current position."

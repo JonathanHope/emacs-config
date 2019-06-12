@@ -46,6 +46,7 @@
 (require 'init-org-pretty-table)
 (require 'init-mainspring-graphviz-dot-mode)
 (require 'init-deft)
+(require 'init-slate)
 
 ;; Shouldn't need this.
 (require 'subr-x)
