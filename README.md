@@ -1,27 +1,27 @@
 
 # Table of Contents
 
-1.  [Mainspring - An Emacs Configuration](#orgc7d09ca)
-    1.  [Philosophy](#org14fa59f)
-    2.  [Installation](#org9432488)
-    3.  [Keymap](#orgf2bb513)
-        1.  [General - Editing](#org1b815ba)
-        2.  [General - Navigation](#orgc439182)
-        3.  [General - Files](#org7bdefe6)
-        4.  [General - Windowing](#orgeed695c)
-        5.  [Menus](#orga7c42d0)
-        6.  [Magit](#org240bfe6)
-        7.  [Org mode](#orgecd2a7d)
+1.  [Mainspring - An Emacs Configuration](#org86fc617)
+    1.  [Philosophy](#orgf46cd09)
+    2.  [Installation](#orgcd61a92)
+    3.  [Keymap](#org3c48d4a)
+        1.  [General - Editing](#org831f9f3)
+        2.  [General - Navigation](#org733403b)
+        3.  [General - Files](#org20b985e)
+        4.  [General - Windowing](#orgd03cb1d)
+        5.  [Menus](#org89214ab)
+        6.  [Magit](#orgde41061)
+        7.  [Org mode](#org25b5958)
 
 
-<a id="orgc7d09ca"></a>
+<a id="org86fc617"></a>
 
 # Mainspring - An Emacs Configuration
 
 Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
 
 
-<a id="org14fa59f"></a>
+<a id="orgf46cd09"></a>
 
 ## Philosophy
 
@@ -37,7 +37,7 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 -   **Looks matter:** I spend way too much time editing text in my life, the text editor should be a nice place to live.
 
 
-<a id="org9432488"></a>
+<a id="orgcd61a92"></a>
 
 ## Installation
 
@@ -53,19 +53,23 @@ Hunspell is required for spell checking. It can be installed on Linux using your
 
 Ripgrep is required for textual searching. It can be installed on Linux using your distributions package manager. It can be found for windows here: <https://github.com/BurntSushi/ripgrep/releases>.
 
-Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be installed for windows here: <http://www.graphviz.org/download/>.
+Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be found for windows here: <http://www.graphviz.org/download/>.
+
+Latex is required for formulas in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: <http://www.tug.org/texlive/acquire-netinstall.html>.
+
+Octave is required for octave blocks in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: <https://www.gnu.org/software/octave/download.html>.
 
 It uses the pragmata fonts by default. These are non-free fonts.
 
 
-<a id="orgf2bb513"></a>
+<a id="org3c48d4a"></a>
 
 ## Keymap
 
 Because the shortcuts for this config are so drastically different than standard emacs I detail them here.
 
 
-<a id="org1b815ba"></a>
+<a id="org831f9f3"></a>
 
 ### General - Editing
 
@@ -142,7 +146,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **TAB:** Expand snippet
 
 
-<a id="orgc439182"></a>
+<a id="org733403b"></a>
 
 ### General - Navigation
 
@@ -170,6 +174,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **CTRL + f:** Regex search
     -   **CTRL + SHIFT + f:** Regex search in project
     -   **CTRL + h:** Regex search and replace
+    -   **CTRL + SHIFT + h:** Regex search in project.
 
 4.  Structural Navigation
 
@@ -185,16 +190,17 @@ Because the shortcuts for this config are so drastically different than standard
     -   **SHFIT + F12:** Jump back
 
 
-<a id="org7bdefe6"></a>
+<a id="org20b985e"></a>
 
 ### General - Files
 
 -   **CTRL + s:** Save file
+-   **CTRL + SHIFT + s:** Save all files
 -   **CTRL + o:** Open file
 -   **CTRL + w:** Close file
 
 
-<a id="orgeed695c"></a>
+<a id="orgd03cb1d"></a>
 
 ### General - Windowing
 
@@ -209,9 +215,18 @@ Because the shortcuts for this config are so drastically different than standard
     -   **ALT + SHIFT + 1:** Close other windows
     -   **ALT + SHIFT + 2:** Split window horizontally
     -   **ALT + SHIFT + 3:** Split window vertically
+    -   **ALT + 1:** Select window 1
+    -   **ALT + 2:** Select window 2
+    -   **ALT + 3:** Select window 3
+    -   **ALT + 4:** Select window 4
+    -   **ALT + 5:** Select window 5
+    -   **ALT + 6:** Select window 6
+    -   **ALT + 7:** Select window 7
+    -   **ALT + 8:** Select window 8
+    -   **ALT + 9:** Select window 9
 
 
-<a id="orga7c42d0"></a>
+<a id="org89214ab"></a>
 
 ### Menus
 
@@ -219,7 +234,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + TAB:** Launch contextual menu
 
 
-<a id="org240bfe6"></a>
+<a id="orgde41061"></a>
 
 ### Magit
 
@@ -227,7 +242,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **?:** Show shortcuts
 
 
-<a id="orgecd2a7d"></a>
+<a id="org25b5958"></a>
 
 ### Org mode
 

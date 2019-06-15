@@ -29,7 +29,11 @@ Hunspell is required for spell checking. It can be installed on Linux using your
 
 Ripgrep is required for textual searching. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/BurntSushi/ripgrep/releases.
 
-Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be installed for windows here: http://www.graphviz.org/download/.
+Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be found for windows here: http://www.graphviz.org/download/.
+
+Latex is required for formulas in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: http://www.tug.org/texlive/acquire-netinstall.html.
+
+Octave is required for octave blocks in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://www.gnu.org/software/octave/download.html.
 
 It uses the pragmata fonts by default. These are non-free fonts.
 
@@ -40,6 +44,7 @@ Because the shortcuts for this config are so drastically different than standard
 *** General - Editing
 
 **** Selections
+
     * *CTRL + SPACE:* Set mark
     * *CTRL + RETURN:* Mark region rectangle
     * *CTRL + d:* Select word
@@ -49,10 +54,12 @@ Because the shortcuts for this config are so drastically different than standard
     * *CTRL + -:* Contract region
 
 **** Undo/Redo
+
     * *CTRL + z:* Undo
     * *CTRL + y:* Redo
 
 **** Cut/Copy/Paste
+
     * *CTRL + c:* Copy
     * *CTRL + x:* Cut
     * *CTRL + SHIFT + x:* Cut line
@@ -60,9 +67,11 @@ Because the shortcuts for this config are so drastically different than standard
     * *CTRL + SHIFT + v:* Paste from kill ring
 
 **** Comments
+
     * *CTRL + /:* Toggle comment
 
 **** Lines
+
     * *RETURN:* New line
     * *CTRL + SHIFT + d:* Duplicate line
     * *CTRL + j:* Join line
@@ -70,18 +79,22 @@ Because the shortcuts for this config are so drastically different than standard
     * *CTRL + SHIFT + DOWN:* Move line of text down
 
 **** Indentation
+
     * *TAB:* Auto indent
 
 **** Deletions
+
     * *CTRL + BACKSPACE:* Delete word
     * *BACKSPACE:* Delete character
     * *CTRL + k:* Delete a line
 
 **** Casing
+
     * *CTRL + SHIFT + u:* Uppercase region
     * *CTRL + SHIFT + l:* Lowercase region
 
 **** Structural Editing
+
     * *CTRL + SHIFT + 0:* Forward slurp
     * *CTRL + SHIFT + ]:* Forward barf
     * *CTRL + SHIFT + 9:* Backward slurp
@@ -90,21 +103,26 @@ Because the shortcuts for this config are so drastically different than standard
     * *CTRL + SHIFT + k:* Kill sexp
 
 **** Code Folding
+
     * *ALT + RETURN:* Toggle code folding
 
 **** Multiple Cursors
+
     * *CTRL + SHFIT + c:* Add cursors to lines
     * *CTRL + SHFIT + a:* Mark all like this
 
 **** Snippets
+
     * *TAB:* Expand snippet
 
 *** General - Navigation
 
 **** Cancellation
+
     * *ESCAPE:* Cancel
 
 **** Directional Movement
+
     * *UP:* Up line
     * *DOWN:* Down line
     * *LEFT:* Forward character
@@ -119,15 +137,19 @@ Because the shortcuts for this config are so drastically different than standard
     * *END:* End of buffer
 
 **** Regex Searching
+
     * *CTRL + f:* Regex search
     * *CTRL + SHIFT + f:* Regex search in project
     * *CTRL + h:* Regex search and replace
+    * *CTRL + SHIFT + h:* Regex search in project.
 
 **** Structural Navigation
+
     * *CTRL + SHIFT + RIGHT:* Forward sexp
     * *CTRL + SHIFT + LEFT:* Backward sexp
 
 **** High Level Navigation
+
     * *CTRL + g:* Go to line
     * *CTRL + p:* Go to file in project
     * *CTRL + SHIFT + p:* Execute command
@@ -135,31 +157,47 @@ Because the shortcuts for this config are so drastically different than standard
     * *SHFIT + F12:* Jump back
 
 *** General - Files
+
    * *CTRL + s:* Save file
+   * *CTRL + SHIFT + s:* Save all files
    * *CTRL + o:* Open file
    * *CTRL + w:* Close file
 
 *** General - Windowing
 
 **** Closing
+
     * *CTRL + SHIFT + w:* Close emacs
     * *ESCAPE:* Close popup window
 
 **** Adding and Removing Windows
+
     * *CTRL + b:* Change buffer
     * *ALT + SHIFT + 1:* Close other windows
     * *ALT + SHIFT + 2:* Split window horizontally
     * *ALT + SHIFT + 3:* Split window vertically
+    * *ALT + 1:* Select window 1
+    * *ALT + 2:* Select window 2
+    * *ALT + 3:* Select window 3
+    * *ALT + 4:* Select window 4
+    * *ALT + 5:* Select window 5
+    * *ALT + 6:* Select window 6
+    * *ALT + 7:* Select window 7
+    * *ALT + 8:* Select window 8
+    * *ALT + 9:* Select window 9
 
 *** Menus
+
    * *CTRL + SHIFT + TAB:* Launch apps menu
    * *CTRL + TAB:* Launch contextual menu
 
 *** Magit
+
    * *ALT + c:* Commit with the entered commit message
    * *?:* Show shortcuts
 
 *** Org mode
+
    * *ALT + RETURN:* Add heading/item
    * *ALT + SHIFT + RETURN:* Add todo/checkbox
    * *TAB:* Next field in table
