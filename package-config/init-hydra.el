@@ -264,12 +264,17 @@
     ("q" nil "Exit"))
 
   (defhydra deft-hydra (:color blue :columns 4)
-    "Octave"
+    "Deft"
     ("d" deft-delete-file "Delete file.")
     ("e" deft-rename-file "Rename file.")
     ("a" deft-archive-file "Archive file.")
     ("n" deft-new-file "New File.")
     ("r" deft-refresh "Refresh.")
+    ("q" nil "Exit"))
+
+  (defhydra slate-hydra (:color blue :columns 4)
+    "Slate"
+    ("r" slate-refresh "Refresh.")
     ("q" nil "Exit"))
 
   ;; Support for nested hydras.

@@ -222,6 +222,18 @@
  ;; Highlight numbers
  '(highlight-numbers-number ((t (:foreground "#96b5b4" :slant italic))))
 
+ ;; Slate
+ '(slate-header-face ((t (:foreground "#b48ead" :weight bold))))
+ '(slate-priority-a-face ((t (:foreground "#bf616a" :weight bold))))
+ '(slate-priority-b-face ((t (:foreground "#d08770" :weight bold))))
+ '(slate-priority-c-face ((t (:foreground "#ebcb8b" :weight bold))))
+ '(slate-file-name-face ((t (:foreground "#96b5b4" :weight bold))))
+ '(slate-divider-face ((t (:foreground "#4f5b66" :weight bold))))
+ '(slate-line-number-face ((t (:foreground "#c0c5ce" :weight bold))))
+ '(slate-todo-face ((t (:foreground "#a3be8c"))))
+
+
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))
