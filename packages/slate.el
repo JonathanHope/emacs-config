@@ -1,4 +1,4 @@
-;;; slate.el --- Custom mode line.
+;;; slate.el --- Master TODO list.
 
 ;; Copyright (C) 2019 Jonathan Hope
 
@@ -9,11 +9,9 @@
 
 ;; TODO: Add ability to exclude archive directory.
 ;; TODO: Sort priority buckets by name.
-;; TODO: Add way to limit number of TODOs.
-;; TODO: Add way to truncate file names
 ;; TODO: Limit TODO text to screen width.
 ;; TODO: Show tags.
-;; TODO: Add incremental regex filering.
+;; TODO: Add incremental regex filtering.
 ;; TODO: Add priority filtering.
 ;; TODO: Add tag filtering.
 
@@ -42,6 +40,26 @@
 (defcustom slate-rg "rg"
   "Location of ripgrep executable."
   :type 'string
+  :group 'slate)
+
+(defcustom slate-todo-limit 0
+  "Number of TODOs to render. No limit if zero."
+  :type 'number
+  :group 'slate)
+
+(defcustom slate-file-name-limit 40
+  "Max length of file name."
+  :type 'number
+  :group 'slate)
+
+(defcustom slate-ellipsis "…"
+  "What to denote a truncated string with."
+  :type 'string
+  :group 'slate)
+
+(defcustom slate-ellipsis-width 2
+  "The actual width of the ellipsis. It could be a double width character."
+  :type 'number
   :group 'slate)
 
 ;; Faces
@@ -99,7 +117,10 @@
 ;; Variables
 
 (defvar slate-todos nil
-  "The TODOs that are displayed in the slate buffer.")
+  "The unfiltered TODOs gathered from the org files.")
+
+(defvar slate-filtered-todos nil
+  "The filtered TODOs that are displayed in the slate buffer.")
 
 (defvar slate-max-file-name-length nil
   "The length of the longest file name in the slate-todos list.")
@@ -201,9 +222,13 @@
 (defun slate-calc-file-name-length (file-name line-number)
   "Get the length of the filename for a todo item."
   (if (and file-name line-number)
-      (+ (length file-name)
-         (length (number-to-string line-number))
-         1)
+      (let* ((file-name-length (if (> (length file-name) slate-file-name-limit)
+                                   (- slate-file-name-limit 1)
+                                 (length file-name)))
+             (file-name-length-with-line-number (+ file-name-length
+                                                   (length (number-to-string line-number))
+                                                   1)))
+        file-name-length-with-line-number)
     0))
 
 (defun slate-build-todos (todos file-paths priorities)
@@ -220,12 +245,15 @@
                  (file-path (nth index file-paths))
                  (file-name-length (slate-calc-file-name-length file-name line-number)))
             (setq index (1+ index))
-            (setq processed-todos (slate-append-list-to-list processed-todos (list file-name
-                                                                                   line-number
-                                                                                   priority
-                                                                                   todo-text
-                                                                                   file-path
-                                                                                   file-name-length)))))
+            (setq processed-todos (slate-append-list-to-list processed-todos
+                                                             (let ((todo-hash-table (make-hash-table :test 'equal)))
+                                                               (puthash "file-name" file-name todo-hash-table)
+                                                               (puthash "line-number" line-number todo-hash-table)
+                                                               (puthash "priority" priority todo-hash-table)
+                                                               (puthash "todo-text" todo-text todo-hash-table)
+                                                               (puthash "file-path" file-path todo-hash-table)
+                                                               (puthash "file-name-length" file-name-length todo-hash-table)
+                                                               todo-hash-table)))))
         processed-todos)
     nil))
 
@@ -238,7 +266,7 @@
             (priority-none-todos '()))
         (progn
           (dolist (todo todos)
-            (let ((priority (nth 2 todo)))
+            (let ((priority (gethash "priority" todo)))
               (cond ((equal "A" priority)
                      (setq priority-a-todos (slate-append-value-to-list priority-a-todos todo)))
                     ((equal "B" priority)
@@ -253,15 +281,6 @@
                   priority-c-todos)))
     nil))
 
-(defun slate-find-max-file-name-length (todos)
-  "Find the length of the longest file name amongst the file names of the TODOs."
-  (if todos
-      (let ((file-name-lengths (mapcar (lambda (elt)
-                                         (nth 5 elt))
-                                       todos)))
-        (reduce #'max file-name-lengths))
-    0))
-
 (defun slate-find-todos ()
   "Find all of the TODOs in org files in a given directory."
   (let* ((rg-output (slate-ripgrep-todos))
@@ -272,14 +291,47 @@
          (priorities (slate-get-priorities todo-lines-non-empty))
          (todos-tokens (slate-tokenize todo-lines-non-empty-no-drive-letter))
          (todos (slate-build-todos todos-tokens full-file-paths priorities))
-         (sorted-todos (slate-sort-todos todos))
-         (max-file-name-length (slate-find-max-file-name-length todos)))
-    (setq slate-todos sorted-todos)
+         (sorted-todos (slate-sort-todos todos)))
+    (setq slate-todos sorted-todos)))
+
+;; Filtering the model.
+
+(defun slate-limit-todos (todos)
+  "Limit the number of TODOs that are being rendered."
+  (if todos
+      (if (< 0 slate-todo-limit)
+          (seq-take todos slate-todo-limit)
+        todos)
+    nil))
+
+(defun slate-filter-todos ()
+  "Apply any filters to the current TODOs."
+  (let* ((limited-todos (slate-limit-todos slate-todos)))
+    (setq slate-filtered-todos limited-todos)))
+
+;; Geometry calculations.
+
+(defun slate-find-max-file-name-length (max-file-name-lengths)
+  "Find the length of the longest file name amongst the file names of the TODOs."
+  (if max-file-name-lengths
+      (let ((file-name-lengths (mapcar (lambda (elt)
+                                         (gethash "file-name-length" elt))
+                                       max-file-name-lengths)))
+        (reduce #'max file-name-lengths))
+    0))
+
+(defun slate-calculate-geometry ()
+  "Do any calcualtions needed to draw the UI later."
+  (let* ((max-file-name-length (slate-find-max-file-name-length slate-filtered-todos)))
     (setq slate-max-file-name-length max-file-name-length)))
 
-(defun slate-buffer-visible-p ()
-  "Whether the slate buffer is currently visible."
-  (get-buffer-window slate-buffer))
+;; Binding the model to the UI
+
+(defun slate-truncate-string (value max-length)
+  "Truncate a string to a length and append an ellipsis to it."
+  (if (> (length value) max-length)
+      (concat (substring value 0 (- max-length slate-ellipsis-width)) slate-ellipsis)
+    value))
 
 (defun slate-print-header ()
   "Print the header to slate buffer."
@@ -287,15 +339,13 @@
     (insert (propertize "Slate" 'face 'slate-header-face))
     (insert "\n\n")))
 
-;; Binding the model to the UI
-
 (defun slate-print-todo (todo)
   "Print the TODOs to the slate buffer."
-  (let ((file-name (nth 0 todo))
-        (line-number (nth 1 todo))
-        (priority (nth 2 todo))
-        (todo (nth 3 todo))
-        (file-name-length (nth 5 todo))
+  (let ((file-name (slate-truncate-string (gethash "file-name" todo) slate-file-name-limit))
+        (line-number (gethash "line-number" todo))
+        (priority (gethash "priority" todo))
+        (todo-text (gethash "todo-text" todo))
+        (file-name-length (gethash "file-name-length" todo))
         (inhibit-read-only t))
     (cond ((equal "A" priority) (insert (propertize priority 'face 'slate-priority-a-face)))
           ((equal "B" priority) (insert (propertize priority 'face 'slate-priority-b-face)))
@@ -305,9 +355,10 @@
     (insert (propertize file-name 'face 'slate-file-name-face))
     (insert (propertize ":" 'face 'slate-divider-face))
     (insert (propertize (number-to-string line-number) 'face 'slate-line-number-face))
-    (insert (make-string (- slate-max-file-name-length file-name-length) ? ))
+    (if (< file-name-length slate-max-file-name-length)
+        (insert (make-string (- slate-max-file-name-length file-name-length) ? )))
     (insert " ")
-    (insert (propertize todo 'face 'slate-todo-face))
+    (insert (propertize todo-text 'face 'slate-todo-face))
     (insert "\n")))
 
 ;; Externally useful functions
@@ -322,10 +373,12 @@
   (if (executable-find slate-rg)
       (progn
         (slate-find-todos)
+        (slate-filter-todos)
+        (slate-calculate-geometry)
         (if (eq 0 (length slate-todos))
             (let ((inhibit-read-only t))
               (insert "Nothing slated."))
-          (mapc 'slate-print-todo slate-todos))
+          (mapc 'slate-print-todo slate-filtered-todos))
         (goto-char (point-min))
         (forward-line 2)
         (forward-char 0))
@@ -342,8 +395,8 @@
     (if (and (>= todo-index 0)
              (< todo-index (length slate-todos)))
         (let* ((todo (nth todo-index slate-todos))
-               (file-path (nth 4 todo))
-               (line-number (nth 1 todo)))
+               (file-path (gethash "file-path" todo))
+               (line-number (gethash "line-number" todo)))
           (find-file file-path)
           (goto-line line-number)))))
 

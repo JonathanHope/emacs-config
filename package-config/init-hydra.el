@@ -159,6 +159,7 @@
     ("d" org-table-delete-column "Delete column")
     ("n" org-table-create "New table")
     ("r" org-table-insert-row "Insert row")
+    ("s" org-table-from-selection "Table from selection")
     ("q" hydra-pop "Exit"))
 
   ;; Hydra for org-mode subtree related items.
@@ -379,6 +380,12 @@
         (insert char)
         (goto-char beg)
         (insert char))))
+
+(defun org-table-from-selection (arg)
+  (interactive "P")
+  (org-table-create-or-convert-from-region arg)
+  (org-table-insert-row)
+  (org-table-insert-hline))
 
 (defun octave-clear ()
   "Clear octave"
