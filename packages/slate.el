@@ -223,7 +223,7 @@
   "Get the length of the filename for a todo item."
   (if (and file-name line-number)
       (let* ((file-name-length (if (> (length file-name) slate-file-name-limit)
-                                   (- slate-file-name-limit 1)
+                                   slate-file-name-limit
                                  (length file-name)))
              (file-name-length-with-line-number (+ file-name-length
                                                    (length (number-to-string line-number))
@@ -330,7 +330,7 @@
 (defun slate-truncate-string (value max-length)
   "Truncate a string to a length and append an ellipsis to it."
   (if (> (length value) max-length)
-      (concat (substring value 0 (- max-length slate-ellipsis-width)) slate-ellipsis)
+      (concat (substring value 0 (+ 1 (- max-length slate-ellipsis-width))) slate-ellipsis)
     value))
 
 (defun slate-print-header ()
