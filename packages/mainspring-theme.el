@@ -231,8 +231,7 @@
  '(slate-divider-face ((t (:foreground "#4f5b66" :weight bold))))
  '(slate-line-number-face ((t (:foreground "#c0c5ce" :weight bold))))
  '(slate-todo-face ((t (:foreground "#a3be8c"))))
-
-
+ '(slate-filter-text-face ((t (:foreground "#eff1f5"))))
 
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))

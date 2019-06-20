@@ -8,9 +8,8 @@
 ;; Keywords: todo
 
 ;; TODO: Add ability to exclude archive directory.
-;; TODO: Sort priority buckets by name.
+;; TODO: Sort priority buckets by something.
 ;; TODO: Show tags.
-;; TODO: Add incremental regex filtering.
 ;; TODO: Add priority filtering.
 ;; TODO: Add tag filtering.
 ;; TODO: The pragmata pro ellipsis is different between bold and regular.
@@ -22,7 +21,6 @@
 
 ;;; Code:
 
-(require 'subr-x)
 (require 'cl)
 
 ;; Customization
@@ -114,6 +112,11 @@
   "Face for Slate priority c indicator."
   :group 'slate-faces)
 
+(defface slate-filter-text-face
+  '((t :inherit font-lock-builtin-face))
+  "Face for Slate priority c indicator."
+  :group 'slate-faces)
+
 ;; Constants
 
 (defconst slate-buffer "*Slate*"
@@ -148,11 +151,21 @@
 (defvar slate-window-width nil
   "The current width of the window containing the slate buffer.")
 
+(defvar slate-current-regex-filter ""
+  "The current regex filter being applied to the TODOs.")
+
 ;; Keymap definition
 
 (defvar slate-mode-map
   (let ((i 0)
         (map (make-keymap)))
+    (set-char-table-range (nth 1 map) (cons #x100 (max-char))
+                          'deft-filter-increment)
+    (setq i ?\s)
+    (while (< i 256)
+      (define-key map (vector i) 'slate-filter-increment)
+      (setq i (1+ i)))
+    (define-key map (kbd "DEL") 'slate-filter-decrement)
     (define-key map (kbd "RET") 'slate-open)
     map)
   "Keymap for Slate mode.")
@@ -196,12 +209,13 @@
 
 (defun slate-buffer-visible-p ()
   "Return non-nil if a window is displaying `slate-buffer'."
-  (get-buffer-window slate-buffer))
+  (and (get-buffer-window slate-buffer)
+       (not (window-minibuffer-p))))
 
 ;; Building the model
 
 (defun slate-ripgrep-todos ()
-  "Use ripgrep to find all of the TODO items in org files in a direct."
+  "Use ripgrep to find all of the TODO items in org files in a directory."
   (when default-directory
     (shell-command-to-string (concat slate-rg " --line-number --no-messages --color never --no-heading \"^[*][*]* ?TODO \" --iglob \"*.org\" "  default-directory))))
 
@@ -331,6 +345,15 @@
 
 ;; Filtering the model.
 
+(defun slate-filter-todos-regex (todos)
+  "Filter the text of the TODO with the current regex filer."
+  (if (not (equal "" slate-current-regex-filter))
+      (seq-filter (lambda (todo)
+                    (let ((todo-text (gethash "todo-text" todo)))
+                      (string-match-p slate-current-regex-filter todo-text)))
+                  todos)
+    todos))
+
 (defun slate-limit-todos (todos)
   "Limit the number of TODOs that are being rendered."
   (when todos
@@ -340,17 +363,18 @@
 
 (defun slate-filter-todos ()
   "Apply any filters to the current TODOs."
-  (let* ((limited-todos (slate-limit-todos slate-todos)))
+  (let* ((regex-filtered-todos (slate-filter-todos-regex slate-todos))
+         (limited-todos (slate-limit-todos regex-filtered-todos)))
     (setq slate-filtered-todos limited-todos)))
 
 ;; Geometry calculations.
 
-(defun slate-find-max-file-name-length (max-file-name-lengths)
+(defun slate-find-max-file-name-length (todos)
   "Find the length of the longest file name amongst the file names of the TODOs."
-  (if max-file-name-lengths
-      (let ((file-name-lengths (mapcar (lambda (elt)
-                                         (gethash "file-name-length" elt))
-                                       max-file-name-lengths)))
+  (if todos
+      (let ((file-name-lengths (mapcar (lambda (todo)
+                                         (gethash "file-name-length" todo))
+                                       todos)))
         (reduce #'max file-name-lengths))
     0))
 
@@ -372,8 +396,14 @@
 (defun slate-draw-header ()
   "Print the header to slate buffer."
   (let ((inhibit-read-only t))
-    (insert (propertize "Slate" 'face 'slate-header-face))
-    (insert "\n\n")))
+    (if (not (equal slate-current-regex-filter ""))
+        (progn
+          (insert (propertize "Slate: " 'face 'slate-header-face))
+          (insert (propertize slate-current-regex-filter 'face 'slate-filter-text-face))
+          (insert "\n\n"))
+      (progn
+        (insert (propertize "Slate" 'face 'slate-header-face))
+        (insert "\n\n")))))
 
 (defun slate-draw-todo (todo)
   "Print the TODOs to the slate buffer."
@@ -408,23 +438,21 @@
 
 (defun slate-draw ()
   (interactive)
-  (when (slate-buffer-visible-p)
-    (with-current-buffer slate-buffer
-      (let ((inhibit-read-only t))
-        (erase-buffer))
-      (remove-overlays)
-      (slate-draw-header)
-      (if (executable-find slate-rg)
-          (progn
-            (if (eq 0 (length slate-todos))
-                (let ((inhibit-read-only t))
-                  (insert "Nothing slated."))
-              (mapc 'slate-draw-todo slate-filtered-todos))
-            (goto-char (point-min))
-            (forward-line 2)
-            (forward-char 0))
-        (let ((inhibit-read-only t))
-          (insert "Ripgrep not found."))))))
+  (let ((inhibit-read-only t))
+    (erase-buffer))
+  (remove-overlays)
+  (slate-draw-header)
+  (if (executable-find slate-rg)
+      (progn
+        (if (eq 0 (length slate-todos))
+            (let ((inhibit-read-only t))
+              (insert "Nothing slated."))
+          (mapc 'slate-draw-todo slate-filtered-todos))
+        (goto-char (point-min))
+        (forward-line 2)
+        (forward-char 0))
+    (let ((inhibit-read-only t))
+      (insert "Ripgrep not found."))))
 
 ;; Externally useful functions
 
@@ -440,8 +468,7 @@
 
 (defun slate-window-size-changed (frame)
   "Handle the window size changing."
-  (when (and (slate-buffer-visible-p)
-             (not (window-minibuffer-p)))
+  (when (and (slate-buffer-visible-p))
     (slate-calculate-geometry)
     (slate-draw)))
 
@@ -457,6 +484,25 @@
                (line-number (gethash "line-number" todo)))
           (find-file file-path)
           (goto-line line-number)))))
+
+(defun slate-filter-increment ()
+  "Add a character to the current slate filter."
+  (interactive)
+  (let* ((char last-command-event)
+         (char-as-string (char-to-string char)))
+    (setq slate-current-regex-filter (concat slate-current-regex-filter char-as-string))
+    (slate-filter-todos)
+    (slate-calculate-geometry)
+    (slate-draw)))
+
+(defun slate-filter-decrement ()
+  "Remove a character from the current slate filter."
+  (interactive)
+  (unless (equal slate-current-regex-filter "")
+    (setq slate-current-regex-filter (substring slate-current-regex-filter 0 -1))
+    (slate-filter-todos)
+    (slate-calculate-geometry)
+    (slate-draw)))
 
 ;; Mode definition
 
