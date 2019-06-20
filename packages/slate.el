@@ -173,12 +173,16 @@
   (append list (list value)))
 
 (defun slate-get-font-width ()
-  "The default-font-width function doesn't seem to work right for some fonts. This a more reliable way to get the font width."
-  (when (slate-buffer-visible-p)
-    (with-current-buffer slate-buffer
-      (let ((inhibit-read-only t))
-        (insert "m")
-        (aref (aref (font-get-glyphs (font-at 1) 1 2) 0) 4)))))
+  "The `default-font-width' function returns incorrect values for some fonts on Windows. This is a workaround."
+  (let ((window (selected-window))
+        (remapping face-remapping-alist))
+    (with-temp-buffer
+      (make-local-variable 'face-remapping-alist)
+      (setq face-remapping-alist remapping)
+      (set-window-buffer window (current-buffer))
+      (insert "m")
+      (aref (aref (font-get-glyphs (font-at 1) 1 2) 0) 4))))
+
 
 (defun slate-get-window-width ()
   "Return current width of window displaying `slate-buffer'."
@@ -436,7 +440,8 @@
 
 (defun slate-window-size-changed (frame)
   "Handle the window size changing."
-  (when (slate-buffer-visible-p)
+  (when (and (slate-buffer-visible-p)
+             (not (window-minibuffer-p)))
     (slate-calculate-geometry)
     (slate-draw)))
 
