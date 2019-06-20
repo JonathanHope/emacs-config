@@ -9,11 +9,11 @@
 
 ;; TODO: Add ability to exclude archive directory.
 ;; TODO: Sort priority buckets by name.
-;; TODO: Limit TODO text to screen width.
 ;; TODO: Show tags.
 ;; TODO: Add incremental regex filtering.
 ;; TODO: Add priority filtering.
 ;; TODO: Add tag filtering.
+;; TODO: The pragmata pro ellipsis is different between bold and regular.
 
 ;;; Commentary:
 
@@ -52,14 +52,19 @@
   :type 'number
   :group 'slate)
 
-(defcustom slate-ellipsis "…"
+(defcustom slate-ellipsis "..."
   "What to denote a truncated string with."
   :type 'string
   :group 'slate)
 
-(defcustom slate-ellipsis-width 2
-  "The actual width of the ellipsis. It could be a double width character."
+(defcustom slate-ellipsis-length 3
+  "The actual width of the ellipsis. The character could be double width."
   :type 'number
+  :group 'slate)
+
+(defcustom slate-use-special-font-measure t
+  "Use a special font measuring function that works better with fonts that aren't purely monspaced."
+  :type 'boolean
   :group 'slate)
 
 ;; Faces
@@ -114,6 +119,21 @@
 (defconst slate-buffer "*Slate*"
   "Slate buffer name.")
 
+(defconst slate-file-name-line-number-divider ":"
+  "The printed divider between the file name and the line number.")
+
+(defconst slate-priority-length 1
+  "The length of the printed priority.")
+
+(defconst slate-priority-spacer-length 1
+  "The length of the printed spacer between the priority and the file name.")
+
+(defconst slate-file-name-line-number-divider-length 1
+  "The length of the printed divider between the file name and the line number.")
+
+(defconst slate-line-number-todo-text-divider-length 1
+  "The length of the printed divider between the line number and the todo text.")
+
 ;; Variables
 
 (defvar slate-todos nil
@@ -124,6 +144,9 @@
 
 (defvar slate-max-file-name-length nil
   "The length of the longest file name in the slate-todos list.")
+
+(defvar slate-window-width nil
+  "The current width of the window containing the slate buffer.")
 
 ;; Keymap definition
 
@@ -136,7 +159,7 @@
 
 ;; Low level helpers
 
-(defun get-current-line-number ()
+(defun slate-get-current-line-number ()
   "Get the line number the cursor is on currently."
   (interactive)
   (save-restriction
@@ -145,79 +168,89 @@
       (beginning-of-line)
       (1+ (count-lines 1 (point))))))
 
-(defun slate-append-list-to-list (lists list)
-  "Append a list to a list of lists."
-  (append lists (list list)))
-
-(defun slate-append-value-to-list (list value)
-  "Appends a value to a list."
+(defun slate-append (list value)
+  "Append something to a list."
   (append list (list value)))
+
+(defun slate-get-font-width ()
+  "The default-font-width function doesn't seem to work right for some fonts. This a more reliable way to get the font width."
+  (when (slate-buffer-visible-p)
+    (with-current-buffer slate-buffer
+      (let ((inhibit-read-only t))
+        (insert "m")
+        (aref (aref (font-get-glyphs (font-at 1) 1 2) 0) 4)))))
+
+(defun slate-get-window-width ()
+  "Return current width of window displaying `slate-buffer'."
+  (let* ((window (get-buffer-window slate-buffer))
+         (window-width (window-pixel-width window))
+         (font-width (if slate-use-special-font-measure
+                         (slate-get-font-width)
+                       (default-font-width))))
+    (when window
+      (- (/ window-width font-width) 1))))
+
+(defun slate-buffer-visible-p ()
+  "Return non-nil if a window is displaying `slate-buffer'."
+  (get-buffer-window slate-buffer))
 
 ;; Building the model
 
 (defun slate-ripgrep-todos ()
   "Use ripgrep to find all of the TODO items in org files in a direct."
-  (if default-directory
-      (shell-command-to-string (concat slate-rg " --line-number --no-messages --color never --no-heading \"^\\*. ?TODO \" --iglob \"*.org\" "  default-directory))
-    nil))
+  (when default-directory
+    (shell-command-to-string (concat slate-rg " --line-number --no-messages --color never --no-heading \"^[*][*]* ?TODO \" --iglob \"*.org\" "  default-directory))))
 
 (defun slate-string-to-lines (ripgrep-output)
   "Split a string into lines."
-  (if ripgrep-output
-      (split-string ripgrep-output "\n")
-    nil))
+  (when ripgrep-output
+    (split-string ripgrep-output "\n")))
 
 (defun slate-filter-empty-strings (todos)
   "Filter empty lines out of a list of lines."
-  (if todos
-      (seq-filter (lambda (elt)
-                    (not (string= elt "")))
-                  todos)
-    nil))
+  (when todos
+    (seq-filter (lambda (todo)
+                  (not (string= todo "")))
+                todos)))
 
 (defun slate-remove-drive-letters (todos)
   "Remove any Windows driver letters from a list of strings."
-  (if todos
-      (mapcar (lambda (elt)
-                (replace-regexp-in-string "^[a-zA-Z]:/" "" elt))
-              todos)
-    nil))
+  (when todos
+    (mapcar (lambda (todo)
+              (replace-regexp-in-string "^[a-zA-Z]:/" "" todo))
+            todos)))
 
 (defun slate-get-file-paths (todos)
   "Get the full file paths from the todos."
-  (if todos
-      (mapcar (lambda (elt)
-                (replace-regexp-in-string ":[0-9]+:.*" "" elt))
-              todo-lines-non-empty)
-    nil))
+  (when todos
+    (mapcar (lambda (todo)
+              (replace-regexp-in-string ":[0-9]+:.*" "" todo))
+            todo-lines-non-empty)))
 
 (defun slate-get-priorities (todos)
   "Get the priorities from the todos."
-  (if todos
-      (let ((regex "\\(\\[#[A-C]\\]\\)"))
-        (mapcar (lambda (elt)
-                  (if (string-match-p regex elt)
-                      (progn
-                        (string-match "\\(\\[#[A-C]\\]\\)" elt)
-                        (substring (match-string 0 elt) 2 -1))
-                    " "))
-                todos))
-    nil))
+  (when todos
+    (let ((regex "\\(\\[#[A-C]\\]\\)"))
+      (mapcar (lambda (todo)
+                (if (string-match-p regex todo)
+                    (progn
+                      (string-match "\\(\\[#[A-C]\\]\\)" todo)
+                      (substring (match-string 0 todo) 2 -1))
+                  " "))
+              todos))))
 
 (defun slate-tokenize (todos)
   "Tokenize a list of strings by :."
-  (if todos
-      (mapcar (lambda (elt)
-                (split-string elt ":"))
-              todos)
-    nil))
+  (when todos
+    (mapcar (lambda (todo)
+              (split-string todo ":"))
+            todos)))
 
 (defun slate-filter-todo-text (todo-text)
   "Filter to just the todo text."
-  (if todo-text
-      (string-trim
-       (replace-regexp-in-string "^\\*. ?TODO \\(\\[#[A-C]\\]\\)?" "" todo-text))
-    nil))
+  (when todo-text
+    (string-trim
+     (replace-regexp-in-string "^[*][*]* ?TODO \\(\\[#[A-C]\\]\\)?" "" todo-text))))
 
 (defun slate-calc-file-name-length (file-name line-number)
   "Get the length of the filename for a todo item."
@@ -227,59 +260,57 @@
                                  (length file-name)))
              (file-name-length-with-line-number (+ file-name-length
                                                    (length (number-to-string line-number))
-                                                   1)))
+                                                   slate-file-name-line-number-divider-length)))
         file-name-length-with-line-number)
     0))
 
 (defun slate-build-todos (todos file-paths priorities)
   "Build the final todos list object."
-  (if (and todos file-paths priorities)
-      (let ((index 0)
-            (processed-todos '()))
-        (while (< index (length todos))
-          (let* ((todo (nth index todos))
-                 (file-name (file-name-nondirectory (nth 0 todo)))
-                 (line-number (string-to-number (nth 1 todo)))
-                 (priority (nth index priorities))
-                 (todo-text (slate-filter-todo-text (nth 2 todo)))
-                 (file-path (nth index file-paths))
-                 (file-name-length (slate-calc-file-name-length file-name line-number)))
-            (setq index (1+ index))
-            (setq processed-todos (slate-append-list-to-list processed-todos
-                                                             (let ((todo-hash-table (make-hash-table :test 'equal)))
-                                                               (puthash "file-name" file-name todo-hash-table)
-                                                               (puthash "line-number" line-number todo-hash-table)
-                                                               (puthash "priority" priority todo-hash-table)
-                                                               (puthash "todo-text" todo-text todo-hash-table)
-                                                               (puthash "file-path" file-path todo-hash-table)
-                                                               (puthash "file-name-length" file-name-length todo-hash-table)
-                                                               todo-hash-table)))))
-        processed-todos)
-    nil))
+  (when (and todos file-paths priorities)
+    (let ((index 0)
+          (processed-todos '()))
+      (while (< index (length todos))
+        (let* ((todo (nth index todos))
+               (file-name (file-name-nondirectory (nth 0 todo)))
+               (line-number (string-to-number (nth 1 todo)))
+               (priority (nth index priorities))
+               (todo-text (slate-filter-todo-text (nth 2 todo)))
+               (file-path (nth index file-paths))
+               (file-name-length (slate-calc-file-name-length file-name line-number)))
+          (setq index (1+ index))
+          (setq processed-todos (slate-append processed-todos
+                                              (let ((todo-hash-table (make-hash-table :test 'equal)))
+                                                (puthash "file-name" file-name todo-hash-table)
+                                                (puthash "line-number" line-number todo-hash-table)
+                                                (puthash "priority" priority todo-hash-table)
+                                                (puthash "todo-text" todo-text todo-hash-table)
+                                                (puthash "file-path" file-path todo-hash-table)
+                                                (puthash "file-name-length" file-name-length todo-hash-table)
+                                                todo-hash-table)))))
+      processed-todos)))
 
 (defun slate-sort-todos (todos)
   "Sort the todos into priority buckets."
-  (if todos
-      (let ((priority-a-todos '())
-            (priority-b-todos '())
-            (priority-c-todos '())
-            (priority-none-todos '()))
-        (progn
-          (dolist (todo todos)
-            (let ((priority (gethash "priority" todo)))
-              (cond ((equal "A" priority)
-                     (setq priority-a-todos (slate-append-value-to-list priority-a-todos todo)))
-                    ((equal "B" priority)
-                     (setq priority-b-todos (slate-append-value-to-list priority-b-todos todo)))
-                    ((equal "C" priority)
-                     (setq priority-c-todos (slate-append-value-to-list priority-c-todos todo)))
-                    ((equal " " priority)
-                     (setq priority-none-todos (slate-append-value-to-list priority-none-todos todo))))))
-          (append priority-none-todos
-                  priority-a-todos
-                  priority-b-todos
-                  priority-c-todos)))
-    nil))
+  (when todos
+    (let ((priority-a-todos '())
+          (priority-b-todos '())
+          (priority-c-todos '())
+          (priority-none-todos '()))
+      (progn
+        (dolist (todo todos)
+          (let ((priority (gethash "priority" todo)))
+            (cond ((equal "A" priority)
+                   (setq priority-a-todos (slate-append priority-a-todos todo)))
+                  ((equal "B" priority)
+                   (setq priority-b-todos (slate-append priority-b-todos todo)))
+                  ((equal "C" priority)
+                   (setq priority-c-todos (slate-append priority-c-todos todo)))
+                  ((equal " " priority)
+                   (setq priority-none-todos (slate-append priority-none-todos todo))))))
+        (append priority-none-todos
+                priority-a-todos
+                priority-b-todos
+                priority-c-todos)))))
 
 (defun slate-find-todos ()
   "Find all of the TODOs in org files in a given directory."
@@ -298,11 +329,10 @@
 
 (defun slate-limit-todos (todos)
   "Limit the number of TODOs that are being rendered."
-  (if todos
-      (if (< 0 slate-todo-limit)
-          (seq-take todos slate-todo-limit)
-        todos)
-    nil))
+  (when todos
+    (if (< 0 slate-todo-limit)
+        (seq-take todos slate-todo-limit)
+      todos)))
 
 (defun slate-filter-todos ()
   "Apply any filters to the current TODOs."
@@ -322,31 +352,42 @@
 
 (defun slate-calculate-geometry ()
   "Do any calcualtions needed to draw the UI later."
-  (let* ((max-file-name-length (slate-find-max-file-name-length slate-filtered-todos)))
-    (setq slate-max-file-name-length max-file-name-length)))
+  (let ((max-file-name-length (slate-find-max-file-name-length slate-filtered-todos))
+        (window-width (slate-get-window-width)))
+    (setq slate-max-file-name-length max-file-name-length)
+    (setq slate-window-width window-width)))
 
 ;; Binding the model to the UI
 
 (defun slate-truncate-string (value max-length)
   "Truncate a string to a length and append an ellipsis to it."
   (if (> (length value) max-length)
-      (concat (substring value 0 (+ 1 (- max-length slate-ellipsis-width))) slate-ellipsis)
+      (concat (substring value 0 (- max-length slate-ellipsis-length)) slate-ellipsis)
     value))
 
-(defun slate-print-header ()
+(defun slate-draw-header ()
   "Print the header to slate buffer."
   (let ((inhibit-read-only t))
     (insert (propertize "Slate" 'face 'slate-header-face))
     (insert "\n\n")))
 
-(defun slate-print-todo (todo)
+(defun slate-draw-todo (todo)
   "Print the TODOs to the slate buffer."
-  (let ((file-name (slate-truncate-string (gethash "file-name" todo) slate-file-name-limit))
-        (line-number (gethash "line-number" todo))
-        (priority (gethash "priority" todo))
-        (todo-text (gethash "todo-text" todo))
-        (file-name-length (gethash "file-name-length" todo))
-        (inhibit-read-only t))
+  (let* ((priority (gethash "priority" todo))
+         (file-name (slate-truncate-string (gethash "file-name" todo) slate-file-name-limit))
+         (line-number (gethash "line-number" todo))
+         (file-name-length (gethash "file-name-length" todo))
+         (file-name-spacer-length (if (< file-name-length slate-max-file-name-length)
+                                      (- slate-max-file-name-length file-name-length)
+                                    0))
+         (left-section-length (+ slate-priority-length
+                                 slate-priority-spacer-length
+                                 file-name-length
+                                 file-name-spacer-length
+                                 slate-line-number-todo-text-divider-length))
+         (todo-text-limit (- slate-window-width left-section-length))
+         (todo-text (slate-truncate-string (gethash "todo-text" todo) todo-text-limit))
+         (inhibit-read-only t))
     (cond ((equal "A" priority) (insert (propertize priority 'face 'slate-priority-a-face)))
           ((equal "B" priority) (insert (propertize priority 'face 'slate-priority-b-face)))
           ((equal "C" priority) (insert (propertize priority 'face 'slate-priority-c-face)))
@@ -361,36 +402,48 @@
     (insert (propertize todo-text 'face 'slate-todo-face))
     (insert "\n")))
 
+(defun slate-draw ()
+  (interactive)
+  (when (slate-buffer-visible-p)
+    (with-current-buffer slate-buffer
+      (let ((inhibit-read-only t))
+        (erase-buffer))
+      (remove-overlays)
+      (slate-draw-header)
+      (if (executable-find slate-rg)
+          (progn
+            (if (eq 0 (length slate-todos))
+                (let ((inhibit-read-only t))
+                  (insert "Nothing slated."))
+              (mapc 'slate-draw-todo slate-filtered-todos))
+            (goto-char (point-min))
+            (forward-line 2)
+            (forward-char 0))
+        (let ((inhibit-read-only t))
+          (insert "Ripgrep not found."))))))
+
 ;; Externally useful functions
 
 (defun slate-refresh ()
   "Refresh the TODO list."
   (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer))
-  (remove-overlays)
-  (slate-print-header)
-  (if (executable-find slate-rg)
-      (progn
-        (slate-find-todos)
-        (slate-filter-todos)
-        (slate-calculate-geometry)
-        (if (eq 0 (length slate-todos))
-            (let ((inhibit-read-only t))
-              (insert "Nothing slated."))
-          (mapc 'slate-print-todo slate-filtered-todos))
-        (goto-char (point-min))
-        (forward-line 2)
-        (forward-char 0))
-    (let ((inhibit-read-only t))
-      (insert "Ripgrep not found."))))
+  (slate-find-todos)
+  (slate-filter-todos)
+  (slate-calculate-geometry)
+  (slate-draw))
 
 ;; Events
+
+(defun slate-window-size-changed (frame)
+  "Handle the window size changing."
+  (when (slate-buffer-visible-p)
+    (slate-calculate-geometry)
+    (slate-draw)))
 
 (defun slate-open ()
   "Open the file under the cursor and go to the line number of the TODO."
   (interactive)
-  (let* ((current-line-number (get-current-line-number))
+  (let* ((current-line-number (slate-get-current-line-number))
          (todo-index (- current-line-number 3)))
     (if (and (>= todo-index 0)
              (< todo-index (length slate-todos)))
@@ -416,6 +469,8 @@
   (use-local-map slate-mode-map)
   (setq major-mode 'slate-mode)
   (setq mode-name "Slate")
+  (add-hook 'window-size-change-functions
+            'slate-window-size-changed t)
   (slate-refresh))
 
 (put 'slate-mode 'mode-class 'special)
