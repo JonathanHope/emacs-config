@@ -159,12 +159,23 @@
 (defvar slate-mode-map
   (let ((i 0)
         (map (make-keymap)))
-    (set-char-table-range (nth 1 map) (cons #x100 (max-char))
-                          'deft-filter-increment)
-    (setq i ?\s)
-    (while (< i 256)
+
+    (setq i 48)
+    (while (< i 58)
       (define-key map (vector i) 'slate-filter-increment)
       (setq i (1+ i)))
+
+    (setq i 65)
+    (while (< i 91)
+      (define-key map (vector i) 'slate-filter-increment)
+      (setq i (1+ i)))
+
+    (setq i 97)
+    (while (< i 123)
+      (define-key map (vector i) 'slate-filter-increment)
+      (setq i (1+ i)))
+
+    (define-key map (kbd "SPC") 'slate-filter-increment)
     (define-key map (kbd "DEL") 'slate-filter-decrement)
     (define-key map (kbd "RET") 'slate-open)
     map)
