@@ -10,7 +10,7 @@
 
   :config
   (ivy-mode 1)
-  ;; (setq ivy-use-virtual-buffers t)
+  (setq ivy-extra-directories nil)
   (setq enable-recursive-minibuffers t)
   (setq ivy-height 20)
   (setq ivy-initial-inputs-alist nil)
