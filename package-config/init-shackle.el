@@ -6,7 +6,8 @@
   :init
   (setq shackle-rules
         '((compilation-mode :select nil)
-          ("*Help*" :select t :align right)))
+          ("*Help*" :select t :align right)
+          ("*info*" :select t :popup t :align right)))
   :config
   (shackle-mode 1))
 

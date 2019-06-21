@@ -35,8 +35,6 @@
 (setq scratch-files (list "scratch.txt"))
 (setq projects-directory "~/Projects/")
 
-;; Core
-
 ;; Org file support.
 ;; This has to be done first so everything compiles agains the right org version.
 (require 'init-org-mode)
@@ -45,6 +43,8 @@
 (require 'init-mainspring-graphviz-dot-mode)
 (require 'init-deft)
 (require 'init-slate)
+
+;; Core
 
 ;; Shouldn't need this.
 (require 'subr-x)
@@ -139,6 +139,9 @@
 
 ;; Shell
 (require 'init-eshell)
+
+;;Calculator
+(require 'init-calc)
 
 ;; Config file formats.
 

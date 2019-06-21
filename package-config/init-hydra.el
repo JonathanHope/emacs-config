@@ -17,18 +17,19 @@
     ("r" rainbow-mode "Rainbow mode")
     ("n" deft "Deft")
     ("t" slate "Slate")
+    ("c" full-calc "Calculator")
     ("h" (progn
            (apps-hydra-describe/body)
            (hydra-push '(apps-hydra/body))) "Describe")
     ("q" nil "Exit"))
 
   (defhydra apps-hydra-describe (:color blue :columns 4)
-    "Org-mode todo"
-    ("m" describe-mode "Describe mode")
-    ("f" counsel-describe-function "Describe function")
-    ("k" counsel-descbinds "Describe key")
-    ("v" counsel-describe-variable "Describe variable")
-    ("a" counsel-faces "Describe face")
+    "Desribe"
+    ("m" describe-mode "Mode")
+    ("f" counsel-describe-function "Function")
+    ("k" counsel-descbinds "Key")
+    ("v" counsel-describe-variable "Variable")
+    ("a" counsel-faces "Face")
     ("q" hydra-pop "Exit"))
 
   ;; Org-mode Hydras
@@ -104,7 +105,7 @@
 
   ;; Hydra for formatting related items.
   (defhydra org-hydra-formatting (:color blue :columns 4)
-    "Org-mode todo"
+    "Org-mode formatting"
     ("b" org-bold-region "Bold")
     ("i" org-italic-region "Italic")
     ("u" org-underline-region "Underline")
@@ -277,6 +278,41 @@
     "Slate"
     ("r" slate-refresh "Refresh.")
     ("q" nil "Exit"))
+
+  (defhydra calc-hydra (:color blue :columns 4)
+    "Calc"
+    ("p" calc-realign "Go to prompt")
+    ("z" calc-undo "Undo")
+    ("u" calc-redo "Redo")
+    ("h" (progn
+           (calc-describe-hydra/body)
+           (hydra-push '(calc-hydra/body))) "Describe")
+    ("q" nil "Exit"))
+
+  (defhydra calc-describe-hydra (:color blue :columns 4)
+    "Calc describe"
+    ("f" mainspring-counsel-calc-describe-function "Function")
+    ("v" mainspring-counsel-calc-describe-variable "Variable")
+    ("k" calc-describe-key "Key")
+    ("q" hydra-pop "Exit"))
+
+  (defun mainspring-counsel-calc-describe-function()
+    (interactive)
+    (ivy-read "Describe calc function: "
+              (calc-help-index-entries "Function" "Command")
+              :require-match t
+              :sort t
+              :action (lambda (selection)
+                        (calc-describe-function selection))))
+
+  (defun mainspring-counsel-calc-describe-variable()
+    (interactive)
+    (ivy-read "Describe calc variable: "
+              (calc-help-index-entries "Variable")
+              :require-match t
+              :sort t
+              :action (lambda (selection)
+                        (calc-describe-variable selection))))
 
   ;; Support for nested hydras.
   (defvar hydra-stack nil)

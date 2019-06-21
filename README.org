@@ -204,7 +204,7 @@ Because the shortcuts for this config are so drastically different than standard
    * *SHIFT + TAB:* Previous field in table
    * *ALT + LEFT:* Demote headline
    * *ALT + RIGHT:* Promote headline
-   * *ALT + UP:* Move item up
+   * *ALT + UP:* Move item upto
    * *ALT + DOWN:* Move item down
    * *SHIFT + LEFT:* Toggle todo status and toggle list style
    * *SHIFT + RIGHT:* Toggle todo status and toggle list style
@@ -212,3 +212,15 @@ Because the shortcuts for this config are so drastically different than standard
    * *SHIFT + DOWN:* Toggle todo priority
    * *TAB:* Toggle visibility
    * *SHIFT + ESC:* Exit source editing
+
+*** Calc Mode
+
+   * *0-9:* Start entering a number. Seperate with *:* for a fraction. Use *.* for floats.
+   * *RETURN:* Duplicate the last entry on the stack.
+   * *TAB:* Swap the last two entries on the stack.
+   * *BACKSPACE:* Pop the last entry off of the stack.
+   * *+:* Add last two entris on the stack.
+   * *-:* Subtract last two entris on the stack.
+   * **:* Multiply last two entris on the stack.
+   * */:* Divide last two entries on the stack.
+   * */:* Divide second to last entry of the stack to the last entry of the stack power.
