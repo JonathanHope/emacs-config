@@ -15,6 +15,7 @@
 
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (setq transient-save-history nil)
   (if (eq system-type 'windows-nt)
       (progn
         (setq exec-path (add-to-list 'exec-path "C:/Program Files/Git/bin"))
