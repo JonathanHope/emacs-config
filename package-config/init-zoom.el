@@ -2,7 +2,6 @@
 
 (use-package zoom
   :ensure t
-  :diminish zoom
 
   :config
   (zoom-mode 1)

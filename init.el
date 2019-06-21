@@ -15,13 +15,11 @@
 ;; Install just use package.
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package)
-  (package-install 'diminish))
+  (package-install 'use-package))
 
 ;; Enable use package.
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
 (require 'bind-key)
 
 ;; Add directory for local packages.

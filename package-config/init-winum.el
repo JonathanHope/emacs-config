@@ -16,7 +16,7 @@
         ("M-7" . winum-select-window-7)
         ("M-8" . winum-select-window-8)
         ("M-9" . winum-select-window-9))
-  
+
   :config
   (setq winum-format "%s")
   (winum-mode))

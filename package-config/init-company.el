@@ -1,7 +1,6 @@
 (use-package company
   :ensure t
   :defer t
-  :diminish company-mode
 
   :bind
   (:map company-active-map

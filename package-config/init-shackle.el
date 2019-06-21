@@ -2,7 +2,6 @@
 
 (use-package shackle
   :ensure t
-  :diminish shackle-mode
 
   :init
   (setq shackle-rules

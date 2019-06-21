@@ -3,7 +3,6 @@
 (use-package aggressive-indent
   :ensure t
   :defer t
-  :diminish aggressive-indent-mode
 
   :init
   (add-hook 'sgml-mode-hook 'aggressive-indent-mode)
