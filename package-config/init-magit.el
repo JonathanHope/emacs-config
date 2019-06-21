@@ -14,6 +14,7 @@
   (:map transient-sticky-map ("<escape>" . transient-quit-one))
 
   :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (if (eq system-type 'windows-nt)
       (progn
         (setq exec-path (add-to-list 'exec-path "C:/Program Files/Git/bin"))

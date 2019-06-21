@@ -10,7 +10,7 @@
   (defhydra apps-hydra (:color blue :columns 4)
     "Apps"
     ("d" dired "Dired")
-    ("m" magit-mode-launch "Magit")
+    ("m" magit-status "Magit")
     ("o" org-mode-launch "Org-mode")
     ("s" eshell "Shell")
     ("l" flyspell-mode "Spell check")
@@ -304,12 +304,6 @@
     (interactive)
     (setq default-directory notes-directory)
     (org-mode))
-
-  (defun magit-mode-launch ()
-    "Launch org-mode in the correct directory."
-    (interactive)
-    (magit-status)
-    (delete-other-windows))
 
   (defun launch-browser-repl ()
     (interactive)
