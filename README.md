@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [Mainspring - An Emacs Configuration](#orgef9e9aa)
-    1.  [Philosophy](#org837a5e2)
-    2.  [Installation](#org0e1f9dd)
-    3.  [Keymap](#org30a2054)
-        1.  [General - Editing](#org0e4ee3e)
-        2.  [General - Navigation](#org3f03f32)
-        3.  [General - Files](#org01ed668)
-        4.  [General - Windowing](#org18ea9c3)
-        5.  [Menus](#org487ce9d)
-        6.  [Magit](#org1068c12)
-        7.  [Org mode](#org0a93535)
-        8.  [Calc Mode](#org108a503)
+1.  [Mainspring - An Emacs Configuration](#orgb789a19)
+    1.  [Philosophy](#org89355a8)
+    2.  [Installation](#org70ced94)
+    3.  [Keymap](#org43cc6d8)
+        1.  [General - Editing](#orgef570b5)
+        2.  [General - Navigation](#orgbae7b49)
+        3.  [General - Files](#orgd861229)
+        4.  [General - Windowing](#orge5a99dd)
+        5.  [Menus](#org8a4ea3b)
+        6.  [Magit](#orgd3588da)
+        7.  [Org mode](#org1ed063f)
+        8.  [Calc Mode](#orgca2bf0c)
 
 
-<a id="orgef9e9aa"></a>
+<a id="orgb789a19"></a>
 
 # Mainspring - An Emacs Configuration
 
 Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
 
 
-<a id="org837a5e2"></a>
+<a id="org89355a8"></a>
 
 ## Philosophy
 
@@ -38,7 +38,7 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 -   **Looks matter:** I spend way too much time editing text in my life, the text editor should be a nice place to live.
 
 
-<a id="org0e1f9dd"></a>
+<a id="org70ced94"></a>
 
 ## Installation
 
@@ -63,14 +63,14 @@ Octave is required for octave blocks in org documents. It can be installed on Li
 It uses the pragmata fonts by default. These are non-free fonts.
 
 
-<a id="org30a2054"></a>
+<a id="org43cc6d8"></a>
 
 ## Keymap
 
 Because the shortcuts for this config are so drastically different than standard emacs I detail them here.
 
 
-<a id="org0e4ee3e"></a>
+<a id="orgef570b5"></a>
 
 ### General - Editing
 
@@ -147,7 +147,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **TAB:** Expand snippet
 
 
-<a id="org3f03f32"></a>
+<a id="orgbae7b49"></a>
 
 ### General - Navigation
 
@@ -191,7 +191,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **SHFIT + F12:** Jump back
 
 
-<a id="org01ed668"></a>
+<a id="orgd861229"></a>
 
 ### General - Files
 
@@ -201,7 +201,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + w:** Close file
 
 
-<a id="org18ea9c3"></a>
+<a id="orge5a99dd"></a>
 
 ### General - Windowing
 
@@ -227,7 +227,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **ALT + 9:** Select window 9
 
 
-<a id="org487ce9d"></a>
+<a id="org8a4ea3b"></a>
 
 ### Menus
 
@@ -235,7 +235,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + TAB:** Launch contextual menu
 
 
-<a id="org1068c12"></a>
+<a id="orgd3588da"></a>
 
 ### Magit
 
@@ -243,7 +243,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **?:** Show shortcuts
 
 
-<a id="org0a93535"></a>
+<a id="org1ed063f"></a>
 
 ### Org mode
 
@@ -263,7 +263,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **SHIFT + ESC:** Exit source editing
 
 
-<a id="org108a503"></a>
+<a id="orgca2bf0c"></a>
 
 ### Calc Mode
 
@@ -271,8 +271,8 @@ Because the shortcuts for this config are so drastically different than standard
 -   **RETURN:** Duplicate the last entry on the stack.
 -   **TAB:** Swap the last two entries on the stack.
 -   **BACKSPACE:** Pop the last entry off of the stack.
--   **+:** Add last two entris on the stack.
--   **-:** Subtract last two entris on the stack.
--   **\*:** Multiply last two entris on the stack.
+-   **+:** Add last two entries on the stack.
+-   **-:** Subtract last two entries on the stack.
+-   **\*:** Multiply last two entries on the stack.
 -   **/:** Divide last two entries on the stack.
 -   **/:** Divide second to last entry of the stack to the last entry of the stack power.

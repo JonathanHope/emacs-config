@@ -219,8 +219,8 @@ Because the shortcuts for this config are so drastically different than standard
    * *RETURN:* Duplicate the last entry on the stack.
    * *TAB:* Swap the last two entries on the stack.
    * *BACKSPACE:* Pop the last entry off of the stack.
-   * *+:* Add last two entris on the stack.
-   * *-:* Subtract last two entris on the stack.
-   * **:* Multiply last two entris on the stack.
+   * *+:* Add last two entries on the stack.
+   * *-:* Subtract last two entries on the stack.
+   * **:* Multiply last two entries on the stack.
    * */:* Divide last two entries on the stack.
    * */:* Divide second to last entry of the stack to the last entry of the stack power.
