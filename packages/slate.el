@@ -8,11 +8,9 @@
 ;; Keywords: todo
 
 ;; TODO: Add ability to exclude archive directory.
-;; TODO: Sort priority buckets by something.
-;; TODO: Show tags.
 ;; TODO: Add priority filtering.
 ;; TODO: Add tag filtering.
-;; TODO: The pragmata pro ellipsis is different between bold and regular.
+;; TODO: Add ability to truncate tag length.
 
 ;;; Commentary:
 
@@ -62,6 +60,11 @@
 
 (defcustom slate-use-special-font-measure t
   "Use a special font measuring function that works better with fonts that aren't purely monspaced."
+  :type 'boolean
+  :group 'slate)
+
+(defcustom slate-show-tags t
+  "Whether to show tags or not."
   :type 'boolean
   :group 'slate)
 
@@ -117,6 +120,11 @@
   "Face for Slate priority c indicator."
   :group 'slate-faces)
 
+(defface slate-tags-face
+  '((t :inherit font-lock-doc-string-face))
+  "Face for Slate priority c indicator."
+  :group 'slate-faces)
+
 ;; Constants
 
 (defconst slate-buffer "*Slate*"
@@ -124,6 +132,9 @@
 
 (defconst slate-file-name-line-number-divider ":"
   "The printed divider between the file name and the line number.")
+
+(defconst slate-tag-divider ","
+  "The divider between tags.")
 
 (defconst slate-priority-length 1
   "The length of the printed priority.")
@@ -136,6 +147,9 @@
 
 (defconst slate-line-number-todo-text-divider-length 1
   "The length of the printed divider between the line number and the todo text.")
+
+(defconst slate-todo-text-tags-divider-length 1
+  "The length of the printed divider between the todo text and the tags.")
 
 ;; Variables
 
@@ -223,6 +237,14 @@
   (and (get-buffer-window slate-buffer)
        (not (window-minibuffer-p))))
 
+(defun slate-join-strings (strings seperator)
+  "Join strings together using a seperator string."
+  (mapconcat 'identity strings seperator))
+
+(defun slate-sort-strings (strings)
+  "Sort a list of strings."
+  (cl-sort strings 'string-lessp))
+
 ;; Building the model
 
 (defun slate-ripgrep-todos ()
@@ -305,7 +327,8 @@
                (priority (nth index priorities))
                (todo-text (slate-filter-todo-text (nth 2 todo)))
                (file-path (nth index file-paths))
-               (file-name-length (slate-calc-file-name-length file-name line-number)))
+               (file-name-length (slate-calc-file-name-length file-name line-number))
+               (tags (slate-sort-strings (slate-filter-empty-strings (seq-drop todo 3)))))
           (setq index (1+ index))
           (setq processed-todos (slate-append processed-todos
                                               (let ((todo-hash-table (make-hash-table :test 'equal)))
@@ -315,6 +338,7 @@
                                                 (puthash "todo-text" todo-text todo-hash-table)
                                                 (puthash "file-path" file-path todo-hash-table)
                                                 (puthash "file-name-length" file-name-length todo-hash-table)
+                                                (puthash "tags" tags todo-hash-table)
                                                 todo-hash-table)))))
       processed-todos)))
 
@@ -430,8 +454,15 @@
                                  file-name-length
                                  file-name-spacer-length
                                  slate-line-number-todo-text-divider-length))
-         (todo-text-limit (- slate-window-width left-section-length))
+         (tags (gethash "tags" todo))
+         (right-section (if slate-show-tags (slate-join-strings tags ", ") ""))
+         (right-section-length (length right-section))
+         (todo-text-limit (- slate-window-width
+                             left-section-length
+                             right-section-length
+                             (if slate-show-tags slate-todo-text-tags-divider-length 0)))
          (todo-text (slate-truncate-string (gethash "todo-text" todo) todo-text-limit))
+         (todo-text-length (length todo-text))
          (inhibit-read-only t))
     (cond ((equal "A" priority) (insert (propertize priority 'face 'slate-priority-a-face)))
           ((equal "B" priority) (insert (propertize priority 'face 'slate-priority-b-face)))
@@ -442,9 +473,22 @@
     (insert (propertize ":" 'face 'slate-divider-face))
     (insert (propertize (number-to-string line-number) 'face 'slate-line-number-face))
     (if (< file-name-length slate-max-file-name-length)
-        (insert (make-string (- slate-max-file-name-length file-name-length) ? )))
+        (insert (make-string (- slate-max-file-name-length
+                                file-name-length)
+                             ? )))
     (insert " ")
     (insert (propertize todo-text 'face 'slate-todo-face))
+    (if (and slate-show-tags
+             (> right-section-length 0))
+        (progn
+          (insert " ")
+          (insert (make-string (- slate-window-width
+                                  left-section-length
+                                  todo-text-length
+                                  right-section-length
+                                  slate-todo-text-tags-divider-length)
+                               ? ))
+          (insert (propertize right-section 'face 'slate-tags-face))))
     (insert "\n")))
 
 (defun slate-draw ()
@@ -489,8 +533,8 @@
   (let* ((current-line-number (slate-get-current-line-number))
          (todo-index (- current-line-number 3)))
     (if (and (>= todo-index 0)
-             (< todo-index (length slate-todos)))
-        (let* ((todo (nth todo-index slate-todos))
+             (< todo-index (length slate-filtered-todos)))
+        (let* ((todo (nth todo-index slate-filtered-todos))
                (file-path (gethash "file-path" todo))
                (line-number (gethash "line-number" todo)))
           (find-file file-path)

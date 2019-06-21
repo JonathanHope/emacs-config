@@ -28,10 +28,6 @@
   ;; No backup files.
   (setq make-backup-files nil)
 
-  ;; Disable recentf mode.
-  (when (fboundp 'scroll-bar-mode)
-    (recentf-mode -1))
-
   ;; Hide menu, toolbar, and fringe.
   (menu-bar-mode 0)
   (tool-bar-mode 0)

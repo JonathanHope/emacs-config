@@ -232,6 +232,7 @@
  '(slate-line-number-face ((t (:foreground "#c0c5ce" :weight bold))))
  '(slate-todo-face ((t (:foreground "#a3be8c"))))
  '(slate-filter-text-face ((t (:foreground "#eff1f5"))))
+ '(slate-tags-face ((t (:foreground "#dfe1e8" :weight bold))))
 
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
