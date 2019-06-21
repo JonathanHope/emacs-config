@@ -4,6 +4,14 @@
   :defer t
   :commands (eshell)
 
+  :init
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (define-key eshell-mode-map (kbd "<up>") #'previous-line)
+              (define-key eshell-mode-map (kbd "<down>") #'next-line)
+              (define-key eshell-mode-map (kbd "M-<up>") #'eshell-previous-input)
+              (define-key eshell-mode-map (kbd "M-<down>") #'eshell-next-input)))
+
   :config
   (setq eshell-prompt-function
         (lambda nil
@@ -13,9 +21,9 @@
   (setq eshell-banner-message "")
 
   (defun eshell/clear ()
-  "Clear terminal"
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer))))
+    "Clear terminal"
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer))))
 
 (provide 'init-eshell)
