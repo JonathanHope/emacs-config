@@ -186,6 +186,11 @@ Because the shortcuts for this config are so drastically different than standard
     * *ALT + 8:* Select window 8
     * *ALT + 9:* Select window 9
 
+*** Zoom
+
+   * *CTRL + +:* Zoom in
+   * *CTRL + -:* Zoom out
+
 *** Menus
 
    * *CTRL + SHIFT + TAB:* Launch apps menu

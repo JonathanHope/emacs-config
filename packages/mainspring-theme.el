@@ -237,6 +237,10 @@
  ;; Dired
  '(dired-header ((t (:foreground "#ebcb8b" :weight bold))))
 
+ ;; Hydra
+ '(hydra-face-red ((t (:foreground "#bf616a" :weight bold))))
+ '(hydra-face-blue ((t (:foreground "#96b5b4" :weight bold))))
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))

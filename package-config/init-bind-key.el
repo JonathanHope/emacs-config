@@ -181,7 +181,13 @@
    ("<home>" . beginning-of-buffer)
 
    ;; Move to end of buffer.
-   ("<end>" . end-of-buffer))
+   ("<end>" . end-of-buffer)
+
+   ;; Zoom in.
+   ("C-+" . text-scale-increase)
+
+   ;; Zoom out.
+   ("C--" . text-scale-decrease))
 
   (defun duplicate-line()
     "Duplicate the current line."
@@ -231,7 +237,7 @@
   (defun launch-hydra-apps ()
     "Launch a apps hydra menu."
     (interactive)
-    (apps-hydra/body))
+    (mainspring-apps-hydra/body))
 
   (defun is-region-active? ()
     "Is there an active region?"

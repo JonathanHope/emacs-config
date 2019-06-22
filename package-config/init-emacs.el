@@ -80,8 +80,7 @@
   (global-hl-line-mode 1)
 
   ;; Start in full screen.
-  (custom-set-variables
-   '(initial-frame-alist (quote ((fullscreen . maximized)))))
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
   ;; Prevent splash screen.
   (setq inhibit-splash-screen t)

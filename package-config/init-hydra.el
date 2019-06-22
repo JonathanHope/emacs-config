@@ -7,30 +7,36 @@
   :config
 
   ;; Apps Hydra
-  (defhydra apps-hydra (:color blue :columns 4)
-    "Apps"
-    ("d" dired "Dired")
-    ("m" magit-status "Magit")
-    ("o" org-mode-launch "Org-mode")
-    ("s" eshell "Shell")
-    ("l" flyspell-mode "Spell check")
-    ("r" rainbow-mode "Rainbow mode")
-    ("n" deft "Deft")
-    ("t" slate "Slate")
-    ("c" full-calc "Calculator")
-    ("h" (progn
-           (apps-hydra-describe/body)
-           (hydra-push '(apps-hydra/body))) "Describe")
-    ("q" nil "Exit"))
+  (defhydra mainspring-apps-hydra (:hint nil)
+    "
 
-  (defhydra apps-hydra-describe (:color blue :columns 4)
-    "Desribe"
-    ("m" describe-mode "Mode")
-    ("f" counsel-describe-function "Function")
-    ("k" counsel-descbinds "Key")
-    ("v" counsel-describe-variable "Variable")
-    ("a" counsel-faces "Face")
-    ("q" hydra-pop "Exit"))
+ ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┓
+ ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃
+ ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━┫
+ ┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _e_: Mode     ┃
+ ┃ _m_: Magit  ┃ _l_: Flyspell ┃ _f_: Function ┃
+ ┃ _o_: Org    ┃^^             ┃ _k_: Key      ┃
+ ┃ _s_: Eshell ┃^^             ┃ _v_: Variable ┃
+ ┃ _n_: Deft   ┃^^             ┃ _a_: Face     ┃
+ ┃ _t_: Slate  ┃^^             ┃^^             ┃
+ ┃ _c_: Calc   ┃^^             ┃^^             ┃
+ ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┛
+"
+    ("d" dired :color blue)
+    ("m" magit-status :color blue)
+    ("o" mainspring-org-mode-launch :color blue)
+    ("s" eshell :color blue)
+    ("n" deft :color blue)
+    ("t" slate :color blue)
+    ("c" full-calc :color blue)
+    ("l" flyspell-mode :color blue)
+    ("r" rainbow-mode :color blue)
+    ("e" describe-mode :color blue)
+    ("f" counsel-describe-function :color blue)
+    ("k" counsel-descbinds :color blue)
+    ("v" counsel-describe-variable :color blue)
+    ("a" counsel-faces :color blue)
+    ("q" nil :color blue))
 
   ;; Org-mode Hydras
 
@@ -89,7 +95,7 @@
     ("k" (progn
            (org-hydra-latex/body)
            (hydra-push '(org-hydra-top/body))) "Latex")
-    ("q" hydra-pop "Exit"))
+    ("q" nil "Exit"))
 
   ;; Hydra for org-mode todo related items.
   (defhydra org-hydra-todo (:color blue :columns 4)
@@ -335,9 +341,16 @@
       (read-string "Footnote: ")))
     (insert "[fn:" arg "]"))
 
-  (defun org-mode-launch ()
+  (defun mainspring-new-empty-buffer ()
+    (interactive)
+    (let (($buf (generate-new-buffer "untitled")))
+      (switch-to-buffer $buf)
+      $buf))
+
+  (defun mainspring-org-mode-launch ()
     "Launch org-mode in the correct directory."
     (interactive)
+    (mainspring-new-empty-buffer)
     (setq default-directory notes-directory)
     (org-mode))
 
