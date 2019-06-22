@@ -10,17 +10,17 @@
   (defhydra mainspring-apps-hydra (:hint nil)
     "
 
- ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┓
- ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃
- ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━┫
- ┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _e_: Mode     ┃
- ┃ _m_: Magit  ┃ _l_: Flyspell ┃ _f_: Function ┃
- ┃ _o_: Org    ┃^^             ┃ _k_: Key      ┃
- ┃ _s_: Eshell ┃^^             ┃ _v_: Variable ┃
- ┃ _n_: Deft   ┃^^             ┃ _a_: Face     ┃
- ┃ _t_: Slate  ┃^^             ┃^^             ┃
- ┃ _c_: Calc   ┃^^             ┃^^             ┃
- ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┛
+ ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━┓
+ ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Commands      ┃
+ ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━┫
+ ┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _e_: Mode     ┃ _+_: Zoom in    ┃
+ ┃ _m_: Magit  ┃ _l_: Flyspell ┃ _f_: Function ┃ _-_: Zoom out   ┃
+ ┃ _o_: Org    ┃^^             ┃ _k_: Key      ┃ _0_: Zoom reset ┃
+ ┃ _s_: Eshell ┃^^             ┃ _v_: Variable ┃^^               ┃
+ ┃ _n_: Deft   ┃^^             ┃ _a_: Face     ┃^^               ┃
+ ┃ _t_: Slate  ┃^^             ┃^^             ┃^^               ┃
+ ┃ _c_: Calc   ┃^^             ┃^^             ┃^^               ┃
+ ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color blue)
     ("m" magit-status :color blue)
@@ -36,6 +36,9 @@
     ("k" counsel-descbinds :color blue)
     ("v" counsel-describe-variable :color blue)
     ("a" counsel-faces :color blue)
+    ("+" text-scale-increase :color red)
+    ("-" text-scale-decrease :color red)
+    ("0" (text-scale-adjust 0) :color red)
     ("q" nil :color blue))
 
   ;; Org-mode Hydras

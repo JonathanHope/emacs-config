@@ -181,13 +181,7 @@
    ("<home>" . beginning-of-buffer)
 
    ;; Move to end of buffer.
-   ("<end>" . end-of-buffer)
-
-   ;; Zoom in.
-   ("C-+" . text-scale-increase)
-
-   ;; Zoom out.
-   ("C--" . text-scale-decrease))
+   ("<end>" . end-of-buffer))
 
   (defun duplicate-line()
     "Duplicate the current line."
