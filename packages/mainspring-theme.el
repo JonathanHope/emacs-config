@@ -210,14 +210,15 @@
  '(mainspring-mode-line-scroll-bar-face    ((t (:foreground "#dfe1e8"))))
 
  ;; Ivy
- '(ivy-current-match           ((t (:background "#343d46" :weight bold))))
- '(ivy-match-required-face     ((t (:foreground "#bf616a"))))
- '(ivy-minibuffer-match-face-1 ((t (:underline t :weight bold))))
- '(ivy-minibuffer-match-face-2 ((t (:underline t :weight bold))))
- '(ivy-minibuffer-match-face-3 ((t (:underline t :weight bold))))
- '(ivy-minibuffer-match-face-4 ((t (:underline t :weight bold))))
- '(swiper-match-face           ((t (:underline t :weight bold))))
- '(swiper-match-face-2         ((t (:underline t :weight bold))))
+ '(ivy-current-match            ((t (:background "#343d46" :weight bold))))
+ '(ivy-highlight-face           ((t (:underline t))))
+ '(ivy-match-required-face      ((t (:foreground "#bf616a"))))
+ '(ivy-minibuffer-match-face-1  ((t (:underline t :weight bold))))
+ '(ivy-minibuffer-match-face-2  ((t (:underline t :weight bold))))
+ '(ivy-minibuffer-match-face-3  ((t (:underline t :weight bold))))
+ '(ivy-minibuffer-match-face-4  ((t (:underline t :weight bold))))
+ '(swiper-match-face            ((t (:underline t :weight bold))))
+ '(swiper-match-face-2          ((t (:underline t :weight bold))))
 
  ;; Highlight numbers
  '(highlight-numbers-number ((t (:foreground "#96b5b4" :slant italic))))
