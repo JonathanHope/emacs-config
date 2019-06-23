@@ -16,7 +16,7 @@
 
   ;; Apps Hydra
 
-  (defhydra mainspring-apps-hydra (
+  (defhydra mainspring-hydra-apps (
                                    :hint nil
                                    :pre (setq hydra-hint-display-type 'posframe)
                                    :post (setq hydra-hint-display-type 'lv))
@@ -129,6 +129,99 @@
           (windmove-find-other-window 'up))
         (shrink-window arg)
       (enlarge-window arg)))
+
+
+  ;; Org-mode Hydras
+
+  (defhydra mainspring-hydra-org (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org                         ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _h_: Headlines                ┃
+┃^^                             ┃
+┃^^                             ┃
+┃^^                             ┃
+┃^^                             ┃
+┃^^                             ┃
+┃^^                             ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("h" (progn
+           (mainspring-hydra-org-headline/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("q" nil :color blue))
+
+  (defhydra mainspring-hydra-org-headline (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Headlines               ^^                  ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━┫
+┃ _n_: New Headline              ┃ _a_: Priority A    ┃
+┃ _d_: Delete Headline           ┃ _b_: Priority B    ┃
+┃ _s_: Set Headline Text         ┃ _c_: Priority C    ┃
+┃ _<left>_: Promote Headline     ┃ _r_: Priority NONE ┃
+┃ _<right>_: Demote Headline     ┃ _T_: Status TODO   ┃
+┃ _M-<up>_: Headline Up          ┃ _D_: Status DONE   ┃
+┃ _M-<down>_: Headline Down      ┃ _R_: Status NONE   ┃
+┃ _<up>_: Previous Headline      ┃ _t_: Set Tags      ┃
+┃ _<down>_: Next Headline        ┃^^                  ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
+"
+    ("n" org-insert-heading :color red)
+    ("d" mainspring-hydra-delete-headline :color red)
+    ("s" org-edit-headline :color red)
+    ("<left>" org-do-promote :color red)
+    ("<right>" org-do-demote :color red)
+    ("M-<up>" org-move-subtree-up :color red)
+    ("M-<down>" org-move-subtree-down :color red)
+    ("<down>" outline-next-heading :color red)
+    ("<up>" outline-previous-heading :color red)
+    ("a" mainspring-hydra-priority-a :color red)
+    ("b" mainspring-hydra-priority-b :color red)
+    ("c" mainspring-hydra-priority-c :color red)
+    ("r" mainspring-hydra-priority-none :color red)
+    ("T" mainspring-hydra-status-todo :color red)
+    ("D" mainspring-hydra-status-done :color red)
+    ("R" mainspring-hydra-status-none :color red)
+    ("t" org-set-tags-command :color red)
+    ("q" hydra-pop :color blue))
+
+  (defun mainspring-hydra-priority-a ()
+    (interactive)
+    (org-priority ?A))
+
+  (defun mainspring-hydra-priority-b ()
+    (interactive)
+    (org-priority ?B))
+
+  (defun mainspring-hydra-priority-c ()
+    (interactive)
+    (org-priority ?C))
+
+  (defun mainspring-hydra-priority-none ()
+    (interactive)
+    (org-priority ? ))
+
+  (defun mainspring-hydra-status-todo ()
+    (interactive)
+    (org-todo "TODO"))
+
+  (defun mainspring-hydra-status-done ()
+    (interactive)
+    (org-todo "DONE"))
+
+  (defun mainspring-hydra-status-none ()
+    (interactive)
+    (org-todo ""))
+
+  (defun mainspring-hydra-delete-headline ()
+    (interactive)
+    (progn
+      (kill-whole-line)
+      (delete-backward-char 1)))
+
+  ;;------------------------------------------------------------------------------
 
   ;; Org-mode Hydras
 

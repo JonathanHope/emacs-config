@@ -8,7 +8,7 @@
 
   :bind
   (:map  org-mode-map
-         ("C-<tab>" . org-hydra-top/body)
+         ("C-<tab>" . mainspring-hydra-org/body)
          ("C-S-r" . counsel-org-agenda-headlines)
          ("C-r" . counsel-org-goto))
 

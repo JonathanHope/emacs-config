@@ -162,12 +162,6 @@
    ;; Next window.
    ("M-<tab>". other-window)
 
-   ;; Windmove.
-   ("M-<left>" . windmove-left)
-   ("M-<right>" . windmove-right)
-   ("M-<up>" . windmove-up)
-   ("M-<down>" . windmove-down)
-
    ;; Join lines.
    ("C-j". join-lines)
 
@@ -240,7 +234,7 @@
   (defun launch-hydra-apps ()
     "Launch a apps hydra menu."
     (interactive)
-    (mainspring-apps-hydra/body))
+    (mainspring-hydra-apps/body))
 
   (defun is-region-active? ()
     "Is there an active region?"
