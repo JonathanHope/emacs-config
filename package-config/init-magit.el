@@ -16,7 +16,17 @@
   :config
   ;; (setq magit-display-buffer-function
   ;;       (lambda (buffer)
-  ;;         (display-buffer buffer '(display-buffer-same-window))))
+  ;;         (display-buffer
+  ;;          buffer (if (and (derived-mode-p 'magit-mode)
+  ;;                          (memq (with-current-buffer buffer major-mode)
+  ;;                                '(magit-process-mode
+  ;;                                  magit-revision-mode
+  ;;                                  magit-diff-mode
+  ;;                                  magit-stash-mode
+  ;;                                  magit-status-mode
+  ;;                                  text-mode)))
+  ;;                     nil
+  ;;                   '(display-buffer-same-window)))))
   (setq transient-save-history nil)
   (if (eq system-type 'windows-nt)
       (progn

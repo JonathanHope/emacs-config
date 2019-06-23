@@ -39,7 +39,7 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color red)
-    ("m" magit-status :color red)
+    ("m" mainspring-hydra-magit-status :color red)
     ("o" mainspring-hydra-org-mode-launch :color red)
     ("s" eshell :color red)
     ("n" deft :color red)
@@ -68,6 +68,12 @@
     ("<left>" mainspring-hydra-move-splitter-left :color red)
     ("<right>" mainspring-hydra-move-splitter-right :color red)
     ("q" nil :color blue))
+
+  (defun mainspring-hydra-magit-status ()
+    "Don't split window."
+    (interactive)
+    (let ((pop-up-windows nil))
+      (call-interactively 'magit-status)))
 
   (defun mainspring-hydra-new-empty-buffer ()
     (interactive)
