@@ -51,6 +51,7 @@
 
 ;; Non-package related emacs config.
 (require 'init-emacs)
+(require 'windmove)
 
 ;; Setting up the mode-line.
 (require 'init-mainspring-mode-line)

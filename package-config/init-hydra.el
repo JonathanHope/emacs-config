@@ -5,10 +5,6 @@
   :defer t
 
   :config
-  ;; Requires.
-
-  (require 'windmove)
-
   ;; Settings.
   (setq hydra-hint-display-type 'posframe)
 
@@ -44,7 +40,7 @@
 "
     ("d" dired :color red)
     ("m" magit-status :color red)
-    ("o" mainspring-org-mode-launch :color red)
+    ("o" mainspring-hydra-org-mode-launch :color red)
     ("s" eshell :color red)
     ("n" deft :color red)
     ("t" slate :color red)
@@ -56,7 +52,7 @@
     ("K" counsel-descbinds :color blue)
     ("V" counsel-describe-variable :color blue)
     ("A" counsel-faces :color blue)
-    ("C" mainspring-clojure-mode-launch :color red)
+    ("C" mainspring-hydra-clojure-mode-launch :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
@@ -67,32 +63,32 @@
     ("2" winum-select-window-2 :color red)
     ("3" winum-select-window-3 :color red)
     ("4" winum-select-window-4 :color red)
-    ("<up>" mainspring-move-splitter-up :color red)
-    ("<down>" mainspring-move-splitter-down :color red)
-    ("<left>" mainspring-move-splitter-left :color red)
-    ("<right>" mainspring-move-splitter-right :color red)
+    ("<up>" mainspring-hydra-move-splitter-up :color red)
+    ("<down>" mainspring-hydra-move-splitter-down :color red)
+    ("<left>" mainspring-hydra-move-splitter-left :color red)
+    ("<right>" mainspring-hydra-move-splitter-right :color red)
     ("q" nil :color blue))
 
-  (defun mainspring-new-empty-buffer ()
+  (defun mainspring-hydra-new-empty-buffer ()
     (interactive)
     (let (($buf (generate-new-buffer "untitled")))
       (switch-to-buffer $buf)
       $buf))
 
-  (defun mainspring-org-mode-launch ()
+  (defun mainspring-hydra-org-mode-launch ()
     "Launch org-mode in the correct directory."
     (interactive)
-    (mainspring-new-empty-buffer)
+    (mainspring-hydra-new-empty-buffer)
     (setq default-directory notes-directory)
     (org-mode))
 
-  (defun mainspring-clojure-mode-launch ()
+  (defun mainspring-hydra-clojure-mode-launch ()
     "Launch clojure-mode."
     (interactive)
-    (mainspring-new-empty-buffer)
+    (mainspring-hydra-new-empty-buffer)
     (clojure-mode))
 
-  (defun mainspring-move-splitter-left (arg)
+  (defun mainspring-hydra-move-splitter-left (arg)
     "Move window splitter left."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -100,7 +96,7 @@
         (shrink-window-horizontally arg)
       (enlarge-window-horizontally arg)))
 
-  (defun mainspring-move-splitter-right (arg)
+  (defun mainspring-hydra-move-splitter-right (arg)
     "Move window splitter right."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -108,7 +104,7 @@
         (enlarge-window-horizontally arg)
       (shrink-window-horizontally arg)))
 
-  (defun mainspring-move-splitter-up (arg)
+  (defun mainspring-hydra-move-splitter-up (arg)
     "Move window splitter up."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -116,7 +112,7 @@
         (enlarge-window arg)
       (shrink-window arg)))
 
-  (defun mainspring-move-splitter-down (arg)
+  (defun mainspring-hydra-move-splitter-down (arg)
     "Move window splitter down."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -125,6 +121,11 @@
       (enlarge-window arg)))
 
   ;; Org-mode Hydras
+
+  ;; (defun org-insert-link-with-default-description (file-name)
+  ;;   (interactive (list (read-file-name "File: ")))
+  ;;   (org-insert-link file-name file-name (file-name-nondirectory file-name)))
+
 
   ;; Top org-mode hydra, serves as a launcher for other hydras.
   (defhydra org-hydra-top (:color blue :columns 4)

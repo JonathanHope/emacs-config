@@ -1,35 +1,35 @@
 
 # Table of Contents
 
-1.  [Mainspring - An Emacs Configuration](#org4baadb3)
-    1.  [Philosophy](#org69188d0)
-    2.  [Installation](#orgc8f7cfb)
-    3.  [Keymap](#org53f6bc3)
-        1.  [General - Editing](#orga99b3bc)
-        2.  [General - Navigation](#orga96824f)
-        3.  [General - Files](#org5fc5e0e)
-        4.  [General - Windowing](#org2753cd0)
-        5.  [Menus](#org37f482f)
-        6.  [Magit](#org7b2f9d8)
-        7.  [Org mode](#orgec114a4)
-        8.  [Calc Mode](#orgf236b2d)
+1.  [Mainspring - An Emacs Configuration](#orgddd7917)
+    1.  [Philosophy](#org75805d5)
+    2.  [Installation](#orgba5c211)
+    3.  [Keymap](#org52e4727)
+        1.  [General - Editing](#orgb25edca)
+        2.  [General - Navigation](#orgf660c84)
+        3.  [General - Files](#org55d28f9)
+        4.  [General - Windowing](#org16c8e89)
+        5.  [Menus](#orgf932530)
+        6.  [Magit](#orgef2b65e)
+        7.  [Org mode](#org3c7ab95)
+        8.  [Calc Mode](#org4f1c0aa)
 
 
-<a id="org4baadb3"></a>
+<a id="orgddd7917"></a>
 
 # Mainspring - An Emacs Configuration
 
 Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
 
 
-<a id="org69188d0"></a>
+<a id="org75805d5"></a>
 
 ## Philosophy
 
 -   **Use CUA key bindings:** CUA bindings are used by most applications on most operating systems. Rather than spend the time to make every other application behave like Vim or Emacs or increase my cognitive overhead by constantly switching between different key binding styles I simply use CUA style key bindings in emacs.
 -   **Per mode functionality should be discoverable:** It is impossible to remember a bunch of mode specific key bindings for a lot of modes. Key bindings that are for a specific mode should generally be discoverable in a visual way.
 -   **Reward imprecision:** Using techniques like fuzzy matching everywhere, automatic whitespace cleanup, and automatic indenting means that less time can be spent thinking about perfectly entering and formatting data and more time can be spent thinking about solving the problem at hand.
--   **Window management should be simple:** Instead of having to configure complicated workspaces window management should be simple and intuitive. The selected window is always largest and the windows are numbered for easy window switching.
+-   **Window management should be simple:** Instead of having to configure complicated workspaces window management should be simple and intuitive.
 -   **Startup time matters:** Having to run an emacs server is an unnecessary complication. Instead effort should be made for it start quickly.
 -   **Stability matters:** If something is useful but not stable I won't bring it in until it becomes stable.
 -   **Performance matters:** If something is useful but impacts performance too much in a negative way I won't bring it in until is performant.
@@ -38,7 +38,7 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 -   **Looks matter:** I spend way too much time editing text in my life, the text editor should be a nice place to live.
 
 
-<a id="orgc8f7cfb"></a>
+<a id="orgba5c211"></a>
 
 ## Installation
 
@@ -63,14 +63,14 @@ Octave is required for octave blocks in org documents. It can be installed on Li
 It uses the pragmata fonts by default. These are non-free fonts.
 
 
-<a id="org53f6bc3"></a>
+<a id="org52e4727"></a>
 
 ## Keymap
 
 Because the shortcuts for this config are so drastically different than standard emacs I detail them here.
 
 
-<a id="orga99b3bc"></a>
+<a id="orgb25edca"></a>
 
 ### General - Editing
 
@@ -147,7 +147,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **TAB:** Expand snippet
 
 
-<a id="orga96824f"></a>
+<a id="orgf660c84"></a>
 
 ### General - Navigation
 
@@ -191,7 +191,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **SHFIT + F12:** Jump back
 
 
-<a id="org5fc5e0e"></a>
+<a id="org55d28f9"></a>
 
 ### General - Files
 
@@ -201,7 +201,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + w:** Close file
 
 
-<a id="org2753cd0"></a>
+<a id="org16c8e89"></a>
 
 ### General - Windowing
 
@@ -227,7 +227,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **ALT + 9:** Select window 9
 
 
-<a id="org37f482f"></a>
+<a id="orgf932530"></a>
 
 ### Menus
 
@@ -235,7 +235,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + TAB:** Launch contextual menu
 
 
-<a id="org7b2f9d8"></a>
+<a id="orgef2b65e"></a>
 
 ### Magit
 
@@ -243,7 +243,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **?:** Show shortcuts
 
 
-<a id="orgec114a4"></a>
+<a id="org3c7ab95"></a>
 
 ### Org mode
 
@@ -263,7 +263,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **SHIFT + ESC:** Exit source editing
 
 
-<a id="orgf236b2d"></a>
+<a id="org4f1c0aa"></a>
 
 ### Calc Mode
 

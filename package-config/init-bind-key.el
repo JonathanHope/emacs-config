@@ -159,6 +159,15 @@
    ("C-S-<tab>". launch-hydra-apps)
    ("C-S-<iso-lefttab>" . launch-hydra-apps)
 
+   ;; Next window.
+   ("M-<tab>". other-window)
+
+   ;; Windmove.
+   ("M-<left>" . windmove-left)
+   ("M-<right>" . windmove-right)
+   ("M-<up>" . windmove-up)
+   ("M-<down>" . windmove-down)
+
    ;; Join lines.
    ("C-j". join-lines)
 
