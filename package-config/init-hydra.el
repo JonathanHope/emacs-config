@@ -5,41 +5,124 @@
   :defer t
 
   :config
+  ;; Requires.
+
+  (require 'windmove)
+
+  ;; Settings.
+  (setq hydra-hint-display-type 'posframe)
+
+  (setq hydra-posframe-show-params
+        '(
+          :internal-border-width 0
+          :internal-border-color "red"
+          :poshandler posframe-poshandler-window-center))
 
   ;; Apps Hydra
+
   (defhydra mainspring-apps-hydra (:hint nil)
     "
-
- ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━┓
- ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Commands      ┃
- ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━┫
- ┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _e_: Mode     ┃ _+_: Zoom in    ┃
- ┃ _m_: Magit  ┃ _l_: Flyspell ┃ _f_: Function ┃ _-_: Zoom out   ┃
- ┃ _o_: Org    ┃^^             ┃ _k_: Key      ┃ _0_: Zoom reset ┃
- ┃ _s_: Eshell ┃^^             ┃ _v_: Variable ┃^^               ┃
- ┃ _n_: Deft   ┃^^             ┃ _a_: Face     ┃^^               ┃
- ┃ _t_: Slate  ┃^^             ┃^^             ┃^^               ┃
- ┃ _c_: Calc   ┃^^             ┃^^             ┃^^               ┃
- ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
+┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Languages  ┃^^ Zoom            ┃
+┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
+┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _M_: Mode     ┃ _C_: Clojure ┃ _+_: Zoom In      ┃
+┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃^^            ┃ _-_: Zoom Out     ┃
+┃ _o_: Org    ┃^^             ┃ _K_: Key      ┃^^            ┃ _0_: Zoom Reset   ┃
+┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃^^            ┃^^                 ┃
+┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
+┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
+┃ _c_: Calc   ┃^^             ┃^^             ┃^^            ┃^^                 ┃
+┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ Spliter Up: _<up>_        ┃ _1_: Select Window 1 ┃ _|_: Split Horizontally ┃
+┃ Spliter Down: _<down>_    ┃ _2_: Select Window 2 ┃ ___: Split Vertically   ┃
+┃ Splitter Left: _<left>_   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
+┃ Splitter Right: _<right>_ ┃ _4_: Select Window 4 ┃^^                       ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
-    ("d" dired :color blue)
-    ("m" magit-status :color blue)
-    ("o" mainspring-org-mode-launch :color blue)
-    ("s" eshell :color blue)
-    ("n" deft :color blue)
-    ("t" slate :color blue)
-    ("c" full-calc :color blue)
-    ("l" flyspell-mode :color blue)
-    ("r" rainbow-mode :color blue)
-    ("e" describe-mode :color blue)
-    ("f" counsel-describe-function :color blue)
-    ("k" counsel-descbinds :color blue)
-    ("v" counsel-describe-variable :color blue)
-    ("a" counsel-faces :color blue)
+    ("d" dired :color red)
+    ("m" magit-status :color red)
+    ("o" mainspring-org-mode-launch :color red)
+    ("s" eshell :color red)
+    ("n" deft :color red)
+    ("t" slate :color red)
+    ("c" full-calc :color red)
+    ("l" flyspell-mode :color red)
+    ("r" rainbow-mode :color red)
+    ("M" describe-mode :color blue)
+    ("F" counsel-describe-function :color blue)
+    ("K" counsel-descbinds :color blue)
+    ("V" counsel-describe-variable :color blue)
+    ("A" counsel-faces :color blue)
+    ("C" mainspring-clojure-mode-launch :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
+    ("_" split-window-vertically :color red)
+    ("|" split-window-horizontally :color red)
+    ("x" delete-window :color red)
+    ("1" winum-select-window-1 :color red)
+    ("2" winum-select-window-2 :color red)
+    ("3" winum-select-window-3 :color red)
+    ("4" winum-select-window-4 :color red)
+    ("<up>" mainspring-move-splitter-up :color red)
+    ("<down>" mainspring-move-splitter-down :color red)
+    ("<left>" mainspring-move-splitter-left :color red)
+    ("<right>" mainspring-move-splitter-right :color red)
     ("q" nil :color blue))
+
+  (defun mainspring-new-empty-buffer ()
+    (interactive)
+    (let (($buf (generate-new-buffer "untitled")))
+      (switch-to-buffer $buf)
+      $buf))
+
+  (defun mainspring-org-mode-launch ()
+    "Launch org-mode in the correct directory."
+    (interactive)
+    (mainspring-new-empty-buffer)
+    (setq default-directory notes-directory)
+    (org-mode))
+
+  (defun mainspring-clojure-mode-launch ()
+    "Launch clojure-mode."
+    (interactive)
+    (mainspring-new-empty-buffer)
+    (clojure-mode))
+
+  (defun mainspring-move-splitter-left (arg)
+    "Move window splitter left."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (shrink-window-horizontally arg)
+      (enlarge-window-horizontally arg)))
+
+  (defun mainspring-move-splitter-right (arg)
+    "Move window splitter right."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (enlarge-window-horizontally arg)
+      (shrink-window-horizontally arg)))
+
+  (defun mainspring-move-splitter-up (arg)
+    "Move window splitter up."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (enlarge-window arg)
+      (shrink-window arg)))
+
+  (defun mainspring-move-splitter-down (arg)
+    "Move window splitter down."
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (shrink-window arg)
+      (enlarge-window arg)))
 
   ;; Org-mode Hydras
 
@@ -343,19 +426,6 @@
      (list
       (read-string "Footnote: ")))
     (insert "[fn:" arg "]"))
-
-  (defun mainspring-new-empty-buffer ()
-    (interactive)
-    (let (($buf (generate-new-buffer "untitled")))
-      (switch-to-buffer $buf)
-      $buf))
-
-  (defun mainspring-org-mode-launch ()
-    "Launch org-mode in the correct directory."
-    (interactive)
-    (mainspring-new-empty-buffer)
-    (setq default-directory notes-directory)
-    (org-mode))
 
   (defun launch-browser-repl ()
     (interactive)

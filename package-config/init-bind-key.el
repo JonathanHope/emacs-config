@@ -81,7 +81,7 @@
    ("M-@" . split-window-horizontally)
 
    ;; Split the current window vertically.
-   ("M-*" . split-window-vertically)
+   ("M-#" . split-window-vertically)
 
    ;; Toggle the comment status of a line.
    ("C-/" . toggle-comment)

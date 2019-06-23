@@ -82,8 +82,8 @@
 ;; Numbers windows for easy window changing.
 ;; The currently focused window will always be the largest.
 (require 'init-winum)
-(require 'init-zoom)
 (require 'init-shackle)
+(require 'init-posframe)
 
 ;; Simple keyboard driven popup menus.
 (require 'init-hydra)

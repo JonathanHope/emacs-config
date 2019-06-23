@@ -14,7 +14,9 @@
   (:map transient-sticky-map ("<escape>" . transient-quit-one))
 
   :config
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (setq magit-display-buffer-function
+        (lambda (buffer)
+          (display-buffer buffer '(display-buffer-same-window))))
   (setq transient-save-history nil)
   (if (eq system-type 'windows-nt)
       (progn
