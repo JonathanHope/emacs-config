@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [Mainspring - An Emacs Configuration](#orgddd7917)
-    1.  [Philosophy](#org75805d5)
-    2.  [Installation](#orgba5c211)
-    3.  [Keymap](#org52e4727)
-        1.  [General - Editing](#orgb25edca)
-        2.  [General - Navigation](#orgf660c84)
-        3.  [General - Files](#org55d28f9)
-        4.  [General - Windowing](#org16c8e89)
-        5.  [Menus](#orgf932530)
-        6.  [Magit](#orgef2b65e)
-        7.  [Org mode](#org3c7ab95)
-        8.  [Calc Mode](#org4f1c0aa)
+1.  [Mainspring - An Emacs Configuration](#orgfa29f39)
+    1.  [Philosophy](#org3dd299d)
+    2.  [Installation](#orge9f6a70)
+    3.  [Keymap](#org136abef)
+        1.  [General - Editing](#org741a278)
+        2.  [General - Navigation](#orgfc0299f)
+        3.  [General - Files](#orge9edaf6)
+        4.  [General - Windowing](#org9e463bb)
+        5.  [Menus](#orga828c8c)
+        6.  [Magit](#org073af9f)
+        7.  [Org mode](#orgd607d15)
+        8.  [Calc Mode](#org0685fd6)
 
 
-<a id="orgddd7917"></a>
+<a id="orgfa29f39"></a>
 
 # Mainspring - An Emacs Configuration
 
 Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
 
 
-<a id="org75805d5"></a>
+<a id="org3dd299d"></a>
 
 ## Philosophy
 
@@ -38,7 +38,7 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 -   **Looks matter:** I spend way too much time editing text in my life, the text editor should be a nice place to live.
 
 
-<a id="orgba5c211"></a>
+<a id="orge9f6a70"></a>
 
 ## Installation
 
@@ -63,14 +63,14 @@ Octave is required for octave blocks in org documents. It can be installed on Li
 It uses the pragmata fonts by default. These are non-free fonts.
 
 
-<a id="org52e4727"></a>
+<a id="org136abef"></a>
 
 ## Keymap
 
 Because the shortcuts for this config are so drastically different than standard emacs I detail them here.
 
 
-<a id="orgb25edca"></a>
+<a id="org741a278"></a>
 
 ### General - Editing
 
@@ -147,7 +147,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **TAB:** Expand snippet
 
 
-<a id="orgf660c84"></a>
+<a id="orgfc0299f"></a>
 
 ### General - Navigation
 
@@ -191,7 +191,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **SHFIT + F12:** Jump back
 
 
-<a id="org55d28f9"></a>
+<a id="orge9edaf6"></a>
 
 ### General - Files
 
@@ -201,7 +201,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + w:** Close file
 
 
-<a id="org16c8e89"></a>
+<a id="org9e463bb"></a>
 
 ### General - Windowing
 
@@ -225,9 +225,14 @@ Because the shortcuts for this config are so drastically different than standard
     -   **ALT + 7:** Select window 7
     -   **ALT + 8:** Select window 8
     -   **ALT + 9:** Select window 9
+    -   **ALT + TAB:** Select next window
+    -   **ALT + LEFT:** Select window to left
+    -   **ALT + RIGHT:** Select window to right
+    -   **ALT + UP:** Select window to up
+    -   **ALT + DOWN:** Select window to down
 
 
-<a id="orgf932530"></a>
+<a id="orga828c8c"></a>
 
 ### Menus
 
@@ -235,7 +240,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + TAB:** Launch contextual menu
 
 
-<a id="orgef2b65e"></a>
+<a id="org073af9f"></a>
 
 ### Magit
 
@@ -243,7 +248,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **?:** Show shortcuts
 
 
-<a id="org3c7ab95"></a>
+<a id="orgd607d15"></a>
 
 ### Org mode
 
@@ -263,7 +268,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **SHIFT + ESC:** Exit source editing
 
 
-<a id="org4f1c0aa"></a>
+<a id="org0685fd6"></a>
 
 ### Calc Mode
 

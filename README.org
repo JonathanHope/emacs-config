@@ -185,6 +185,11 @@ Because the shortcuts for this config are so drastically different than standard
     * *ALT + 7:* Select window 7
     * *ALT + 8:* Select window 8
     * *ALT + 9:* Select window 9
+    * *ALT + TAB:* Select next window
+    * *ALT + LEFT:* Select window to left
+    * *ALT + RIGHT:* Select window to right
+    * *ALT + UP:* Select window to up
+    * *ALT + DOWN:* Select window to down
 
 *** Menus
 
