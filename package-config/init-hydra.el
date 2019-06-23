@@ -6,7 +6,7 @@
 
   :config
   ;; Settings.
-  (setq hydra-hint-display-type 'posframe)
+  ;; (setq hydra-hint-display-type 'posframe)
 
   (setq hydra-posframe-show-params
         '(
@@ -16,7 +16,10 @@
 
   ;; Apps Hydra
 
-  (defhydra mainspring-apps-hydra (:hint nil)
+  (defhydra mainspring-apps-hydra (
+                                   :hint nil
+                                   :pre (setq hydra-hint-display-type 'posframe)
+                                   :post (setq hydra-hint-display-type 'lv))
     "
 ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
 ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Languages  ┃^^ Zoom            ┃
