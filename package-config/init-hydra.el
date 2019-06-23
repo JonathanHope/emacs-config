@@ -35,7 +35,7 @@
 ┃ Spliter Up: _<up>_        ┃ _1_: Select Window 1 ┃ _|_: Split Horizontally ┃
 ┃ Spliter Down: _<down>_    ┃ _2_: Select Window 2 ┃ ___: Split Vertically   ┃
 ┃ Splitter Left: _<left>_   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
-┃ Splitter Right: _<right>_ ┃ _4_: Select Window 4 ┃^^                       ┃
+┃ Splitter Right: _<right>_ ┃ _4_: Select Window 4 ┃ _b_: Change Buffer      ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color red)
@@ -67,6 +67,7 @@
     ("<down>" mainspring-hydra-move-splitter-down :color red)
     ("<left>" mainspring-hydra-move-splitter-left :color red)
     ("<right>" mainspring-hydra-move-splitter-right :color red)
+    ("b" ivy-switch-buffer :color red)
     ("q" nil :color blue))
 
   (defun mainspring-hydra-magit-status ()
