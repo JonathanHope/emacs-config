@@ -143,7 +143,7 @@
 ┃ _f_: Formatting               ┃
 ┃ _s_: Source                   ┃
 ┃ _e_: Export                   ┃
-┃^^                             ┃
+┃ _L_: Latex                    ┃
 ┃^^                             ┃
 ┃^^                             ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
@@ -165,6 +165,9 @@
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("e" (progn
            (mainspring-hydra-org-export/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("L" (progn
+           (mainspring-hydra-org-latex/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -280,7 +283,7 @@
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _n_: New Source Block      ┃
 ┃ _s_: Set Source Block      ┃
-┃ _x_: Execute Source Block  ┃
+┃ _e_: Execute Source Block  ┃
 ┃ _c_: Start Clojure Backend ┃
 ┃^^                          ┃
 ┃^^                          ┃
@@ -291,7 +294,7 @@
 "
     ("n" mainspring-hydra-insert-src-block :color blue)
     ("s" org-edit-src-code :color blue)
-    ("x" org-babel-execute-src-block :color blue)
+    ("e" org-babel-execute-src-block :color blue)
     ("c" cider-jack-in :color blue)
     ("q" hydra-pop :color blue))
 
@@ -312,6 +315,25 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("m" org-md-export-as-markdown :color blue)
+    ("q" hydra-pop :color blue))
+
+  (defhydra mainspring-hydra-org-latex (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Latex              ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _t_: Toggle Latex Fragment ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("t" org-toggle-latex-fragment :color blue)
     ("q" hydra-pop :color blue))
 
   (defun mainspring-hydra-insert-headline ()
