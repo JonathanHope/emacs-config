@@ -6,7 +6,6 @@
 
   :config
   ;; Settings.
-  ;; (setq hydra-hint-display-type 'posframe)
 
   (setq hydra-posframe-show-params
         '(
@@ -140,6 +139,8 @@
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _h_: Headlines                ┃
 ┃ _t_: Tables                   ┃
+┃ _l_: Links                    ┃
+┃^^                             ┃
 ┃^^                             ┃
 ┃^^                             ┃
 ┃^^                             ┃
@@ -152,6 +153,9 @@
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("t" (progn
            (mainspring-hydra-org-table/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("l" (progn
+           (mainspring-hydra-org-link/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -200,6 +204,10 @@
 ┃ _s_: Set Field Text        ┃ _d_: Delete Row    ┃
 ┃ _<backtab>_: Previous Cell ┃ _D_: Delete Column ┃
 ┃ _<tab>_: Next Cell         ┃ _a_: Align Table   ┃
+┃ ^^                         ┃^^                  ┃
+┃ ^^                         ┃^^                  ┃
+┃ ^^                         ┃^^                  ┃
+┃ ^^                         ┃^^                  ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
 "
     ("n" mainspring-hydra-new-table :color red)
@@ -212,6 +220,26 @@
     ("d" kill-whole-line :color red)
     ("D" org-table-delete-column :color red)
     ("a" org-table-align :color red)
+    ("q" hydra-pop :color blue))
+
+  (defhydra mainspring-hydra-org-link (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Links      ┃
+┣^^━━━━━━━━━━━━━━━━━━┫
+┃ _h_: New HTTP Link ┃
+┃ _f_: New File Link ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┗^^━━━━━━━━━━━━━━━━━━┛
+"
+    ("h" mainspring-hydra-insert-http-link :color red)
+    ("f" mainspring-hydra-insert-file-link :color red)
     ("q" hydra-pop :color blue))
 
   (defun mainspring-hydra-insert-headline ()
@@ -268,13 +296,19 @@
     (org-table-get-field nil (read-string "Edit: "))
     (org-table-align))
 
+  (defun mainspring-hydra-insert-http-link (file-name)
+    (interactive (list (read-string "URL: ")))
+    (org-insert-link file-name file-name (read-string "Description: ")))
+
+  (defun mainspring-hydra-insert-file-link (file-name)
+    (interactive (list (read-file-name "File: ")))
+    (org-insert-link file-name file-name (read-string "Description: ")))
+
   ;;------------------------------------------------------------------------------
 
   ;; Org-mode Hydras
 
-  ;; (defun org-insert-link-with-default-description (file-name)
-  ;;   (interactive (list (read-file-name "File: ")))
-  ;;   (org-insert-link file-name file-name (file-name-nondirectory file-name)))
+
 
 
   ;; Top org-mode hydra, serves as a launcher for other hydras.
