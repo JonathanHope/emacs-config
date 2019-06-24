@@ -140,7 +140,7 @@
 ┃ _h_: Headlines                ┃
 ┃ _t_: Tables                   ┃
 ┃ _l_: Links                    ┃
-┃^^                             ┃
+┃ _f_: Formatting               ┃
 ┃^^                             ┃
 ┃^^                             ┃
 ┃^^                             ┃
@@ -156,6 +156,9 @@
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("l" (progn
            (mainspring-hydra-org-link/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("f" (progn
+           (mainspring-hydra-org-formatting/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -238,8 +241,30 @@
 ┃^^                  ┃
 ┗^^━━━━━━━━━━━━━━━━━━┛
 "
-    ("h" mainspring-hydra-insert-http-link :color red)
-    ("f" mainspring-hydra-insert-file-link :color red)
+    ("h" mainspring-hydra-insert-http-link :color blue)
+    ("f" mainspring-hydra-insert-file-link :color blue)
+    ("q" hydra-pop :color blue))
+
+  (defhydra mainspring-hydra-org-formatting (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Formatting ┃
+┣^^━━━━━━━━━━━━━━━━━━┫
+┃ _b_: Bold          ┃
+┃ _i_: Italic        ┃
+┃ _u_: Underline     ┃
+┃ _s_: Strikethrough ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┃^^                  ┃
+┗^^━━━━━━━━━━━━━━━━━━┛
+"
+    ("b" mainspring-hydra-bold-region :color blue)
+    ("i" mainspring-hydra-italic-region :color blue)
+    ("u" mainspring-hydra-underline-region :color blue)
+    ("s" mainspring-hydra-strikethrough-region :color blue)
     ("q" hydra-pop :color blue))
 
   (defun mainspring-hydra-insert-headline ()
@@ -303,6 +328,22 @@
   (defun mainspring-hydra-insert-file-link (file-name)
     (interactive (list (read-file-name "File: ")))
     (org-insert-link file-name file-name (read-string "Description: ")))
+
+  (defun mainspring-hydra-bold-region (beg end)
+    (interactive "r")
+    (wrap-region beg end "*"))
+
+  (defun mainspring-hydra-italic-region (beg end)
+    (interactive "r")
+    (wrap-region beg end "/"))
+
+  (defun mainspring-hydra-underline-region (beg end)
+    (interactive "r")
+    (wrap-region beg end "_"))
+
+  (defun mainspring-hydra-strikethrough-region (beg end)
+    (interactive "r")
+    (wrap-region beg end "+"))
 
   ;;------------------------------------------------------------------------------
 
