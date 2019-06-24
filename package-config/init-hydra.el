@@ -144,7 +144,7 @@
 ┃ _s_: Source                   ┃
 ┃ _e_: Export                   ┃
 ┃ _L_: Latex                    ┃
-┃^^                             ┃
+┃ _v_: Visibility               ┃
 ┃^^                             ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
@@ -168,6 +168,9 @@
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("L" (progn
            (mainspring-hydra-org-latex/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("v" (progn
+           (mainspring-hydra-org-visibility/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -334,6 +337,32 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("t" org-toggle-latex-fragment :color blue)
+    ("q" hydra-pop :color blue))
+
+  (defhydra mainspring-hydra-org-visibility (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Visibility        ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _H_: Collapse All         ┃
+┃ _S_: Expand All           ┃
+┃ _<up>_: Previous Headline ┃
+┃ _<down>_: Next Headline   ┃
+┃ _h_: Hide                 ┃
+┃ _s_: Show                 ┃
+┃ _n_: Narrow               ┃
+┃ _w_: Widen                ┃
+┃^^                         ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("<up>" outline-previous-heading :color red)
+    ("<down>" outline-next-heading :color red)
+    ("H" outline-hide-body :color red)
+    ("S" outline-show-all :color red)
+    ("n" org-narrow-to-subtree :color blue)
+    ("w" widen :color blue)
+    ("h" outline-hide-subtree :color red)
+    ("s" outline-show-subtree :color red)
     ("q" hydra-pop :color blue))
 
   (defun mainspring-hydra-insert-headline ()
