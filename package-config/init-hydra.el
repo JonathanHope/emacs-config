@@ -53,6 +53,7 @@
 ┃ Spliter Down: _<down>_    ┃ _2_: Select Window 2 ┃ ___: Split Vertically   ┃
 ┃ Splitter Left: _<left>_   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
 ┃ Splitter Right: _<right>_ ┃ _4_: Select Window 4 ┃ _b_: Change Buffer      ┃
+┃^^                         ┃^^                    ┃ _f_: Choose File        ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color red)
@@ -85,6 +86,7 @@
     ("<left>" mainspring-hydra-apps-move-splitter-left :color red)
     ("<right>" mainspring-hydra-apps-move-splitter-right :color red)
     ("b" ivy-switch-buffer :color red)
+    ("f" counsel-find-file :color red)
     ("q" nil :color blue))
 
   (defun mainspring-hydra-apps-magit-status ()
