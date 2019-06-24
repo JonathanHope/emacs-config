@@ -142,7 +142,7 @@
 ┃ _l_: Links                    ┃
 ┃ _f_: Formatting               ┃
 ┃ _s_: Source                   ┃
-┃^^                             ┃
+┃ _e_: Export                   ┃
 ┃^^                             ┃
 ┃^^                             ┃
 ┃^^                             ┃
@@ -162,6 +162,9 @@
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("s" (progn
            (mainspring-hydra-org-source/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("e" (progn
+           (mainspring-hydra-org-export/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -292,6 +295,25 @@
     ("c" cider-jack-in :color blue)
     ("q" hydra-pop :color blue))
 
+  (defhydra mainspring-hydra-org-export (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Export          ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _m_: Export as Markdown ┃
+┃^^                       ┃
+┃^^                       ┃
+┃^^                       ┃
+┃^^                       ┃
+┃^^                       ┃
+┃^^                       ┃
+┃^^                       ┃
+┃^^                       ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("m" org-md-export-as-markdown :color blue)
+    ("q" hydra-pop :color blue))
+
   (defun mainspring-hydra-insert-headline ()
     (interactive)
     (org-insert-heading)
@@ -379,6 +401,7 @@
               :action (lambda (src-code-type)
                         (cond ((equal src-code-type "dot")
                                (progn
+                                 (newline-and-indent)
                                  (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
                                  (insert "digraph graphname {\n")
                                  (insert "  graph [bgcolor=\"#2b303b\", resolution=100, fontname=PragmataPro, fontcolor=\"#eff1f5\", fontsize=9];\n")
@@ -391,6 +414,7 @@
                                  (org-edit-src-code)))
                               (t
                                (progn
+                                 (newline-and-indent)
                                  (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
                                  (newline-and-indent)
                                  (insert "#+END_SRC\n")
