@@ -139,7 +139,7 @@
 ┃^^ Org                         ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _h_: Headlines                ┃
-┃^^                             ┃
+┃ _t_: Tables                   ┃
 ┃^^                             ┃
 ┃^^                             ┃
 ┃^^                             ┃
@@ -150,25 +150,28 @@
     ("h" (progn
            (mainspring-hydra-org-headline/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("t" (progn
+           (mainspring-hydra-org-table/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
   (defhydra mainspring-hydra-org-headline (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━┓
-┃^^ Org - Headlines               ^^                  ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━┫
-┃ _n_: New Headline              ┃ _a_: Priority A    ┃
-┃ _d_: Delete Headline           ┃ _b_: Priority B    ┃
-┃ _s_: Set Headline Text         ┃ _c_: Priority C    ┃
-┃ _<left>_: Promote Headline     ┃ _r_: Priority NONE ┃
-┃ _<right>_: Demote Headline     ┃ _T_: Status TODO   ┃
-┃ _M-<up>_: Headline Up          ┃ _D_: Status DONE   ┃
-┃ _M-<down>_: Headline Down      ┃ _R_: Status NONE   ┃
-┃ _<up>_: Previous Headline      ┃ _t_: Set Tags      ┃
-┃ _<down>_: Next Headline        ┃^^                  ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Headlines           ^^                  ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━┫
+┃ _n_: New Headline          ┃ _a_: Priority A    ┃
+┃ _d_: Delete Headline       ┃ _b_: Priority B    ┃
+┃ _s_: Set Headline Text     ┃ _c_: Priority C    ┃
+┃ _<left>_: Promote Headline ┃ _r_: Priority NONE ┃
+┃ _<right>_: Demote Headline ┃ _T_: Status TODO   ┃
+┃ _M-<up>_: Headline Up      ┃ _D_: Status DONE   ┃
+┃ _M-<down>_: Headline Down  ┃ _R_: Status NONE   ┃
+┃ _<up>_: Previous Headline  ┃ _t_: Set Tags      ┃
+┃ _<down>_: Next Headline    ┃^^                  ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
 "
-    ("n" org-insert-heading :color red)
+    ("n" mainspring-hydra-insert-headline :color red)
     ("d" mainspring-hydra-delete-headline :color red)
     ("s" org-edit-headline :color red)
     ("<left>" org-do-promote :color red)
@@ -186,6 +189,40 @@
     ("R" mainspring-hydra-status-none :color red)
     ("t" org-set-tags-command :color red)
     ("q" hydra-pop :color blue))
+
+  (defhydra mainspring-hydra-org-table (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Tables              ^^                  ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━┫
+┃ _n_: New Table             ┃ _c_: New Column    ┃
+┃ _N_: New Table from Data   ┃ _r_: New Row       ┃
+┃ _s_: Set Field Text        ┃ _d_: Delete Row    ┃
+┃ _<backtab>_: Previous Cell ┃ _D_: Delete Column ┃
+┃ _<tab>_: Next Cell         ┃ _a_: Align Table   ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
+"
+    ("n" mainspring-hydra-new-table :color red)
+    ("N" mainspring-hydra-table-from-region :color red)
+    ("s" mainspring-hydra-set-table-field :color red)
+    ("<backtab>" org-table-previous-field :color red)
+    ("<tab>" org-table-next-field :color red)
+    ("c" org-table-insert-column :color red)
+    ("r" org-table-insert-row :color red)
+    ("d" kill-whole-line :color red)
+    ("D" org-table-delete-column :color red)
+    ("a" org-table-align :color red)
+    ("q" hydra-pop :color blue))
+
+  (defun mainspring-hydra-insert-headline ()
+    (interactive)
+    (org-insert-heading)
+    (org-edit-headline))
+
+  (defun mainspring-hydra-delete-headline ()
+    (interactive)
+    (kill-whole-line)
+    (delete-backward-char 1))
 
   (defun mainspring-hydra-priority-a ()
     (interactive)
@@ -215,11 +252,21 @@
     (interactive)
     (org-todo ""))
 
-  (defun mainspring-hydra-delete-headline ()
+  (defun mainspring-hydra-table-from-region (arg)
+    (interactive "P")
+    (org-table-create-or-convert-from-region arg)
+    (org-table-insert-row)
+    (org-table-insert-hline))
+
+  (defun mainspring-hydra-new-table ()
     (interactive)
-    (progn
-      (kill-whole-line)
-      (delete-backward-char 1)))
+    (org-table-create)
+    (org-table-next-field))
+
+  (defun mainspring-hydra-set-table-field ()
+    (interactive)
+    (org-table-get-field nil (read-string "Edit: "))
+    (org-table-align))
 
   ;;------------------------------------------------------------------------------
 
