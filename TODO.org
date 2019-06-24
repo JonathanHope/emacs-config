@@ -6,3 +6,4 @@
 * TODO Investigate plantuml, ditaa, restclent, and all supported config file types for source blocks.
 * TODO Could I make a plain lists hydra?
 * TODO Finish rewriting the hydras.
+* TODO Magit windowing weirdness.

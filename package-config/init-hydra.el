@@ -234,10 +234,10 @@
 ┃ _n_: New Table             ┃ _c_: New Column    ┃
 ┃ _N_: New Table from Data   ┃ _r_: New Row       ┃
 ┃ _s_: Set Field Text        ┃ _d_: Delete Row    ┃
-┃ _<backtab>_: Previous Cell ┃ _D_: Delete Column ┃
-┃ _<tab>_: Next Cell         ┃ _a_: Align Table   ┃
-┃ ^^                         ┃^^                  ┃
-┃ ^^                         ┃^^                  ┃
+┃ _<left>_: Left Cell        ┃ _D_: Delete Column ┃
+┃ _<right>_: Right Cell      ┃ _a_: Align Table   ┃
+┃ _<up>_: Up Cell            ┃^^                  ┃
+┃ _<down>_: Down Cell        ┃^^                  ┃
 ┃ ^^                         ┃^^                  ┃
 ┃ ^^                         ┃^^                  ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
@@ -245,8 +245,10 @@
     ("n" mainspring-hydra-org-new-table :color red)
     ("N" mainspring-hydra-org-table-from-region :color red)
     ("s" mainspring-hydra-org-set-table-field :color red)
-    ("<backtab>" org-table-previous-field :color red)
-    ("<tab>" org-table-next-field :color red)
+    ("<left>" org-table-previous-field :color red)
+    ("<right>" org-table-next-field :color red)
+    ("<up>" previous-line :color red)
+    ("<down>" next-line :color red)
     ("c" org-table-insert-column :color red)
     ("r" org-table-insert-row :color red)
     ("d" kill-whole-line :color red)

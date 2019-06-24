@@ -415,10 +415,11 @@
 
 (defun slate-calculate-geometry ()
   "Do any calcualtions needed to draw the UI later."
-  (let ((max-file-name-length (slate-find-max-file-name-length slate-filtered-todos))
-        (window-width (slate-get-window-width)))
-    (setq slate-max-file-name-length max-file-name-length)
-    (setq slate-window-width window-width)))
+  (with-current-buffer slate-buffer
+    (let ((max-file-name-length (slate-find-max-file-name-length slate-filtered-todos))
+          (window-width (slate-get-window-width)))
+      (setq slate-max-file-name-length max-file-name-length)
+      (setq slate-window-width window-width))))
 
 ;; Binding the model to the UI
 
@@ -493,21 +494,22 @@
 
 (defun slate-draw ()
   (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer))
-  (remove-overlays)
-  (slate-draw-header)
-  (if (executable-find slate-rg)
-      (progn
-        (if (eq 0 (length slate-todos))
-            (let ((inhibit-read-only t))
-              (insert "Nothing slated."))
-          (mapc 'slate-draw-todo slate-filtered-todos))
-        (goto-char (point-min))
-        (forward-line 2)
-        (forward-char 0))
+  (with-current-buffer slate-buffer
     (let ((inhibit-read-only t))
-      (insert "Ripgrep not found."))))
+      (erase-buffer))
+    (remove-overlays)
+    (slate-draw-header)
+    (if (executable-find slate-rg)
+        (progn
+          (if (eq 0 (length slate-todos))
+              (let ((inhibit-read-only t))
+                (insert "Nothing slated."))
+            (mapc 'slate-draw-todo slate-filtered-todos))
+          (goto-char (point-min))
+          (forward-line 2)
+          (forward-char 0))
+      (let ((inhibit-read-only t))
+        (insert "Ripgrep not found.")))))
 
 ;; Externally useful functions
 
