@@ -1,3 +1,6 @@
 * TODO Bring graphviz dot mode back in when it's more stable.
 * TODO The dash plain lists in org mode are not being prettified properly.
 * TODO Pressing C-p in a directory that is not a project adds all files to the project. How to prevent this? Windows only.
+* TODO Move all ivy-reads into init-ivy.
+* TODO Spend some time on clojure mode.
+* TODO Investigate plantuml, ditaa, restclent, and all supported config file types for source blocks.

@@ -141,7 +141,7 @@
 ┃ _t_: Tables                   ┃
 ┃ _l_: Links                    ┃
 ┃ _f_: Formatting               ┃
-┃^^                             ┃
+┃ _s_: Source                   ┃
 ┃^^                             ┃
 ┃^^                             ┃
 ┃^^                             ┃
@@ -159,6 +159,9 @@
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("f" (progn
            (mainspring-hydra-org-formatting/body)
+           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("s" (progn
+           (mainspring-hydra-org-source/body)
            (hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -267,6 +270,28 @@
     ("s" mainspring-hydra-strikethrough-region :color blue)
     ("q" hydra-pop :color blue))
 
+  (defhydra mainspring-hydra-org-source (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Source             ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _n_: New Source Block      ┃
+┃ _s_: Set Source Block      ┃
+┃ _x_: Execute Source Block  ┃
+┃ _c_: Start Clojure Backend ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("n" mainspring-hydra-insert-src-block :color blue)
+    ("s" org-edit-src-code :color blue)
+    ("x" org-babel-execute-src-block :color blue)
+    ("c" cider-jack-in :color blue)
+    ("q" hydra-pop :color blue))
+
   (defun mainspring-hydra-insert-headline ()
     (interactive)
     (org-insert-heading)
@@ -344,6 +369,33 @@
   (defun mainspring-hydra-strikethrough-region (beg end)
     (interactive "r")
     (wrap-region beg end "+"))
+
+  (defun mainspring-hydra-insert-src-block ()
+    (interactive)
+    (ivy-read "Source  block language: "
+              '("sql" "dot" "clojure" "octave")
+              :require-match t
+              :sort t
+              :action (lambda (src-code-type)
+                        (cond ((equal src-code-type "dot")
+                               (progn
+                                 (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
+                                 (insert "digraph graphname {\n")
+                                 (insert "  graph [bgcolor=\"#2b303b\", resolution=100, fontname=PragmataPro, fontcolor=\"#eff1f5\", fontsize=9];\n")
+                                 (insert "  node [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
+                                 (insert "  edge [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
+                                 (insert "}\n")
+                                 (newline-and-indent)
+                                 (insert "#+END_SRC\n")
+                                 (previous-line 2)
+                                 (org-edit-src-code)))
+                              (t
+                               (progn
+                                 (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
+                                 (newline-and-indent)
+                                 (insert "#+END_SRC\n")
+                                 (previous-line 2)
+                                 (org-edit-src-code)))))))
 
   ;;------------------------------------------------------------------------------
 
