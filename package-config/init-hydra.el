@@ -13,6 +13,21 @@
           :internal-border-color "red"
           :poshandler posframe-poshandler-window-center))
 
+  ;; Support for nested Hydras
+
+  (defvar mainspring-hydra-stack nil)
+
+  (defun mainspring-hydra-push (expr)
+    "Push a hydra onto the stack."
+    (push `(lambda () ,expr) mainspring-hydra-stack))
+
+  (defun mainspring-hydra-pop ()
+    "Pop a hydra off the stack."
+    (interactive)
+    (let ((x (pop mainspring-hydra-stack)))
+      (when x
+        (funcall x))))
+
   ;; Apps Hydra
 
   (defhydra mainspring-hydra-apps (
@@ -41,8 +56,8 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color red)
-    ("m" mainspring-hydra-magit-status :color red)
-    ("o" mainspring-hydra-org-mode-launch :color red)
+    ("m" mainspring-hydra-apps-magit-status :color red)
+    ("o" mainspring-hydra-apps-org-mode-launch :color red)
     ("s" eshell :color red)
     ("n" deft :color red)
     ("t" slate :color red)
@@ -54,7 +69,7 @@
     ("K" counsel-descbinds :color blue)
     ("V" counsel-describe-variable :color blue)
     ("A" counsel-faces :color blue)
-    ("C" mainspring-hydra-clojure-mode-launch :color red)
+    ("C" mainspring-hydra-apps-clojure-mode-launch :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
@@ -65,39 +80,39 @@
     ("2" winum-select-window-2 :color red)
     ("3" winum-select-window-3 :color red)
     ("4" winum-select-window-4 :color red)
-    ("<up>" mainspring-hydra-move-splitter-up :color red)
-    ("<down>" mainspring-hydra-move-splitter-down :color red)
-    ("<left>" mainspring-hydra-move-splitter-left :color red)
-    ("<right>" mainspring-hydra-move-splitter-right :color red)
+    ("<up>" mainspring-hydra-apps-move-splitter-up :color red)
+    ("<down>" mainspring-hydra-apps-move-splitter-down :color red)
+    ("<left>" mainspring-hydra-apps-move-splitter-left :color red)
+    ("<right>" mainspring-hydra-apps-move-splitter-right :color red)
     ("b" ivy-switch-buffer :color red)
     ("q" nil :color blue))
 
-  (defun mainspring-hydra-magit-status ()
+  (defun mainspring-hydra-apps-magit-status ()
     "Don't split window."
     (interactive)
     (let ((pop-up-windows nil))
       (call-interactively 'magit-status)))
 
-  (defun mainspring-hydra-new-empty-buffer ()
+  (defun mainspring-hydra-apps-new-empty-buffer ()
     (interactive)
     (let (($buf (generate-new-buffer "untitled")))
       (switch-to-buffer $buf)
       $buf))
 
-  (defun mainspring-hydra-org-mode-launch ()
+  (defun mainspring-hydra-apps-org-mode-launch ()
     "Launch org-mode in the correct directory."
     (interactive)
-    (mainspring-hydra-new-empty-buffer)
+    (mainspring-hydra-apps-new-empty-buffer)
     (setq default-directory notes-directory)
     (org-mode))
 
-  (defun mainspring-hydra-clojure-mode-launch ()
+  (defun mainspring-hydra-apps-clojure-mode-launch ()
     "Launch clojure-mode."
     (interactive)
-    (mainspring-hydra-new-empty-buffer)
+    (mainspring-hydra-apps-new-empty-buffer)
     (clojure-mode))
 
-  (defun mainspring-hydra-move-splitter-left (arg)
+  (defun mainspring-hydra-apps-move-splitter-left (arg)
     "Move window splitter left."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -105,7 +120,7 @@
         (shrink-window-horizontally arg)
       (enlarge-window-horizontally arg)))
 
-  (defun mainspring-hydra-move-splitter-right (arg)
+  (defun mainspring-hydra-apps-move-splitter-right (arg)
     "Move window splitter right."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -113,7 +128,7 @@
         (enlarge-window-horizontally arg)
       (shrink-window-horizontally arg)))
 
-  (defun mainspring-hydra-move-splitter-up (arg)
+  (defun mainspring-hydra-apps-move-splitter-up (arg)
     "Move window splitter up."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -121,7 +136,7 @@
         (enlarge-window arg)
       (shrink-window arg)))
 
-  (defun mainspring-hydra-move-splitter-down (arg)
+  (defun mainspring-hydra-apps-move-splitter-down (arg)
     "Move window splitter down."
     (interactive "p")
     (if (let ((windmove-wrap-around))
@@ -134,44 +149,44 @@
 
   (defhydra mainspring-hydra-org (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Org                         ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _h_: Headlines                ┃
-┃ _t_: Tables                   ┃
-┃ _l_: Links                    ┃
-┃ _f_: Formatting               ┃
-┃ _s_: Source                   ┃
-┃ _e_: Export                   ┃
-┃ _L_: Latex                    ┃
-┃ _v_: Visibility               ┃
-┃^^                             ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━┓
+┃^^ Org           ┃
+┣^^━━━━━━━━━━━━━━━┫
+┃ _h_: Headlines  ┃
+┃ _t_: Tables     ┃
+┃ _l_: Links      ┃
+┃ _f_: Formatting ┃
+┃ _s_: Source     ┃
+┃ _e_: Export     ┃
+┃ _L_: Latex      ┃
+┃ _v_: Visibility ┃
+┃^^               ┃
+┗^^━━━━━━━━━━━━━━━┛
 "
     ("h" (progn
            (mainspring-hydra-org-headline/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("t" (progn
            (mainspring-hydra-org-table/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("l" (progn
            (mainspring-hydra-org-link/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("f" (progn
            (mainspring-hydra-org-formatting/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("s" (progn
            (mainspring-hydra-org-source/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("e" (progn
            (mainspring-hydra-org-export/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("L" (progn
            (mainspring-hydra-org-latex/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("v" (progn
            (mainspring-hydra-org-visibility/body)
-           (hydra-push '(mainspring-hydra-org/body))) :color blue)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
   (defhydra mainspring-hydra-org-headline (:hint nil)
@@ -190,8 +205,8 @@
 ┃ _<down>_: Next Headline    ┃^^                  ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
 "
-    ("n" mainspring-hydra-insert-headline :color red)
-    ("d" mainspring-hydra-delete-headline :color red)
+    ("n" mainspring-hydra-org-insert-headline :color red)
+    ("d" mainspring-hydra-org-delete-headline :color red)
     ("s" org-edit-headline :color red)
     ("<left>" org-do-promote :color red)
     ("<right>" org-do-demote :color red)
@@ -199,15 +214,15 @@
     ("M-<down>" org-move-subtree-down :color red)
     ("<down>" outline-next-heading :color red)
     ("<up>" outline-previous-heading :color red)
-    ("a" mainspring-hydra-priority-a :color red)
-    ("b" mainspring-hydra-priority-b :color red)
-    ("c" mainspring-hydra-priority-c :color red)
-    ("r" mainspring-hydra-priority-none :color red)
-    ("T" mainspring-hydra-status-todo :color red)
-    ("D" mainspring-hydra-status-done :color red)
-    ("R" mainspring-hydra-status-none :color red)
+    ("a" mainspring-hydra-org-priority-a :color red)
+    ("b" mainspring-hydra-org-priority-b :color red)
+    ("c" mainspring-hydra-org-priority-c :color red)
+    ("r" mainspring-hydra-org-priority-none :color red)
+    ("T" mainspring-hydra-org-status-todo :color red)
+    ("D" mainspring-hydra-org-status-done :color red)
+    ("R" mainspring-hydra-org-status-none :color red)
     ("t" org-set-tags-command :color red)
-    ("q" hydra-pop :color blue))
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-table (:hint nil)
     "
@@ -225,9 +240,9 @@
 ┃ ^^                         ┃^^                  ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
 "
-    ("n" mainspring-hydra-new-table :color red)
-    ("N" mainspring-hydra-table-from-region :color red)
-    ("s" mainspring-hydra-set-table-field :color red)
+    ("n" mainspring-hydra-org-new-table :color red)
+    ("N" mainspring-hydra-org-table-from-region :color red)
+    ("s" mainspring-hydra-org-set-table-field :color red)
     ("<backtab>" org-table-previous-field :color red)
     ("<tab>" org-table-next-field :color red)
     ("c" org-table-insert-column :color red)
@@ -235,49 +250,51 @@
     ("d" kill-whole-line :color red)
     ("D" org-table-delete-column :color red)
     ("a" org-table-align :color red)
-    ("q" hydra-pop :color blue))
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-link (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━━━━┓
-┃^^ Org - Links      ┃
-┣^^━━━━━━━━━━━━━━━━━━┫
-┃ _h_: New HTTP Link ┃
-┃ _f_: New File Link ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┗^^━━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Links       ┃
+┣^^━━━━━━━━━━━━━━━━━━━┫
+┃ _h_: New HTTP Link  ┃
+┃ _f_: New File Link  ┃
+┃ _i_: New Image Link ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┗^^━━━━━━━━━━━━━━━━━━━┛
 "
-    ("h" mainspring-hydra-insert-http-link :color blue)
-    ("f" mainspring-hydra-insert-file-link :color blue)
-    ("q" hydra-pop :color blue))
+    ("h" mainspring-hydra-org-insert-http-link :color blue)
+    ("f" mainspring-hydra-org-insert-file-link :color blue)
+    ("i" mainspring-hydra-org-insert-image-link :color blue)
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-formatting (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━━━━┓
-┃^^ Org - Formatting ┃
-┣^^━━━━━━━━━━━━━━━━━━┫
-┃ _b_: Bold          ┃
-┃ _i_: Italic        ┃
-┃ _u_: Underline     ┃
-┃ _s_: Strikethrough ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┃^^                  ┃
-┗^^━━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Formatting    ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━┫
+┃ _b_: Bold             ┃
+┃ _i_: Italic           ┃
+┃ _u_: Underline        ┃
+┃ _s_: Strikethrough    ┃
+┃ _d_: Remove Formating ┃
+┃^^                     ┃
+┃^^                     ┃
+┃^^                     ┃
+┃^^                     ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━┛
 "
-    ("b" mainspring-hydra-bold-region :color blue)
-    ("i" mainspring-hydra-italic-region :color blue)
-    ("u" mainspring-hydra-underline-region :color blue)
-    ("s" mainspring-hydra-strikethrough-region :color blue)
-    ("q" hydra-pop :color blue))
+    ("b" mainspring-hydra-org-bold-region :color blue)
+    ("i" mainspring-hydra-org-italic-region :color blue)
+    ("u" mainspring-hydra-org-underline-region :color blue)
+    ("s" mainspring-hydra-org-strikethrough-region :color blue)
+    ("d" mainspring-hydra-org-standard-region :color blue)
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-source (:hint nil)
     "
@@ -295,11 +312,11 @@
 ┃^^                          ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
-    ("n" mainspring-hydra-insert-src-block :color blue)
+    ("n" mainspring-hydra-org-insert-src-block :color blue)
     ("s" org-edit-src-code :color blue)
     ("e" org-babel-execute-src-block :color blue)
     ("c" cider-jack-in :color blue)
-    ("q" hydra-pop :color blue))
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-export (:hint nil)
     "
@@ -318,7 +335,7 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("m" org-md-export-as-markdown :color blue)
-    ("q" hydra-pop :color blue))
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-latex (:hint nil)
     "
@@ -337,7 +354,7 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("t" org-toggle-latex-fragment :color blue)
-    ("q" hydra-pop :color blue))
+    ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-visibility (:hint nil)
     "
@@ -363,87 +380,103 @@
     ("w" widen :color blue)
     ("h" outline-hide-subtree :color red)
     ("s" outline-show-subtree :color red)
-    ("q" hydra-pop :color blue))
+    ("q" mainspring-hydra-pop :color blue))
 
-  (defun mainspring-hydra-insert-headline ()
+  (defun mainspring-hydra-org-insert-headline ()
     (interactive)
     (org-insert-heading)
     (org-edit-headline))
 
-  (defun mainspring-hydra-delete-headline ()
+  (defun mainspring-hydra-org-delete-headline ()
     (interactive)
     (kill-whole-line)
     (delete-backward-char 1))
 
-  (defun mainspring-hydra-priority-a ()
+  (defun mainspring-hydra-org-priority-a ()
     (interactive)
     (org-priority ?A))
 
-  (defun mainspring-hydra-priority-b ()
+  (defun mainspring-hydra-org-priority-b ()
     (interactive)
     (org-priority ?B))
 
-  (defun mainspring-hydra-priority-c ()
+  (defun mainspring-hydra-org-priority-c ()
     (interactive)
     (org-priority ?C))
 
-  (defun mainspring-hydra-priority-none ()
+  (defun mainspring-hydra-org-priority-none ()
     (interactive)
-    (org-priority ? ))
+    (org-priority ?\s))
 
-  (defun mainspring-hydra-status-todo ()
+  (defun mainspring-hydra-org-status-todo ()
     (interactive)
     (org-todo "TODO"))
 
-  (defun mainspring-hydra-status-done ()
+  (defun mainspring-hydra-org-status-done ()
     (interactive)
     (org-todo "DONE"))
 
-  (defun mainspring-hydra-status-none ()
+  (defun mainspring-hydra-org-status-none ()
     (interactive)
     (org-todo ""))
 
-  (defun mainspring-hydra-table-from-region (arg)
+  (defun mainspring-hydra-org-table-from-region (arg)
     (interactive "P")
     (org-table-create-or-convert-from-region arg)
     (org-table-insert-row)
     (org-table-insert-hline))
 
-  (defun mainspring-hydra-new-table ()
+  (defun mainspring-hydra-org-new-table ()
     (interactive)
     (org-table-create)
     (org-table-next-field))
 
-  (defun mainspring-hydra-set-table-field ()
+  (defun mainspring-hydra-org-set-table-field ()
     (interactive)
     (org-table-get-field nil (read-string "Edit: "))
     (org-table-align))
 
-  (defun mainspring-hydra-insert-http-link (file-name)
+  (defun mainspring-hydra-org-insert-http-link (file-name)
     (interactive (list (read-string "URL: ")))
     (org-insert-link file-name file-name (read-string "Description: ")))
 
-  (defun mainspring-hydra-insert-file-link (file-name)
+  (defun mainspring-hydra-org-insert-file-link (file-name)
     (interactive (list (read-file-name "File: ")))
     (org-insert-link file-name file-name (read-string "Description: ")))
 
-  (defun mainspring-hydra-bold-region (beg end)
-    (interactive "r")
-    (wrap-region beg end "*"))
+  (defun mainspring-hydra-org-insert-image-link ()
+    (interactive)
+    (ivy-read "File: "
+              'read-file-name-internal
+              :matcher #'counsel--find-file-matcher
+              :require-match t
+              :sort t
+              :action (lambda (file-name)
+                        (progn
+                          (insert (format "[[file:%s]]" file-name))
+                          (org-redisplay-inline-images)))))
 
-  (defun mainspring-hydra-italic-region (beg end)
+  (defun mainspring-hydra-org-bold-region (beg end)
     (interactive "r")
-    (wrap-region beg end "/"))
+    (org-emphasize ?*))
 
-  (defun mainspring-hydra-underline-region (beg end)
+  (defun mainspring-hydra-org-italic-region (beg end)
     (interactive "r")
-    (wrap-region beg end "_"))
+    (org-emphasize ?/))
 
-  (defun mainspring-hydra-strikethrough-region (beg end)
+  (defun mainspring-hydra-org-underline-region (beg end)
     (interactive "r")
-    (wrap-region beg end "+"))
+    (org-emphasize ?_))
 
-  (defun mainspring-hydra-insert-src-block ()
+  (defun mainspring-hydra-org-strikethrough-region (beg end)
+    (interactive "r")
+    (org-emphasize ?+))
+
+  (defun mainspring-hydra-org-standard-region (beg end)
+    (interactive "r")
+    (org-emphasize ?\s))
+
+  (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
               '("sql" "dot" "clojure" "octave")
@@ -472,212 +505,7 @@
                                  (previous-line 2)
                                  (org-edit-src-code)))))))
 
-  ;;------------------------------------------------------------------------------
-
-  ;; Org-mode Hydras
-
-
-
-
-  ;; Top org-mode hydra, serves as a launcher for other hydras.
-  (defhydra org-hydra-top (:color blue :columns 4)
-    "Org-mode"
-    ("a" (progn
-           (org-hydra-agenda/body)
-           (hydra-push '(org-hydra-top/body))) "Agenda")
-    ("b" (progn
-           (org-hydra-tables/body)
-           (hydra-push '(org-hydra-top/body))) "Table")
-    ("c" (progn
-           (org-hydra-checkbox/body)
-           (hydra-push '(org-hydra-top/body))) "Checkbox")
-    ("d" (progn
-           (org-hydra-drawer/body)
-           (hydra-push '(org-hydra-top/body))) "Drawer")
-    ("e" org-attach "Attach file")
-    ("n" (progn
-           (org-hydra-footnotes/body)
-           (hydra-push '(org-hydra-top/body))) "Footnote")
-    ("g" (progn
-           (org-hydra-tags/body)
-           (hydra-push '(org-hydra-top/body))) "Tag")
-    ("i" (progn
-           (org-hydra-priority/body)
-           (hydra-push '(org-hydra-top/body))) "Priority")
-    ("l" (progn
-           (org-hydra-link/body)
-           (hydra-push '(org-hydra-top/body))) "Link")
-    ("o" (progn
-           (org-hydra-time/body)
-           (hydra-push '(org-hydra-top/body))) "Time")
-    ("p" (progn
-           (org-hydra-properties/body)
-           (hydra-push '(org-hydra-top/body))) "Properties")
-    ("r" (progn
-           (org-hydra-source/body)
-           (hydra-push '(org-hydra-top/body))) "Source")
-    ("s" (progn
-           (org-hydra-subtree/body)
-           (hydra-push '(org-hydra-top/body))) "Subtree")
-    ("t" (progn
-           (org-hydra-todo/body)
-           (hydra-push '(org-hydra-top/body))) "Todo")
-    ("v" (progn
-           (org-hydra-visibility/body)
-           (hydra-push '(org-hydra-top/body))) "Visibility")
-    ("x" (progn
-           (org-hydra-export/body)
-           (hydra-push '(org-hydra-top/body))) "Export")
-    ("f" (progn
-           (org-hydra-formatting/body)
-           (hydra-push '(org-hydra-top/body))) "Formatting")
-    ("k" (progn
-           (org-hydra-latex/body)
-           (hydra-push '(org-hydra-top/body))) "Latex")
-    ("q" nil "Exit"))
-
-  ;; Hydra for org-mode todo related items.
-  (defhydra org-hydra-todo (:color blue :columns 4)
-    "Org-mode todo"
-    ("d" org-do-demote "Demote todo")
-    ("l" org-deadline "Deadline todo")
-    ("p" org-priority "Prioritize todo")
-    ("n" org-insert-todo-heading "New todo")
-    ("s" org-schedule "Schedule todo")
-    ("t" org-todo "Toggle todo")
-    ("u" org-do-promote "Promote todo")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for formatting related items.
-  (defhydra org-hydra-formatting (:color blue :columns 4)
-    "Org-mode formatting"
-    ("b" org-bold-region "Bold")
-    ("i" org-italic-region "Italic")
-    ("u" org-underline-region "Underline")
-    ("s" org-strikethrough-region "Strike through")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode agenda related items.
-  (defhydra org-hydra-agenda (:color blue :columns 4)
-    "Org-mode agenda"
-    ("t" org-todo-list "TODO List")
-    ("g" org-tags-list "Tags List")
-    ("h" counsel-org-agenda-headlines "Headline List")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode link related items.
-  (defhydra org-hydra-link (:color blue :columns 4)
-    "Org-mode link"
-    ("n" org-insert-link "New link")
-    ("f" org-insert-file-link "New file link")
-    ("o" org-open-at-point "Open link")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode visibility related items.
-  (defhydra org-hydra-visibility (:color blue :columns 4)
-    "Org-mode visibility"
-    ("a" outline-show-all "Show all")
-    ("n" org-narrow-to-subtree "Narrow to subtree")
-    ("o" outline-hide-body "Show outline")
-    ("s" outline-hide-sublevels "Show sections")
-    ("t" org-sparse-tree "Narrow to sparse tree")
-    ("w" widen "Widen")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode checkbox related items.
-  (defhydra org-hydra-checkbox (:color blue :columns 4)
-    "Org-mode checkbox"
-    ("n" org-insert-todo-heading "New checkbox")
-    ("t" org-toggle-checkbox "Toggle checkbox")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode tag related items.
-  (defhydra org-hydra-tags (:color blue :columns 4)
-    "Org-mode tags"
-    ("s" org-set-tags-command "Set tags")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode table related items.
-  (defhydra org-hydra-tables (:color blue :columns 4)
-    "Org-mode tables"
-    ("a" org-table-align "Align table")
-    ("c" org-table-insert-column "Insert column")
-    ("d" org-table-delete-column "Delete column")
-    ("n" org-table-create "New table")
-    ("r" org-table-insert-row "Insert row")
-    ("s" org-table-from-selection "Table from selection")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode subtree related items.
-  (defhydra org-hydra-subtree (:color blue :columns 4)
-    "Org-mode subtree"
-    ("c" org-copy-subtree "Copy subtree")
-    ("d" org-demote-subtree "Demote subtree")
-    ("u" org-promote-subtree "Promote subtree")
-    ("x" org-cut-subtree "Cut subtree")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode footnote related items.
-  (defhydra org-hydra-footnotes (:color blue :columns 4)
-    "Org-mode footnotes"
-    ("n" org-footnote-action "New footnote")
-    ("r" org-footnote-reference "New footnote reference")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode property related items.
-  (defhydra org-hydra-properties (:color blue :columns 4)
-    "Org-mode properties"
-    ("d" org-delete-property "Delete property")
-    ("n" org-set-property "New property")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode time related items.
-  (defhydra org-hydra-time (:color blue :columns 4)
-    "Org-mode time"
-    ("c" org-clock-cancel "Cancel")
-    ("i" org-clock-in "Clock in")
-    ("o" org-clock-out "Clock out")
-    ("r" org-evaluate-time-range "Refresh range")
-    ("t" org-clock-report "Generate Report")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode source related items.
-  (defhydra org-hydra-source (:color blue :columns 4)
-    "Org-mode source"
-    ("e" org-edit-src-code "Edit source")
-    ("n" org-insert-src-block "New source")
-    ("x" org-babel-execute-src-block "Execute source")
-    ("c" cider-jack-in "Start Clojure backend")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode export related items.
-  (defhydra org-hydra-export (:color blue :columns 4)
-    "Org-mode source"
-    ("c" org-confluence-export-as-confluence "Export as confluence")
-    ("m" org-md-export-as-markdown "Export as markdown")
-    ("h" org-html-export-as-html "Export as html")
-    ("l" org-latex-export-as-latex "Export as LaTeX")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode priority related items.
-  (defhydra org-hydra-priority (:color blue :columns 4)
-    "Org-mode priority"
-    ("s" org-priority "Set priority")
-    ("u" org-priority-up "Priority up")
-    ("d" org-priority-down "Priority down")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode drawer related items.
-  (defhydra org-hydra-drawer (:color blue :columns 4)
-    "Org-mode drawers"
-    ("n" org-insert-drawer "Org insert drawer")
-    ("q" hydra-pop "Exit"))
-
-  ;; Hydra for org-mode tag related items.
-  (defhydra org-hydra-latex (:color blue :columns 4)
-    "Org-mode Latex"
-    ("t" org-toggle-latex-fragment "Toggle Latex fragment")
-    ("q" hydra-pop "Exit"))
+  ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
 
   ;; Clojure Hydra
   (defhydra clojure-hydra (:color blue :columns 4)
@@ -731,7 +559,7 @@
     ("u" calc-redo "Redo")
     ("h" (progn
            (calc-describe-hydra/body)
-           (hydra-push '(calc-hydra/body))) "Describe")
+           (mainspring-hydra-push '(calc-hydra/body))) "Describe")
     ("q" nil "Exit"))
 
   (defhydra calc-describe-hydra (:color blue :columns 4)
@@ -739,7 +567,7 @@
     ("f" mainspring-counsel-calc-describe-function "Function")
     ("v" mainspring-counsel-calc-describe-variable "Variable")
     ("k" calc-describe-key "Key")
-    ("q" hydra-pop "Exit"))
+    ("q" mainspring-hydra-pop "Exit"))
 
   (defun mainspring-counsel-calc-describe-function()
     (interactive)
@@ -757,104 +585,7 @@
               :require-match t
               :sort t
               :action (lambda (selection)
-                        (calc-describe-variable selection))))
-
-  ;; Support for nested hydras.
-  (defvar hydra-stack nil)
-
-  (defun hydra-push (expr)
-    "Push a hydra onto the stack."
-    (push `(lambda () ,expr) hydra-stack))
-
-  (defun hydra-pop ()
-    "Pop a hydra off the stack."
-    (interactive)
-    (let ((x (pop hydra-stack)))
-      (when x
-        (funcall x))))
-
-  (defun org-footnote-reference (arg)
-    "Insert a reference to a org-mode footnote."
-    (interactive
-     (list
-      (read-string "Footnote: ")))
-    (insert "[fn:" arg "]"))
-
-  (defun launch-browser-repl ()
-    (interactive)
-    (httpd-start)
-    (impatient-mode)
-    (shell-command-to-string "start http://localhost:8080/imp/"))
-
-  (defun org-insert-src-block ()
-    (interactive)
-    (ivy-read "Source  block language: "
-              '("sql" "dot" "clojure" "octave")
-              :require-match t
-              :sort t
-              :action (lambda (src-code-type)
-                        (cond ((equal src-code-type "dot")
-                               (progn
-                                 (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
-                                 (insert "digraph graphname {\n")
-                                 (insert "  graph [bgcolor=\"#2b303b\", resolution=100, fontname=PragmataPro, fontcolor=\"#eff1f5\", fontsize=9];\n")
-                                 (insert "  node [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
-                                 (insert "  edge [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
-                                 (insert "}\n")
-                                 (newline-and-indent)
-                                 (insert "#+END_SRC\n")
-                                 (previous-line 2)
-                                 (org-edit-src-code)))
-                              (t
-                               (progn
-                                 (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
-                                 (newline-and-indent)
-                                 (insert "#+END_SRC\n")
-                                 (previous-line 2)
-                                 (org-edit-src-code)))))))
-
-  (defun org-insert-file-link ()
-    (interactive)
-    (ivy-read "File: "
-              'read-file-name-internal
-              :matcher #'counsel--find-file-matcher
-              :require-match t
-              :sort t
-              :action (lambda (file-name)
-                        (progn
-                          (insert (format "[[file:%s]]" file-name))
-                          (org-redisplay-inline-images))))))
-
-(defun org-bold-region (beg end)
-  (interactive "r")
-  (wrap-region beg end "*"))
-
-(defun org-italic-region (beg end)
-  (interactive "r")
-  (wrap-region beg end "/"))
-
-(defun org-underline-region (beg end)
-  (interactive "r")
-  (wrap-region beg end "_"))
-
-(defun org-strikethrough-region (beg end)
-  (interactive "r")
-  (wrap-region beg end "+"))
-
-(defun wrap-region (beg end char)
-  (interactive "r")
-  (if (region-active-p)
-      (progn
-        (goto-char end)
-        (insert char)
-        (goto-char beg)
-        (insert char))))
-
-(defun org-table-from-selection (arg)
-  (interactive "P")
-  (org-table-create-or-convert-from-region arg)
-  (org-table-insert-row)
-  (org-table-insert-hline))
+                        (calc-describe-variable selection)))))
 
 (defun octave-clear ()
   "Clear octave"
