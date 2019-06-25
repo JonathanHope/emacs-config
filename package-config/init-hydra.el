@@ -151,27 +151,30 @@
 
   (defhydra mainspring-hydra-org (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━┓
-┃^^ Org           ┃
-┣^^━━━━━━━━━━━━━━━┫
-┃ _h_: Headlines  ┃
-┃ _t_: Tables     ┃
-┃ _l_: Links      ┃
-┃ _f_: Formatting ┃
-┃ _s_: Source     ┃
-┃ _e_: Export     ┃
-┃ _L_: Latex      ┃
-┃ _v_: Visibility ┃
-┃^^               ┃
-┗^^━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━┓
+┃^^ Org            ┃
+┣^^━━━━━━━━━━━━━━━━┫
+┃ _h_: Headlines   ┃
+┃ _l_: Plain Lists ┃
+┃ _t_: Tables      ┃
+┃ _L_: Links       ┃
+┃ _f_: Formatting  ┃
+┃ _s_: Source      ┃
+┃ _e_: Export      ┃
+┃ _k_: Latex       ┃
+┃ _v_: Visibility  ┃
+┗^^━━━━━━━━━━━━━━━━┛
 "
     ("h" (progn
            (mainspring-hydra-org-headline/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("l" (progn
+           (mainspring-hydra-org-plain-list/body)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("t" (progn
            (mainspring-hydra-org-table/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
-    ("l" (progn
+    ("L" (progn
            (mainspring-hydra-org-link/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("f" (progn
@@ -183,7 +186,7 @@
     ("e" (progn
            (mainspring-hydra-org-export/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
-    ("L" (progn
+    ("k" (progn
            (mainspring-hydra-org-latex/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("v" (progn
@@ -226,6 +229,34 @@
     ("t" org-set-tags-command :color red)
     ("q" mainspring-hydra-pop :color blue))
 
+  (defhydra mainspring-hydra-org-plain-list (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Plain Lists           ^^                     ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━┫
+┃ _n_: New Unordered List Item ┃ _c_: Status CHECKED   ┃
+┃ _N_: New Ordered List Item   ┃ _u_: Status UNCHECKED ┃
+┃ _s_: Set List Item Text      ┃ _r_: Status NONE      ┃
+┃ _<up>_: Previous List Item   ┃^^                     ┃
+┃ _<down>_: Next List Item     ┃^^                     ┃
+┃ _<left>_: Outdent List Item  ┃^^                     ┃
+┃ _<right>_: Indent List Item  ┃^^                     ┃
+┃^^                            ┃^^                     ┃
+┃^^                            ┃^^                     ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("n" mainspring-hydra-org-insert-plain-list-item-unordered :color red)
+    ("N" mainspring-hydra-org-insert-plain-list-item-ordered :color red)
+    ("s" mainspring-hydra-org-edit-plain-list-item :color red)
+    ("<up>" org-previous-item :color red)
+    ("<down>" org-next-item :color red)
+    ("c" mainspring-hydra-org-list-item-checked :color red)
+    ("u" mainspring-hydra-org-list-item-unchecked  :color red)
+    ("r" mainspring-hydra-org-list-item-none  :color red)
+    ("<left>" org-outdent-item  :color red)
+    ("<right>" org-indent-item  :color red)
+    ("q" mainspring-hydra-pop :color blue))
+
   (defhydra mainspring-hydra-org-table (:hint nil)
     "
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━┓
@@ -236,10 +267,10 @@
 ┃ _s_: Set Field Text        ┃ _d_: Delete Row    ┃
 ┃ _<left>_: Left Cell        ┃ _D_: Delete Column ┃
 ┃ _<right>_: Right Cell      ┃ _a_: Align Table   ┃
-┃ _<up>_: Up Cell            ┃^^                  ┃
-┃ _<down>_: Down Cell        ┃^^                  ┃
-┃ ^^                         ┃^^                  ┃
-┃ ^^                         ┃^^                  ┃
+┃^^                          ┃^^                  ┃
+┃^^                          ┃^^                  ┃
+┃^^                          ┃^^                  ┃
+┃^^                          ┃^^                  ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
 "
     ("n" mainspring-hydra-org-new-table :color red)
@@ -247,8 +278,6 @@
     ("s" mainspring-hydra-org-set-table-field :color red)
     ("<left>" org-table-previous-field :color red)
     ("<right>" org-table-next-field :color red)
-    ("<up>" previous-line :color red)
-    ("<down>" next-line :color red)
     ("c" org-table-insert-column :color red)
     ("r" org-table-insert-row :color red)
     ("d" kill-whole-line :color red)
@@ -508,6 +537,66 @@
                                  (insert "#+END_SRC\n")
                                  (previous-line 2)
                                  (org-edit-src-code)))))))
+
+  (defun mainspring-hydra-org-insert-plain-list-item (bullet)
+    (interactive)
+    (if (org-at-item-p)
+        (progn
+          (end-of-line)
+          (org-insert-item)
+          (insert (read-string "Edit: ")))
+      (progn
+        (newline-and-indent)
+        (insert (concat " " bullet " "))
+        (insert (read-string "Edit: ")))))
+
+  (defun mainspring-hydra-org-insert-plain-list-item-unordered ()
+    (interactive)
+    (mainspring-hydra-org-insert-plain-list-item "*"))
+
+  (defun mainspring-hydra-org-insert-plain-list-item-ordered ()
+    (interactive)
+    (mainspring-hydra-org-insert-plain-list-item "1)"))
+
+  (defun mainspring-hydra-org-edit-plain-list-item ()
+    (interactive)
+    (if (org-at-item-p)
+        (let* ((input (read-string "Edit: "))
+               (line (thing-at-point 'line t))
+               (result (string-match " +\\(\\*\\|\\+\\|\\-\\|[0-9]+[\\)\\.]\\) \\(\\[ \\]\\|\\[X\\]\\)? ?" line))
+               (match-end-index (+ 1 (nth (- (length (match-data)) 1) (match-data)))))
+          (beginning-of-line)
+          (forward-char match-end-index)
+          (delete-region (point) (line-end-position))
+          (insert input))
+      (message "Not at item.")))
+
+  (defun mainspring-hydra-org-list-item-status (status)
+    (interactive)
+    (let ((line (thing-at-point 'line t)))
+      (if (string-match-p "\\(\\[ \\]\\|\\[X\\]\\) " line)
+          (let* ((start-index (string-match "\\(\\[ \\]\\|\\[X\\]\\) " line)))
+            (beginning-of-line)
+            (forward-char start-index)
+            (delete-char 4)
+            (insert status))
+        (let* ((start-index (string-match " +\\(\\*\\|\\+\\|\\-\\|[0-9]+[\\)\\.]\\) \\(\\[ \\]\\|\\[X\\]\\)? ?" line))
+               (match-end-index (+ 1 (nth (- (length (match-data)) 1) (match-data)))))
+          (beginning-of-line)
+          (forward-char match-end-index)
+          (insert status)))))
+
+  (defun mainspring-hydra-org-list-item-checked ()
+    (interactive)
+    (mainspring-hydra-org-list-item-status "[X] "))
+
+  (defun mainspring-hydra-org-list-item-unchecked ()
+    (interactive)
+    (mainspring-hydra-org-list-item-status "[ ] "))
+
+  (defun mainspring-hydra-org-list-item-none ()
+    (interactive)
+    (mainspring-hydra-org-list-item-status ""))
 
   ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
 
