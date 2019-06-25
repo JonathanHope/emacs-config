@@ -509,6 +509,15 @@
     (interactive "r")
     (org-emphasize ?\s))
 
+  (defun mainspring-hydra-org-current-line-empty-p ()
+    (string-match-p "^\\s-*$" (thing-at-point 'line)))
+
+  (defun mainspring-hydra-new-line-if-not-empty ()
+    (unless (mainspring-hydra-org-current-line-empty-p)
+      (progn
+        (end-of-line)
+        (newline-and-indent))))
+
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
@@ -518,7 +527,7 @@
               :action (lambda (src-code-type)
                         (cond ((equal src-code-type "dot")
                                (progn
-                                 (newline-and-indent)
+                                 (mainspring-hydra-new-line-if-not-empty)
                                  (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
                                  (insert "digraph graphname {\n")
                                  (insert "  graph [bgcolor=\"#2b303b\", resolution=100, fontname=PragmataPro, fontcolor=\"#eff1f5\", fontsize=9];\n")
@@ -531,7 +540,7 @@
                                  (org-edit-src-code)))
                               (t
                                (progn
-                                 (newline-and-indent)
+                                 (mainspring-hydra-new-line-if-not-empty)
                                  (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
                                  (newline-and-indent)
                                  (insert "#+END_SRC\n")
@@ -540,15 +549,17 @@
 
   (defun mainspring-hydra-org-insert-plain-list-item (bullet)
     (interactive)
-    (if (org-at-item-p)
+    (let ((input (read-string "Edit: ")))
+      (if (org-at-item-p)
+          (progn
+            (end-of-line)
+            (org-insert-item)
+            (insert input))
         (progn
-          (end-of-line)
-          (org-insert-item)
-          (insert (read-string "Edit: ")))
-      (progn
-        (newline-and-indent)
-        (insert (concat " " bullet " "))
-        (insert (read-string "Edit: ")))))
+          (mainspring-hydra-new-line-if-not-empty)
+          (message (thing-at-point 'line t))
+          (insert (concat " " bullet " "))
+          (insert input)))))
 
   (defun mainspring-hydra-org-insert-plain-list-item-unordered ()
     (interactive)
@@ -584,7 +595,8 @@
                (match-end-index (+ 1 (nth (- (length (match-data)) 1) (match-data)))))
           (beginning-of-line)
           (forward-char match-end-index)
-          (insert status)))))
+          (insert status)
+          (org-update-statistics-cookies t)))))
 
   (defun mainspring-hydra-org-list-item-checked ()
     (interactive)
