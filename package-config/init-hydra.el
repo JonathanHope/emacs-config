@@ -237,7 +237,7 @@
 ┃ _n_: New Unordered List Item ┃ _c_: Status CHECKED   ┃
 ┃ _N_: New Ordered List Item   ┃ _u_: Status UNCHECKED ┃
 ┃ _s_: Set List Item Text      ┃ _r_: Status NONE      ┃
-┃ _<up>_: Previous List Item   ┃^^                     ┃
+┃ _<up>_: Previous List Item   ┃ _U_: Update Stats     ┃
 ┃ _<down>_: Next List Item     ┃^^                     ┃
 ┃ _<left>_: Outdent List Item  ┃^^                     ┃
 ┃ _<right>_: Indent List Item  ┃^^                     ┃
@@ -255,6 +255,7 @@
     ("r" mainspring-hydra-org-list-item-none  :color red)
     ("<left>" org-outdent-item  :color red)
     ("<right>" org-indent-item  :color red)
+    ("U" mainspring-hydra-org-update-statistics  :color red)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-table (:hint nil)
@@ -590,7 +591,8 @@
             (beginning-of-line)
             (forward-char start-index)
             (delete-char 4)
-            (insert status))
+            (insert status)
+            (org-update-statistics-cookies t))
         (let* ((start-index (string-match " +\\(\\*\\|\\+\\|\\-\\|[0-9]+[\\)\\.]\\) \\(\\[ \\]\\|\\[X\\]\\)? ?" line))
                (match-end-index (+ 1 (nth (- (length (match-data)) 1) (match-data)))))
           (beginning-of-line)
@@ -609,6 +611,10 @@
   (defun mainspring-hydra-org-list-item-none ()
     (interactive)
     (mainspring-hydra-org-list-item-status ""))
+
+  (defun mainspring-hydra-org-update-statistics ()
+    (interactive)
+    (org-update-statistics-cookies t))
 
   ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
 

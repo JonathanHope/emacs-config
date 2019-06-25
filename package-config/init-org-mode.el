@@ -55,7 +55,9 @@
 
   ;; Enable inline images for org.
   (defun turn-on-org-show-all-inline-images ()
-    (org-display-inline-images t t))
+    (org-display-inline-images t t)
+    (org-update-statistics-cookies t))
+
   (add-hook 'org-mode-hook 'turn-on-org-show-all-inline-images)
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 

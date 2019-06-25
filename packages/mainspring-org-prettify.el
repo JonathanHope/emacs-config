@@ -123,7 +123,7 @@
                          mainspring-org-prettify-plain-list-minus-char))))))
 
          (checkbox-unchecked
-          `(("^ +\\(\\-\\|\\+\\|\\*\\) \\[ \\] "
+          `(("^ +\\(\\-\\|\\+\\|\\*\\|[0-9]+[\\)\\.]\\) \\[ \\] "
              (0
               (prog1 () (compose-region
                          (- (match-end 0) 4)
@@ -131,7 +131,7 @@
                          mainspring-org-prettify-checkbox-unchecked))))))
 
          (checkbox-checked
-          `(("^ +\\(\\-\\|\\+\\|\\*\\) \\[X\\] "
+          `(("^ +\\(\\-\\|\\+\\|\\*\\|[0-9]+[\\)\\.]\\) \\[X\\] "
              (0
               (prog1 () (compose-region
                          (- (match-end 0) 4)
