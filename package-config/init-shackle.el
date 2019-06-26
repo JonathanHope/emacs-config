@@ -7,7 +7,8 @@
   (setq shackle-rules
         '((compilation-mode :select nil)
           ("*Help*" :select t :align right)
-          ("*info*" :select t :popup t :align right)))
+          ("*info*" :select t :popup t :align right)
+          (".*Org Src.*" :regexp t :select t :popup t :align bottom)))
   :config
   (shackle-mode 1))
 

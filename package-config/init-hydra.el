@@ -522,19 +522,14 @@
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("sql" "dot" "clojure" "octave")
+              '("sql" "clojure" "octave" "plantuml")
               :require-match t
               :sort t
               :action (lambda (src-code-type)
-                        (cond ((equal src-code-type "dot")
+                        (cond ((equal src-code-type "plantuml")
                                (progn
                                  (mainspring-hydra-new-line-if-not-empty)
                                  (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
-                                 (insert "digraph graphname {\n")
-                                 (insert "  graph [bgcolor=\"#2b303b\", resolution=100, fontname=PragmataPro, fontcolor=\"#eff1f5\", fontsize=9];\n")
-                                 (insert "  node [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
-                                 (insert "  edge [fontname=PragmataPro, fontcolor=\"#eff1f5\", color=\"#eff1f5\", fontsize=9];\n")
-                                 (insert "}\n")
                                  (newline-and-indent)
                                  (insert "#+END_SRC\n")
                                  (previous-line 2)

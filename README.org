@@ -35,6 +35,8 @@ Latex is required for formulas in org documents. It can be installed on Linux us
 
 Octave is required for octave blocks in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://www.gnu.org/software/octave/download.html.
 
+PlantUML is rquired for some diagrams like UML. The jar can be downloaded here: http://plantuml.com/download. Place the jar in ~/.emacs.d/jar
+
 It uses the pragmata fonts by default. These are non-free fonts.
 
 ** Keymap

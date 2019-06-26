@@ -38,15 +38,19 @@
   ;; Don't change indentation of source code. Just bring it over as is.
   (setq org-src-preserve-indentation t)
 
+  (setq org-src-window-setup 'other-window)
+
+  ;; Set the path to the PlantUML jar.
+  (setq org-plantuml-jar-path
+        (expand-file-name "~/.emacs.d/jar/plantuml.jar"))
+
   ;; Supported org babel languages.
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '(
-     (dot . t)
-     (octave . t)
-     (clojure . t)))
+   '((octave . t)
+     (clojure . t)
+     (plantuml . t)))
 
-  (add-to-list 'org-src-lang-modes '("dot" . mainspring-graphviz-dot))
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
 
   ;; Configure clojure babel support.

@@ -40,7 +40,7 @@
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
 (require 'init-org-pretty-table)
-(require 'init-mainspring-graphviz-dot-mode)
+(require 'init-plantuml-mode)
 (require 'init-deft)
 (require 'init-slate)
 

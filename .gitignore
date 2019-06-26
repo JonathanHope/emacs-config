@@ -20,3 +20,4 @@ org-clock-save.el
 README.html
 eshell/*
 transient/*
+jar/*
