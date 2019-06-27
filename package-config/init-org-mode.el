@@ -38,7 +38,11 @@
   ;; Don't change indentation of source code. Just bring it over as is.
   (setq org-src-preserve-indentation t)
 
+  ;; Launch source edit in another windows.
   (setq org-src-window-setup 'other-window)
+
+  ;; Disable the expectation of indented content.
+  (setq org-adapt-indentation nil)
 
   ;; Set the path to the PlantUML jar.
   (setq org-plantuml-jar-path

@@ -147,7 +147,19 @@
           (font-lock-add-keywords nil plain-list-asterisk)
           (font-lock-add-keywords nil plain-list-minus)
           (font-lock-add-keywords nil checkbox-unchecked)
-          (font-lock-add-keywords nil checkbox-checked)))))
+          (font-lock-add-keywords nil checkbox-checked)
+          (font-lock-fontify-buffer))
+      (save-excursion
+        (goto-char (point-min))
+        (font-lock-remove-keywords nil headlines)
+        (font-lock-remove-keywords nil todo)
+        (font-lock-remove-keywords nil done)
+        (font-lock-remove-keywords nil plain-list-plus)
+        (font-lock-remove-keywords nil plain-list-asterisk)
+        (font-lock-remove-keywords nil plain-list-minus)
+        (font-lock-remove-keywords nil checkbox-unchecked)
+        (font-lock-remove-keywords nil checkbox-checked)
+        (font-lock-fontify-buffer)))))
 
 (provide 'mainspring-org-prettify)
 
