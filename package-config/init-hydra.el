@@ -627,7 +627,7 @@
 ┃ _f_: Evaluate Form         ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
-    ("o" cider-jack-in :color blue)
+    ("o" mainspring-hydra-clojure-launch-repl :color blue)
     ("l" cider-load-buffer :color blue)
     ("n" cider-repl-set-ns :color blue)
     ("c" mainspring-hydra-clojure-clear-repl :color blue)
@@ -649,6 +649,17 @@
 
   (defun mainspring-hydra-clojure-clear-repl ()
     (interactive)
+    (cider-find-and-clear-repl-output t))
+
+  (defun mainspring-hydra-clojure-launch-repl ()
+    (interactive)
+    (add-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
+    (setq cider-repl-pop-to-buffer-on-connect t)
+    (cider-jack-in nil))
+
+  (defun mainspring-hydra-clojure-show-repl ()
+    (interactive)
+    (remove-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
     (cider-find-and-clear-repl-output t))
 
   ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------

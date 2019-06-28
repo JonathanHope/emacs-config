@@ -67,7 +67,7 @@
    ("C-p" . counsel-projectile-find-file)
 
    ;; Change the active buffer for the window.
-   ("C-b" . counsel-switch-buffer)
+   ("C-b" . ivy-switch-buffer)
 
    ;; Execute any function.
    ("C-S-p" . counsel-M-x)

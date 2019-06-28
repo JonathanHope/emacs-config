@@ -22,6 +22,8 @@
   (setq nrepl-hide-special-buffers t)
   (setq cider-pprint-fn "zensols.nrpuget.core/pprint")
   (setq cider-repl-use-pretty-printing t)
+  (setq cider-repl-pop-to-buffer-on-connect nil)
+  (setq cider-repl-display-in-current-window nil)
 
   :config
   (require 'nrepl-puget)
@@ -35,7 +37,6 @@
             (unwind-protect
                 (cider-load-file src)
               (unless killp
-                (kill-buffer buf))))))
-    (cider-find-and-clear-repl-output t)))
+                (kill-buffer buf))))))))
 
 (provide 'init-cider)
