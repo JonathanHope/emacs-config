@@ -134,6 +134,9 @@
   ;; Speed up font drawing a bit.
   (setq inhibit-compacting-font-cache t)
 
+  ;; Prevent ad warnings.
+  (setq ad-redefinition-action 'accept)
+
   (defun mainspring-my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)

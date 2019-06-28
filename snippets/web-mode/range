@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<input type="range" min="..." max="...">
-# --
-<input type="range" min="$1" max="$2">$3

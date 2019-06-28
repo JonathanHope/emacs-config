@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<optgroup>...</optgroup>
-# --
-<optgroup label="$1">$2</optgroup>

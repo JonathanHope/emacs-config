@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<input type="radio" value="...">
-# --
-<input type="radio" value="$1">$2

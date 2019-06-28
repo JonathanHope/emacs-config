@@ -10,7 +10,6 @@
 
   :init
   (add-hook 'cider-mode-hook #'eldoc-mode)
-  (add-hook 'cider-connected-hook 'mainspring-init-cider-connected-hook)
 
   (setq cider-show-error-buffer t)
   (setq cider-auto-select-error-buffer t)
@@ -20,23 +19,11 @@
   (setq cider-prompt-for-symbol nil)
   (setq nrepl-log-messages nil)
   (setq nrepl-hide-special-buffers t)
-  (setq cider-pprint-fn "zensols.nrpuget.core/pprint")
-  (setq cider-repl-use-pretty-printing t)
+  (setq cider-print-fn 'puget)
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-display-in-current-window nil)
 
   :config
-  (require 'nrepl-puget)
-
-  (defun mainspring-init-cider-connected-hook ()
-    (let ((src (expand-file-name "~/.init.clj")))
-      (if (file-exists-p src)
-          (let* ((buf (find-buffer-visiting src))
-                 (killp (not buf))
-                 (buf (or buf (find-file-noselect src))))
-            (unwind-protect
-                (cider-load-file src)
-              (unless killp
-                (kill-buffer buf))))))))
+  (require 'nrepl-puget))
 
 (provide 'init-cider)

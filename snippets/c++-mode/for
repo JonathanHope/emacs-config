@@ -1,6 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :for
-# --
-for (const auto& $1 : $2) {
-  $3
-}

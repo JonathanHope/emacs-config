@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<label></label>
-# --
-<label for="$1">$2</label>

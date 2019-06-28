@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<input type="checkbox" value="...">
-# --
-<input type="checkbox" value="$1">$2

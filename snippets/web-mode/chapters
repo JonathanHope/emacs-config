@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<track kind="chapters src="..." srclang="...">...</track >
-# --
-<track kind="chapters" src="$1" srclang="$2">$3</track >

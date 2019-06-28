@@ -1,4 +1,0 @@
-#contributor : Jonathan Hope <jonathan.douglas.hope@gmail.com>
-#name :<progress value="..." max="...">...</progress>
-# --
-<progress value="$1" max="$2">$3</progress>
