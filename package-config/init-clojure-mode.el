@@ -5,15 +5,16 @@
 (use-package clojure-mode
   :ensure t
   :defer t
+
   :mode (("\\.clj$" . clojure-mode)
          ("\\.cljs$" . clojurescript-mode)
          ("\\.boot$" . clojure-mode))
   :bind
   (:map clojure-mode-map
-        ("C-<tab>" . clojure-hydra/body)
+        ("C-<tab>" . mainspring-hydra-clojure/body)
         ("<return>". newline-and-indent))
+
   :config
-  ;; Even more syntax highlighting in clojure mode.
   (require 'clojure-mode-extra-font-locking))
 
 (provide 'init-clojure-mode)

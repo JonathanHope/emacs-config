@@ -49,10 +49,10 @@
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ Spliter Up: _<up>_        ┃ _1_: Select Window 1 ┃ _|_: Split Horizontally ┃
-┃ Spliter Down: _<down>_    ┃ _2_: Select Window 2 ┃ ___: Split Vertically   ┃
-┃ Splitter Left: _<left>_   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
-┃ Splitter Right: _<right>_ ┃ _4_: Select Window 4 ┃ _b_: Change Buffer      ┃
+┃ _<up>_: Spliter Up        ┃ _1_: Select Window 1 ┃ _|_: Split Horizontally ┃
+┃ _<down>_: Spliter Down    ┃ _2_: Select Window 2 ┃ ___: Split Vertically   ┃
+┃ _<left>_: Splitter Left   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
+┃ _<right>_: Splitter Right ┃ _4_: Select Window 4 ┃ _b_: Change Buffer      ┃
 ┃^^                         ┃^^                    ┃ _f_: Choose File        ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
@@ -611,18 +611,47 @@
     (interactive)
     (org-update-statistics-cookies t))
 
-  ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
-
   ;; Clojure Hydra
-  (defhydra clojure-hydra (:color blue :columns 4)
-    "Clojure"
-    ("k" cider-quit "Close the REPL")
-    ("l" cider-load-buffer "Load buffer in REPL")
-    ("n" cider-repl-set-ns "Set REPL namespace")
-    ("r" cider-jack-in "Launch REPL")
-    ("s" cider-eval-last-sexp "Evaluate sexp")
-    ("c" (lambda () (interactive) (cider-find-and-clear-repl-output t)) nil)
-    ("q" nil "Exit"))
+
+  (defhydra mainspring-hydra-clojure (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Clojure                  ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _o_: Launch REPL           ┃
+┃ _l_: Load Buffer Into REPL ┃
+┃ _n_: Set REPL Namespace    ┃
+┃ _c_: Clear REPL            ┃
+┃ _r_: Refresh REPL          ┃
+┃ _k_: Close the REPL        ┃
+┃ _f_: Evaluate Form         ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("o" cider-jack-in :color blue)
+    ("l" cider-load-buffer :color blue)
+    ("n" cider-repl-set-ns :color blue)
+    ("c" mainspring-hydra-clojure-clear-repl :color blue)
+    ("r" cider-ns-refresh :color blue)
+    ("k" cider-quit :color blue)
+    ("f" cider-pprint-eval-defun-at-point :color blue)
+    ("q" nil :color blue))
+
+  (defhydra mainspring-hydra-clojure-cider (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Clojure - Cider          ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _c_: Clear REPL            ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("c" mainspring-hydra-clojure-clear-repl :color blue)
+    ("q" nil :color blue))
+
+  (defun mainspring-hydra-clojure-clear-repl ()
+    (interactive)
+    (cider-find-and-clear-repl-output t))
+
+  ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
 
   ;; Dired Hydra
   (defhydra dired-hydra (:color blue :columns 4)

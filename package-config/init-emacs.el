@@ -43,8 +43,8 @@
                           'vertical-border (make-glyph-code 8203))
 
   ;; Set font
-  (defvar Input-font '(:family "Input" :size 13))
-  (defvar PragmataPro-font '(:family "PragmataPro" :size 13))
+  (defvar Input-font '(:family "Input" :size 12))
+  (defvar PragmataPro-font '(:family "PragmataPro" :size 12))
   (set-frame-font (apply 'font-spec PragmataPro-font) nil t)
 
   ;; Disable bell
