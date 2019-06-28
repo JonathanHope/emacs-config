@@ -7,7 +7,7 @@
           ("*Help*" :select t :align right)
           ("*info*" :select t :popup t :align right)
           (".*Org Src.*" :regexp t :select t :popup t :align bottom)
-          (".*cider-repl.*" :regexp t :select t :popup t :align right)))
+          (".*cider-repl.*" :regexp t :select nil :other t :align right :size 0.5)))
   :config
   (shackle-mode 1))
 

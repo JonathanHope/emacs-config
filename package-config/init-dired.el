@@ -3,7 +3,7 @@
 
   :bind
   (:map dired-mode-map
-        ("C-<tab>" . dired-hydra/body)
+        ("C-<tab>" . mainspring-hydra-dired/body)
         ("<backspace>" . dired-up-directory))
 
   :init

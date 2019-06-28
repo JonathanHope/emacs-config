@@ -660,22 +660,43 @@
   (defun mainspring-hydra-clojure-show-repl ()
     (interactive)
     (remove-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
-    (cider-find-and-clear-repl-output t))
+    (cider-find-and-clear-repl-output t)
+    (balance-windows))
+
+  (defhydra mainspring-hydra-dired (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Dired           ^^                       ┃
+┣^^━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _<down>_: Next   ┃ _R_: Rename             ┃
+┃ _<up>_: Previous ┃ _D_: Delete             ┃
+┃ _<enter>_: Open  ┃ _C_: Copy               ┃
+┃ _v_: View        ┃ _G_: Change Group       ┃
+┃ _m_: Mark        ┃ _M_: Change Permissions ┃
+┃ _u_: Unmark      ┃ _+_: Create Directory   ┃
+┃ _U_: Unmark All  ┃^^                       ┃
+┃ _U_: Unmark All  ┃^^                       ┃
+┃ _(_: Details     ┃^^                       ┃
+┗^^━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("<down>" next-line :color red)
+    ("<up>" previous-line :color red)
+    ("<enter>" dired-find-file :color red)
+    ("v" dired-display-file :color red)
+    ("m" dired-mark :color red)
+    ("u" dired-unmark :color red)
+    ("U" dired-unmark-all-marks :color red)
+    ("R" dired-do-rename :color red)
+    ("D" dired-do-delete :color red)
+    ("C" dired-do-copy :color red)
+    ("+" dired-create-directory :color red)
+    ("M" dired-do-chmod :color red)
+    ("G" dired-do-chgrp :color red)
+    ("(" dired-hide-details-mode :color red)
+    (")" dired-omit-mode :color red)
+    ("q" nil :color blue))
 
   ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
-
-  ;; Dired Hydra
-  (defhydra dired-hydra (:color blue :columns 4)
-    "Dired"
-    ("+" dired "Create directory")
-    ("<enter>" dired-find-file "Open")
-    ("C" dired-do-copy "Copy")
-    ("D" dired-do-delete "Delete")
-    ("m" dired-mark "Mark file")
-    ("R" dired-do-rename "Rename")
-    ("u" unmark-file "Unmark file")
-    ("U" dired-unmark-all-marks "Unmark all")
-    ("q" nil "Exit"))
 
   (defhydra octave-hydra (:color blue :columns 4)
     "Octave"
