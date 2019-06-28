@@ -1,5 +1,3 @@
-;; Package configuration for bind-key
-
 (use-package bind-key
   :ensure t
 
@@ -9,10 +7,10 @@
 
   (bind-keys*
    ;; Cancel with one press of escape instead of three. Also cancel out of many different interfaces.
-   ("<escape>" . keyboard-quit-all)
+   ("<escape>" . mainspring-keyboard-quit-all)
 
    ;; Quit an org source buffer if open.
-   ("S-<escape>" . quit-org-source)
+   ("S-<escape>" . mainspring-org-quit-source)
 
    ;; Save the current file.
    ("C-s" . save-buffer)
@@ -36,13 +34,13 @@
    ("C-y" . undo-tree-redo)
 
    ;; Copy the current selection to the clipboard.
-   ("C-c" . copy-clear-selection)
+   ("C-c" . mainspring-copy-clear-selection)
 
    ;; Cut the current selection to the clipboard.
    ("C-x" . simpleclip-cut)
 
    ;; cut the current line.
-   ("C-S-x" . cut-current-line)
+   ("C-S-x" . mainspring-cut-current-line)
 
    ;; Paste whatever is on the clipboard.
    ("C-v" . simpleclip-paste)
@@ -69,7 +67,7 @@
    ("C-p" . counsel-projectile-find-file)
 
    ;; Change the active buffer for the window.
-   ("C-b" . ivy-switch-buffer)
+   ("C-b" . counsel-switch-buffer)
 
    ;; Execute any function.
    ("C-S-p" . counsel-M-x)
@@ -84,7 +82,7 @@
    ("M-#" . split-window-vertically)
 
    ;; Toggle the comment status of a line.
-   ("C-/" . toggle-comment)
+   ("C-/" . mainspring-toggle-comment)
 
    ;; Mark in rectangle mode.
    ("C-<return>" . rectangle-mark-mode)
@@ -96,7 +94,7 @@
    ("C-S-a" . iedit-mode)
 
    ;; Duplicate the current line.
-   ("C-S-d" . duplicate-line)
+   ("C-S-d" . mainspring-duplicate-line)
 
    ;; Move a line one line up.
    ("C-S-<up>" . move-text-up)
@@ -105,7 +103,7 @@
    ("C-S-<down>" . move-text-down)
 
    ;; Delete a word.
-   ("<C-backspace>" . backward-delete-word)
+   ("<C-backspace>" . mainspring-backward-delete-word)
 
    ;; Cut an entire line.
    ("C-k" . kill-whole-line)
@@ -135,7 +133,7 @@
    ("C-d". mark-word)
 
    ;; Select a line.
-   ("C-l". select-current-line)
+   ("C-l". mainspring-select-current-line)
 
    ;; Move forward a symbol.
    ("C-<left>". sp-backward-symbol)
@@ -144,10 +142,10 @@
    ("C-<right>". sp-forward-symbol)
 
    ;; Move up five lines.
-   ("C-<up>". up-five)
+   ("C-<up>". mainspring-up-five-lines)
 
    ;; Move down five lines.
-   ("C-<down>". down-five)
+   ("C-<down>". mainspring-down-five-lines)
 
    ;; Move forward a sexp.
    ("C-S-<left>". sp-backward-sexp)
@@ -156,14 +154,14 @@
    ("C-S-<right>". sp-forward-sexp)
 
    ;; Launch general apps hydra.
-   ("C-S-<tab>". launch-hydra-apps)
-   ("C-S-<iso-lefttab>" . launch-hydra-apps)
+   ("C-S-<tab>". mainspring-hydra-launch-apps)
+   ("C-S-<iso-lefttab>" . mainspring-hydra-launch-apps)
 
    ;; Next window.
    ("M-<tab>". other-window)
 
    ;; Join lines.
-   ("C-j". join-lines)
+   ("C-j". mainspring-join-lines)
 
    ;; Sort lines.
    ("<f9>" . sort-lines)
@@ -186,7 +184,7 @@
    ;; Move to end of buffer.
    ("<end>" . end-of-buffer))
 
-  (defun duplicate-line()
+  (defun mainspring-duplicate-line()
     "Duplicate the current line."
     (interactive)
     (move-beginning-of-line 1)
@@ -196,17 +194,17 @@
     (next-line 1)
     (yank))
 
-  (defun delete-word (arg)
+  (defun mainspring-delete-word (arg)
     "Delete a word."
     (interactive "p")
     (delete-region (point) (progn (forward-word arg) (point))))
 
-  (defun backward-delete-word (arg)
+  (defun mainspring-backward-delete-word (arg)
     "Delete a word moving backwards."
     (interactive "p")
-    (delete-word (- arg)))
+    (mainspring-delete-word (- arg)))
 
-  (defun keyboard-quit-all ()
+  (defun mainspring-keyboard-quit-all ()
     "Quit out of whatever is currently going on."
     (interactive)
     (cond ((equal major-mode 'help-mode) (quit-window))
@@ -216,60 +214,62 @@
           ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))
           (t (keyboard-quit))))
 
-  (defun quit-org-source ()
+  (defun mainspring-org-quit-source ()
     "Exit out of an org source window."
     (interactive)
     (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))))
 
-  (defun up-five ()
+  (defun mainspring-up-five-lines ()
     "Move up five lines."
     (interactive)
     (previous-line 5))
 
-  (defun down-five ()
+  (defun mainspring-down-five-lines ()
     "Move down five lines."
     (interactive)
     (next-line 5))
 
-  (defun launch-hydra-apps ()
+  (defun mainspring-hydra-launch-apps ()
     "Launch a apps hydra menu."
     (interactive)
     (mainspring-hydra-apps/body))
 
-  (defun is-region-active? ()
+  (defun mainspring-is-region-active?? ()
     "Is there an active region?"
     (and mark-active
          (/= (point) (mark))))
 
-  (defun toggle-comment ()
+  (defun mainspring-toggle-comment ()
     "Toggle the comment status of a line or a region."
     (interactive)
-    (if (is-region-active?)
+    (if (mainspring-is-region-active??)
         (comment-or-uncomment-region (region-beginning) (region-end))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
-  (defun copy-clear-selection (beg end)
+  (defun mainspring-copy-clear-selection (beg end)
     "Copy with smartclip and then clear the selection."
     (interactive "r")
     (simpleclip-copy beg end)
     (keyboard-quit))
 
-  (defun select-current-line ()
+  (defun mainspring-select-current-line ()
     "Select the current line"
     (interactive)
     (beginning-of-line) ; move to end of line
     (set-mark (line-end-position)))
 
-  (defun join-lines (arg)
+  (defun mainspring-join-lines (arg)
+    "Join the current line and the line below."
     (interactive "p")
     (end-of-line)
     (delete-char 1)
     (delete-horizontal-space)
     (insert " "))
 
-  (defun cut-current-line ()
+  (defun mainspring-cut-current-line ()
+    "Cut the current line."
     (interactive)
-    (select-current-line)
+    (mainspring-select-current-line)
     (simpleclip-cut (region-beginning) (region-end))))
 
 (provide 'init-bind-key)

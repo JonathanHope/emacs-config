@@ -1,5 +1,3 @@
-;; Package configuration for slate.
-
 (use-package slate
   :defer t
 

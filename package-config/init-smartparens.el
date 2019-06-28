@@ -1,5 +1,3 @@
-;; Package configuration for smartparens.
-
 (use-package smartparens
   :ensure t
 
@@ -18,9 +16,13 @@
   (sp-with-modes sp-lisp-modes
     (sp-local-pair "'" nil :actions nil))
 
-  (setq sp-navigate-consider-sgml-tags '(web-mode sgml-mode))
+  (sp-with-modes '(org-mode)
+    (sp-local-pair "(" nil :actions nil)
+    (sp-local-pair "[" nil :actions nil))
 
-  (sp-with-modes '(web-mode sgml-mode c++-mode)
+  (setq sp-navigate-consider-sgml-tags '(sgml-mode))
+
+  (sp-with-modes '(sgml-mode)
     (sp-local-pair "<" ">"))
 
   (show-smartparens-global-mode t)

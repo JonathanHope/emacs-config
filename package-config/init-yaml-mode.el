@@ -1,5 +1,3 @@
-;; Package configuration for yaml.
-
 (use-package yaml-mode
   :ensure t
   :defer t)

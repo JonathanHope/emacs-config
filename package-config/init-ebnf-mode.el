@@ -1,5 +1,3 @@
-;; Package configuration for ebnf mode.
-
 (use-package ebnf-mode
   :defer t
 

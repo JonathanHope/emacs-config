@@ -7,3 +7,6 @@
 * TODO Magit windowing weirdness.
 * TODO Add statistics cookies to headline hydra.
 * TODO Remove statistics cookies from slate.
+* TODO Bookmark support.
+* TODO Company fuzzy matching.
+* TODO Regex builder.

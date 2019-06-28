@@ -1,5 +1,3 @@
-;; Package configuration for deft.
-
 (use-package deft
   :ensure t
 
@@ -9,7 +7,7 @@
   (:map deft-mode-map
         ("C-<tab>" . deft-hydra/body))
 
-  :config
+  :init
   (setq deft-extensions '("org"))
   (setq deft-directory "~/Notes")
   (setq deft-archive-directory "Archive/")
@@ -20,9 +18,9 @@
   (setq deft-auto-save-interval 0)
   (setq deft-strip-summary-regexp (concat
                                    "\\("
-                                   "[\n\t]" ;; blank
-                                   "\\|^#\\+[[:upper:]_]+:.*$" ;; org-mode metadata
-                                   "\\|^\\*..*$" ;; org-mode headers
+                                   "[\n\t]"
+                                   "\\|^#\\+[[:upper:]_]+:.*$"
+                                   "\\|^\\*..*$"
                                    "\\)"))
   (setq deft-file-naming-rules '((noslash . "-")
                                  (nospace . "-")

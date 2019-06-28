@@ -1,5 +1,3 @@
-;; Package configuration for dired.
-
 (use-package "dired"
   :defer t
 

@@ -65,10 +65,8 @@
 
 ;; Completion.
 ;; Most things should have fuzzy completion in a minibuffer.
-(require 'init-async)
 (require 'init-flx)
 (require 'init-ivy)
-(require 'init-ivy-xref)
 (require 'init-counsel)
 (require 'init-counsel-projectile)
 (require 'init-company)
@@ -95,14 +93,9 @@
 ;; Better integration with system clipboards.
 (require 'init-simpleclip)
 
-;; Snippet expansion.
-(require 'init-yasnippet)
-
 ;; More intuitive regexp replace.
+(require 'init-pcre2el)
 (require 'init-visual-regexp)
-
-;; Generic code folding solution.
-(require 'init-yafolding)
 
 ;; A way to move lines or selected text around.
 (require 'init-move-text)
@@ -155,9 +148,6 @@
 ;; YAML support.
 (require 'init-yaml-mode)
 
-;; CMake support.
-(require 'init-cmake-mode)
-
 ;; Programming languages
 
 ;; EBNF support.
@@ -171,4 +161,4 @@
 (require 'init-octave-mode)
 
 ;; Run the startup function.
-(startup)
+(mainspring-startup)

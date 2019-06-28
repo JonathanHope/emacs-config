@@ -1,5 +1,3 @@
-;; Package configuration for undo-tree.
-
 (use-package undo-tree
   :ensure t
 

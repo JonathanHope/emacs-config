@@ -1,5 +1,3 @@
-;; Package configuration for eshell.
-
 (use-package "eshell"
   :defer t
   :commands (eshell)
@@ -12,7 +10,6 @@
               (define-key eshell-mode-map (kbd "M-<up>") #'eshell-previous-input)
               (define-key eshell-mode-map (kbd "M-<down>") #'eshell-next-input)))
 
-  :config
   (setq eshell-prompt-function
         (lambda nil
           (concat
@@ -20,6 +17,7 @@
            (propertize " " 'face `()))))
   (setq eshell-banner-message "")
 
+  :config
   (defun eshell/clear ()
     "Clear terminal"
     (interactive)

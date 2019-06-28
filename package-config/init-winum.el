@@ -1,5 +1,3 @@
-;; Package configuration for winum.
-
 (use-package winum
   :ensure t
   :defer 0

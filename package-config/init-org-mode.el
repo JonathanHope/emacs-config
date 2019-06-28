@@ -56,6 +56,7 @@
      (plantuml . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
+  (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))
 
   ;; Configure clojure babel support.
   (require 'ob-clojure)

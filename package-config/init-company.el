@@ -7,11 +7,18 @@
         ("<escape>" . company-abort)
         ("<tab>" . company-complete-selection))
   :init
-  (progn
-    (add-hook 'cider-repl-mode-hook #'company-mode)
-    (add-hook 'cider-mode-hook #'company-mode))
+  (add-hook 'cider-repl-mode-hook #'company-mode)
+  (add-hook 'cider-mode-hook #'company-mode)
 
-  :config
-  (setq company-idle-delay .3))
+  (setq company-tooltip-limit 10)
+  (setq company-tooltip-offset-display 'lines)
+  (setq company-dabbrev-downcase 0)
+  (setq company-idle-delay 0)
+  (setq company-echo-delay 0)
+  (setq company-minimum-prefix-length 2)
+  (setq company-selection-wrap-around t)
+  (setq company-tooltip-align-annotations t)
+  (setq company-require-match nil)
+  (setq company-transformers '(company-sort-by-occurrence)))
 
 (provide 'init-company)

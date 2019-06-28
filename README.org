@@ -29,6 +29,8 @@ Hunspell is required for spell checking. It can be installed on Linux using your
 
 Ripgrep is required for textual searching. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/BurntSushi/ripgrep/releases.
 
+Fd should be installed to improve project indexing. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/sharkdp/fd/releases.
+
 Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be found for windows here: http://www.graphviz.org/download/.
 
 Latex is required for formulas in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: http://www.tug.org/texlive/acquire-netinstall.html.

@@ -1,5 +1,3 @@
-;; Package configuration for move-text
-
 (use-package move-text
   :ensure t
   :defer t

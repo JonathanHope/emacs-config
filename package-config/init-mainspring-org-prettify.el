@@ -1,5 +1,3 @@
-;; Package configuration for mainspring-org-prettify.
-
 (use-package mainspring-org-prettify
   :defer t
   :commands (mainspring-org-prettify-mode)

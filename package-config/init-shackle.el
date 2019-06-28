@@ -1,5 +1,3 @@
-;; Package configuration for shackle
-
 (use-package shackle
   :ensure t
 

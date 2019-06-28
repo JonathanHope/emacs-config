@@ -1,5 +1,3 @@
-;; Package configuration for org-pretty-table.
-
 (use-package org-pretty-table
   :defer t
   :commands (turn-on-org-pretty-table-mode)

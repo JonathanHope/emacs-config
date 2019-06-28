@@ -1,5 +1,3 @@
-;; Package configuration for flyspell-correct.
-
 (use-package flyspell-correct-ivy
   :ensure t
   :defer t

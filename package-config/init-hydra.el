@@ -522,7 +522,7 @@
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source  block language: "
-              '("sql" "clojure" "octave" "plantuml")
+              '("sql" "clojure" "octave" "plantuml" "ebnf")
               :require-match t
               :sort t
               :action (lambda (src-code-type)

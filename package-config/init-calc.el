@@ -5,9 +5,11 @@
   (:map calc-mode-map
         ("C-<tab>" . calc-hydra/body))
 
-  :config
+  :init
   (setq calc-show-banner nil)
   (setq calc-line-numbering nil)
+
+  :config
   (calc-trail-display 0)
 
   (use-package calc-help

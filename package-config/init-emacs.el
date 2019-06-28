@@ -1,5 +1,3 @@
-;; Package configuration for emacs in general.
-
 (use-package "emacs"
   :bind
   (:map emacs-lisp-mode-map
@@ -62,10 +60,6 @@
    scroll-preserve-screen-position t
    auto-window-vscroll nil)
 
-  ;; Random performance stuff.
-  (setq bidi-display-reordering nil
-        idle-update-delay 2)
-
   ;; Set cursor type.
   (setq-default cursor-type 'bar)
 
@@ -73,6 +67,7 @@
   (add-to-list 'custom-theme-load-path "~/.emacs.d/packages")
   (load-theme 'mainspring t)
 
+  ;; Set the border colors.
   (set-face-background 'vertical-border "#343D46")
   (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
@@ -139,7 +134,7 @@
   ;; Speed up font drawing a bit.
   (setq inhibit-compacting-font-cache t)
 
-  (defun my-delete-trailing-blank-lines ()
+  (defun mainspring-my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
     (save-excursion
@@ -147,13 +142,9 @@
         (widen)
         (goto-char (point-max))
         (delete-blank-lines))))
-  (add-hook 'before-save-hook 'my-delete-trailing-blank-lines)
+  (add-hook 'before-save-hook 'mainspring-my-delete-trailing-blank-lines)
 
-  (defun revert-default-directory ()
-    "Revert the default directory to the directory that emacs was started in."
-    (setq default-directory old-default-directory))
-
-  (defun startup ()
+  (defun mainspring-startup ()
     "Custom startup function. Defaults to org mode in the notes directory."
     (make-directory notes-directory :parents)
     (make-directory scratch-directory :parents)
@@ -171,6 +162,10 @@
 
     (setq default-directory notes-directory)
     (text-mode))
+
+  (defun revert-default-directory ()
+    "Revert the default directory to the directory that emacs was started in."
+    (setq default-directory old-default-directory))
 
   (defun what-face (pos)
     "Get the face in use at the current position."
