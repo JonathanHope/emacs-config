@@ -221,6 +221,8 @@
  '(swiper-match-face-2          ((t (:underline t :weight bold))))
  '(swiper-match-face-3          ((t (:underline t :weight bold))))
  '(swiper-match-face-4          ((t (:underline t :weight bold))))
+ '(swiper-line-face             ((t (:background "#343d46" :weight bold))))
+ '(ivy-cursor                   ((t (:background "#a3c6d0"))))
 
  ;; Highlight numbers
  '(highlight-numbers-number ((t (:foreground "#96b5b4" :slant italic))))

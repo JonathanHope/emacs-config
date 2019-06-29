@@ -49,7 +49,7 @@
    ("C-S-v" . yank)
 
    ;; Regex search in a file.
-   ("C-f" . swiper)
+   ("C-f" . swiper-isearch)
 
    ;; Regex search in a project.
    ("C-S-f" . counsel-projectile-rg)

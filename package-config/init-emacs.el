@@ -1,7 +1,6 @@
 (use-package "emacs"
   :bind
   (:map emacs-lisp-mode-map
-        ("C-<tab>" . elisp-hydra/body)
         ("<return>". newline-and-indent))
 
   :init
