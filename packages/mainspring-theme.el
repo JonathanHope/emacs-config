@@ -217,8 +217,10 @@
  '(ivy-minibuffer-match-face-2  ((t (:underline t :weight bold))))
  '(ivy-minibuffer-match-face-3  ((t (:underline t :weight bold))))
  '(ivy-minibuffer-match-face-4  ((t (:underline t :weight bold))))
- '(swiper-match-face            ((t (:underline t :weight bold))))
+ '(swiper-match-face-1          ((t (:underline t :weight bold))))
  '(swiper-match-face-2          ((t (:underline t :weight bold))))
+ '(swiper-match-face-3          ((t (:underline t :weight bold))))
+ '(swiper-match-face-4          ((t (:underline t :weight bold))))
 
  ;; Highlight numbers
  '(highlight-numbers-number ((t (:foreground "#96b5b4" :slant italic))))

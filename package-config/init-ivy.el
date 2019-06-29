@@ -13,7 +13,15 @@
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-count-format "")
   (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy)))
+        '((counsel-find-file . ivy--regex-fuzzy)
+          (counsel-M-x . ivy--regex-fuzzy)
+          (counsel-describe-variable . ivy--regex-fuzzy)
+          (counsel-describe-function . ivy--regex-fuzzy)
+          (ivy-switch-buffer . ivy--regex-fuzzy)
+          (counsel-projectile-find-file . ivy--regex-fuzzy)
+          (counsel-find-file-name . ivy--regex-fuzzy)
+          (counsel-describe-face . ivy--regex-fuzzy)
+          (t . ivy--regex-plus)))
 
   :config
   (ivy-mode 1))
