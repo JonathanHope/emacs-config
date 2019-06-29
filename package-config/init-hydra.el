@@ -696,6 +696,38 @@
     (")" dired-omit-mode :color red)
     ("q" nil :color blue))
 
+  ;; Ivy Hydra
+
+  (defhydra mainspring-hydra-ivy (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Ivy             ^^                         ┃
+┣^^━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _<down>_: Next   ┃ _<enter>_: Complete       ┃
+┃ _<up>_: Previous ┃ _S-<enter>_: Complete Now ┃
+┃ _m_: Mark        ┃ _d_: Dispatch Complete    ┃
+┃ _u_: Unmark      ┃^^                         ┃
+┗^^━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("<down>" ivy-next-line :color red)
+    ("<up>" ivy-previous-line :color red)
+    ("m" mainspring-hydra-ivy-mark :color red)
+    ("u" mainspring-hydra-ivy-unmark :color red)
+    ("<enter>" ivy-done :color blue)
+    ("S-<enter>" ivy-immediate-done :color blue)
+    ("d" ivy-dispatching-done :color blue)
+    ("q" nil :color blue))
+
+  (defun mainspring-hydra-ivy-mark ()
+    (interactive)
+    (ivy-mark)
+    (ivy-previous-line))
+
+  (defun mainspring-hydra-ivy-unmark ()
+    (interactive)
+    (ivy-unmark)
+    (ivy-previous-line))
+
   ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
 
   (defhydra octave-hydra (:color blue :columns 4)

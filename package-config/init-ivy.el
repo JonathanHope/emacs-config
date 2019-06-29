@@ -4,7 +4,8 @@
   :bind
   (:map ivy-minibuffer-map
         ("<tab>" . ivy-alt-done)
-        ("S-<return>" . ivy-immediate-done))
+        ("S-<return>" . ivy-immediate-done)
+        ("C-<tab>" . mainspring-hydra-ivy/body))
 
   :init
   (setq ivy-extra-directories nil)
@@ -12,6 +13,7 @@
   (setq ivy-height 20)
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-count-format "")
+  (setq ivy-wrap t)
   (setq ivy-re-builders-alist
         '((counsel-find-file . ivy--regex-fuzzy)
           (counsel-M-x . ivy--regex-fuzzy)
