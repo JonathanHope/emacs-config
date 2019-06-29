@@ -37,7 +37,7 @@
 ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Languages  ┃^^ Zoom            ┃
 ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
 ┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _M_: Mode     ┃ _C_: Clojure ┃ _+_: Zoom In      ┃
-┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃^^            ┃ _-_: Zoom Out     ┃
+┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃ _O_: Octave  ┃ _-_: Zoom Out     ┃
 ┃ _o_: Org    ┃^^             ┃ _K_: Key      ┃^^            ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃^^            ┃^^                 ┃
 ┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
@@ -69,6 +69,7 @@
     ("V" counsel-describe-variable :color blue)
     ("A" counsel-faces :color blue)
     ("C" mainspring-hydra-apps-clojure-mode-launch :color red)
+    ("O" mainspring-hydra-apps-octave-mode-launch :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
@@ -112,6 +113,12 @@
     (interactive)
     (mainspring-hydra-apps-new-empty-buffer)
     (clojure-mode))
+
+  (defun mainspring-hydra-apps-octave-mode-launch ()
+    "Launch clojure-mode."
+    (interactive)
+    (mainspring-hydra-apps-new-empty-buffer)
+    (octave-mode))
 
   (defun mainspring-hydra-apps-move-splitter-left (arg)
     "Move window splitter left."
@@ -805,23 +812,51 @@
               :action (lambda (selection)
                         (calc-describe-variable selection))))
 
-  ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
+  ;; Octave
 
-  (defhydra octave-hydra (:color blue :columns 4)
-    "Octave"
-    ("r" run-octave "Start Octave REPL.")
-    ("l" octave-source-file "Send file to Octave REPL.")
-    ("c" octave-clear "Clear Octave REPL.")
-    ("q" nil "Exit"))
+  (defhydra mainspring-hydra-octave (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Octave                   ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _o_: Launch REPL           ┃
+┃ _k_: Close REPL            ┃
+┃ _c_: Clear REPL            ┃
+┃ _B_: Send Buffer to REPL   ┃
+┃ _l_: Send Line to REPL     ┃
+┃ _r_: Send Region to REPL   ┃
+┃ _h_: Help                  ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("o" mainspring-hydra-octave-launch-repl :color red)
+    ("k" mainspring-hydra-octave-kill-repl :color red)
+    ("c" mainspring-hydra-octave-clear-repl :color red)
+    ("B" octave-send-buffer :color red)
+    ("l" octave-send-line :color red)
+    ("r" octave-send-region :color red)
+    ("h" octave-help :color blue)
+    ("q" nil :color blue))
 
-  (defun octave-clear ()
-    "Clear octave"
+  ;; Octave help
+
+  (defun mainspring-hydra-octave-clear-repl ()
     (interactive)
     (let ((origin-buffer (current-buffer))
           (inhibit-read-only t))
       (switch-to-buffer (get-buffer "*Inferior Octave*"))
       (erase-buffer)
       (comint-send-input)
-      (switch-to-buffer origin-buffer))))
+      (comint-kill-whole-line -1)
+      (switch-to-buffer origin-buffer)))
+
+  (defun mainspring-hydra-octave-launch-repl ()
+    (interactive)
+    (run-octave)
+    (mainspring-hydra-octave-clear-repl))
+
+  (defun mainspring-hydra-octave-kill-repl ()
+    (interactive)
+    (octave-hide-process-buffer)
+    (octave-kill-process)))
 
 (provide 'init-hydra)

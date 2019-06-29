@@ -1,5 +1,3 @@
-;; Package configuration for highlight numbers.
-
 (use-package highlight-numbers
   :ensure t
   :defer t
