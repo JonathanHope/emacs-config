@@ -1,5 +1,3 @@
-;; Package configuration for Octave.
-
 (use-package octave-mode
   :defer t
 

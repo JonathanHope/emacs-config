@@ -1,5 +1,3 @@
-;; Package configuration for js.
-
 (use-package js
   :defer t
 

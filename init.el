@@ -40,9 +40,6 @@
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
 (require 'init-org-pretty-table)
-(require 'init-plantuml-mode)
-(require 'init-deft)
-(require 'init-slate)
 
 ;; Core
 
@@ -131,11 +128,17 @@
 ;; Git support.
 (require 'init-magit)
 
-;; Shell
+;; Shell.
 (require 'init-eshell)
 
-;;Calculator
+;; Calculator.
 (require 'init-calc)
+
+;; Notes manager.
+(require 'init-deft)
+
+;; Master TOOD list.
+(require 'init-slate)
 
 ;; Config file formats.
 
@@ -147,6 +150,14 @@
 
 ;; YAML support.
 (require 'init-yaml-mode)
+
+;; Design tools.
+
+;; REST APIs.
+(require 'init-restclient)
+
+;; UML/Flows.
+(require 'init-plantuml-mode)
 
 ;; Programming languages
 
