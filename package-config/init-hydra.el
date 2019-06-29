@@ -53,7 +53,7 @@
 ┃ _<down>_: Spliter Down    ┃ _2_: Select Window 2 ┃ ___: Split Vertically   ┃
 ┃ _<left>_: Splitter Left   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
 ┃ _<right>_: Splitter Right ┃ _4_: Select Window 4 ┃ _b_: Change Buffer      ┃
-┃^^                         ┃^^                    ┃ _f_: Choose File        ┃
+┃ _=_: Balance Windows      ┃^^                    ┃ _f_: Choose File        ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color red)
@@ -87,6 +87,7 @@
     ("<right>" mainspring-hydra-apps-move-splitter-right :color red)
     ("b" ivy-switch-buffer :color red)
     ("f" counsel-find-file :color red)
+    ("=" balance-windows :color red)
     ("q" nil :color blue))
 
   (defun mainspring-hydra-apps-magit-status ()
@@ -418,8 +419,7 @@
 
   (defun mainspring-hydra-org-insert-headline ()
     (interactive)
-    (org-insert-heading)
-    (org-edit-headline))
+    (org-insert-heading))
 
   (defun mainspring-hydra-org-delete-headline ()
     (interactive)
@@ -510,8 +510,12 @@
     (interactive "r")
     (org-emphasize ?\s))
 
-  (defun mainspring-hydra-org-current-line-empty-p ()
-    (string-match-p "^\\s-*$" (thing-at-point 'line)))
+  (defun mainspring-hydra-org-current-line-empty-p (&optional pos)
+    (save-excursion
+      (goto-char (or pos (point)))
+      (beginning-of-line)
+      (= (point-at-eol)
+         (progn (skip-syntax-forward " ") (point)))))
 
   (defun mainspring-hydra-new-line-if-not-empty ()
     (unless (mainspring-hydra-org-current-line-empty-p)
@@ -521,7 +525,7 @@
 
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
-    (ivy-read "Source  block language: "
+    (ivy-read "source  block language: "
               '("sql" "clojure" "octave" "plantuml" "ebnf")
               :require-match t
               :sort t
@@ -529,33 +533,31 @@
                         (cond ((equal src-code-type "plantuml")
                                (progn
                                  (mainspring-hydra-new-line-if-not-empty)
-                                 (insert (format "#+BEGIN_SRC %s :file temp.png\n" src-code-type))
+                                 (insert (format "#+begin_src %s :file temp.png\n" src-code-type))
                                  (newline-and-indent)
-                                 (insert "#+END_SRC\n")
+                                 (insert "#+end_src\n")
                                  (previous-line 2)
                                  (org-edit-src-code)))
                               (t
                                (progn
                                  (mainspring-hydra-new-line-if-not-empty)
-                                 (insert (format "#+BEGIN_SRC %s :results output\n" src-code-type))
+                                 (insert (format "#+begin_src %s :results output\n" src-code-type))
                                  (newline-and-indent)
-                                 (insert "#+END_SRC\n")
+                                 (insert "#+end_src\n")
                                  (previous-line 2)
                                  (org-edit-src-code)))))))
 
   (defun mainspring-hydra-org-insert-plain-list-item (bullet)
     (interactive)
-    (let ((input (read-string "Edit: ")))
-      (if (org-at-item-p)
-          (progn
-            (end-of-line)
-            (org-insert-item)
-            (insert input))
+    (if (org-at-item-p)
         (progn
-          (mainspring-hydra-new-line-if-not-empty)
-          (message (thing-at-point 'line t))
-          (insert (concat " " bullet " "))
-          (insert input)))))
+          (end-of-line)
+          (org-insert-item)
+          (next-line))
+      (progn
+        (mainspring-hydra-new-line-if-not-empty)
+        (message (thing-at-point 'line t))
+        (insert (concat " " bullet " ")))))
 
   (defun mainspring-hydra-org-insert-plain-list-item-unordered ()
     (interactive)
