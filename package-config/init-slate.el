@@ -3,7 +3,7 @@
 
   :bind
   (:map slate-mode-map
-        ("C-<tab>" . slate-hydra/body))
+        ("C-<tab>" . mainspring-hydra-slate/body))
 
   :commands (slate slate-refresh))
 

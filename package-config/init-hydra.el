@@ -728,6 +728,83 @@
     (ivy-unmark)
     (ivy-previous-line))
 
+  ;; Deft Hydra
+
+  (defhydra mainspring-hydra-deft (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Deft                ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━┫
+┃ _<up>_: Previous File ┃
+┃ _<down>_: Next File   ┃
+┃ _D_: Delete File      ┃
+┃ _R_: Rename File      ┃
+┃ _A_: Archive File     ┃
+┃ _N_: New File         ┃
+┃ _r_: Refresh          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("<down>" next-line :color red)
+    ("<up>" previous-line :color red)
+    ("D" deft-delete-file :color red)
+    ("R" deft-rename-file :color red)
+    ("A" deft-archive-file :color red)
+    ("N" deft-new-file :color red)
+    ("r" deft-refresh :color red)
+    ("q" nil :color blue))
+
+  ;; Slate Hydra
+
+  (defhydra mainspring-hydra-slate (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Slate               ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━┫
+┃ _r_: Refresh          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("r" slate-refresh :color red)
+    ("q" nil :color blue))
+
+  (defhydra mainspring-hydra-calc (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Calc                 ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _p_: Go to Prompt      ┃
+┃ _z_: Undo              ┃
+┃ _y_: Redo              ┃
+┃ _f_: Describe Function ┃
+┃ _v_: Describe Variable ┃
+┃ _k_: Describe Key      ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("p" calc-realign :color red)
+    ("z" calc-undo :color red)
+    ("y" calc-redo :color red)
+    ("f" mainspring-hydra-calc-counsel-describe-function :color blue)
+    ("v" mainspring-hydra-calc-counsel-describe-variable :color blue)
+    ("k" calc-describe-key :color blue)
+    ("q" nil :color blue))
+
+  (defun mainspring-hydra-calc-counsel-describe-function()
+    (interactive)
+    (ivy-read "Describe calc function: "
+              (calc-help-index-entries "Function" "Command")
+              :require-match t
+              :sort t
+              :action (lambda (selection)
+                        (calc-describe-function selection))))
+
+  (defun mainspring-hydra-calc-counsel-describe-variable()
+    (interactive)
+    (ivy-read "Describe calc variable: "
+              (calc-help-index-entries "Variable")
+              :require-match t
+              :sort t
+              :action (lambda (selection)
+                        (calc-describe-variable selection))))
+
   ;; ------------------------ OLD ------------------------------------------------------------------------------------------------------------------------------
 
   (defhydra octave-hydra (:color blue :columns 4)
@@ -737,63 +814,14 @@
     ("c" octave-clear "Clear Octave REPL.")
     ("q" nil "Exit"))
 
-  (defhydra deft-hydra (:color blue :columns 4)
-    "Deft"
-    ("d" deft-delete-file "Delete file.")
-    ("e" deft-rename-file "Rename file.")
-    ("a" deft-archive-file "Archive file.")
-    ("n" deft-new-file "New File.")
-    ("r" deft-refresh "Refresh.")
-    ("q" nil "Exit"))
-
-  (defhydra slate-hydra (:color blue :columns 4)
-    "Slate"
-    ("r" slate-refresh "Refresh.")
-    ("q" nil "Exit"))
-
-  (defhydra calc-hydra (:color blue :columns 4)
-    "Calc"
-    ("p" calc-realign "Go to prompt")
-    ("z" calc-undo "Undo")
-    ("u" calc-redo "Redo")
-    ("h" (progn
-           (calc-describe-hydra/body)
-           (mainspring-hydra-push '(calc-hydra/body))) "Describe")
-    ("q" nil "Exit"))
-
-  (defhydra calc-describe-hydra (:color blue :columns 4)
-    "Calc describe"
-    ("f" mainspring-counsel-calc-describe-function "Function")
-    ("v" mainspring-counsel-calc-describe-variable "Variable")
-    ("k" calc-describe-key "Key")
-    ("q" mainspring-hydra-pop "Exit"))
-
-  (defun mainspring-counsel-calc-describe-function()
+  (defun octave-clear ()
+    "Clear octave"
     (interactive)
-    (ivy-read "Describe calc function: "
-              (calc-help-index-entries "Function" "Command")
-              :require-match t
-              :sort t
-              :action (lambda (selection)
-                        (calc-describe-function selection))))
-
-  (defun mainspring-counsel-calc-describe-variable()
-    (interactive)
-    (ivy-read "Describe calc variable: "
-              (calc-help-index-entries "Variable")
-              :require-match t
-              :sort t
-              :action (lambda (selection)
-                        (calc-describe-variable selection)))))
-
-(defun octave-clear ()
-  "Clear octave"
-  (interactive)
-  (let ((origin-buffer (current-buffer))
-        (inhibit-read-only t))
-    (switch-to-buffer (get-buffer "*Inferior Octave*"))
-    (erase-buffer)
-    (comint-send-input)
-    (switch-to-buffer origin-buffer)))
+    (let ((origin-buffer (current-buffer))
+          (inhibit-read-only t))
+      (switch-to-buffer (get-buffer "*Inferior Octave*"))
+      (erase-buffer)
+      (comint-send-input)
+      (switch-to-buffer origin-buffer))))
 
 (provide 'init-hydra)

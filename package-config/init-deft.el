@@ -5,7 +5,7 @@
 
   :bind
   (:map deft-mode-map
-        ("C-<tab>" . deft-hydra/body))
+        ("C-<tab>" . mainspring-hydra-deft/body))
 
   :init
   (setq deft-extensions '("org"))

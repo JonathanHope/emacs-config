@@ -3,7 +3,7 @@
 
   :bind
   (:map calc-mode-map
-        ("C-<tab>" . calc-hydra/body))
+        ("C-<tab>" . mainspring-hydra-calc/body))
 
   :init
   (setq calc-show-banner nil)
