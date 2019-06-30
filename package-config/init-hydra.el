@@ -34,11 +34,11 @@
                                    :post (setq hydra-hint-display-type 'lv))
     "
 ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
-┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Languages  ┃^^ Zoom            ┃
+┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Scratch    ┃^^ Zoom            ┃
 ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
-┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _M_: Mode     ┃ _C_: Clojure ┃ _+_: Zoom In      ┃
-┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃ _O_: Octave  ┃ _-_: Zoom Out     ┃
-┃ _o_: Org    ┃^^             ┃ _K_: Key      ┃^^            ┃ _0_: Zoom Reset   ┃
+┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _M_: Mode     ┃ _T_: Text    ┃ _+_: Zoom In      ┃
+┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃ _C_: Clojure ┃ _-_: Zoom Out     ┃
+┃ _o_: Org    ┃^^             ┃ _K_: Key      ┃ _O_: Octave  ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃^^            ┃^^                 ┃
 ┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
 ┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
@@ -68,8 +68,9 @@
     ("K" counsel-descbinds :color blue)
     ("V" counsel-describe-variable :color blue)
     ("A" counsel-faces :color blue)
-    ("C" mainspring-hydra-apps-clojure-mode-launch :color red)
-    ("O" mainspring-hydra-apps-octave-mode-launch :color red)
+    ("C" (find-file "~/Notes/Scratch/scratch.clj") :color red)
+    ("O" (find-file "~/Notes/Scratch/scratch.m") :color red)
+    ("T" (find-file "~/Notes/Scratch/scratch.txt") :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
@@ -107,18 +108,6 @@
     (mainspring-hydra-apps-new-empty-buffer)
     (setq default-directory notes-directory)
     (org-mode))
-
-  (defun mainspring-hydra-apps-clojure-mode-launch ()
-    "Launch clojure-mode."
-    (interactive)
-    (mainspring-hydra-apps-new-empty-buffer)
-    (clojure-mode))
-
-  (defun mainspring-hydra-apps-octave-mode-launch ()
-    "Launch clojure-mode."
-    (interactive)
-    (mainspring-hydra-apps-new-empty-buffer)
-    (octave-mode))
 
   (defun mainspring-hydra-apps-move-splitter-left (arg)
     "Move window splitter left."

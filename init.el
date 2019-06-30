@@ -32,7 +32,7 @@
 (setq old-default-directory default-directory)
 (setq notes-directory "~/Notes/")
 (setq scratch-directory "~/Notes/Scratch/")
-(setq scratch-files (list "scratch.txt"))
+(setq scratch-files (list "scratch.txt" "scratch.clj" "scratch.m"))
 (setq projects-directory "~/Projects/")
 
 ;; Org file support.
