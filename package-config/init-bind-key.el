@@ -63,6 +63,9 @@
    ;; Jump to a line in a file file number.
    ("C-g" . goto-line)
 
+   ;; Jump to a visible location.
+   ("C-S-g" . avy-goto-char-2)
+
    ;; Open a file in a project.
    ("C-p" . counsel-projectile-find-file)
 

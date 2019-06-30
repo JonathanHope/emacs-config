@@ -246,6 +246,13 @@
  '(hydra-face-red ((t (:foreground "#bf616a" :weight bold))))
  '(hydra-face-blue ((t (:foreground "#96b5b4" :weight bold))))
 
+ ;; Avy
+ '(avy-lead-face ((t (:foreground "#bf616a" :weight bold :underline t))))
+ '(avy-lead-face-0 ((t (:foreground "#bf616a" :weight bold :underline t))))
+ '(avy-lead-face-1 ((t (:foreground "#bf616a" :weight bold :underline t))))
+ '(avy-lead-face-2 ((t (:foreground "#bf616a" :weight bold :underline t))))
+
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))

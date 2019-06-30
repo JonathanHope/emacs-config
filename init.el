@@ -113,6 +113,9 @@
 ;; Allow shortcuts to be tied to a region being selected.
 (require 'init-selected)
 
+;; Jump to a visible location.
+(require 'init-avy)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.
