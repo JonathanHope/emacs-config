@@ -10,7 +10,7 @@
    ("<escape>" . mainspring-keyboard-quit-all)
 
    ;; Quit an org source buffer if open.
-   ("S-<escape>" . mainspring-org-quit-source)
+   ("S-<escape>" . mainspring-quit-editable-popup)
 
    ;; Save the current file.
    ("C-s" . save-buffer)
@@ -217,10 +217,11 @@
           ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))
           (t (keyboard-quit))))
 
-  (defun mainspring-org-quit-source ()
-    "Exit out of an org source window."
+  (defun mainspring-quit-editable-popup ()
+    "Exit out of an editable popup like or source or with editor."
     (interactive)
-    (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))))
+    (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))
+          ((bound-and-true-p with-editor-mode) (with-editor-cancel nil))))
 
   (defun mainspring-up-five-lines ()
     "Move up five lines."
