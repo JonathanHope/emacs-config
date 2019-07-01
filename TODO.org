@@ -6,3 +6,4 @@
 * TODO Bookmark support.
 * TODO Company fuzzy matching.
 * TODO Regex builder.
+* TODO EBNF builder.

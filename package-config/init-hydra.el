@@ -39,7 +39,7 @@
 ┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _M_: Mode     ┃ _T_: Text    ┃ _+_: Zoom In      ┃
 ┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃ _C_: Clojure ┃ _-_: Zoom Out     ┃
 ┃ _o_: Org    ┃^^             ┃ _K_: Key      ┃ _O_: Octave  ┃ _0_: Zoom Reset   ┃
-┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃^^            ┃^^                 ┃
+┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃ _R_: Regex   ┃^^                 ┃
 ┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
 ┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
 ┃ _c_: Calc   ┃^^             ┃^^             ┃^^            ┃^^                 ┃
@@ -71,6 +71,7 @@
     ("C" (find-file "~/Notes/Scratch/scratch.clj") :color red)
     ("O" (find-file "~/Notes/Scratch/scratch.m") :color red)
     ("T" (find-file "~/Notes/Scratch/scratch.txt") :color red)
+    ("R" mainspring-hydra-apps-re-builder :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
@@ -108,6 +109,13 @@
     (mainspring-hydra-apps-new-empty-buffer)
     (setq default-directory notes-directory)
     (org-mode))
+
+  (defun mainspring-hydra-apps-re-builder ()
+    (interactive)
+    (mainspring-hydra-apps-new-empty-buffer)
+    (re-builder)
+    (reb-change-syntax 'pcre)
+    (windmove-up))
 
   (defun mainspring-hydra-apps-move-splitter-left (arg)
     "Move window splitter left."

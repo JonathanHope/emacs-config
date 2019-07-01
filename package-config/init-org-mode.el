@@ -46,6 +46,6 @@
   (add-to-list 'org-file-apps '("\\.xls\\'" . default))
   (add-to-list 'org-file-apps '("\\.xlsx\\'" . default))
 
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.3)))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.1)))
 
 (provide 'init-org-mode)
