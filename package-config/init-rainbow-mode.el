@@ -1,5 +1,5 @@
 (use-package rainbow-mode
-  :ensure t
-  :defer t)
+  :defer t
+  :straight t)
 
 (provide 'init-rainbow-mode)

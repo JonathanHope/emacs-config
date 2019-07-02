@@ -1,5 +1,5 @@
 (use-package shackle
-  :ensure t
+  :straight t
 
   :init
   (setq shackle-rules

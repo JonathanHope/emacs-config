@@ -1,5 +1,6 @@
 (use-package slate
   :defer t
+  :straight (slate :type git :host github :repo "jonathanhope/slate")
 
   :bind
   (:map slate-mode-map

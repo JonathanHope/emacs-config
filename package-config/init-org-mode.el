@@ -1,6 +1,6 @@
 (use-package org
-  :ensure org-plus-contrib
   :defer t
+  :straight t
 
   :mode (("\\.org$" . org-mode))
 

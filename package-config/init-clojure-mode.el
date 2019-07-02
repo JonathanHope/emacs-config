@@ -1,9 +1,9 @@
 (use-package clojure-mode-extra-font-locking
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package clojure-mode
-  :ensure t
+  :straight t
   :defer t
 
   :mode (("\\.clj$" . clojure-mode)

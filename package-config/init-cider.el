@@ -1,5 +1,5 @@
 (use-package cider
-	:ensure t
+  :straight t
   :defer t
 
   :bind

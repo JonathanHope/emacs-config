@@ -1,5 +1,5 @@
 (use-package projectile
-  :ensure t
+  :straight t
 
   :init
   (setq projectile-switch-project-action 'counsel-projectile-find-file-or-buffer)

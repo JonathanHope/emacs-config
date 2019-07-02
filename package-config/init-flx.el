@@ -1,4 +1,4 @@
 (use-package flx
-  :ensure t)
+  :straight t)
 
 (provide 'init-flx)

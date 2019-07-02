@@ -1,6 +1,6 @@
 (use-package flyspell-correct-ivy
-  :ensure t
   :defer t
+  :straight t
   :after flyspell
 
   :bind

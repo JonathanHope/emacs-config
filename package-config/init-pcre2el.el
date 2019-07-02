@@ -1,4 +1,4 @@
 (use-package pcre2el
-  :ensure t)
+  :straight t)
 
 (provide 'init-pcre2el)

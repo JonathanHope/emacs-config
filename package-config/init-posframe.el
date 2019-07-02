@@ -1,5 +1,5 @@
 (use-package posframe
-  :ensure t
-  :defer t)
+  :defer t
+  :straight t)
 
 (provide 'init-posframe)

@@ -1,5 +1,5 @@
 (use-package iedit
-  :ensure t
-  :defer t)
+  :defer t
+  :straight t)
 
 (provide 'init-iedit)

@@ -1,5 +1,5 @@
 (use-package smartparens
-  :ensure t
+  :straight t
 
   :init
   (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)

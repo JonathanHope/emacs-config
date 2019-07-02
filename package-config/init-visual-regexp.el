@@ -1,8 +1,9 @@
 (use-package visual-regexp
-  :defer t)
+  :defer t
+  :straight t)
 
 (use-package visual-regexp-steroids
-  :ensure t
+  :straight t
 
   :commands (vr-replace-whole-buffer)
 

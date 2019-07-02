@@ -21,3 +21,6 @@ README.html
 eshell/*
 transient/*
 jar/*
+*.elc
+straight/*
+!straight/versions

@@ -1,6 +1,6 @@
 (use-package selected
-  :ensure t
-  :defer 0
+  :straight t
+
   :commands selected-minor-mode
   :bind (:map selected-keymap
               ("<tab>" . mainspring-indent-region)

@@ -1,7 +1,5 @@
-;; Package configuration for expand region.
-
 (use-package expand-region
-  :ensure t
-  :defer t)
+  :defer t
+  :straight t)
 
 (provide 'init-expand-region)

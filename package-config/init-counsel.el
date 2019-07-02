@@ -1,6 +1,4 @@
-;; Package configuration for counsel.
-
 (use-package counsel
-  :ensure t)
+  :straight t)
 
 (provide 'init-counsel)

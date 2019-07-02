@@ -1,5 +1,5 @@
 (use-package aggressive-indent
-  :ensure t
+  :straight t
   :defer t
 
   :init

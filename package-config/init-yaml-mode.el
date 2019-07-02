@@ -1,5 +1,5 @@
 (use-package yaml-mode
-  :ensure t
-  :defer t)
+  :defer t
+  :straight t)
 
 (provide 'init-yaml-mode)

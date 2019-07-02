@@ -1,5 +1,5 @@
 (use-package ivy
-  :ensure t
+  :straight t
 
   :bind
   (:map ivy-minibuffer-map

@@ -1,6 +1,6 @@
 (use-package rainbow-delimiters
-  :ensure t
   :defer t
+  :straight t
 
   :init
   (add-hook 'js-mode-hook #'rainbow-delimiters-mode)

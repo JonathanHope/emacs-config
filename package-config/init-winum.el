@@ -1,5 +1,5 @@
 (use-package winum
-  :ensure t
+  :straight t
   :defer 0
 
   :bind

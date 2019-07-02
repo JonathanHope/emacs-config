@@ -1,6 +1,6 @@
 (use-package hydra
-  :ensure t
   :defer t
+  :straight t
 
   :config
   ;; Settings.

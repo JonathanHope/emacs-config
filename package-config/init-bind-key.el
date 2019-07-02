@@ -1,5 +1,5 @@
 (use-package bind-key
-  :ensure t
+  :straight t
 
   :config
   ;; Leave no way to enable overwrite mode.

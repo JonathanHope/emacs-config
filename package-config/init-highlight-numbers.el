@@ -1,6 +1,6 @@
 (use-package highlight-numbers
-  :ensure t
   :defer t
+  :straight t
 
   :init
   (add-hook 'js-mode-hook #'highlight-numbers-mode)

@@ -1,6 +1,6 @@
 (use-package move-text
-  :ensure t
   :defer t
+  :straight t
 
   :commands (move-text-up move-text-down))
 

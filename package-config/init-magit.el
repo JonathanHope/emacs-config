@@ -1,6 +1,6 @@
 (use-package magit
-  :ensure t
   :defer t
+  :straight t
 
   :bind
   (:map with-editor-mode-map ("M-c" . with-editor-finish))

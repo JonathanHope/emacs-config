@@ -1,6 +1,6 @@
 (use-package plantuml-mode
-  :ensure t
   :defer t
+  :straight t
 
   :init
   (setq plantuml-default-exec-mode 'jar)

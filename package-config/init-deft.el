@@ -1,5 +1,5 @@
 (use-package deft
-  :ensure t
+  :straight t
 
   :commands (deft)
 

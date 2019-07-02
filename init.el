@@ -2,28 +2,25 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
-;; Use Emac's package management.
-(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(package-initialize)
+;; Enable straight
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; Integrate straight with use-package.
+(straight-use-package 'use-package)
 
 ;; Prevent custom from polluting my init file.
 (setq custom-file "~/.emacs.d/custom.el")
-
-;; Install just use package.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; Enable use package.
-(eval-when-compile
-  (require 'use-package))
-(require 'bind-key)
-
-;; Add directory for local packages.
-(add-to-list 'load-path "~/.emacs.d/packages")
 
 ;; Configure packages using use-package.
 (add-to-list 'load-path "~/.emacs.d/package-config")

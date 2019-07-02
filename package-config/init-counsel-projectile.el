@@ -1,7 +1,5 @@
-;; Package configuration for counsel-projectile.
-
 (use-package counsel-projectile
-  :ensure t
+  :straight t
 
   :init
   (setq counsel-projectile-sort-files t)

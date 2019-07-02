@@ -1,5 +1,5 @@
 (use-package avy
-  :ensure t
+  :straight t
   :defer t)
 
 (provide 'init-avy)

@@ -1,5 +1,5 @@
 (use-package restclient
-  :ensure t
-  :defer t)
+  :defer t
+  :straight t)
 
 (provide 'init-restclient)
