@@ -21,9 +21,6 @@
   (setq nrepl-hide-special-buffers t)
   (setq cider-print-fn 'puget)
   (setq cider-repl-pop-to-buffer-on-connect nil)
-  (setq cider-repl-display-in-current-window nil)
-
-  :config
-  (require 'nrepl-puget))
+  (setq cider-repl-display-in-current-window nil))
 
 (provide 'init-cider)
