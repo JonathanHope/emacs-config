@@ -63,7 +63,6 @@
   (setq-default cursor-type 'bar)
 
   ;; Set color scheme.
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/packages")
   (load-theme 'mainspring t)
 
   ;; Set the border colors.
