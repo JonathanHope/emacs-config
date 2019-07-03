@@ -357,21 +357,23 @@
 
   (defhydra mainspring-hydra-org-export (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Org - Export          ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _m_: Export as Markdown ┃
-┃^^                       ┃
-┃^^                       ┃
-┃^^                       ┃
-┃^^                       ┃
-┃^^                       ┃
-┃^^                       ┃
-┃^^                       ┃
-┃^^                       ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Export            ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _m_: Export as Markdown   ┃
+┃ _j_: Export as JIRA       ┃
+┃ _c_: Export as Confluence ┃
+┃^^                         ┃
+┃^^                         ┃
+┃^^                         ┃
+┃^^                         ┃
+┃^^                         ┃
+┃^^                         ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("m" org-md-export-as-markdown :color blue)
+    ("j" ox-jira-export-as-jira :color blue)
+    ("c" org-confluence-export-as-confluence :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-latex (:hint nil)
@@ -404,8 +406,8 @@
 ┃ _<down>_: Next Headline   ┃
 ┃ _h_: Hide                 ┃
 ┃ _s_: Show                 ┃
-┃ _n_: Narrow               ┃
-┃ _w_: Widen                ┃
+┃^^                         ┃
+┃^^                         ┃
 ┃^^                         ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
@@ -413,8 +415,6 @@
     ("<down>" outline-next-heading :color red)
     ("H" outline-hide-body :color red)
     ("S" outline-show-all :color red)
-    ("n" org-narrow-to-subtree :color blue)
-    ("w" widen :color blue)
     ("h" outline-hide-subtree :color red)
     ("s" outline-show-subtree :color red)
     ("q" mainspring-hydra-pop :color blue))
@@ -512,19 +512,6 @@
     (interactive "r")
     (org-emphasize ?\s))
 
-  (defun mainspring-hydra-org-current-line-empty-p (&optional pos)
-    (save-excursion
-      (goto-char (or pos (point)))
-      (beginning-of-line)
-      (= (point-at-eol)
-         (progn (skip-syntax-forward " ") (point)))))
-
-  (defun mainspring-hydra-new-line-if-not-empty ()
-    (unless (mainspring-hydra-org-current-line-empty-p)
-      (progn
-        (end-of-line)
-        (newline-and-indent))))
-
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source block language: "
@@ -534,7 +521,6 @@
               :action (lambda (src-code-type)
                         (cond ((equal src-code-type "plantuml")
                                (progn
-                                 (mainspring-hydra-new-line-if-not-empty)
                                  (insert (format "#+begin_src %s :file temp.png\n" src-code-type))
                                  (newline-and-indent)
                                  (insert "#+end_src\n")
@@ -542,7 +528,6 @@
                                  (org-edit-src-code)))
                               (t
                                (progn
-                                 (mainspring-hydra-new-line-if-not-empty)
                                  (insert (format "#+begin_src %s :results output\n" src-code-type))
                                  (newline-and-indent)
                                  (insert "#+end_src\n")
@@ -557,7 +542,6 @@
           (org-insert-item)
           (next-line))
       (progn
-        (mainspring-hydra-new-line-if-not-empty)
         (message (thing-at-point 'line t))
         (insert (concat " " bullet " ")))))
 

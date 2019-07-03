@@ -1,6 +1,6 @@
 (use-package org
   :defer t
-  :straight t
+  :straight org-plus-contrib
 
   :mode (("\\.org$" . org-mode))
 
@@ -17,7 +17,7 @@
   (setq org-confirm-babel-evaluate nil)
   (setq org-hide-emphasis-markers t)
   (setq org-src-preserve-indentation t)
-  (setq org-src-window-setup 'other-window)
+  (setq org-src-window-setup 'current-window)
   (setq org-adapt-indentation nil)
   (setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/jar/plantuml.jar"))
   (setq org-startup-truncated nil)

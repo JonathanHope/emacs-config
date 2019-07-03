@@ -29,6 +29,7 @@
  ("move-text" . "7cbc941a9150468609010a93c429117da2523903")
  ("org" . "b855acc8783eaab6f3b2fb85d84ede96b0432056")
  ("org-pretty-table" . "0dca6f3156dd1eb0a42f08ac2ad89259637a16b5")
+ ("ox-jira.el" . "db2ec528f46c9e611624ba28611c440a99bff255")
  ("parent-mode" . "db692cf08deff2f0e973e6e86e26662b44813d1b")
  ("parseclj" . "b34d3e13a249d4b92f1a008cdc1df20a92f866c5")
  ("parseedn" . "ddf824bc1df1585867cb7f27f2dd8ca8df760569")

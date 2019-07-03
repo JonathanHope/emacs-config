@@ -208,20 +208,20 @@
     (mainspring-delete-word (- arg)))
 
   (defun mainspring-keyboard-quit-all ()
-    "Quit out of whatever is currently going on."
+    "Cancel many things."
     (interactive)
-    (cond ((equal major-mode 'help-mode) (quit-window))
-          ((bound-and-true-p iedit-mode) (iedit-mode))
+    (cond ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           ((active-minibuffer-window) (keyboard-escape-quit))
-          ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))
           (t (keyboard-quit))))
 
   (defun mainspring-quit-editable-popup ()
     "Exit out of an editable popup like or source or with editor."
     (interactive)
     (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))
-          ((bound-and-true-p with-editor-mode) (with-editor-cancel nil))))
+          ((bound-and-true-p with-editor-mode) (with-editor-cancel nil))
+          ((equal major-mode 'help-mode) (quit-window))
+          ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))))
 
   (defun mainspring-up-five-lines ()
     "Move up five lines."

@@ -19,11 +19,11 @@
 ;; Integrate straight with use-package.
 (straight-use-package 'use-package)
 
-;; Prevent custom from polluting my init file.
-(setq custom-file "~/.emacs.d/custom.el")
-
 ;; Configure packages using use-package.
 (add-to-list 'load-path "~/.emacs.d/package-config")
+
+;; Prevent custom from polluting my init file.
+(setq custom-file "~/.emacs.d/custom.el")
 
 ;; Constants
 (setq old-default-directory default-directory)
@@ -34,6 +34,8 @@
 
 ;; Org file support.
 ;; This has to be done first so everything compiles agains the right org version.
+(require 'init-ox-jira)
+(require 'init-ox-confluence)
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
 (require 'init-org-pretty-table)
