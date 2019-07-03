@@ -36,10 +36,10 @@
 ┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
 ┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Scratch    ┃^^ Zoom            ┃
 ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
-┃ _d_: Dired  ┃ _r_: Rainbow  ┃ _M_: Mode     ┃ _T_: Text    ┃ _+_: Zoom In      ┃
-┃ _m_: Magit  ┃ _l_: Flyspell ┃ _F_: Function ┃ _C_: Clojure ┃ _-_: Zoom Out     ┃
-┃ _o_: Org    ┃^^             ┃ _K_: Key      ┃ _O_: Octave  ┃ _0_: Zoom Reset   ┃
-┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃ _R_: Regex   ┃^^                 ┃
+┃ _d_: Dired  ┃ _R_: Rainbow  ┃ _M_: Mode     ┃ _T_: Text    ┃ _+_: Zoom In      ┃
+┃ _m_: Magit  ┃ _L_: Flyspell ┃ _F_: Function ┃ _O_: Org     ┃ _-_: Zoom Out     ┃
+┃ _r_: Regex  ┃^^             ┃ _K_: Key      ┃ _C_: Clojure ┃ _0_: Zoom Reset   ┃
+┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃ _E_: Octave  ┃^^                 ┃
 ┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
 ┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
 ┃ _c_: Calc   ┃^^             ┃^^             ┃^^            ┃^^                 ┃
@@ -61,17 +61,18 @@
     ("n" deft :color red)
     ("t" slate :color red)
     ("c" full-calc :color red)
-    ("l" flyspell-mode :color red)
-    ("r" rainbow-mode :color red)
+    ("L" flyspell-mode :color red)
+    ("R" rainbow-mode :color red)
     ("M" describe-mode :color blue)
     ("F" counsel-describe-function :color blue)
     ("K" counsel-descbinds :color blue)
     ("V" counsel-describe-variable :color blue)
     ("A" counsel-faces :color blue)
     ("C" (find-file "~/Notes/Scratch/scratch.clj") :color red)
-    ("O" (find-file "~/Notes/Scratch/scratch.m") :color red)
+    ("E" (find-file "~/Notes/Scratch/scratch.m") :color red)
+    ("O" (find-file "~/Notes/Scratch/scratch.org") :color red)
     ("T" (find-file "~/Notes/Scratch/scratch.txt") :color red)
-    ("R" mainspring-hydra-apps-re-builder :color red)
+    ("r" mainspring-hydra-apps-re-builder :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
     ("0" (text-scale-adjust 0) :color red)
