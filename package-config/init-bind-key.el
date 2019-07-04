@@ -220,8 +220,8 @@
     (interactive)
     (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))
           ((bound-and-true-p with-editor-mode) (with-editor-cancel nil))
-          ((equal major-mode 'help-mode) (quit-window))
-          ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (quit-window))))
+          ((equal major-mode 'help-mode) (kill-buffer))
+          ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
 
   (defun mainspring-up-five-lines ()
     "Move up five lines."
