@@ -9,7 +9,7 @@
  ("dash.el" . "77f3bf40c9c85386a50f2dab3dc950513f6f88bd")
  ("deft" . "f54e8a65a7e75a029657364055420374df45656d")
  ("dumb-jump" . "6988b21a08b53fbfeaa6e0b0f182524257dec1e4")
- ("ebnf-mode" . "73d6fb8b208fb1c158cb64f3b97828e6a98ee604")
+ ("ebnf-mode" . "40352e182084b87ef8b2ec5ebbe350523bf2a151")
  ("emacs-async" . "bd68cc1ab1ac6af890e250bdaa12ffb1cb9649be")
  ("emacs-winum" . "247df36c03d70b453e9b912d6e1b7065644f639d")
  ("epkgs" . "b077354465f3aa349655c484791dcaf2752971c5")
