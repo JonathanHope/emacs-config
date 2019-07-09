@@ -2,6 +2,8 @@
 
 Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
 
+[[file:c:/Users/jonathan/.emacs.d/mainspring.png]]
+
 ** Philosophy
 
   * *Use CUA key bindings:* CUA bindings are used by most applications on most operating systems. Rather than spend the time to make every other application behave like Vim or Emacs or increase my cognitive overhead by constantly switching between different key binding styles I simply use CUA style key bindings in emacs.

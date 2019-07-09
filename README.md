@@ -1,28 +1,30 @@
 
 # Table of Contents
 
-1.  [Mainspring - An Emacs Configuration](#orgfa29f39)
-    1.  [Philosophy](#org3dd299d)
-    2.  [Installation](#orge9f6a70)
-    3.  [Keymap](#org136abef)
-        1.  [General - Editing](#org741a278)
-        2.  [General - Navigation](#orgfc0299f)
-        3.  [General - Files](#orge9edaf6)
-        4.  [General - Windowing](#org9e463bb)
-        5.  [Menus](#orga828c8c)
-        6.  [Magit](#org073af9f)
-        7.  [Org mode](#orgd607d15)
-        8.  [Calc Mode](#org0685fd6)
+1.  [Mainspring - An Emacs Configuration](#orgdeed0da)
+    1.  [Philosophy](#org61f6437)
+    2.  [Installation](#orgf5ebe1a)
+    3.  [Keymap](#org0f680db)
+        1.  [General - Editing](#orgaa8bacd)
+        2.  [General - Navigation](#org2b8d5ab)
+        3.  [General - Files](#org36c4fa8)
+        4.  [General - Windowing](#orgd49c287)
+        5.  [Menus](#orgf0d4766)
+        6.  [Magit](#org585f6bc)
+        7.  [Org mode](#orge061765)
+        8.  [Calc Mode](#orgb5b8000)
 
 
-<a id="orgfa29f39"></a>
+<a id="orgdeed0da"></a>
 
 # Mainspring - An Emacs Configuration
 
 Mainspring is a highly opinionated Emacs configuration. For more information see the philosophy section below.
 
+![img](mainspring.png)
 
-<a id="org3dd299d"></a>
+
+<a id="org61f6437"></a>
 
 ## Philosophy
 
@@ -38,7 +40,7 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 -   **Looks matter:** I spend way too much time editing text in my life, the text editor should be a nice place to live.
 
 
-<a id="orge9f6a70"></a>
+<a id="orgf5ebe1a"></a>
 
 ## Installation
 
@@ -54,23 +56,27 @@ Hunspell is required for spell checking. It can be installed on Linux using your
 
 Ripgrep is required for textual searching. It can be installed on Linux using your distributions package manager. It can be found for windows here: <https://github.com/BurntSushi/ripgrep/releases>.
 
+Fd should be installed to improve project indexing. It can be installed on Linux using your distributions package manager. It can be found for windows here: <https://github.com/sharkdp/fd/releases>.
+
 Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be found for windows here: <http://www.graphviz.org/download/>.
 
 Latex is required for formulas in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: <http://www.tug.org/texlive/acquire-netinstall.html>.
 
 Octave is required for octave blocks in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: <https://www.gnu.org/software/octave/download.html>.
 
+PlantUML is rquired for some diagrams like UML. The jar can be downloaded here: <http://plantuml.com/download>. Place the jar in ~/.emacs.d/jar
+
 It uses the pragmata fonts by default. These are non-free fonts.
 
 
-<a id="org136abef"></a>
+<a id="org0f680db"></a>
 
 ## Keymap
 
 Because the shortcuts for this config are so drastically different than standard emacs I detail them here.
 
 
-<a id="org741a278"></a>
+<a id="orgaa8bacd"></a>
 
 ### General - Editing
 
@@ -147,7 +153,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **TAB:** Expand snippet
 
 
-<a id="orgfc0299f"></a>
+<a id="org2b8d5ab"></a>
 
 ### General - Navigation
 
@@ -191,7 +197,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **SHFIT + F12:** Jump back
 
 
-<a id="orge9edaf6"></a>
+<a id="org36c4fa8"></a>
 
 ### General - Files
 
@@ -201,7 +207,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + w:** Close file
 
 
-<a id="org9e463bb"></a>
+<a id="orgd49c287"></a>
 
 ### General - Windowing
 
@@ -232,7 +238,7 @@ Because the shortcuts for this config are so drastically different than standard
     -   **ALT + DOWN:** Select window to down
 
 
-<a id="orga828c8c"></a>
+<a id="orgf0d4766"></a>
 
 ### Menus
 
@@ -240,7 +246,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **CTRL + TAB:** Launch contextual menu
 
 
-<a id="org073af9f"></a>
+<a id="org585f6bc"></a>
 
 ### Magit
 
@@ -248,7 +254,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **?:** Show shortcuts
 
 
-<a id="orgd607d15"></a>
+<a id="orge061765"></a>
 
 ### Org mode
 
@@ -268,7 +274,7 @@ Because the shortcuts for this config are so drastically different than standard
 -   **SHIFT + ESC:** Exit source editing
 
 
-<a id="org0685fd6"></a>
+<a id="orgb5b8000"></a>
 
 ### Calc Mode
 
