@@ -279,11 +279,6 @@
  '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold))))
  )
 
-;; Hide vertical boder
-(set-face-attribute 'vertical-border
-                    nil
-                    :foreground "#2B303B")
-
 (provide-theme 'mainspring)
 
 ;; mainspring-theme.el ends here

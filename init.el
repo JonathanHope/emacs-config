@@ -45,12 +45,12 @@
 ;; Shouldn't need this.
 (require 'subr-x)
 
+;; Setting up the mode-line.
+(require 'init-mainspring-mode-line)
+
 ;; Non-package related emacs config.
 (require 'init-emacs)
 (require 'windmove)
-
-;; Setting up the mode-line.
-(require 'init-mainspring-mode-line)
 
 ;; Support for projects.
 (require 'init-projectile)

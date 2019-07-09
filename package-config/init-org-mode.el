@@ -22,6 +22,13 @@
   (setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/jar/plantuml.jar"))
   (setq org-startup-truncated nil)
 
+  (defun set-org-mode-font ()
+    (interactive)
+    (setq buffer-face-mode-face '(:family "PragmataPro" :height 90))
+    (buffer-face-mode))
+
+  (add-hook 'org-mode-hook 'set-org-mode-font)
+
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages

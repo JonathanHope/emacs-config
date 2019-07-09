@@ -41,11 +41,6 @@
   (set-display-table-slot standard-display-table
                           'vertical-border (make-glyph-code 8203))
 
-  ;; Set font
-  (defvar Input-font '(:family "Input" :size 12))
-  (defvar PragmataPro-font '(:family "PragmataPro" :size 12))
-  (set-frame-font (apply 'font-spec PragmataPro-font) nil t)
-
   ;; Disable bell
   (setq ring-bell-function 'ignore)
 
@@ -64,6 +59,34 @@
 
   ;; Set color scheme.
   (load-theme 'mainspring t)
+
+  ;; Hide vertical boder
+  (set-face-attribute 'vertical-border
+                      nil
+                      :foreground "#2B303B")
+
+  ;; Set the default font.
+  (set-face-attribute 'default nil
+                      :family "PragmataPro Mono"
+                      :height 90)
+
+  ;; Set the modeline font.
+  (let ((faces '(mode-line
+                 mode-line-inactive
+                 mainspring-mode-line-face
+                 mainspring-mode-line-inactive-face
+                 mainspring-mode-line-window-number-face
+                 mainspring-mode-line-file-status-face
+                 mainspring-mode-line-buffer-name-face
+                 mainspring-mode-line-projectile-face
+                 mainspring-mode-line-mode-face
+                 mainspring-mode-line-row-column-face
+                 mainspring-mode-line-scroll-bar-face)))
+    (mapc
+     (lambda (face) (set-face-attribute face nil
+                                   :family "PragmataPro"
+                                   :height 90))
+     faces))
 
   ;; Set the border colors.
   (set-face-background 'vertical-border "#343D46")

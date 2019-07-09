@@ -49,7 +49,7 @@
  ("sesman" . "e8bfb0e37940bf5f370ae300b896dd04afbc63c8")
  ("shackle" . "842a90b3ca04d9d886543f14ca5f04e8bd2a3d06")
  ("simpleclip" . "2468b08ad829aaf4a90246541978be3974c60ab8")
- ("slate" . "1b9f39786a29f67b6e69ca0e3f501ad617221ba1")
+ ("slate" . "beb5efcbb831cd3aa720bd9ffed5f2f393d8e6bc")
  ("smartparens" . "04dd4eefa4ed6e13e1c9045b873b0a8b25a9f91d")
  ("spinner" . "2daa167bec1c7566d662d48613a94453536b524a")
  ("straight.el" . "570afe61cac4357e154e705d69975cc7485b9a14")
