@@ -230,7 +230,7 @@
     ("T" mainspring-hydra-org-status-todo :color red)
     ("D" mainspring-hydra-org-status-done :color red)
     ("R" mainspring-hydra-org-status-none :color red)
-    ("t" org-set-tags-command :color red)
+    ("t" counsel-org-tag :color red)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-plain-list (:hint nil)

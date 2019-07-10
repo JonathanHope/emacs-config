@@ -111,9 +111,6 @@
   (defun display-startup-echo-area-message ()
     (message ""))
 
-  ;; Enable pretty utf8 char replacements.
-  (global-prettify-symbols-mode +1)
-
   ;; No newlines at end of file.
   (setq require-final-newline t)
 
