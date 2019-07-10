@@ -613,7 +613,8 @@
 ┃ _c_: Clear REPL            ┃
 ┃ _r_: Refresh REPL          ┃
 ┃ _k_: Close the REPL        ┃
-┃ _f_: Evaluate Form         ┃
+┃ _f_: Evaluate Form Inline  ┃
+┃ _F_: Evaluate Form         ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("o" mainspring-hydra-clojure-launch-repl :color blue)
@@ -622,7 +623,8 @@
     ("c" mainspring-hydra-clojure-clear-repl :color blue)
     ("r" cider-ns-refresh :color blue)
     ("k" cider-quit :color blue)
-    ("f" cider-pprint-eval-defun-at-point :color blue)
+    ("f" cider-eval-defun-at-point :color blue)
+    ("F" cider-pprint-eval-defun-at-point :color blue)
     ("q" nil :color blue))
 
   (defhydra mainspring-hydra-clojure-cider (:hint nil)
