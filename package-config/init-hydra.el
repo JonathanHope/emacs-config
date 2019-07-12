@@ -43,6 +43,7 @@
 ┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
 ┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
 ┃ _c_: Calc   ┃^^             ┃^^             ┃^^            ┃^^                 ┃
+┃ _o_: Docker ┃^^             ┃^^             ┃^^            ┃^^                 ┃
 ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
@@ -61,6 +62,7 @@
     ("n" deft :color red)
     ("t" slate :color red)
     ("c" full-calc :color red)
+    ("o" docker :color blue)
     ("L" flyspell-mode :color red)
     ("R" rainbow-mode :color red)
     ("M" describe-mode :color blue)
@@ -516,7 +518,7 @@
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source block language: "
-              '("sql" "clojure" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient")
+              '("sql" "clojure" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile")
               :require-match t
               :sort t
               :action (lambda (src-code-type)
@@ -757,6 +759,8 @@
     ("r" slate-refresh :color red)
     ("q" nil :color blue))
 
+  ;; Calc Hydra
+
   (defhydra mainspring-hydra-calc (:hint nil)
     "
 ┏^^━━━━━━━━━━━━━━━━━━━━━━┓
@@ -796,7 +800,7 @@
               :action (lambda (selection)
                         (calc-describe-variable selection))))
 
-  ;; Octave
+  ;; Octave Hydra
 
   (defhydra mainspring-hydra-octave (:hint nil)
     "
@@ -821,8 +825,6 @@
     ("h" octave-help :color blue)
     ("q" nil :color blue))
 
-  ;; Octave help
-
   (defun mainspring-hydra-octave-clear-repl ()
     (interactive)
     (let ((origin-buffer (current-buffer))
@@ -841,6 +843,38 @@
   (defun mainspring-hydra-octave-kill-repl ()
     (interactive)
     (octave-hide-process-buffer)
-    (octave-kill-process)))
+    (octave-kill-process))
+
+  ;; Dockerfile Hydra
+
+  (defhydra mainspring-hydra-dockerfile (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Dockerfile               ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _b_: Build                 ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("b" dockerfile-build-buffer :color blue)
+    ("q" nil :color blue))
+
+  ;; Docker Hydra
+
+  (defhydra mainspring-hydra-docker (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Docker                   ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _<up>_: Previous Item      ┃
+┃ _<down>_: Next Item        ┃
+┃ _m_: Mark                  ┃
+┃ _u_: Unmark                ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("<up>" previous-line :color red)
+    ("<down>" next-line :color red)
+    ("m" tablist-mark-forward :color red)
+    ("u" tablist-unmark-backward :color red)
+    ("q" nil :color blue)))
 
 (provide 'init-hydra)

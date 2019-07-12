@@ -161,6 +161,10 @@
 ;; UML/Flows.
 (require 'init-plantuml-mode)
 
+;; Docker
+(require 'init-dockerfile-mode)
+(require 'init-docker)
+
 ;; Programming languages
 
 ;; EBNF support.

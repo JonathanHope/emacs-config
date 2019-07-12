@@ -10,7 +10,7 @@
    ("<escape>" . mainspring-keyboard-quit-all)
 
    ;; Quit an org source buffer if open.
-   ("S-<escape>" . mainspring-quit-editable-popup)
+   ("S-<escape>" . mainspring-quit-popup)
 
    ;; Save the current file.
    ("C-s" . save-buffer)
@@ -213,9 +213,11 @@
     (cond ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
           ((active-minibuffer-window) (keyboard-escape-quit))
+          ((string-match ".*-popup.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (magit-popup-quit))
+          ((string-match "\\*docker\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (magit-popup-quit))
           (t (keyboard-quit))))
 
-  (defun mainspring-quit-editable-popup ()
+  (defun mainspring-quit-popup ()
     "Exit out of an editable popup like or source or with editor."
     (interactive)
     (cond ((bound-and-true-p org-src-mode) (org-edit-src-exit))
@@ -223,7 +225,10 @@
           ((equal major-mode 'help-mode) (kill-buffer))
           ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match ".*cider-error.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
-          ((string-match ".*cider-result.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
+          ((string-match ".*cider-result.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
+          ((string-match ".*docker-build-output.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
+          ((string-match "\\*run .*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
+          ((string-match "\\*Org-Babel Error Output\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
 
   (defun mainspring-up-five-lines ()
     "Move up five lines."

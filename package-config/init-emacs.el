@@ -84,8 +84,8 @@
                  mainspring-mode-line-scroll-bar-face)))
     (mapc
      (lambda (face) (set-face-attribute face nil
-                                   :family "PragmataPro"
-                                   :height 90))
+                                        :family "PragmataPro"
+                                        :height 90))
      faces))
 
   ;; Set the border colors.
@@ -154,6 +154,9 @@
 
   ;; Prevent ad warnings.
   (setq ad-redefinition-action 'accept)
+
+  ;; Don't prompt to kill process buffers.
+  (setq kill-buffer-query-functions nil)
 
   (defun mainspring-my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
