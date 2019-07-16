@@ -254,11 +254,13 @@
 
 
  ;; Re-Builder
-
  '(reb-match-0 ((t (:weight bold :underline t))))
  '(reb-match-1 ((t (:weight bold :underline t))))
  '(reb-match-2 ((t (:weight bold :underline t))))
  '(reb-match-3 ((t (:weight bold :underline t))))
+
+ ;; hl-todo
+ '(hl-todo ((t (:foreground "#bf616a" :weight bold :underline t))))
 
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))

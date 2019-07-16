@@ -36,6 +36,7 @@
 ;; This has to be done first so everything compiles agains the right org version.
 (require 'init-ox-jira)
 (require 'init-ox-confluence)
+(require 'init-ob-restclient)
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
 (require 'init-org-pretty-table)
@@ -108,6 +109,7 @@
 ;; Special syntax highlighting.
 (require 'init-rainbow-delimiters)
 (require 'init-highlight-numbers)
+(require 'init-hl-todo)
 
 ;; Allow shortcuts to be tied to a region being selected.
 (require 'init-selected)

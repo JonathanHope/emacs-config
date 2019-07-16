@@ -17,6 +17,7 @@
   :config
   (put-clojure-indent 'as-> nil)
   (put-clojure-indent 'attempt-all 1)
+  (put 'defaction 'clojure-doc-string-elt 2)
 
   (require 'clojure-mode-extra-font-locking)
 

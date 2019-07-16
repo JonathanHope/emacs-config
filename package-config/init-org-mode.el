@@ -35,13 +35,13 @@
    'org-babel-load-languages
    '((octave . t)
      (clojure . t)
-     (plantuml . t)))
+     (plantuml . t)
+     (restclient . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))
   (add-to-list 'org-src-lang-modes '("json" . javascript))
 
-  (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
 
   (defun turn-on-org-show-all-inline-images ()
