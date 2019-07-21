@@ -117,6 +117,9 @@
 ;; Jump to a visible location.
 (require 'init-avy)
 
+;; Comint color.
+(require 'init-ansi-color)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.

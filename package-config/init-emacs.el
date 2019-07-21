@@ -158,6 +158,9 @@
   ;; Don't prompt to kill process buffers.
   (setq kill-buffer-query-functions nil)
 
+  ;; No popup modals.
+  (setq use-dialog-box nil)
+
   (defun mainspring-my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
