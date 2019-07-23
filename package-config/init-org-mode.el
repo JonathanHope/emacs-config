@@ -29,6 +29,7 @@
 
   (add-hook 'org-mode-hook 'set-org-mode-font)
   (add-hook 'org-mode-hook 'prettify-symbols-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
 
   :config
   (org-babel-do-load-languages
