@@ -170,6 +170,9 @@
 (require 'init-dockerfile-mode)
 (require 'init-docker)
 
+;; Smerge
+(require 'init-smerge)
+
 ;; Programming languages
 
 ;; EBNF support.

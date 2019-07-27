@@ -38,7 +38,7 @@
 ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
 ┃ _d_: Dired  ┃ _R_: Rainbow  ┃ _M_: Mode     ┃ _T_: Text    ┃ _+_: Zoom In      ┃
 ┃ _m_: Magit  ┃ _L_: Flyspell ┃ _F_: Function ┃ _O_: Org     ┃ _-_: Zoom Out     ┃
-┃ _r_: Regex  ┃^^             ┃ _K_: Key      ┃ _C_: Clojure ┃ _0_: Zoom Reset   ┃
+┃ _r_: Regex  ┃ _S_: Smerge   ┃ _K_: Key      ┃ _C_: Clojure ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃ _E_: Octave  ┃^^                 ┃
 ┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
 ┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
@@ -65,6 +65,7 @@
     ("o" docker :color blue)
     ("L" flyspell-mode :color red)
     ("R" rainbow-mode :color red)
+    ("S" smerge-start-session :color red)
     ("M" describe-mode :color blue)
     ("F" counsel-describe-function :color blue)
     ("K" counsel-descbinds :color blue)
@@ -875,6 +876,28 @@
     ("<down>" next-line :color red)
     ("m" tablist-mark-forward :color red)
     ("u" tablist-unmark-backward :color red)
+    ("q" nil :color blue))
+
+  ;; Smerge Hydra
+
+  (defhydra mainspring-hydra-smerge (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Smerge                   ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _<up>_: Previous Item      ┃
+┃ _<down>_: Next Item        ┃
+┃ _m_: Keep Mine             ┃
+┃ _t_: Keep Theirs           ┃
+┃ _a_: Keep All              ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("<up>" smerge-prev :color red)
+    ("<down>" smerge-next :color red)
+    ("<enter>" smerge-keep-current :color red)
+    ("m" smerge-keep-mine :color red)
+    ("t" smerge-keep-other :color red)
+    ("a" smerge-keep-all :color red)
     ("q" nil :color blue)))
 
 (provide 'init-hydra)

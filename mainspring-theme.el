@@ -262,6 +262,13 @@
  ;; hl-todo
  '(hl-todo ((t (:foreground "#bf616a" :weight bold :underline t))))
 
+ ;; smerge
+ '(smerge-upper ((t ())))
+ '(smerge-lower ((t ())))
+ '(smerge-markers ((t (:background "#343d46" :foreground "#c0c5ce" :weight bold))))
+ '(smerge-refined-added ((t (:weight bold))))
+ '(smerge-refined-removed ((t (:weight bold))))
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))
