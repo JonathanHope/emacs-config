@@ -770,16 +770,18 @@
 ┃ _p_: Go to Prompt      ┃
 ┃ _z_: Undo              ┃
 ┃ _y_: Redo              ┃
+┃ _v_: Paste             ┃
 ┃ _f_: Describe Function ┃
-┃ _v_: Describe Variable ┃
+┃ _x_: Describe Variable ┃
 ┃ _k_: Describe Key      ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("p" calc-realign :color red)
     ("z" calc-undo :color red)
     ("y" calc-redo :color red)
+    ("v" mainspring-hydra-calc-paste :color red)
     ("f" mainspring-hydra-calc-counsel-describe-function :color blue)
-    ("v" mainspring-hydra-calc-counsel-describe-variable :color blue)
+    ("x" mainspring-hydra-calc-counsel-describe-variable :color blue)
     ("k" calc-describe-key :color blue)
     ("q" nil :color blue))
 
@@ -800,6 +802,11 @@
               :sort t
               :action (lambda (selection)
                         (calc-describe-variable selection))))
+
+  (defun mainspring-hydra-calc-paste ()
+    (interactive)
+    (calc-wrapper
+     (calc-pop-push-record-list 0 "yank" (simpleclip-get-contents))))
 
   ;; Octave Hydra
 
@@ -898,6 +905,36 @@
     ("m" smerge-keep-mine :color red)
     ("t" smerge-keep-other :color red)
     ("a" smerge-keep-all :color red)
-    ("q" nil :color blue)))
+    ("q" nil :color blue))
+
+  ;; Elixir Hydra
+
+  (defhydra mainspring-hydra-elixir (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Elixir                   ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _t_: Test                  ┃
+┃ _e_: Execute Task          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("t" mix-test :color blue)
+    ("e" mix-execute-task :color blue)
+    ("q" nil :color blue))
+
+  ;; Markdown Hydra
+
+  (defhydra mainspring-hydra-markdown (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Markdown                 ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _l_: Live Preview          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("l" markdown-live-preview-mode :color blue)
+    ("q" nil :color blue))
+
+  )
 
 (provide 'init-hydra)

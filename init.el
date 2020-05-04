@@ -39,7 +39,6 @@
 (require 'init-ob-restclient)
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
-(require 'init-org-pretty-table)
 
 ;; Core
 
@@ -166,12 +165,17 @@
 ;; UML/Flows.
 (require 'init-plantuml-mode)
 
+;; DevOps stuff
+
 ;; Docker
 (require 'init-dockerfile-mode)
 (require 'init-docker)
 
 ;; Smerge
 (require 'init-smerge)
+
+;; Markdown
+(require 'init-markdown-mode)
 
 ;; Programming languages
 
@@ -182,8 +186,19 @@
 (require 'init-clojure-mode)
 (require 'init-cider)
 
+;; Elixir support.
+(require 'init-elixir-mode)
+(require 'init-mix)
+(require 'init-ruby-end)
+
+;; Perl support.
+(require 'init-perl-mode)
+
 ;; Octave support.
 (require 'init-octave-mode)
+
+;; Kusto (App Insights) support.
+(require 'init-kusto-mode)
 
 ;; Run the startup function.
 (mainspring-startup)

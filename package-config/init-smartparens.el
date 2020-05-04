@@ -4,8 +4,11 @@
   :init
   (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
   (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+  ;; (add-hook 'org-mode-hook (lambda () (sp-local-pair 'org-mode "*" nil :actions :rem)))
 
   :config
+  (require 'smartparens-config)
+
   (setq sp-base-key-bindings 'paredit)
 
   (sp-use-paredit-bindings)
@@ -15,10 +18,6 @@
 
   (sp-with-modes sp-lisp-modes
     (sp-local-pair "'" nil :actions nil))
-
-  (sp-with-modes '(org-mode)
-    (sp-local-pair "(" nil :actions nil)
-    (sp-local-pair "[" nil :actions nil))
 
   (setq sp-navigate-consider-sgml-tags '(sgml-mode))
 

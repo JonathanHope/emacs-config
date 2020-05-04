@@ -176,16 +176,16 @@
    ("S-<f12>" . dumb-jump-back)
 
    ;; Move to beginning of line.
-   ("S-<left>" . beginning-of-line)
+   ("<home>" . beginning-of-line)
 
    ;; Move to end of line.
-   ("S-<right>" . end-of-line)
+   ("<end>" . end-of-line)
 
    ;; Move to beginning of buffer.
-   ("<home>" . beginning-of-buffer)
+   ("C-<home>" . beginning-of-buffer)
 
    ;; Move to end of buffer.
-   ("<end>" . end-of-buffer))
+   ("C-<end>" . end-of-buffer))
 
   (defun mainspring-duplicate-line()
     "Duplicate the current line."
@@ -228,7 +228,9 @@
           ((string-match ".*cider-result.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match ".*docker-build-output.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match "\\*run .*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
-          ((string-match "\\*Org-Babel Error Output\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
+          ((string-match "\\*Org-Babel Error Output\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
+          ((string-match "\\*mix test\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
+          ((string-match "\\*mix execute\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
 
   (defun mainspring-up-five-lines ()
     "Move up five lines."

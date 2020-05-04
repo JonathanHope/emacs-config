@@ -269,6 +269,9 @@
  '(smerge-refined-added ((t (:weight bold))))
  '(smerge-refined-removed ((t (:weight bold))))
 
+ ;; Mardown
+ '(markdown-markup-face                ((t (:foreground "#65737e"))))
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))
@@ -285,8 +288,7 @@
  '(font-lock-string-face               ((t (:foreground "#a3be8c" :slant italic))))
  '(font-lock-type-face                 ((t (:foreground "#ebcb8b"))))
  '(font-lock-variable-name-face        ((t (:foreground "#d08770"))))
- '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold))))
- )
+ '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold)))))
 
 (provide-theme 'mainspring)
 

@@ -161,6 +161,15 @@
   ;; No popup modals.
   (setq use-dialog-box nil)
 
+  ;; Hide ^M characters.
+  (add-hook 'after-change-major-mode-hook 'hide-dos-eol)
+
+  (defun hide-dos-eol ()
+    "Hide ^M in files containing mixed UNIX and DOS line endings."
+    (interactive)
+    (setq buffer-display-table (make-display-table))
+    (aset buffer-display-table ?\^M []))
+
   (defun mainspring-my-delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file."
     (interactive)
