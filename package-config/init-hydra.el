@@ -40,7 +40,7 @@
 ┃ _m_: Magit  ┃ _L_: Flyspell ┃ _F_: Function ┃ _O_: Org     ┃ _-_: Zoom Out     ┃
 ┃ _r_: Regex  ┃ _S_: Smerge   ┃ _K_: Key      ┃ _C_: Clojure ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃ _E_: Octave  ┃^^                 ┃
-┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃^^            ┃^^                 ┃
+┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃ _H_: HTTP    ┃^^                 ┃
 ┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
 ┃ _c_: Calc   ┃^^             ┃^^             ┃^^            ┃^^                 ┃
 ┃ _o_: Docker ┃^^             ┃^^             ┃^^            ┃^^                 ┃
@@ -75,6 +75,7 @@
     ("E" (find-file "~/Notes/Scratch/scratch.m") :color red)
     ("O" (find-file "~/Notes/Scratch/scratch.org") :color red)
     ("T" (find-file "~/Notes/Scratch/scratch.txt") :color red)
+    ("H" (find-file "~/Notes/Scratch/scratch.http") :color red)
     ("r" mainspring-hydra-apps-re-builder :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
@@ -933,6 +934,19 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("l" markdown-live-preview-mode :color blue)
+    ("q" nil :color blue))
+
+  ;; restclient Hydra
+
+  (defhydra mainspring-hydra-restclient (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Restclient               ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _e_: Execute               ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("e" restclient-http-send-current :color blue)
     ("q" nil :color blue))
 
   )

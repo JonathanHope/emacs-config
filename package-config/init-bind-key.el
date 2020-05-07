@@ -230,7 +230,8 @@
           ((string-match "\\*run .*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match "\\*Org-Babel Error Output\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match "\\*mix test\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
-          ((string-match "\\*mix execute\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
+          ((string-match "\\*mix execute\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
+          ((string-match "\\*HTTP Response\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))))
 
   (defun mainspring-up-five-lines ()
     "Move up five lines."

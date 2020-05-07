@@ -2,6 +2,12 @@
   :defer t
   :straight t
 
+  :mode (("\\.http$" . restclient-mode))
+
+  :bind
+  (:map restclient-mode-map
+        ("C-<tab>" . mainspring-hydra-restclient/body))
+
   :init
   (defvar my-restclient-token nil)
   (defun my-restclient-hook ()
