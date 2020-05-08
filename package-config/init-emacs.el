@@ -164,6 +164,9 @@
   ;; Hide ^M characters.
   (add-hook 'after-change-major-mode-hook 'hide-dos-eol)
 
+  ;; Allow some local variables.
+  (put 'cider-clojure-cli-global-options 'safe-local-variable #'stringp)
+
   (defun hide-dos-eol ()
     "Hide ^M in files containing mixed UNIX and DOS line endings."
     (interactive)
