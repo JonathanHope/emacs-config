@@ -612,7 +612,8 @@
 ┃^^ Clojure                  ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _o_: Launch CLJ REPL       ┃
-┃ _O_: Launch CLJS REPL      ┃
+┃ _j_: Launch CLJ REPL       ┃
+┃ _J_: Launch CLJS REPL      ┃
 ┃ _l_: Load Buffer Into REPL ┃
 ┃ _n_: Set REPL Namespace    ┃
 ┃ _c_: Clear REPL            ┃
@@ -623,7 +624,8 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("o" mainspring-hydra-clojure-launch-clj-repl :color blue)
-    ("O" mainspring-hydra-clojure-launch-cljs-repl :color blue)
+    ("j" mainspring-hydra-clojure-join-clj-repl :color blue)
+    ("J" mainspring-hydra-clojure-join-cljs-repl :color blue)
     ("l" cider-load-buffer :color blue)
     ("n" cider-repl-set-ns :color blue)
     ("c" mainspring-hydra-clojure-clear-repl :color blue)
@@ -654,11 +656,18 @@
     (setq cider-repl-pop-to-buffer-on-connect t)
     (cider-jack-in nil))
 
-  (defun mainspring-hydra-clojure-launch-cljs-repl ()
+  (defun mainspring-hydra-clojure-join-cljs-repl ()
     (interactive)
     (add-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
     (setq cider-repl-pop-to-buffer-on-connect t)
+    (setq )
     (cider-connect-cljs))
+
+  (defun mainspring-hydra-clojure-join-clj-repl ()
+    (interactive)
+    (add-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
+    (setq cider-repl-pop-to-buffer-on-connect t)
+    (cider-connect-clj))
 
   (defun mainspring-hydra-clojure-show-repl ()
     (interactive)
