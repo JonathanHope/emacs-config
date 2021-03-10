@@ -824,7 +824,8 @@
   (defun mainspring-hydra-calc-paste ()
     (interactive)
     (calc-wrapper
-     (calc-pop-push-record-list 0 "yank" (simpleclip-get-contents))))
+     (kill-new (simpleclip-get-contents))
+     (calc-yank 0)))
 
   ;; Octave Hydra
 

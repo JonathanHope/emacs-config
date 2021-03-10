@@ -20,6 +20,8 @@
   (setq nrepl-log-messages nil)
   (setq nrepl-hide-special-buffers t)
   (setq cider-print-fn 'puget)
+  (setq cider-print-options '(("seq-limit" 50)))
+  (setq cider-print-quota 51200)
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-display-in-current-window nil)
   (setq cider-default-cljs-repl 'shadow))
