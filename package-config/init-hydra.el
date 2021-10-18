@@ -33,18 +33,18 @@
                                    :pre (setq hydra-hint-display-type 'posframe)
                                    :post (setq hydra-hint-display-type 'lv))
     "
-┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
-┃^^ Apps      ┃^^ Minor Modes ┃^^ Describe    ┃^^ Scratch    ┃^^ Zoom            ┃
-┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
-┃ _d_: Dired  ┃ _R_: Rainbow  ┃ _M_: Mode     ┃ _T_: Text    ┃ _+_: Zoom In      ┃
-┃ _m_: Magit  ┃ _L_: Flyspell ┃ _F_: Function ┃ _O_: Org     ┃ _-_: Zoom Out     ┃
-┃ _r_: Regex  ┃ _S_: Smerge   ┃ _K_: Key      ┃ _C_: Clojure ┃ _0_: Zoom Reset   ┃
-┃ _s_: Eshell ┃^^             ┃ _V_: Variable ┃ _E_: Octave  ┃^^                 ┃
-┃ _n_: Deft   ┃^^             ┃ _A_: Face     ┃ _H_: HTTP    ┃^^                 ┃
-┃ _t_: Slate  ┃^^             ┃^^             ┃^^            ┃^^                 ┃
-┃ _c_: Calc   ┃^^             ┃^^             ┃^^            ┃^^                 ┃
-┃ _o_: Docker ┃^^             ┃^^             ┃^^            ┃^^                 ┃
-┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
+┃^^ Apps      ┃^^ Minor Modes   ┃^^ Describe    ┃^^ Whitespace  ┃^^ Zoom            ┃
+┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
+┃ _d_: Dired  ┃ _R_: Rainbow    ┃ _M_: Mode     ┃ _TAB_: Tabs   ┃ _+_: Zoom In      ┃
+┃ _m_: Magit  ┃ _L_: Flyspell   ┃ _F_: Function ┃ _SPC_: Spaces ┃ _-_: Zoom Out     ┃
+┃ _r_: Regex  ┃ _S_: Smerge     ┃ _K_: Key      ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
+┃ _s_: Eshell ┃ _W_: Whitespace ┃ _V_: Variable ┃ _>_: Tabify   ┃^^                 ┃
+┃ _n_: Deft   ┃^^               ┃ _A_: Face     ┃^^             ┃^^                 ┃
+┃ _t_: Slate  ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _c_: Calc   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _o_: Docker ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━━━━┫
@@ -66,16 +66,16 @@
     ("L" flyspell-mode :color red)
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)
+    ("W" whitespace-mode :color red)
     ("M" describe-mode :color blue)
     ("F" counsel-describe-function :color blue)
     ("K" counsel-descbinds :color blue)
     ("V" counsel-describe-variable :color blue)
     ("A" counsel-faces :color blue)
-    ("C" (find-file "~/Notes/Scratch/scratch.clj") :color red)
-    ("E" (find-file "~/Notes/Scratch/scratch.m") :color red)
-    ("O" (find-file "~/Notes/Scratch/scratch.org") :color red)
-    ("T" (find-file "~/Notes/Scratch/scratch.txt") :color red)
-    ("H" (find-file "~/Notes/Scratch/scratch.http") :color red)
+    ("TAB" mainspring-hydra-apps-enable-tabs :color red)
+    ("SPC" mainspring-hydra-apps-disable-tabs :color red)
+    ("." untabify :color blue)
+    (">" tabify :color blue)
     ("r" mainspring-hydra-apps-re-builder :color red)
     ("+" text-scale-increase :color red)
     ("-" text-scale-decrease :color red)
@@ -153,6 +153,17 @@
           (windmove-find-other-window 'up))
         (shrink-window arg)
       (enlarge-window arg)))
+
+  (defun mainspring-hydra-apps-disable-tabs (arg)
+    (interactive "p")
+    (setq indent-tabs-mode nil))
+
+  (defun mainspring-hydra-apps-enable-tabs (arg)
+    (interactive "p")
+    ;; (local-set-key (kbd "TAB") 'tab-to-tab-stop)
+    (setq indent-tabs-mode t)
+    ;; (setq tab-width 2)
+    )
 
 
   ;; Org-mode Hydras
@@ -533,7 +544,7 @@
                                  (org-edit-src-code)))
                               (t
                                (progn
-                                 (insert (format "#+begin_src %s :results output\n" src-code-type))
+                                 (insert (format "#+begin_src %s\n" src-code-type))
                                  (newline-and-indent)
                                  (insert "#+end_src\n")
                                  (previous-line 2)

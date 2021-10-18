@@ -96,9 +96,6 @@
 ;; A way to move lines or selected text around.
 (require 'init-move-text)
 
-;; Enforce constant indentation correction.
-(require 'init-aggressive-indent)
-
 ;; Quckly jump between functions in a buffer.
 (require 'init-iedit)
 
@@ -169,7 +166,6 @@
 
 ;; Docker
 (require 'init-dockerfile-mode)
-(require 'init-docker)
 
 ;; Smerge
 (require 'init-smerge)
@@ -185,11 +181,6 @@
 ;; Clojure support.
 (require 'init-clojure-mode)
 (require 'init-cider)
-
-;; Elixir support.
-(require 'init-elixir-mode)
-(require 'init-mix)
-(require 'init-ruby-end)
 
 ;; Perl support.
 (require 'init-perl-mode)

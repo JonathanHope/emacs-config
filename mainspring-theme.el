@@ -43,6 +43,18 @@
  '(region              ((t (:foreground "#2b303b" :background "#8fa1b3"))))
  '(secondary-selection ((t (:foreground "#2b303b" :background "#a3c6d0"))))
  '(header-line         ((t (:inherit mode-line))))
+ '(whitespace-space ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-tab ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-newline ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-trailing ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-space-before-tab ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-space-after-tab ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-line ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-indentation ((t (:foreground "#65737e" :slant italic))))
+ '(trailing-whitespace ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-big-indent ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-empty ((t (:foreground "#65737e" :slant italic))))
+ '(whitespace-hspace ((t (:foreground "#65737e" :slant italic))))
 
  ;; modeline
  '(mode-line           ((t (:foreground "#b48ead" :background "#343D46" :box nil))))
