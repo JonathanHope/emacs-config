@@ -39,6 +39,7 @@
 (require 'init-ob-restclient)
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
+(require 'init-org-contrib)
 
 ;; Core
 

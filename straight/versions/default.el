@@ -31,6 +31,7 @@
  ("move-text" . "bfc255110ad05732a43cf25d6a0e3b4a6710b58c")
  ("ob-restclient.el" . "bfbc4d8e8a348c140f9328542daf5d979f0993e2")
  ("org" . "d2f4d4b457a9fe7a7dbcfbd2d71c723ffa8c2726")
+ ("org-contrib" . "56a3bbbd486c567234e63c95c954c5e2ed77f8e7")
  ("ox-jira.el" . "0bd966ba241a2458d5097e256543eceee50d462c")
  ("parent-mode" . "db692cf08deff2f0e973e6e86e26662b44813d1b")
  ("parseclj" . "a8c4cf30fb68b66ae51541462a8b21753229a6e5")
