@@ -43,7 +43,6 @@
 ┃ _n_: Deft   ┃^^               ┃ _A_: Face     ┃^^             ┃^^                 ┃
 ┃ _t_: Slate  ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _c_: Calc   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
-┃ _o_: Docker ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
@@ -62,7 +61,6 @@
     ("n" deft :color red)
     ("t" slate :color red)
     ("c" full-calc :color red)
-    ("o" docker :color blue)
     ("L" flyspell-mode :color red)
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)

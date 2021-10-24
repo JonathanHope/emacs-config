@@ -140,7 +140,7 @@
 ;; Notes manager.
 (require 'init-deft)
 
-;; Master TOOD list.
+;; Master TODO list.
 (require 'init-slate)
 
 ;; Config file formats.
@@ -172,6 +172,10 @@
 
 ;; Markdown
 (require 'init-markdown-mode)
+
+;; CMake
+
+(require 'init-cmake-mode)
 
 ;; Programming languages
 

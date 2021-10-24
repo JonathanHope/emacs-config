@@ -2,6 +2,7 @@
   :straight t
 
   :init
-  (global-undo-tree-mode t))
+  (with-eval-after-load 'undo-tree (defun undo-tree-overridden-undo-bindings-p () nil))
+  (global-undo-tree-mode))
 
 (provide 'init-undo-tree)

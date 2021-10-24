@@ -1,6 +1,6 @@
 (use-package org
+  :straight t
   :defer t
-  :straight org-plus-contrib
 
   :mode (("\\.org$" . org-mode))
 
@@ -21,6 +21,7 @@
   (setq org-adapt-indentation nil)
   (setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/jar/plantuml.jar"))
   (setq org-startup-truncated nil)
+  (setq org-element-cache-persistent nil)
 
   (defun set-org-mode-font ()
     (interactive)
