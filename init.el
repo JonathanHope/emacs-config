@@ -72,7 +72,7 @@
 (require 'init-expand-region)
 
 ;; More intuitive undo and redo behavior.
-(require 'init-undo-tree)
+(require 'init-undo-fu)
 
 ;; A more intuitive window management solution.
 ;; Numbers windows for easy window changing.

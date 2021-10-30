@@ -28,10 +28,10 @@
    ("C-S-w" . save-buffers-kill-terminal)
 
    ;; Undo last action.
-   ("C-z" . undo-tree-undo)
+   ("C-z" . undo-fu-only-undo)
 
    ;; Redo last action.
-   ("C-y" . undo-tree-redo)
+   ("C-y" . undo-fu-only-redo)
 
    ;; Copy the current selection to the clipboard.
    ("C-c" . mainspring-copy-clear-selection)
