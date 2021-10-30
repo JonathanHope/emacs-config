@@ -529,7 +529,7 @@
   (defun mainspring-hydra-org-insert-src-block ()
     (interactive)
     (ivy-read "Source block language: "
-              '("sql" "clojure" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile")
+              '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile")
               :require-match t
               :sort t
               :action (lambda (src-code-type)
@@ -933,21 +933,6 @@
     ("m" smerge-keep-mine :color red)
     ("t" smerge-keep-other :color red)
     ("a" smerge-keep-all :color red)
-    ("q" nil :color blue))
-
-  ;; Elixir Hydra
-
-  (defhydra mainspring-hydra-elixir (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Elixir                   ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _t_: Test                  ┃
-┃ _e_: Execute Task          ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-"
-    ("t" mix-test :color blue)
-    ("e" mix-execute-task :color blue)
     ("q" nil :color blue))
 
   ;; Markdown Hydra

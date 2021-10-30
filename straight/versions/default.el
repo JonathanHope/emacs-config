@@ -4,6 +4,7 @@
  ("cmake" . "46bd57d2450e450da4f46f5cb45cb8d1dc617d96")
  ("company-mode" . "297620caf84f771a7102157f1bf292e5b248e397")
  ("counsel-projectile" . "e30150792a96968f55f34638cbfe63eaa30839cc")
+ ("csharp-mode" . "c0c7602368f7b3933584e7790394a4d509bd1c50")
  ("dash.el" . "da167c51e9fd167a48d06c7c0ee8e3ac7abd9718")
  ("deft" . "28be94d89bff2e1c7edef7244d7c5ba0636b1296")
  ("dockerfile-mode" . "5db94549ce8b000ae35adf511c820ad228178052")

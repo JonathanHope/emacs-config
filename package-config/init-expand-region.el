@@ -1,9 +1,5 @@
 (use-package expand-region
   :defer t
-  :straight t
-
-  :init
-  (require 'ruby-mode-expansions)
-  (er/enable-mode-expansions 'elixir-mode 'er/add-ruby-mode-expansions))
+  :straight t)
 
 (provide 'init-expand-region)

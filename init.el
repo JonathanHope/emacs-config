@@ -196,5 +196,8 @@
 ;; Kusto (App Insights) support.
 (require 'init-kusto-mode)
 
+;; C# support.
+(require 'init-csharp-mode)
+
 ;; Run the startup function.
 (mainspring-startup)
