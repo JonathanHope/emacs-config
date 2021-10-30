@@ -24,7 +24,7 @@
  ("kusto-mode.el" . "24ecd0d668a2cd7658adac87cde82d0754d933cd")
  ("magit" . "aba0a596115b42fbd60347d893bcc319020ce5a2")
  ("mainspring-mode-line" . "3bb727c556025c47519cb2c19b66c6c2cb7ce3a9")
- ("mainspring-org-prettify" . "34819c49d5d27730256b3670c118aa5c5c3d5d91")
+ ("mainspring-org-prettify" . "4ded1d6fcbf83e44006665043beafdda09527db1")
  ("map" . "7ef991a4e234195f125dc2b2ad4cad5a1d11a7d5")
  ("markdown-mode" . "c3c2f0d473a3f8ca8c4ffb2ecc094d5c3541769f")
  ("melpa" . "768bc3014e0ef793bec7cce46a2e1e0cfce555cb")
