@@ -377,7 +377,7 @@
 ┃ _m_: Export as Markdown   ┃
 ┃ _j_: Export as JIRA       ┃
 ┃ _c_: Export as Confluence ┃
-┃^^                         ┃
+┃ _r_: Export as Reveal     ┃
 ┃^^                         ┃
 ┃^^                         ┃
 ┃^^                         ┃
@@ -388,6 +388,7 @@
     ("m" org-md-export-as-markdown :color blue)
     ("j" ox-jira-export-as-jira :color blue)
     ("c" org-confluence-export-as-confluence :color blue)
+    ("r" org-reveal-export-to-html :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-latex (:hint nil)

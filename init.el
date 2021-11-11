@@ -40,6 +40,8 @@
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
 (require 'init-org-contrib)
+(require 'init-ox-reveal)
+(require 'init-htmlize)
 
 ;; Core
 
