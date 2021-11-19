@@ -24,6 +24,7 @@
   (setq cider-print-quota 51200)
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-display-in-current-window nil)
-  (setq cider-default-cljs-repl 'shadow))
+  (setq cider-default-cljs-repl 'shadow)
+  (setq cider-clojure-cli-global-options "-R:cider-clj"))
 
 (provide 'init-cider)
