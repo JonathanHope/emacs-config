@@ -45,15 +45,11 @@
 
 ;; Core
 
-;; Shouldn't need this.
-(require 'subr-x)
-
 ;; Setting up the mode-line.
 (require 'init-mainspring-mode-line)
 
 ;; Non-package related emacs config.
 (require 'init-emacs)
-(require 'windmove)
 
 ;; Support for projects.
 (require 'init-projectile)
@@ -64,10 +60,11 @@
 
 ;; Completion.
 ;; Most things should have fuzzy completion in a minibuffer.
-(require 'init-flx)
-(require 'init-ivy)
-(require 'init-counsel)
-(require 'init-counsel-projectile)
+(require 'init-selectrum)
+(require 'init-consult)
+(require 'init-orderless)
+(require 'init-marginalia)
+(require 'init-consult-projectile)
 (require 'init-company)
 
 ;; Ability to expand selections based on syntax.
@@ -78,10 +75,10 @@
 
 ;; A more intuitive window management solution.
 ;; Numbers windows for easy window changing.
-;; The currently focused window will always be the largest.
 (require 'init-winum)
 (require 'init-shackle)
 (require 'init-posframe)
+(require 'windmove)
 
 ;; Simple keyboard driven popup menus.
 (require 'init-hydra)

@@ -19,7 +19,7 @@
    ("C-S-s" . save-some-buffers)
 
    ;; Open or create a file.
-   ("C-o" . counsel-find-file)
+   ("C-o" . find-file)
 
    ;; Close the current buffer.
    ("C-w" . kill-this-buffer)
@@ -49,10 +49,10 @@
    ("C-S-v" . yank)
 
    ;; Regex search in a file.
-   ("C-f" . swiper-isearch)
+   ("C-f" . consult-line)
 
    ;; Regex search in a project.
-   ("C-S-f" . counsel-projectile-rg)
+   ("C-S-f" . consult-ripgrep)
 
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
@@ -67,13 +67,13 @@
    ("C-S-g" . avy-goto-char-2)
 
    ;; Open a file in a project.
-   ("C-p" . counsel-projectile-find-file)
+   ("C-p" . consult-projectile)
 
    ;; Change the active buffer for the window.
-   ("C-b" . ivy-switch-buffer)
+   ("C-b" . consult-buffer)
 
    ;; Execute any function.
-   ("C-S-p" . counsel-M-x)
+   ("C-S-p" . execute-extended-command)
 
    ;; Close all other windows.
    ("M-!" . delete-other-windows)

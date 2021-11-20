@@ -38,9 +38,9 @@
 ┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
 ┃ _d_: Dired  ┃ _R_: Rainbow    ┃ _M_: Mode     ┃ _TAB_: Tabs   ┃ _+_: Zoom In      ┃
 ┃ _m_: Magit  ┃ _L_: Flyspell   ┃ _F_: Function ┃ _SPC_: Spaces ┃ _-_: Zoom Out     ┃
-┃ _r_: Regex  ┃ _S_: Smerge     ┃ _K_: Key      ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
-┃ _s_: Eshell ┃ _W_: Whitespace ┃ _V_: Variable ┃ _>_: Tabify   ┃^^                 ┃
-┃ _n_: Deft   ┃^^               ┃ _A_: Face     ┃^^             ┃^^                 ┃
+┃ _r_: Regex  ┃ _S_: Smerge     ┃ _V_: Variable ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
+┃ _s_: Eshell ┃ _W_: Whitespace ┃ _A_: Face     ┃ _>_: Tabify   ┃^^                 ┃
+┃ _n_: Deft   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _t_: Slate  ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _c_: Calc   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
@@ -66,10 +66,9 @@
     ("S" smerge-start-session :color red)
     ("W" whitespace-mode :color red)
     ("M" describe-mode :color blue)
-    ("F" counsel-describe-function :color blue)
-    ("K" counsel-descbinds :color blue)
-    ("V" counsel-describe-variable :color blue)
-    ("A" counsel-faces :color blue)
+    ("F" describe-function :color blue)
+    ("V" describe-variable :color blue)
+    ("A" describe-face :color blue)
     ("TAB" mainspring-hydra-apps-enable-tabs :color red)
     ("SPC" mainspring-hydra-apps-disable-tabs :color red)
     ("." untabify :color blue)
@@ -89,8 +88,8 @@
     ("<down>" mainspring-hydra-apps-move-splitter-down :color red)
     ("<left>" mainspring-hydra-apps-move-splitter-left :color red)
     ("<right>" mainspring-hydra-apps-move-splitter-right :color red)
-    ("b" ivy-switch-buffer :color red)
-    ("f" counsel-find-file :color red)
+    ("b" consult-buffer :color red)
+    ("f" find-file :color red)
     ("=" balance-windows :color red)
     ("q" nil :color blue))
 
@@ -243,7 +242,7 @@
     ("T" mainspring-hydra-org-status-todo :color red)
     ("D" mainspring-hydra-org-status-done :color red)
     ("R" mainspring-hydra-org-status-none :color red)
-    ("t" counsel-org-tag :color red)
+    ("t" org-set-tags-command :color red)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-plain-list (:hint nil)
@@ -495,17 +494,11 @@
     (interactive (list (read-file-name "File: ")))
     (org-insert-link file-name file-name (read-string "Description: ")))
 
-  (defun mainspring-hydra-org-insert-image-link ()
-    (interactive)
-    (ivy-read "File: "
-              'read-file-name-internal
-              :matcher #'counsel--find-file-matcher
-              :require-match t
-              :sort t
-              :action (lambda (file-name)
-                        (progn
-                          (insert (format "[[file:%s]]" file-name))
-                          (org-redisplay-inline-images)))))
+(defun mainspring-hydra-org-insert-image-link (file-name)
+    (interactive (list (read-file-name "File: ")))
+    (progn
+      (insert (format "[[file:%s]]" file-name))
+      (org-redisplay-inline-images)))
 
   (defun mainspring-hydra-org-bold-region (beg end)
     (interactive "r")
@@ -527,27 +520,24 @@
     (interactive "r")
     (org-emphasize ?\s))
 
-  (defun mainspring-hydra-org-insert-src-block ()
-    (interactive)
-    (ivy-read "Source block language: "
-              '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile")
-              :require-match t
-              :sort t
-              :action (lambda (src-code-type)
-                        (cond ((equal src-code-type "plantuml")
-                               (progn
-                                 (insert (format "#+begin_src %s :file temp.png\n" src-code-type))
-                                 (newline-and-indent)
-                                 (insert "#+end_src\n")
-                                 (previous-line 2)
-                                 (org-edit-src-code)))
-                              (t
-                               (progn
-                                 (insert (format "#+begin_src %s\n" src-code-type))
-                                 (newline-and-indent)
-                                 (insert "#+end_src\n")
-                                 (previous-line 2)
-                                 (org-edit-src-code)))))))
+  (defun mainspring-hydra-org-insert-src-block (arg)
+    (interactive
+     (list
+      (completing-read "Source block language: " '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile"))))
+    (cond ((equal arg "plantuml")
+           (progn
+             (insert (format "#+begin_src %s :file temp.png\n" arg))
+             (newline-and-indent)
+             (insert "#+end_src\n")
+             (previous-line 2)
+             (org-edit-src-code)))
+          (t
+           (progn
+             (insert (format "#+begin_src %s\n" arg))
+             (newline-and-indent)
+             (insert "#+end_src\n")
+             (previous-line 2)
+             (org-edit-src-code)))))
 
   (defun mainspring-hydra-org-insert-plain-list-item (bullet)
     (interactive)
@@ -718,38 +708,6 @@
     (")" dired-omit-mode :color red)
     ("q" nil :color blue))
 
-  ;; Ivy Hydra
-
-  (defhydra mainspring-hydra-ivy (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━^^━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Ivy             ^^                         ┃
-┣^^━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _<down>_: Next   ┃ _<enter>_: Complete       ┃
-┃ _<up>_: Previous ┃ _S-<enter>_: Complete Now ┃
-┃ _m_: Mark        ┃ _d_: Dispatch Complete    ┃
-┃ _u_: Unmark      ┃^^                         ┃
-┗^^━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
-"
-    ("<down>" ivy-next-line :color red)
-    ("<up>" ivy-previous-line :color red)
-    ("m" mainspring-hydra-ivy-mark :color red)
-    ("u" mainspring-hydra-ivy-unmark :color red)
-    ("<enter>" ivy-done :color blue)
-    ("S-<enter>" ivy-immediate-done :color blue)
-    ("d" ivy-dispatching-done :color blue)
-    ("q" nil :color blue))
-
-  (defun mainspring-hydra-ivy-mark ()
-    (interactive)
-    (ivy-mark)
-    (ivy-previous-line))
-
-  (defun mainspring-hydra-ivy-unmark ()
-    (interactive)
-    (ivy-unmark)
-    (ivy-previous-line))
-
   ;; Deft Hydra
 
   (defhydra mainspring-hydra-deft (:hint nil)
@@ -808,28 +766,22 @@
     ("z" calc-undo :color red)
     ("y" calc-redo :color red)
     ("v" mainspring-hydra-calc-paste :color red)
-    ("f" mainspring-hydra-calc-counsel-describe-function :color blue)
-    ("x" mainspring-hydra-calc-counsel-describe-variable :color blue)
+    ("f" mainspring-hydra-calc-describe-function :color blue)
+    ("x" mainspring-hydra-calc-describe-variable :color blue)
     ("k" calc-describe-key :color blue)
     ("q" nil :color blue))
 
-  (defun mainspring-hydra-calc-counsel-describe-function()
-    (interactive)
-    (ivy-read "Describe calc function: "
-              (calc-help-index-entries "Function" "Command")
-              :require-match t
-              :sort t
-              :action (lambda (selection)
-                        (calc-describe-function selection))))
+  (defun mainspring-hydra-calc-describe-function (arg)
+    (interactive
+     (list
+      (completing-read "Describe calc function: " (calc-help-index-entries "Function" "Command"))))
+    (calc-describe-function arg))
 
-  (defun mainspring-hydra-calc-counsel-describe-variable()
-    (interactive)
-    (ivy-read "Describe calc variable: "
-              (calc-help-index-entries "Variable")
-              :require-match t
-              :sort t
-              :action (lambda (selection)
-                        (calc-describe-variable selection))))
+  (defun mainspring-hydra-calc-describe-variable (arg)
+    (interactive
+     (list
+      (completing-read "Describe calc variable: " (calc-help-index-entries "Variable"))))
+    (calc-describe-variable selection))
 
   (defun mainspring-hydra-calc-paste ()
     (interactive)
@@ -960,8 +912,6 @@
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("e" restclient-http-send-current :color blue)
-    ("q" nil :color blue))
-
-  )
+    ("q" nil :color blue)))
 
 (provide 'init-hydra)

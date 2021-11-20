@@ -4,7 +4,7 @@
   :init
   (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching nil)
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'default)
   (setq projectile-require-project-root 'prompt)
 
   :config

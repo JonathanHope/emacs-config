@@ -236,6 +236,15 @@
  '(swiper-line-face             ((t (:background "#343d46" :weight bold))))
  '(ivy-cursor                   ((t (:background "#a3c6d0"))))
 
+ ;; Selectrum
+ '(selectrum-current-candidate ((t (:background "#343d46" :weight bold))))
+ '(consult-preview-line ((t (:background "#343d46" :weight bold))))
+ '(orderless-match-face-0      ((t (:underline t :weight bold))))
+ '(orderless-match-face-1      ((t (:underline t :weight bold))))
+ '(orderless-match-face-2      ((t (:underline t :weight bold))))
+ '(orderless-match-face-3      ((t (:underline t :weight bold))))
+ '(consult-preview-match       ((t (:underline t :weight bold))))
+
  ;; Highlight numbers
  '(highlight-numbers-number ((t (:foreground "#96b5b4" :slant italic))))
 
