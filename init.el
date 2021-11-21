@@ -65,6 +65,8 @@
 (require 'init-orderless)
 (require 'init-marginalia)
 (require 'init-consult-projectile)
+(require 'init-embark)
+(require 'init-embark-consult)
 (require 'init-company)
 
 ;; Ability to expand selections based on syntax.
