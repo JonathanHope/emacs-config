@@ -145,6 +145,9 @@
 ;; Master TODO list.
 (require 'init-slate)
 
+;; Buffer manager.
+(require 'init-ibuffer)
+
 ;; Config file formats.
 
 ;; XML support.

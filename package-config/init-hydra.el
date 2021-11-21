@@ -33,17 +33,18 @@
                                    :pre (setq hydra-hint-display-type 'posframe)
                                    :post (setq hydra-hint-display-type 'lv))
     "
-┏^^━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
-┃^^ Apps      ┃^^ Minor Modes   ┃^^ Describe    ┃^^ Whitespace  ┃^^ Zoom            ┃
-┣^^━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
-┃ _d_: Dired  ┃ _R_: Rainbow    ┃ _M_: Mode     ┃ _TAB_: Tabs   ┃ _+_: Zoom In      ┃
-┃ _m_: Magit  ┃ _L_: Flyspell   ┃ _F_: Function ┃ _SPC_: Spaces ┃ _-_: Zoom Out     ┃
-┃ _r_: Regex  ┃ _S_: Smerge     ┃ _V_: Variable ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
-┃ _s_: Eshell ┃ _W_: Whitespace ┃ _A_: Face     ┃ _>_: Tabify   ┃^^                 ┃
-┃ _n_: Deft   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
-┃ _t_: Slate  ┃^^               ┃^^             ┃^^             ┃^^                 ┃
-┃ _c_: Calc   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
-┗^^━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━┓
+┃^^ Apps       ┃^^ Minor Modes   ┃^^ Describe    ┃^^ Whitespace  ┃^^ Zoom            ┃
+┣^^━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━┫
+┃ _d_: Dired   ┃ _R_: Rainbow    ┃ _M_: Mode     ┃ _TAB_: Tabs   ┃ _+_: Zoom In      ┃
+┃ _m_: Magit   ┃ _L_: Flyspell   ┃ _F_: Function ┃ _SPC_: Spaces ┃ _-_: Zoom Out     ┃
+┃ _r_: Regex   ┃ _S_: Smerge     ┃ _V_: Variable ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
+┃ _s_: Eshell  ┃ _W_: Whitespace ┃ _A_: Face     ┃ _>_: Tabify   ┃^^                 ┃
+┃ _n_: Deft    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _t_: Slate   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _c_: Calc    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _i_: Ibuffer ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┗^^━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━╋^^━━━━━━━━━━━━━━━━━━━━━━━┫
@@ -61,6 +62,7 @@
     ("n" deft :color red)
     ("t" slate :color red)
     ("c" full-calc :color red)
+    ("i" ibuffer :color red)
     ("L" flyspell-mode :color red)
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)
@@ -915,3 +917,22 @@
     ("q" nil :color blue)))
 
 (provide 'init-hydra)
+
+;; Ibuffer Hydra
+
+(defhydra mainspring-hydra-ibuffer (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Ibuffer                  ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _r_: Refresh               ┃
+┃ _k_: Kill Buffer           ┃
+┃ _<up>_: Previous           ┃
+┃ _<down>_: Next             ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("r" ibuffer-update :color red)
+    ("k" ibuffer-do-delete :color red)
+    ("<up>" previous-line :color red)
+    ("<down>" next-line :color red)
+    ("q" nil :color blue))
