@@ -60,7 +60,7 @@
 
 ;; Completion.
 ;; Most things should have fuzzy completion in a minibuffer.
-(require 'init-selectrum)
+(require 'init-vertico)
 (require 'init-consult)
 (require 'init-orderless)
 (require 'init-marginalia)

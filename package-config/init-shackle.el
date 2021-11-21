@@ -17,8 +17,6 @@
           ("*docker-machines*" :select nil :same t :inhibit-window-quit t)
           ("*run .*" :regexp t :select nil :same t :inhibit-window-quit t)
           ("*Org-Babel Error Output*" :select nil :same t :inhibit-window-quit t)
-          ("*mix test*" :select t :same t :inhibit-window-quit t)
-          ("*mix execute*" :select t :same t :inhibit-window-quit t)
           ("*HTTP Response*" :select t :same t :inhibit-window-quit t)))
   :config
   (shackle-mode 1))
