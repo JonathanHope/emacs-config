@@ -34,6 +34,7 @@
  ("markdown-mode" . "c3c2f0d473a3f8ca8c4ffb2ecc094d5c3541769f")
  ("melpa" . "768bc3014e0ef793bec7cce46a2e1e0cfce555cb")
  ("move-text" . "bfc255110ad05732a43cf25d6a0e3b4a6710b58c")
+ ("nix-mode" . "3d04d92d9c3896d07bc9fed7e4f40032025fbe7b")
  ("ob-restclient.el" . "bfbc4d8e8a348c140f9328542daf5d979f0993e2")
  ("orderless" . "62f71c34baca0b7d0adeab4a1c07d85ffcee80d9")
  ("org" . "d2f4d4b457a9fe7a7dbcfbd2d71c723ffa8c2726")

@@ -179,8 +179,10 @@
 (require 'init-markdown-mode)
 
 ;; CMake
-
 (require 'init-cmake-mode)
+
+;; Nix
+(require 'init-nix-mode)
 
 ;; Programming languages
 

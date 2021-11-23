@@ -525,7 +525,7 @@
   (defun mainspring-hydra-org-insert-src-block (arg)
     (interactive
      (list
-      (completing-read "Source block language: " '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile"))))
+      (completing-read "Source block language: " '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile" "shell"))))
     (cond ((equal arg "plantuml")
            (progn
              (insert (format "#+begin_src %s :file temp.png\n" arg))
