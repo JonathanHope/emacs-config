@@ -184,6 +184,9 @@
 ;; Nix
 (require 'init-nix-mode)
 
+;; Fish
+(require 'init-fish-mode)
+
 ;; Programming languages
 
 ;; EBNF support.
