@@ -258,6 +258,7 @@
         (comment-or-uncomment-region (region-beginning) (region-end))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
+  ;; TODO: This seems to fail sometimes. Why?
   (defun mainspring-copy-clear-selection (beg end)
     "Copy with smartclip and then clear the selection."
     (interactive "r")
