@@ -34,7 +34,7 @@
    ("C-y" . undo-fu-only-redo)
 
    ;; Copy the current selection to the clipboard.
-   ("C-c" . mainspring-copy-clear-selection)
+   ("C-c" . simpleclip-copy)
 
    ;; Cut the current selection to the clipboard.
    ("C-x" . simpleclip-cut)
