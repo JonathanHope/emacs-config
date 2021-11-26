@@ -61,9 +61,9 @@
 ;; Completion.
 ;; Most things should have fuzzy completion in a minibuffer.
 (require 'init-vertico)
-(require 'init-consult)
 (require 'init-orderless)
 (require 'init-marginalia)
+(require 'init-consult)
 (require 'init-consult-projectile)
 (require 'init-embark)
 (require 'init-embark-consult)
