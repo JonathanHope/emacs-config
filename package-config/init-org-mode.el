@@ -7,8 +7,7 @@
   :bind
   (:map  org-mode-map
          ("C-<tab>" . mainspring-hydra-org/body)
-         ("C-S-r" . counsel-org-agenda-headlines)
-         ("C-r" . counsel-org-goto))
+         ("C-r" . consult-org-heading))
 
   :init
   (setq org-startup-folded 0)

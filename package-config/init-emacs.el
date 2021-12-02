@@ -68,7 +68,7 @@
   ;; Set the default font.
   (set-face-attribute 'default nil
                       :family "PragmataPro Mono"
-                      :height 90)
+                      :height 100)
 
   ;; Set the modeline font.
   (let ((faces '(mode-line
@@ -85,7 +85,7 @@
     (mapc
      (lambda (face) (set-face-attribute face nil
                                         :family "PragmataPro"
-                                        :height 90))
+                                        :height 100))
      faces))
 
   ;; Set the border colors.
