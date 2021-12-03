@@ -4,7 +4,8 @@
   :mode (("\\.xml$" . sgml-mode)
          ("\\.config$" . sgml-mode)
          ("\\.csproj$" . sgml-mode)
-         ("\\.sln$" . sgml-mode))
+         ("\\.sln$" . sgml-mode)
+         ("\\.html$" . sgml-mode))
 
   :bind
   (:map sgml-mode-map
@@ -48,14 +49,16 @@
   (defun mainspring-sgml-xml-finish-element-new-line (&optional arg)
     "Wrap an arbitrary identifier in brackets, complete it, create a new line, and apply indentation."
     (interactive "p")
-    (when (string-match "[A-Za-z0-9\_\.\-]" (char-to-string (char-before)))
-      (mainspring-sgml-backward-symbol arg)
-      (insert "<")
-      (forward-symbol arg)
-      (insert ">")
-      (sgml-close-tag)
-      (mainspring-sgml-backward-start-end-tag arg)
-      (mainspring-sgml-tag-newline-and-indent arg)))
+    (if (string-match "[A-Za-z0-9\_\.\-]" (char-to-string (char-before)))
+        (progn
+          (mainspring-sgml-backward-symbol arg)
+          (insert "<")
+          (forward-symbol arg)
+          (insert ">")
+          (sgml-close-tag)
+          (mainspring-sgml-backward-start-end-tag arg)
+          (mainspring-sgml-tag-newline-and-indent arg))
+      (sgml-indent-line)))
 
   (defun mainspring-sgml-xml-finish-element-same-line (&optional arg)
     "Wrap an arbitrary identifier in brackets and complete the tag."
