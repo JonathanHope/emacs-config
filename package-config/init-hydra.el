@@ -944,13 +944,17 @@
 ┃^^ Notmuch - Hello          ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _g_: Refresh               ┃
+┃ _f_: Fetch                 ┃
 ┃ _s_: Search                ┃
 ┃ _i_: Inbox                 ┃
+┃ _u_: Unread                ┃
 ┃ _m_: Compose Message       ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("g" notmuch-refresh-this-buffer :color blue)
+    ("f" mainspring-hydra-notmuch-fetch-mail :color blue)
     ("i" mainspring-hydra-notmuch-inbox :color blue)
+    ("u" mainspring-hydra-notmuch-unread :color blue)
     ("s" notmuch-search :color blue)
     ("m" notmuch-mua-new-mail :color blue)
     ("q" nil :color blue))
@@ -980,7 +984,7 @@
     ("g" notmuch-refresh-this-buffer :color blue)
     ("*" notmuch-show-tag :color blue)
     ("a" mainspring-hydra-notmuch-archive :color blue)
-    ("a" mainspring-hydra-notmuch-delete :color blue)
+    ("d" mainspring-hydra-notmuch-delete :color blue)
     ("q" nil :color blue))
 
 
@@ -999,6 +1003,10 @@
   (interactive)
   (notmuch-search "tag:inbox"))
 
+(defun mainspring-hydra-notmuch-unread ()
+  (interactive)
+  (notmuch-search "tag:unread"))
+
 (defun mainspring-hydra-notmuch-archive ( )
   (interactive)
   (notmuch-show-tag (list "-inbox")))
@@ -1006,3 +1014,8 @@
 (defun mainspring-hydra-notmuch-delete ( )
   (interactive)
   (notmuch-show-tag (list "-inbox" "+deleted")))
+
+(defun mainspring-hydra-notmuch-fetch-mail ( )
+  (interactive)
+  (shell-command "mbsync -a")
+  (shell-command "notmuch new"))
