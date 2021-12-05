@@ -44,6 +44,7 @@
 ┃ _t_: Slate   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _c_: Calc    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _i_: Ibuffer ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _e_: Notmuch ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┗^^━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
@@ -63,6 +64,7 @@
     ("t" slate :color red)
     ("c" full-calc :color red)
     ("i" ibuffer :color red)
+    ("e" notmuch :color red)
     ("L" flyspell-mode :color red)
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)
@@ -159,10 +161,7 @@
 
   (defun mainspring-hydra-apps-enable-tabs (arg)
     (interactive "p")
-    ;; (local-set-key (kbd "TAB") 'tab-to-tab-stop)
-    (setq indent-tabs-mode t)
-    ;; (setq tab-width 2)
-    )
+    (setq indent-tabs-mode t))
 
 
   ;; Org-mode Hydras
@@ -936,3 +935,74 @@
     ("<up>" previous-line :color red)
     ("<down>" next-line :color red)
     ("q" nil :color blue))
+
+;; Notmuch hydra
+
+(defhydra mainspring-hydra-notmuch-hello (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Notmuch - Hello          ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _g_: Refresh               ┃
+┃ _s_: Search                ┃
+┃ _i_: Inbox                 ┃
+┃ _m_: Compose Message       ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("g" notmuch-refresh-this-buffer :color blue)
+    ("i" mainspring-hydra-notmuch-inbox :color blue)
+    ("s" notmuch-search :color blue)
+    ("m" notmuch-mua-new-mail :color blue)
+    ("q" nil :color blue))
+
+(defhydra mainspring-hydra-notmuch-search (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Notmuch - Search         ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _g_: Refresh               ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("g" notmuch-refresh-this-buffer :color blue)
+    ("q" nil :color blue))
+
+(defhydra mainspring-hydra-notmuch-show (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Notmuch - Show           ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _g_: Refresh               ┃
+┃ _*_: Set Tags              ┃
+┃ _a_: Archive               ┃
+┃ _d_: Archive               ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("g" notmuch-refresh-this-buffer :color blue)
+    ("*" notmuch-show-tag :color blue)
+    ("a" mainspring-hydra-notmuch-archive :color blue)
+    ("a" mainspring-hydra-notmuch-delete :color blue)
+    ("q" nil :color blue))
+
+
+(defhydra mainspring-hydra-notmuch-message (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Notmuch - Message        ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _c_: Cancel                ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("c" kill-this-buffer :color blue)
+    ("q" nil :color blue))
+
+(defun mainspring-hydra-notmuch-inbox ()
+  (interactive)
+  (notmuch-search "tag:inbox"))
+
+(defun mainspring-hydra-notmuch-archive ( )
+  (interactive)
+  (notmuch-show-tag (list "-inbox")))
+
+(defun mainspring-hydra-notmuch-delete ( )
+  (interactive)
+  (notmuch-show-tag (list "-inbox" "+deleted")))

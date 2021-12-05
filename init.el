@@ -148,6 +148,9 @@
 ;; Buffer manager.
 (require 'init-ibuffer)
 
+;; Email
+(require 'init-notmuch)
+
 ;; Config file formats.
 
 ;; XML support.
