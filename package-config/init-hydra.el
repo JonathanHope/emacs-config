@@ -978,7 +978,7 @@
 ┃ _g_: Refresh               ┃
 ┃ _*_: Set Tags              ┃
 ┃ _a_: Archive               ┃
-┃ _d_: Archive               ┃
+┃ _d_: Delete                ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("g" notmuch-refresh-this-buffer :color blue)
@@ -993,10 +993,12 @@
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Notmuch - Message        ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _s_: Send                  ┃
 ┃ _c_: Cancel                ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("c" kill-this-buffer :color blue)
+    ("s" mainspring-hydra-notmuch-send-messsage :color blue)
     ("q" nil :color blue))
 
 (defun mainspring-hydra-notmuch-inbox ()
@@ -1019,3 +1021,8 @@
   (interactive)
   (shell-command "mbsync -a")
   (shell-command "notmuch new"))
+
+(defun mainspring-hydra-notmuch-send-messsage ( )
+  (interactive)
+  (message-send)
+  (kill-this-buffer))
