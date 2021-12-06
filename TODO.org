@@ -2,4 +2,4 @@
 * TODO Remove statistics cookies from slate.
 * TODO Company fuzzy matching.
 * TODO How to imitate descbinds with consult?
-* TODO Consider embark for action dispatching.
+* TODO TODO/DONE indicator weird in latest emacs.
