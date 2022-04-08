@@ -55,6 +55,20 @@
   (add-to-list 'org-file-apps '("\\.xls\\'" . default))
   (add-to-list 'org-file-apps '("\\.xlsx\\'" . default))
 
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.1)))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.1))
+  (setq org-taskjuggler-default-reports '("textreport report \"Plan\" {
+  formats html
+  header '== %title =='
+  center -8<-
+    <[report id=\"plan\"]>
+  ->8-
+}
+# A traditional Gantt chart with a project overview.
+taskreport plan \"\" {
+  headline \"Project Plan\"
+  columns bsi, name, start, end, note, chart
+  loadunit shortauto
+  hideresource 1
+}")))
 
 (provide 'init-org-mode)

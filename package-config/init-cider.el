@@ -11,8 +11,6 @@
   :init
   (add-hook 'cider-mode-hook #'eldoc-mode)
 
-  (setq cider-show-error-buffer t)
-  (setq cider-auto-select-error-buffer t)
   (setq cider-repl-history-file "~/.emacs.d/cider-history")
   (setq cider-repl-display-help-banner nil)
   (setq cider-allow-jack-in-without-project t)
@@ -25,6 +23,7 @@
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-display-in-current-window nil)
   (setq cider-default-cljs-repl 'shadow)
-  (setq cider-clojure-cli-global-options "-R:cider-clj"))
+  (setq cider-clojure-cli-global-options "-R:cider-clj")
+  (setq cider-show-error-buffer nil))
 
 (provide 'init-cider)

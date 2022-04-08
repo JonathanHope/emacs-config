@@ -297,6 +297,8 @@
 
  ;; Notmuch
  '(notmuch-tag-face ((t (:foreground "#ebcb8b"))))
+ '(notmuch-tag-unread ((t (:foreground "#bf616a"))))
+ '(notmuch-search-unread-face ((t (:foreground "#bf616a"))))
  '(message-header-name ((t (:foreground "#a3be8c"))))
  '(message-header-subject ((t (:foreground "#eff1f5"))))
  '(message-header-to ((t (:foreground "#eff1f5"))))

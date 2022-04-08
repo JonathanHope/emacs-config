@@ -224,7 +224,7 @@
 ┃ _M-<up>_: Headline Up      ┃ _D_: Status DONE   ┃
 ┃ _M-<down>_: Headline Down  ┃ _R_: Status NONE   ┃
 ┃ _<up>_: Previous Headline  ┃ _t_: Set Tags      ┃
-┃ _<down>_: Next Headline    ┃^^                  ┃
+┃ _<down>_: Next Headline    ┃ _p_: Set Property  ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━┛
 "
     ("n" mainspring-hydra-org-insert-headline :color red)
@@ -244,6 +244,7 @@
     ("D" mainspring-hydra-org-status-done :color red)
     ("R" mainspring-hydra-org-status-none :color red)
     ("t" org-set-tags-command :color red)
+    ("p" org-set-property :color red)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-plain-list (:hint nil)
@@ -366,29 +367,30 @@
     ("n" mainspring-hydra-org-insert-src-block :color blue)
     ("s" org-edit-src-code :color blue)
     ("e" org-babel-execute-src-block :color blue)
-    ("c" cider-jack-in :color blue)
+    ("c" mainspring-hydra-org-clojure-backend :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-export (:hint nil)
     "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Org - Export            ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _m_: Export as Markdown   ┃
-┃ _j_: Export as JIRA       ┃
-┃ _c_: Export as Confluence ┃
-┃ _r_: Export as Reveal     ┃
-┃^^                         ┃
-┃^^                         ┃
-┃^^                         ┃
-┃^^                         ┃
-┃^^                         ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Export             ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _m_: Export as Markdown    ┃
+┃ _j_: Export as JIRA        ┃
+┃ _c_: Export as Confluence  ┃
+┃ _r_: Export as Reveal      ┃
+┃ _t_: Export as TaskJuggler ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┃^^                          ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("m" org-md-export-as-markdown :color blue)
     ("j" ox-jira-export-as-jira :color blue)
     ("c" org-confluence-export-as-confluence :color blue)
     ("r" org-reveal-export-to-html :color blue)
+    ("t" org-taskjuggler-export :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-latex (:hint nil)
@@ -604,6 +606,10 @@
   (defun mainspring-hydra-org-update-statistics ()
     (interactive)
     (org-update-statistics-cookies t))
+
+  (defun mainspring-hydra-org-clojure-backend ()
+    (interactive)
+    (cider-jack-in nil))
 
   ;; Clojure Hydra
 
@@ -1020,7 +1026,8 @@
 (defun mainspring-hydra-notmuch-fetch-mail ( )
   (interactive)
   (shell-command "mbsync -a")
-  (shell-command "notmuch new"))
+  (shell-command "notmuch new")
+  (notmuch-refresh-this-buffer))
 
 (defun mainspring-hydra-notmuch-send-messsage ( )
   (interactive)
