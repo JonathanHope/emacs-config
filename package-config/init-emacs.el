@@ -112,10 +112,7 @@
     (message ""))
 
   ;; No newlines at end of file.
-  (setq require-final-newline t)
-
-  ;; Remove trailing whitespace.
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq require-final-newline nil)
 
   ;; Hide the arrows that appear in the fringe for continued lines.
   (define-fringe-bitmap 'right-curly-arrow

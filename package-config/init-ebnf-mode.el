@@ -3,9 +3,7 @@
   :straight (:type git
                    :host github
                    :repo "jeramey/ebnf-mode"
-                   :branch "master"
-                   :fork (:host github
-                                :repo "JonathanHope/ebnf-mode"))
+                   :branch "master")
 
   :mode (("\\.bnf$" . ebnf-mode)
          ("\\.ebnf$" . ebnf-mode)))
