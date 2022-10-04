@@ -306,6 +306,9 @@
  '(message-mml ((t (:foreground "#8fa1b3"))))
  '(message-header-cc ((t (:foreground "#eff1f5"))))
 
+ ;; Terraform
+ '(terraform--resource-type-face ((t (:foreground "#c0c5ce"))))
+ 
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))

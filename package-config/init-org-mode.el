@@ -32,12 +32,15 @@
   (add-hook 'org-mode-hook 'visual-line-mode)
 
   :config
+  (require 'ob-js)
+  
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((octave . t)
      (clojure . t)
      (plantuml . t)
-     (restclient . t)))
+     (restclient . t)
+     (js . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))
@@ -45,6 +48,8 @@
 
   (setq org-babel-clojure-backend 'cider)
 
+  (add-to-list 'org-babel-tangle-lang-exts '("js" . "js"))
+  
   (defun turn-on-org-show-all-inline-images ()
     (org-display-inline-images t t)
     (org-update-statistics-cookies t))

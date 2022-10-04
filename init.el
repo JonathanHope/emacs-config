@@ -42,6 +42,7 @@
 (require 'init-org-contrib)
 (require 'init-ox-reveal)
 (require 'init-htmlize)
+(require 'init-olivetti)
 
 ;; Core
 
@@ -189,6 +190,12 @@
 
 ;; Fish
 (require 'init-fish-mode)
+
+;; Terraform
+(require 'init-terraform-mode)
+
+;; GraphQL
+(require 'init-graphql-mode)
 
 ;; Programming languages
 

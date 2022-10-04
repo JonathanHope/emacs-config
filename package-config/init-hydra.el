@@ -423,7 +423,7 @@
 ┃ _<down>_: Next Headline   ┃
 ┃ _h_: Hide                 ┃
 ┃ _s_: Show                 ┃
-┃^^                         ┃
+┃ _o_: Olivetti             ┃
 ┃^^                         ┃
 ┃^^                         ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
@@ -434,6 +434,7 @@
     ("S" outline-show-all :color red)
     ("h" outline-hide-subtree :color red)
     ("s" outline-show-subtree :color red)
+    ("o" olivetti-mode :color red)
     ("q" mainspring-hydra-pop :color blue))
 
   (defun mainspring-hydra-org-insert-headline ()
@@ -526,7 +527,7 @@
   (defun mainspring-hydra-org-insert-src-block (arg)
     (interactive
      (list
-      (completing-read "Source block language: " '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile" "shell"))))
+      (completing-read "Source block language: " '("sql" "csharp" "octave" "plantuml" "ebnf" "xml" "json" "yaml" "restclient" "dockerfile" "shell" "js" "terraform" "graphql"))))
     (cond ((equal arg "plantuml")
            (progn
              (insert (format "#+begin_src %s :file temp.png\n" arg))
