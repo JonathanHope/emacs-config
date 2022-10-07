@@ -42,6 +42,8 @@ PlantUML is required for some diagrams like UML. The jar can be downloaded here:
 
 MultiMarkdown is used to do live markdown previews. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/fletcher/peg-multimarkdown/downloads.
 
+Languagetool is required for grammar checking. It can be downloaded here: https://languagetool.org/download/. Extract it to ~/.languagetool.
+
 It uses the pragmata fonts by default. These are non-free fonts.
 
 ** Keymap

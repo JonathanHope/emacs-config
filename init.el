@@ -43,6 +43,7 @@
 (require 'init-ox-reveal)
 (require 'init-htmlize)
 (require 'init-olivetti)
+(require 'init-flycheck-languagetool)
 
 ;; Core
 

@@ -40,7 +40,7 @@
 ┃ _m_: Magit   ┃ _L_: Flyspell   ┃ _F_: Function ┃ _SPC_: Spaces ┃ _-_: Zoom Out     ┃
 ┃ _r_: Regex   ┃ _S_: Smerge     ┃ _V_: Variable ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell  ┃ _W_: Whitespace ┃ _A_: Face     ┃ _>_: Tabify   ┃^^                 ┃
-┃ _n_: Deft    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _n_: Deft    ┃ _C_: Flycheck   ┃^^             ┃^^             ┃^^                 ┃
 ┃ _t_: Slate   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _c_: Calc    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _i_: Ibuffer ┃^^               ┃^^             ┃^^             ┃^^                 ┃
@@ -66,6 +66,7 @@
     ("i" ibuffer :color red)
     ("e" notmuch :color red)
     ("L" flyspell-mode :color red)
+    ("C" mainspring-hydra-apps-flycheck :color red)
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)
     ("W" whitespace-mode :color red)
@@ -162,6 +163,11 @@
   (defun mainspring-hydra-apps-enable-tabs (arg)
     (interactive "p")
     (setq indent-tabs-mode t))
+
+  (defun mainspring-hydra-apps-flycheck (arg)
+    (interactive "p")
+    (flycheck-languagetool-setup)
+    (flycheck-mode))
 
 
   ;; Org-mode Hydras

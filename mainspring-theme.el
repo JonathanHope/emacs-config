@@ -184,8 +184,12 @@
  '(org-document-title        ((t (:foreground "#65737e" :slant italic))) )
 
  ;; Flyspell
- '(flyspell-duplicate ((t (:foreground "#ebcb8b" :underline t :weight bold))))
- '(flyspell-incorrect ((t (:foreground "#bf616a" :underline t :weight bold))))
+ '(flyspell-duplicate ((t (:foreground "#ebcb8b" :weight bold))))
+ '(flyspell-incorrect ((t (:foreground "#bf616a" :weight bold))))
+
+ ;; Flycheck
+ '(flycheck-warning ((t (:foreground "#ebcb8b" :weight bold))))
+ '(flycheck-error ((t (:foreground "#bf616a" :weight bold))))
 
  ;; Company
  '(company-tooltip-annotation ((t (:foreground "#343d46" :slant italic))))
