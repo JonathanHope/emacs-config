@@ -1,5 +1,6 @@
 ;; Fix for startup error
 (defvar native-comp-deferred-compilation-deny-list nil)
+;; The warnings buffer is obnoxious.
 (setq warning-minimum-level :error)
 
 ;; Set Emacs to use UTF8
@@ -211,17 +212,8 @@
 (require 'init-clojure-mode)
 (require 'init-cider)
 
-;; Perl support.
-(require 'init-perl-mode)
-
 ;; Octave support.
 (require 'init-octave-mode)
-
-;; Kusto (App Insights) support.
-(require 'init-kusto-mode)
-
-;; C# support.
-(require 'init-csharp-mode)
 
 ;; Run the startup function.
 (mainspring-startup)
