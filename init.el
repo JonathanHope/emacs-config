@@ -121,6 +121,9 @@
 ;; Comint color.
 (require 'init-ansi-color)
 
+;; Auto format code.
+(require 'init-apheleia)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.
