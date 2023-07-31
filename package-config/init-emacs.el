@@ -212,6 +212,14 @@
     (interactive "d")
     (let ((face (or (get-char-property (point) 'read-face-name)
                     (get-char-property (point) 'face))))
-      (if face (message "Face: %s" face) (message "No face at %d" pos)))))
+      (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+  ;; Register any languages with treesitter support here.
+  (setq treesit-language-source-alist
+   '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
+  
+  (defun treesit-install-all ()
+    (interactive)
+    (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
 
 (provide 'init-emacs)

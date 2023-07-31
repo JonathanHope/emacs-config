@@ -25,3 +25,5 @@ jar/*
 straight/*
 !straight/versions
 eln-cache
+tree-sit-repos
+tree-sitter

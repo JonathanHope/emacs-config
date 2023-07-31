@@ -8,7 +8,6 @@
   (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'plantuml-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'octave-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'perl-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'csharp-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'typescript-ts-mode-hook #'rainbow-delimiters-mode))
 
 (provide 'init-rainbow-delimiters)

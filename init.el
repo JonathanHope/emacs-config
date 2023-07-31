@@ -1,8 +1,3 @@
-;; Fix for startup error
-(defvar native-comp-deferred-compilation-deny-list nil)
-;; The warnings buffer is obnoxious.
-(setq warning-minimum-level :error)
-
 ;; Set Emacs to use UTF8
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
@@ -115,6 +110,7 @@
 (require 'init-rainbow-delimiters)
 (require 'init-highlight-numbers)
 (require 'init-hl-todo)
+(require 'init-treesit-parser-manager)
 
 ;; Allow shortcuts to be tied to a region being selected.
 (require 'init-selected)
@@ -214,6 +210,9 @@
 
 ;; Octave support.
 (require 'init-octave-mode)
+
+;; Typescript support.
+(require 'init-typescript-mode)
 
 ;; Run the startup function.
 (mainspring-startup)
