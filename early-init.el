@@ -17,4 +17,4 @@
 ;; Fix for startup error
 (defvar native-comp-deferred-compilation-deny-list nil)
 ;; The warnings buffer is obnoxious.
-(setq warning-minimum-level :error)
+(setq native-comp-async-report-warnings-errors 'silent)
