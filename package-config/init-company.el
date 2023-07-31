@@ -9,6 +9,7 @@
   :init
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-mode-hook #'company-mode)
+  (add-hook 'typescript-ts-mode-hook #'company-mode)
 
   (setq company-tooltip-limit 10)
   (setq company-tooltip-offset-display 'lines)
