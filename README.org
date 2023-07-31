@@ -24,6 +24,8 @@ Some of the configuration relies on the idea of a home directory. You get this f
 
 Git and a number of standard Linux tools are required. On Linux all you have to do is install git using your distributions package manager. On the Windows side run this installer: https://git-scm.com/download/win. Then make sure the path to git.exe and find.exe are the first entry in the system wide path variable. Projectile will not work if that is not the case.
 
+This distribution of emacs uses tree-sitter. This means that you will need emacs 29 or better. To add a new language edit the treesit-language-source-alist variable in init-emacs.el. You will need to run treesit-install-all as part of installation, and whenver you add a new language. 
+
 On windows 8 and 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3. See more about this here: https://superuser.com/a/631324.
 
 Hunspell is required for spell checking. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://sourceforge.net/projects/ezwinports/.
