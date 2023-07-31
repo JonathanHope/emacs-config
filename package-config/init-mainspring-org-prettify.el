@@ -5,6 +5,16 @@
   :commands (mainspring-org-prettify-mode)
 
   :init
+  (setq mainspring-org-prettify-done ?)
+  (setq mainspring-org-prettify-todo ?)
+  (setq mainspring-org-prettify-checkbox-unchecked ?)
+  (setq mainspring-org-prettify-checkbox-checked ?)
+  (setq mainspring-org-prettify-headline-dash ?━)
+  (setq mainspring-org-prettify-headline-bullet ?⬢)
+  (setq mainspring-org-prettify-plain-list-plus-char ?➤)
+  (setq mainspring-org-prettify-plain-list-asterisk-char ?➤)
+  (setq mainspring-org-prettify-plain-list-minus-char ?➤)
+  
   (add-hook 'org-mode-hook 'mainspring-org-prettify-mode))
 
 (provide 'init-mainspring-org-prettify)
