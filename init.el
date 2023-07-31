@@ -1,5 +1,6 @@
 ;; Fix for startup error
 (defvar native-comp-deferred-compilation-deny-list nil)
+(setq warning-minimum-level :error)
 
 ;; Set Emacs to use UTF8
 (set-language-environment "UTF-8")

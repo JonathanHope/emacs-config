@@ -24,3 +24,4 @@ jar/*
 *.elc
 straight/*
 !straight/versions
+eln-cache
