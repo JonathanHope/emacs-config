@@ -3,6 +3,6 @@
 
   :mode
   (("\\.yaml$" . yaml-ts-mode)
-   ("\\.yml$" . yaml-ts-mode))))
+   ("\\.yml$" . yaml-ts-mode)))
 
 (provide 'init-yaml-mode)
