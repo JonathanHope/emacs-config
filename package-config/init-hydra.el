@@ -1040,3 +1040,18 @@
   (interactive)
   (message-send)
   (kill-this-buffer))
+
+(defhydra mainspring-hydra-typescript (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃^^ TypeScript               ┃
+┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ _r_: Rename                ┃
+┃ _d_: Got to definition     ┃
+┃ _u_: Find usages           ┃
+┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"
+    ("r" eglot-rename :color blue)
+    ("d" xref-find-definitions :color blue)
+    ("u" xref-find-references :color blue)
+    ("q" nil :color blue))
