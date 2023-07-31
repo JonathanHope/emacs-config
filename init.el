@@ -159,10 +159,10 @@
 ;; XML support.
 (require 'init-sgml-mode)
 
-;; JSON support.
-(require 'init-js-mode)
+;; JSON support (tree-sitter).
+(require 'init-json-mode)
 
-;; YAML support.
+;; YAML support (tree-sitter).
 (require 'init-yaml-mode)
 
 ;; Design tools.

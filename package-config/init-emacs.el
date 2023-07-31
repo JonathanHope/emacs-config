@@ -216,7 +216,9 @@
 
   ;; Register any languages with treesitter support here.
   (setq treesit-language-source-alist
-   '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
+   '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
   
   (defun treesit-install-all ()
     (interactive)
