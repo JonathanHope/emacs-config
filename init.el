@@ -1,3 +1,6 @@
+;; Fix for startup error
+(defvar native-comp-deferred-compilation-deny-list nil)
+
 ;; Set Emacs to use UTF8
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
