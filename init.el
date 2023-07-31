@@ -69,7 +69,7 @@
 (require 'init-consult-projectile)
 (require 'init-embark)
 (require 'init-embark-consult)
-(require 'init-company)
+(require 'init-corfu)
 
 ;; Ability to expand selections based on syntax.
 (require 'init-expand-region)

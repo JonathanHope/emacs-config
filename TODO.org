@@ -1,5 +1,5 @@
 * TODO Handle statistics cookies in plain lists.
 * TODO Remove statistics cookies from slate.
 * TODO Company fuzzy matching.
-* TODO How to imitate descbinds with consult?
 * TODO TODO/DONE indicator weird in latest emacs.
+* TODO How to use flycheck with elgot?

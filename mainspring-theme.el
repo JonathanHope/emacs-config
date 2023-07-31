@@ -191,6 +191,10 @@
  '(flycheck-warning ((t (:foreground "#ebcb8b" :weight bold))))
  '(flycheck-error ((t (:foreground "#bf616a" :weight bold))))
 
+ ;; Flymake
+ '(flymake-warning ((t (:foreground "#ebcb8b" :weight bold))))
+ '(flymake-error ((t (:foreground "#bf616a" :weight bold))))
+
  ;; Company
  '(company-tooltip-annotation ((t (:foreground "#343d46" :slant italic))))
  '(company-preview ((t (:background "#343D46" :foreground "#8FA1B3" :underline t))))
@@ -201,6 +205,12 @@
  '(company-tooltip-selection ((t (:background "#8FA1B3" :foreground "#343d46"))))
  '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
+
+ ;; Corfu
+ '(corfu-default ((t (:background "#343D46" :foreground: "#eff1f5"))))
+ '(corfu-current ((t (:background "#4f5b66" :foreground: "#eff1f5"))))
+ '(corfu-bar ((t (:background "#eff1f5"))))
+ '(corfu-annotations ((t (:foreground "#8fa1b3"))))
 
  ;; Smartparens
  '(sp-pair-overlay-face     ((t (:background "#2b303b"))))
