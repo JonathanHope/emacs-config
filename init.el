@@ -34,8 +34,6 @@
 
 ;; Org file support.
 ;; This has to be done first so everything compiles agains the right org version.
-(require 'init-ox-jira)
-(require 'init-ox-confluence)
 (require 'init-ob-restclient)
 (require 'init-org-mode)
 (require 'init-mainspring-org-prettify)
@@ -44,6 +42,7 @@
 (require 'init-htmlize)
 (require 'init-olivetti)
 (require 'init-flycheck-languagetool)
+(require 'init-ox-pandoc)
 
 ;; Core
 

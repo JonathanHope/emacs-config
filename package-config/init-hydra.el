@@ -382,8 +382,6 @@
 ┃^^ Org - Export             ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _m_: Export as Markdown    ┃
-┃ _j_: Export as JIRA        ┃
-┃ _c_: Export as Confluence  ┃
 ┃ _r_: Export as Reveal      ┃
 ┃ _t_: Export as TaskJuggler ┃
 ┃^^                          ┃
@@ -392,9 +390,7 @@
 ┃^^                          ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
-    ("m" org-md-export-as-markdown :color blue)
-    ("j" ox-jira-export-as-jira :color blue)
-    ("c" org-confluence-export-as-confluence :color blue)
+    ("m" org-pandoc-export-as-gfm :color blue)
     ("r" org-reveal-export-to-html :color blue)
     ("t" org-taskjuggler-export :color blue)
     ("q" mainspring-hydra-pop :color blue))

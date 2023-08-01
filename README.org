@@ -46,6 +46,8 @@ MultiMarkdown is used to do live markdown previews. It can be installed on Linux
 
 Languagetool is required for grammar checking. It can be downloaded here: https://languagetool.org/download/. Extract it to ~/.languagetool.
 
+Pandoc is required for some org exports. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://pandoc.org/installing.html.
+
 It uses the pragmata fonts by default. These are non-free fonts.
 
 ** Keymap
