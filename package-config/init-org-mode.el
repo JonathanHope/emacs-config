@@ -43,7 +43,9 @@
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))
-  (add-to-list 'org-src-lang-modes '("json" . json-ts-mode))
+  (add-to-list 'org-src-lang-modes '("json" . json-ts))
+  (add-to-list 'org-src-lang-modes '("yaml" . yaml-ts))
+  (add-to-list 'org-src-lang-modes '("dockerfile" . dockerfile-ts))
   (add-to-list 'org-src-lang-modes '("typescript" . typescript-ts))
 
   (setq org-babel-clojure-backend 'cider)

@@ -844,38 +844,6 @@
     (octave-hide-process-buffer)
     (octave-kill-process))
 
-  ;; Dockerfile Hydra
-
-  (defhydra mainspring-hydra-dockerfile (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Dockerfile               ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _b_: Build                 ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-"
-    ("b" dockerfile-build-buffer :color blue)
-    ("q" nil :color blue))
-
-  ;; Docker Hydra
-
-  (defhydra mainspring-hydra-docker (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Docker                   ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _<up>_: Previous Item      ┃
-┃ _<down>_: Next Item        ┃
-┃ _m_: Mark                  ┃
-┃ _u_: Unmark                ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-"
-    ("<up>" previous-line :color red)
-    ("<down>" next-line :color red)
-    ("m" tablist-mark-forward :color red)
-    ("u" tablist-unmark-backward :color red)
-    ("q" nil :color blue))
-
   ;; Smerge Hydra
 
   (defhydra mainspring-hydra-smerge (:hint nil)

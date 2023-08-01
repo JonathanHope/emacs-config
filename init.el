@@ -177,7 +177,7 @@
 
 ;; DevOps stuff
 
-;; Docker
+;; Docker (tree-sitter)
 (require 'init-dockerfile-mode)
 
 ;; Smerge
@@ -213,7 +213,7 @@
 ;; Octave support.
 (require 'init-octave-mode)
 
-;; Typescript support.
+;; Typescript support (tree-sitter).
 (require 'init-typescript-mode)
 
 ;; Run the startup function.

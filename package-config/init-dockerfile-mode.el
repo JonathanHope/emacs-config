@@ -2,10 +2,6 @@
   :defer t
   :straight t
 
-  :mode (("Dockerfile\\'" . dockerfile-mode))
-
-  :bind
-  (:map dockerfile-mode-map
-        ("C-<tab>" . mainspring-hydra-dockerfile/body)))
+  :mode (("Dockerfile\\(?:\\..*\\)?\\'" . dockerfile-ts-mode)))
 
 (provide 'init-dockerfile-mode)
