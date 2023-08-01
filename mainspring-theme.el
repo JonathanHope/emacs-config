@@ -323,7 +323,33 @@
 
  ;; Terraform
  '(terraform--resource-type-face ((t (:foreground "#c0c5ce"))))
+
+ ;; eshell
+ '(eshell-prompt ((t (:foreground "#bf616a"))))
+ '(eshell-ls-backup ((t (:foreground "#d08770"))))
+ '(eshell-ls-archive ((t (:foreground "#b48ead"))))
+ '(eshell-ls-clutter ((t (:foreground "#d08770"))))
+ '(eshell-ls-missing ((t (:foreground "#bf616a"))))
+ '(eshell-ls-product ((t (:foreground "#d08770"))))
+ '(eshell-ls-special ((t (:foreground "#b48ead"))))
+ '(eshell-ls-symlink ((t (:foreground "#ebcb8b"))))
+ '(eshell-ls-readonly ((t (:foreground "#96b5b4"))))
+ '(eshell-ls-directory ((t (:foreground "#8fa1b3"))))
+ '(eshell-ls-executable ((t (:foreground "#a3be8c"))))
+ '(eshell-ls-executable ((t (:foreground "#343D46"))))
  
+ ;; eat
+ '(eat-term-color-0 ((t (:foreground "#2b303b"))))
+ '(eat-term-color-1 ((t (:foreground "#bf616a"))))
+ '(eat-term-color-2 ((t (:foreground "#a3be8c"))))
+ '(eat-term-color-3 ((t (:foreground "#ebcb8b"))))
+ '(eat-term-color-4 ((t (:foreground "#a7adba"))))
+ '(eat-term-color-5 ((t (:foreground "#b48ead"))))
+ '(eat-term-color-6 ((t (:foreground "#96b5b4"))))
+ '(eat-term-color-7 ((t (:foreground "#96b5b4"))))
+ '(eat-term-color-8 ((t (:foreground "#343D46"))))
+ '(eat-term-color-9 ((t (:foreground "#bf616a"))))
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))

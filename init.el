@@ -109,7 +109,6 @@
 (require 'init-rainbow-delimiters)
 (require 'init-highlight-numbers)
 (require 'init-hl-todo)
-(require 'init-treesit-parser-manager)
 
 ;; Allow shortcuts to be tied to a region being selected.
 (require 'init-selected)
@@ -140,6 +139,7 @@
 
 ;; Shell.
 (require 'init-eshell)
+(require 'init-eat)
 
 ;; Calculator.
 (require 'init-calc)
