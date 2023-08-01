@@ -34,15 +34,15 @@
 
 ;; Org file support.
 ;; This has to be done first so everything compiles agains the right org version.
-(require 'init-ob-restclient)
 (require 'init-org-mode)
-(require 'init-mainspring-org-prettify)
 (require 'init-org-contrib)
-(require 'init-ox-reveal)
+(require 'init-ob-restclient)
+(require 'init-mainspring-org-prettify)
 (require 'init-htmlize)
+(require 'init-ox-reveal)
+(require 'init-ox-pandoc)
 (require 'init-olivetti)
 (require 'init-flycheck-languagetool)
-(require 'init-ox-pandoc)
 
 ;; Core
 

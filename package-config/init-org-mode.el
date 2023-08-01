@@ -39,12 +39,12 @@
    '((octave . t)
      (clojure . t)
      (plantuml . t)
-     (restclient . t)
-     (js . t)))
+     (restclient . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))
-  (add-to-list 'org-src-lang-modes '("json" . javascript))
+  (add-to-list 'org-src-lang-modes '("json" . json-ts-mode))
+  (add-to-list 'org-src-lang-modes '("typescript" . typescript-ts))
 
   (setq org-babel-clojure-backend 'cider)
 
