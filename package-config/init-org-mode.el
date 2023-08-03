@@ -14,7 +14,6 @@
   (setq org-ellipsis " …")
   (setq org-src-fontify-natively t)
   (setq org-confirm-babel-evaluate nil)
-  (setq org-hide-emphasis-markers t)
   (setq org-src-preserve-indentation t)
   (setq org-src-window-setup 'current-window)
   (setq org-adapt-indentation nil)
