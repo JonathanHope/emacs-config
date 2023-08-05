@@ -158,6 +158,9 @@
   ;; No popup modals.
   (setq use-dialog-box nil)
 
+  ;; Most tree-sitter highlighting.
+  (setq treesit-font-lock-level 4)
+
   ;; Hide ^M characters.
   (add-hook 'after-change-major-mode-hook 'hide-dos-eol)
 
@@ -216,8 +219,8 @@
 
   ;; Register any languages with treesitter support here.
   (setq treesit-language-source-alist
-   '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+   '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "typescript/src")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.2" "tsx/src")
      (json "https://github.com/tree-sitter/tree-sitter-json")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
      (css "https://github.com/tree-sitter/tree-sitter-css")))
