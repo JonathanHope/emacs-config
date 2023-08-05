@@ -4,8 +4,7 @@
   :mode (("\\.xml$" . sgml-mode)
          ("\\.config$" . sgml-mode)
          ("\\.csproj$" . sgml-mode)
-         ("\\.sln$" . sgml-mode)
-         ("\\.html$" . sgml-mode))
+         ("\\.sln$" . sgml-mode))
 
   :bind
   (:map sgml-mode-map

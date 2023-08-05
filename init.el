@@ -219,5 +219,8 @@
 ;; CSS support (tree-sitter).
 (require 'init-css-mode)
 
+;; HTML support (tree-sitter).
+(require 'init-html-mode)
+
 ;; Run the startup function.
 (mainspring-startup)
