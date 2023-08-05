@@ -216,5 +216,8 @@
 ;; Typescript support (tree-sitter).
 (require 'init-typescript-mode)
 
+;; CSS support (tree-sitter).
+(require 'init-css-mode)
+
 ;; Run the startup function.
 (mainspring-startup)

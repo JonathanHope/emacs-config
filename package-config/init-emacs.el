@@ -220,7 +220,7 @@
      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
      (json "https://github.com/tree-sitter/tree-sitter-json")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
-     (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")))
+     (css "https://github.com/tree-sitter/tree-sitter-css")))
   
   (defun treesit-install-all ()
     (interactive)
