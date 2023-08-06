@@ -134,6 +134,7 @@
 ;; File browser.
 (require 'init-dired)
 (require 'init-dired-subtree)
+(require 'init-nerd-icons-dired)
 
 ;; Git support.
 (require 'init-magit)
