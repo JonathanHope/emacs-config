@@ -6,6 +6,8 @@
          (typescript-ts-mode . corfu-popupinfo-mode)
          (tsx-ts-mode . corfu-mode)
          (tsx-ts-mode . corfu-popupinfo-mode)
+         (js-ts-mode . corfu-mode)
+         (js-ts-mode . corfu-popupinfo-mode)
          (cider-repl-mode-hook . corfu-mode)
          (cider-repl-mode-hook . corfu-popupinfo-mode)
          (cider-mode-hook . corfu-mode)
