@@ -133,6 +133,7 @@
 
 ;; File browser.
 (require 'init-dired)
+(require 'init-dired-subtree)
 
 ;; Git support.
 (require 'init-magit)

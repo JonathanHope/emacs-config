@@ -8,7 +8,10 @@
 
   :init
   (defun dired-mode-setup ()
-    (dired-hide-details-mode 1))
+    (dired-hide-details-mode 1)
+    (setq ls-lisp-use-insert-directory-program nil)
+    (require 'ls-lisp)
+    (setq ls-lisp-dirs-first t))
   (add-hook 'dired-mode-hook 'dired-mode-setup))
 
 (provide 'init-dired)

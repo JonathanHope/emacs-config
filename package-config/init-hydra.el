@@ -711,7 +711,7 @@
 ┃ _v_: View        ┃ _G_: Change Group       ┃
 ┃ _m_: Mark        ┃ _M_: Change Permissions ┃
 ┃ _u_: Unmark      ┃ _+_: Create Directory   ┃
-┃ _U_: Unmark All  ┃^^                       ┃
+┃ _U_: Unmark All  ┃ _<tab>_: Cycle Subtree  ┃
 ┃ _U_: Unmark All  ┃^^                       ┃
 ┃ _(_: Details     ┃^^                       ┃
 ┗^^━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
@@ -730,7 +730,7 @@
     ("M" dired-do-chmod :color red)
     ("G" dired-do-chgrp :color red)
     ("(" dired-hide-details-mode :color red)
-    (")" dired-omit-mode :color red)
+    ("<tab>" dired-subtree-toggle :color red)
     ("q" nil :color blue))
 
   ;; Deft Hydra

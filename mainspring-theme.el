@@ -350,6 +350,14 @@
  '(eat-term-color-8 ((t (:foreground "#343D46"))))
  '(eat-term-color-9 ((t (:foreground "#bf616a"))))
 
+ ;; dired-subtree
+ '(dired-subtree-depth-1-face ((t ())))
+ '(dired-subtree-depth-2-face ((t ())))
+ '(dired-subtree-depth-3-face ((t ())))
+ '(dired-subtree-depth-4-face ((t ())))
+ '(dired-subtree-depth-5-face ((t ())))
+ '(dired-subtree-depth-6-face ((t ())))
+
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))
