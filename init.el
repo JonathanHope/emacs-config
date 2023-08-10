@@ -217,6 +217,7 @@
 
 ;; Typescript support (tree-sitter).
 (require 'init-typescript-mode)
+(require 'init-jsdoc)
 
 ;; CSS support (tree-sitter).
 (require 'init-css-mode)
