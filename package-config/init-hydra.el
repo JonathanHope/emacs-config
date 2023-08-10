@@ -1028,9 +1028,11 @@
 ┃ _r_: Rename                ┃
 ┃ _d_: Got to definition     ┃
 ┃ _u_: Find usages           ┃
+┃ _c_: JSDoc                 ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("r" eglot-rename :color blue)
     ("d" xref-find-definitions :color blue)
     ("u" xref-find-references :color blue)
+    ("c" jsdoc :color blue)
     ("q" nil :color blue))
