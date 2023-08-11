@@ -531,7 +531,7 @@
      (list
       (completing-read "Source block language: " '("sql"
                                                    "octave"
-                                                   "plantuml"
+                                                   "mermaid"
                                                    "ebnf"
                                                    "xml"
                                                    "json"
@@ -546,7 +546,7 @@
                                                    "html"
                                                    "css"
                                                    "gherkin"))))
-    (cond ((equal arg "plantuml")
+    (cond ((equal arg "mermaid")
            (progn
              (insert (format "#+begin_src %s :file temp.png\n" arg))
              (newline-and-indent)

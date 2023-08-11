@@ -40,7 +40,7 @@ Latex is required for formulas in org documents. It can be installed on Linux us
 
 Octave is required for octave blocks in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://www.gnu.org/software/octave/download.html.
 
-PlantUML is required for some diagrams like UML. The jar can be downloaded here: http://plantuml.com/download. Place the jar in ~/.emacs.d/jar
+The mermaid cli is required for diagrams. It can be installed with NPM: ~npm install -g @mermaid-js/mermaid-cli~.
 
 MultiMarkdown is used to do live markdown previews. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/fletcher/peg-multimarkdown/downloads.
 

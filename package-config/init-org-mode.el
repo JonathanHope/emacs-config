@@ -17,7 +17,6 @@
   (setq org-src-preserve-indentation t)
   (setq org-src-window-setup 'current-window)
   (setq org-adapt-indentation nil)
-  (setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/jar/plantuml.jar"))
   (setq org-startup-truncated nil)
   (setq org-element-cache-persistent nil)
 
@@ -39,9 +38,9 @@
    'org-babel-load-languages
    '((octave . t)
      (clojure . t)
-     (plantuml . t)
      (restclient . t)
-     (typescript . t)))
+     (typescript . t)
+     (mermaid . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))

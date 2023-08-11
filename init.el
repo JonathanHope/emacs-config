@@ -175,11 +175,12 @@
 ;; REST APIs.
 (require 'init-restclient)
 
-;; UML/Flows.
-(require 'init-plantuml-mode)
-
-;; Gherkin
+;; User stories
 (require 'init-feature-mode)
+
+;; Diagrams
+(require 'init-mermaid-mode)
+(require 'init-ob-mermaid)
 
 ;; DevOps stuff
 
