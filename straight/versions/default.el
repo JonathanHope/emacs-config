@@ -50,6 +50,7 @@
  ("nongnu-elpa" . "c0840d025ba5ad3fc3f2dbd08d3b4ab72cf07574")
  ("notmuch" . "b6f144abe1f5aa3519240cf52f4cb9907fefcd0e")
  ("ob-restclient.el" . "ded3b7eb7b0592328a7a08ecce6f25278cba4a1d")
+ ("ob-typescript" . "abf36f1f3b2476e71c63721dc907d7e6914aef3d")
  ("olivetti" . "a644ee9d24c7283435ce42e11498951e100608c9")
  ("orderless" . "e6784026717a8a6a7dcd0bf31fd3414f148c542e")
  ("org" . "d3f587fadf3663674d3ef55a60a1cc6e88c862b7")

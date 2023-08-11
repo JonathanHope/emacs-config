@@ -38,7 +38,8 @@
    '((octave . t)
      (clojure . t)
      (plantuml . t)
-     (restclient . t)))
+     (restclient . t)
+     (typescript . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))
@@ -53,6 +54,7 @@
   (setq org-babel-clojure-backend 'cider)
 
   (add-to-list 'org-babel-tangle-lang-exts '("js" . "js"))
+  (add-to-list 'org-babel-tangle-lang-exts '("ts" . "ts"))
   
   (defun turn-on-org-show-all-inline-images ()
     (org-display-inline-images t t)
