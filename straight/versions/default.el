@@ -7,6 +7,7 @@
  ("consult" . "be4fdb6246fb2cada13459fbabae5dd0553e1fd9")
  ("consult-projectile" . "5ef1ada3be767ea766255801050210f5d796deec")
  ("corfu" . "a4f003605bc712952e5f2fc27d87730c312fdbeb")
+ ("cucumber.el" . "c08e4fa64bf3e9e354fd7f9f058916ba607e6631")
  ("dash.el" . "f46268c75cb7c18361d3cee942cd4dc14a03aef4")
  ("deft" . "28be94d89bff2e1c7edef7244d7c5ba0636b1296")
  ("dired-hacks" . "874449d6fc98aee565e1715ec18acec3c1c2cafb")

@@ -178,6 +178,9 @@
 ;; UML/Flows.
 (require 'init-plantuml-mode)
 
+;; Gherkin
+(require 'init-feature-mode)
+
 ;; DevOps stuff
 
 ;; Docker (tree-sitter)

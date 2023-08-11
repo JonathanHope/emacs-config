@@ -544,7 +544,8 @@
                                                    "typescript"
                                                    "tsx"
                                                    "html"
-                                                   "css"))))
+                                                   "css"
+                                                   "gherkin"))))
     (cond ((equal arg "plantuml")
            (progn
              (insert (format "#+begin_src %s :file temp.png\n" arg))

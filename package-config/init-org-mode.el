@@ -30,6 +30,8 @@
   (add-hook 'org-mode-hook 'prettify-symbols-mode)
   (add-hook 'org-mode-hook 'visual-line-mode)
 
+  :autoload orgtbl-mode
+  
   :config
   (require 'ob-js)
   
@@ -50,6 +52,7 @@
   (add-to-list 'org-src-lang-modes '("tsx" . tsx-ts))
   (add-to-list 'org-src-lang-modes '("html" . html-ts))
   (add-to-list 'org-src-lang-modes '("css" . css-ts))
+  (add-to-list 'org-src-lang-modes '("gherkin" . feature))
 
   (setq org-babel-clojure-backend 'cider)
 
