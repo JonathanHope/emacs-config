@@ -1,11 +1,6 @@
 (use-package smartparens
   :straight t
 
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
-  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-  ;; (add-hook 'org-mode-hook (lambda () (sp-local-pair 'org-mode "*" nil :actions :rem)))
-
   :config
   (require 'smartparens-config)
 
