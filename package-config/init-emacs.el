@@ -225,7 +225,8 @@
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
      (css "https://github.com/tree-sitter/tree-sitter-css")
      (html "https://github.com/tree-sitter/tree-sitter-html")
-     (javascript "https://github.com/tree-sitter/tree-sitter-javascript")))
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
+     (mermaid "https://github.com/monaqa/tree-sitter-mermaid")))
   
   (defun treesit-install-all ()
     (interactive)

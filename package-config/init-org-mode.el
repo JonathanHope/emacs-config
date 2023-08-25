@@ -48,6 +48,7 @@
   (add-to-list 'org-src-lang-modes '("yaml" . yaml-ts))
   (add-to-list 'org-src-lang-modes '("dockerfile" . dockerfile-ts))
   (add-to-list 'org-src-lang-modes '("typescript" . typescript-ts))
+  (add-to-list 'org-src-lang-modes '("mermaid" . mermaid-ts))
   (add-to-list 'org-src-lang-modes '("tsx" . tsx-ts))
   (add-to-list 'org-src-lang-modes '("html" . html-ts))
   (add-to-list 'org-src-lang-modes '("css" . css-ts))

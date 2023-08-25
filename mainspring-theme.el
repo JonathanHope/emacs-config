@@ -374,6 +374,8 @@
  '(font-lock-string-face               ((t (:foreground "#a3be8c" :slant italic))))
  '(font-lock-type-face                 ((t (:foreground "#ebcb8b"))))
  '(font-lock-variable-name-face        ((t (:foreground "#d08770"))))
+ '(font-lock-operator-face             ((t (:foreground "#a3be8c"))))
+ '(font-lock-bracket-face              ((t (:foreground "#a7adba"))))
  '(font-lock-warning-face              ((t (:foreground "#bf616a" :weight bold)))))
 
 (provide-theme 'mainspring)

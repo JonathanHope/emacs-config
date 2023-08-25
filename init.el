@@ -178,7 +178,7 @@
 ;; User stories
 (require 'init-feature-mode)
 
-;; Diagrams
+;; Diagrams (tree-sitter)
 (require 'init-mermaid-mode)
 (require 'init-ob-mermaid)
 
