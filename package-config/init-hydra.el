@@ -545,7 +545,8 @@
                                                    "tsx"
                                                    "html"
                                                    "css"
-                                                   "gherkin"))))
+                                                   "gherkin"
+                                                   "go"))))
     (cond ((equal arg "mermaid")
            (progn
              (insert (format "#+begin_src %s :file temp.png\n" arg))

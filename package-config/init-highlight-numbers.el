@@ -9,6 +9,7 @@
   (add-hook 'yaml-mode-hook #'highlight-numbers-mode)
   (add-hook 'typescript-ts-mode-hook #'highlight-numbers-mode)
   (add-hook 'tsx-ts-mode-hook #'highlight-numbers-mode)
-  (add-hook 'js-ts-mode-hook #'highlight-numbers-mode))
+  (add-hook 'js-ts-mode-hook #'highlight-numbers-mode)
+  (add-hook 'go-ts-mode-hook #'highlight-numbers-mode))
 
 (provide 'init-highlight-numbers)

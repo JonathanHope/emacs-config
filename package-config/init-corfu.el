@@ -11,7 +11,9 @@
          (cider-repl-mode-hook . corfu-mode)
          (cider-repl-mode-hook . corfu-popupinfo-mode)
          (cider-mode-hook . corfu-mode)
-         (cider-mode-hook . corfu-popupinfo-mode))
+         (cider-mode-hook . corfu-popupinfo-mode)
+         (go-ts-mode . corfu-mode)
+         (go-ts-mode . corfu-popupinfo-mode))
 
   :init
   (setq corfu-cycle t)

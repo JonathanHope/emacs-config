@@ -230,5 +230,8 @@
 ;; HTML support (tree-sitter).
 (require 'init-html-mode)
 
+;; Go support
+(require 'init-go-mode)
+
 ;; Run the startup function.
 (mainspring-startup)
