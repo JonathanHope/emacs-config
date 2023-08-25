@@ -39,7 +39,7 @@
  ("let-alist" . "021fc10df2e44faba4728d849ee767cf890aa51a")
  ("magit" . "2039619696bafeeebff245e316af640c19d5cf1c")
  ("mainspring-mode-line" . "3bb727c556025c47519cb2c19b66c6c2cb7ce3a9")
- ("mainspring-org-prettify" . "4ded1d6fcbf83e44006665043beafdda09527db1")
+ ("mainspring-org-prettify" . "1d3b2078b5206c11886d5713700f32f5fa57d824")
  ("map" . "2408508a353bfc24ac468d60d7690f50500374be")
  ("marginalia" . "866e50aee4f066b0903752c69b33e9b7cab93f97")
  ("markdown-mode" . "a4305f496efb64787d820e34d6418bfcbcbbed92")
