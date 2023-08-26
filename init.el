@@ -190,7 +190,7 @@
 ;; Markdown
 (require 'init-markdown-mode)
 
-;; CMake
+;; CMake (tree-sitter)
 (require 'init-cmake-mode)
 
 ;; Nix

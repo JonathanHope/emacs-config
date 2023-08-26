@@ -1,8 +1,7 @@
 (use-package cmake-mode
-  :straight t
   :defer t
 
   :mode
-  (("CMakeLists.txt" . cmake-mode)))
+  (("CMakeLists.txt" . cmake-ts-mode)))
 
 (provide 'init-cmake-mode)

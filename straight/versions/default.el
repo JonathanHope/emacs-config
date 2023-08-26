@@ -2,7 +2,6 @@
  ("avy" . "be612110cb116a38b8603df367942e2bb3d9bdbe")
  ("cider" . "cc31f5b28a702238e56250535c71c180fb2bbda6")
  ("clojure-mode" . "0e62583b5198f71856e4d7b80e1099789d47f2ed")
- ("cmake" . "beebc77992eb8e3bded59c33530b0831098b8d23")
  ("compat" . "80109b6fc3cfac84ac4351c31567a510fd6eefad")
  ("consult" . "be4fdb6246fb2cada13459fbabae5dd0553e1fd9")
  ("consult-projectile" . "5ef1ada3be767ea766255801050210f5d796deec")
