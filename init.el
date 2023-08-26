@@ -103,9 +103,6 @@
 ;; Quckly jump between functions in a buffer.
 (require 'init-iedit)
 
-;; Jump to the definition of things.
-(require 'init-dumb-jump)
-
 ;; Special syntax highlighting.
 (require 'init-rainbow-delimiters)
 (require 'init-highlight-numbers)
