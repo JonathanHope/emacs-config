@@ -230,7 +230,8 @@
      (go "https://github.com/tree-sitter/tree-sitter-go")
      (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
      (cmake "https://github.com/uyha/tree-sitter-cmake" "v0.2.0")
-     (bash "https://github.com/tree-sitter/tree-sitter-bash")))
+     (bash "https://github.com/tree-sitter/tree-sitter-bash")
+     (toml "https://github.com/tree-sitter/tree-sitter-toml")))
   
   (defun treesit-install-all ()
     (interactive)

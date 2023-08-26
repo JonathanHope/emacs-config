@@ -1,4 +1,4 @@
-(use-package bash-mode
+(use-package bash-ts-mode
   :defer t
 
   :mode (("\\.sh$" . bash-ts-mode)))

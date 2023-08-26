@@ -208,6 +208,9 @@
 ;; Bash (tree-sitter)
 (require 'init-bash-mode)
 
+;; TOML (tree-sitter)
+(require 'init-toml-mode)
+
 ;; Programming languages
 
 ;; EBNF support.

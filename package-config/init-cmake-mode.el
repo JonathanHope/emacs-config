@@ -1,4 +1,4 @@
-(use-package cmake-mode
+(use-package cmake-ts-mode
   :defer t
 
   :mode
