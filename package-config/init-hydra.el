@@ -339,8 +339,8 @@
 ┃ _i_: Italic           ┃
 ┃ _u_: Underline        ┃
 ┃ _s_: Strikethrough    ┃
+┃ _c_: Code             ┃
 ┃ _d_: Remove Formating ┃
-┃^^                     ┃
 ┃^^                     ┃
 ┃^^                     ┃
 ┃^^                     ┃
@@ -349,6 +349,7 @@
     ("b" mainspring-hydra-org-bold-region :color blue)
     ("i" mainspring-hydra-org-italic-region :color blue)
     ("u" mainspring-hydra-org-underline-region :color blue)
+    ("c" mainspring-hydra-org-code-region :color blue)
     ("s" mainspring-hydra-org-strikethrough-region :color blue)
     ("d" mainspring-hydra-org-standard-region :color blue)
     ("q" mainspring-hydra-pop :color blue))
@@ -524,6 +525,10 @@
   (defun mainspring-hydra-org-standard-region (beg end)
     (interactive "r")
     (org-emphasize ?\s))
+
+  (defun mainspring-hydra-org-code-region (beg end)
+    (interactive "r")
+    (org-emphasize ?~))
 
   (defun mainspring-hydra-org-insert-src-block (arg)
     (interactive

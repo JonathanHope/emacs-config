@@ -183,6 +183,7 @@
  '(org-document-info-keyword ((t (:foreground "#65737e" :slant italic))))
  '(org-document-title        ((t (:foreground "#65737e" :slant italic))) )
  '(org-headline-done         ((t (:foreground "#a3be8c" :weight bold))) )
+ '(org-code                  ((t (:box t))) )
 
  ;; Flyspell
  '(flyspell-duplicate ((t (:foreground "#ebcb8b" :weight bold))))
