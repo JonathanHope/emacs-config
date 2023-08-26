@@ -6,10 +6,10 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 
 ** Philosophy
 
-  * *Use CUA key bindings:* CUA bindings are used by most applications on most operating systems. Rather than spend the time to make every other application behave like Vim or Emacs, or increase my cognitive overhead by constantly switching between different key binding styles I simply use CUA style key bindings in emacs.
+  * *Use CUA key bindings:* CUA bindings are used by most applications on most operating systems. Rather than spend the time to make every other application behave like Vim or Emacs, or increase my cognitive overhead by constantly switching between different key binding styles I simply use CUA style key bindings in Emacs.
   * *Per mode functionality should be discoverable:* It is impossible to remember a bunch of mode specific key bindings for a lot of modes. Key bindings that are for a specific mode should generally be discoverable in a visual way.
   * *Window management should be simple:* Instead of having to configure complicated workspaces window management should be simple and intuitive.
-  * *Startup time matters:* Having to run an emacs server is an unnecessary complication. Instead effort should be made for it start quickly.
+  * *Startup time matters:* Having to run an Emacs server is an unnecessary complication. Instead effort should be made for it start quickly.
   * *Stability matters:* If something is useful but not stable it won't be brought in.
   * *Performance matters:* If something is useful but impacts performance too much in a negative way I won't bring it in until is performant.
   * *Use structural editing:* Structural editing, navigation, and selection should be implemented wherever possible as it is incredibly useful.
@@ -18,41 +18,37 @@ Mainspring is a highly opinionated Emacs configuration. For more information see
 
 ** Installation
 
-You obviously need Emacs. On Linux use whatever package manager is provided by your OS. On Windows the recommended distribution can be found here: https://ntemacs.sourceforge.io/. Whatever Emacs you install should have been compiled with image support.
+You will need Emacs 29 or better. On Windows this should be run through WSL.
 
-Some of the configuration relies on the idea of a home directory. You get this for free on Linux but not on Windows. Run the following command on Windows to set your home directory: setx HOME C:/Users/you.
+There are some manual steps:
 
-Git and a number of standard Linux tools are required. On Linux all you have to do is install git using your distributions package manager. On the Windows side run this installer: https://git-scm.com/download/win. Then make sure the path to git.exe and find.exe are the first entry in the system wide path variable. Projectile will not work if that is not the case.
+ - Run ~treesit-install-all~ after starting for the first time
+   - This will compile a bunch of tree sitter grammars
+ - If you are an NixOS you will need to start Emacs with Enchant the first time: ~nix-shell -p enchant pkgconfig  --run 'emacs'~
+   - Jinx needs to link to it, and NixOS has weird semantics around pkgconf
 
-This distribution of emacs uses tree-sitter. This means that you will need emacs 29 or better. To add a new language edit the treesit-language-source-alist variable in init-emacs.el. You will need to run treesit-install-all as part of installation, and whenver you add a new language. 
+There are a large number of dependencies required:
 
-On windows 8 and 10 the shortcut C-) will not work unless you change some default language settings. Use the following command: powershell -Command Set-ItemProperty -Path 'HKCU:\Keyboard Layout\Toggle' -Name HotKey -Value 3. See more about this here: https://superuser.com/a/631324.
+ - ~git:~ https://git-scm.com/
+ - ~hunspell:~ http://hunspell.github.io/ (also a dictionary)
+   - You will also need ~libenchant~ and ~pkgconf~
+ - ~rg:~ https://github.com/BurntSushi/ripgrep
+ - ~fd:~ https://github.com/sharkdp/fd
+ - ~octave:~ https://octave.org
+ - ~mmdc:~ https://www.npmjs.com/package/@mermaid-js/mermaid-cli
+ - ~multimarkdown:~  https://fletcherpenney.net/multimarkdown/
+ - ~pandoc:~ https://pandoc.org/
+ - ~typescript:~ https://www.npmjs.com/package/typescript
+ - ~typescript-language-server:~ https://www.npmjs.com/package/typescript-language-server
+ - ~prettier:~ https://prettier.io/
+ - ~gopls:~ https://pkg.go.dev/golang.org/x/tools/gopls
+ - ~gofmt:~ https://pkg.go.dev/cmd/gofmt
+ - ~latex:~ https://tug.org/texlive/
 
-Hunspell is required for spell checking. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://sourceforge.net/projects/ezwinports/.
+It also needs some fonts:
 
-Ripgrep is required for textual searching. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/BurntSushi/ripgrep/releases.
-
-Fd should be installed to improve project indexing. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/sharkdp/fd/releases.
-
-Graphviz is required for graphs in org mode. It can be installed on Linux using your distributions package manager. It can be found for windows here: http://www.graphviz.org/download/.
-
-Latex is required for formulas in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: http://www.tug.org/texlive/acquire-netinstall.html.
-
-Octave is required for octave blocks in org documents. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://www.gnu.org/software/octave/download.html.
-
-The mermaid cli is required for diagrams. It can be installed with NPM: ~npm install -g @mermaid-js/mermaid-cli~.
-
-MultiMarkdown is used to do live markdown previews. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://github.com/fletcher/peg-multimarkdown/downloads.
-
-Languagetool is required for grammar checking. It can be downloaded here: https://languagetool.org/download/. Extract it to ~/.languagetool.
-
-Pandoc is required for some org exports. It can be installed on Linux using your distributions package manager. It can be found for windows here: https://pandoc.org/installing.html.
-
-You will need the TypeScript language server for TypeScript/JavaScript. It can be installed with NPM: ~npm install -g typescript-language-server~.
-
-You will need the Go language server for Go. 
-
-It uses the pragmata fonts by default. These are non-free fonts. You will also want a nerd font for icons.
+ - *PragmataPro:* https://fsd.it/shop/fonts/pragmatapro/
+ - *Nerd Fonts:* https://www.nerdfonts.com/
 
 ** Keymap
 
@@ -115,18 +111,10 @@ Because the shortcuts for this config are so drastically different than standard
     * *ALT + SHIFT + 9:* Wrap in parentheses
     * *CTRL + SHIFT + k:* Kill sexp
 
-**** Code Folding
-
-    * *ALT + RETURN:* Toggle code folding
-
 **** Multiple Cursors
 
     * *CTRL + SHFIT + c:* Add cursors to lines
     * *CTRL + SHFIT + a:* Mark all like this
-
-**** Snippets
-
-    * *TAB:* Expand snippet
 
 *** General - Navigation
 
@@ -166,8 +154,6 @@ Because the shortcuts for this config are so drastically different than standard
     * *CTRL + g:* Go to line
     * *CTRL + p:* Go to file in project
     * *CTRL + SHIFT + p:* Execute command
-    * *F12:* Jump to definition
-    * *SHFIT + F12:* Jump back
 
 *** General - Files
 

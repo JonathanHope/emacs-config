@@ -196,6 +196,12 @@
  '(flymake-warning ((t (:foreground "#ebcb8b" :weight bold))))
  '(flymake-error ((t (:foreground "#bf616a" :weight bold))))
 
+ ;; Jinx
+ '(jinx-misspelled ((t (:foreground "#ebcb8b" :weight bold))))
+
+ ;; isearch
+ '(isearch ((t (:underline t))))
+ 
  ;; Company
  '(company-tooltip-annotation ((t (:foreground "#343d46" :slant italic))))
  '(company-preview ((t (:background "#343D46" :foreground "#8FA1B3" :underline t))))

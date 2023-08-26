@@ -43,7 +43,7 @@
 (require 'init-ox-reveal)
 (require 'init-ox-pandoc)
 (require 'init-olivetti)
-(require 'init-flycheck-languagetool)
+(require 'init-jinx)
 
 ;; Core
 
@@ -124,10 +124,6 @@
 
 ;; Show the color of color codes as a background color.
 (require 'init-rainbow-mode)
-
-;; Spell checking.
-(require 'init-flyspell)
-(require 'init-flyspell-correct)
 
 ;; File browser.
 (require 'init-dired)
