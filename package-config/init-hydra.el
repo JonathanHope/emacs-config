@@ -549,7 +549,7 @@
                                                    "go"))))
     (cond ((equal arg "mermaid")
            (progn
-             (insert (format "#+begin_src %s :file temp.png :pupeteer-config-file ~/.emacs.d/pupeteer-config.json\n" arg))
+             (insert (format "#+begin_src %s :file \"temp.svg\" :pupeteer-config-file \"~/.emacs.d/pupeteer-config.json\" :mermaid-config-file \"~/.emacs.d/mermaid-config.json\"\n" arg))
              (newline-and-indent)
              (insert "#+end_src\n")
              (previous-line 2)
