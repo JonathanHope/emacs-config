@@ -12,7 +12,9 @@
 
   :mode (("\\.ts$" . typescript-ts-mode)
          ("\\.tsx$" . tsx-ts-mode)
-         ("\\.js$" . js-ts-mode))
+         ("\\.js$" . js-ts-mode)
+         ("\\.cjs$" . js-ts-mode)
+         ("\\.mjs$" . js-ts-mode))
 
   :hook
   (typescript-ts-mode . eglot-ensure)
