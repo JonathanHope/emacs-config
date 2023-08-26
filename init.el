@@ -233,7 +233,7 @@
 ;; HTML support (tree-sitter).
 (require 'init-html-mode)
 
-;; Go support
+;; Go support (tree-sitter).
 (require 'init-go-mode)
 
 ;; Run the startup function.

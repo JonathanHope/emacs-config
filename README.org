@@ -50,6 +50,8 @@ Pandoc is required for some org exports. It can be installed on Linux using your
 
 You will need the TypeScript language server for TypeScript/JavaScript. It can be installed with NPM: ~npm install -g typescript-language-server~.
 
+You will need the Go language server for Go. 
+
 It uses the pragmata fonts by default. These are non-free fonts. You will also want a nerd font for icons.
 
 ** Keymap
