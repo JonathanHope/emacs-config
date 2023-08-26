@@ -229,7 +229,8 @@
      (mermaid "https://github.com/monaqa/tree-sitter-mermaid")
      (go "https://github.com/tree-sitter/tree-sitter-go")
      (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-     (cmake "https://github.com/uyha/tree-sitter-cmake" "v0.2.0")))
+     (cmake "https://github.com/uyha/tree-sitter-cmake" "v0.2.0")
+     (bash "https://github.com/tree-sitter/tree-sitter-bash")))
   
   (defun treesit-install-all ()
     (interactive)

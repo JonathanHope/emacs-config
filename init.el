@@ -205,6 +205,9 @@
 ;; GraphQL
 (require 'init-graphql-mode)
 
+;; Bash (tree-sitter)
+(require 'init-bash-mode)
+
 ;; Programming languages
 
 ;; EBNF support.
