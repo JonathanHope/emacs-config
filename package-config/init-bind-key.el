@@ -54,6 +54,9 @@
    ;; Regex search in a project.
    ("C-S-f" . consult-ripgrep)
 
+   ;; List TODOs.
+   ("C-S-t" . consult-todo)
+
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
 

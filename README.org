@@ -137,12 +137,13 @@ Because the shortcuts for this config are so drastically different than standard
     * *CTRL + HOME:* Beginning of buffer
     * *CTRL + END:* End of buffer
 
-**** Regex Searching
+**** Search/Replace
 
-    * *CTRL + f:* Regex search
-    * *CTRL + SHIFT + f:* Regex search in project
+    * *CTRL + f:* Search
+    * *CTRL + SHIFT + f:* Search in project
     * *CTRL + h:* Regex search and replace
     * *CTRL + SHIFT + h:* Regex search in project.
+    * *CTRL + SHIFT + t:* List TODOs.
 
 **** Structural Navigation
 

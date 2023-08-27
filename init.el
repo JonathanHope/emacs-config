@@ -70,6 +70,7 @@
 (require 'init-embark)
 (require 'init-embark-consult)
 (require 'init-corfu)
+(require 'init-consult-todo)
 
 ;; Ability to expand selections based on syntax.
 (require 'init-expand-region)
