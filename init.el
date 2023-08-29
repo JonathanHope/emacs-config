@@ -233,5 +233,8 @@
 ;; Go support (tree-sitter).
 (require 'init-go-mode)
 
+;; SQL support.
+(require 'init-sql-indent)
+
 ;; Run the startup function.
 (mainspring-startup)
