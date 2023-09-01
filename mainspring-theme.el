@@ -24,7 +24,7 @@
  '(bold-italic ((t (:slant italic :weight bold))))
  '(underline   ((t (:underline t))))
  '(italic      ((t (:slant italic))))
- '(shadow      ((t (:foreground "#4f5b66"))))
+ '(shadow      ((t (:foreground "#65737e"))))
  '(success     ((t (:foreground "#a3be8c"))))
  '(error       ((t (:foreground "#bf616a"))))
  '(warning     ((t (:foreground "#d08770"))))
