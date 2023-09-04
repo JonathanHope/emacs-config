@@ -44,6 +44,7 @@
 (require 'init-ox-pandoc)
 (require 'init-olivetti)
 (require 'init-jinx)
+(require' init-flycheck-vale)
 
 ;; Core
 
@@ -71,6 +72,7 @@
 (require 'init-embark-consult)
 (require 'init-corfu)
 (require 'init-consult-todo)
+(require 'init-consult-flycheck)
 
 ;; Ability to expand selections based on syntax.
 (require 'init-expand-region)

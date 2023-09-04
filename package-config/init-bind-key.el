@@ -57,6 +57,9 @@
    ;; List TODOs.
    ("C-S-t" . consult-todo)
 
+   ;; List flycheck/flymake errors.
+   ("C-S-m" . mainspring-show-errors)
+
    ;; Regex search and replace in file.
    ("C-h" . vr-replace-whole-buffer)
 
@@ -286,6 +289,13 @@
     "Cut the current line."
     (interactive)
     (mainspring-select-current-line)
-    (simpleclip-cut (region-beginning) (region-end))))
+    (simpleclip-cut (region-beginning) (region-end)))
+
+  (defun mainspring-show-errors ()
+    "Move down five lines."
+    (interactive)
+    (if (bound-and-true-p flycheck-mode)
+        (consult-flycheck)
+      (consult-flymake))))
 
 (provide 'init-bind-key)

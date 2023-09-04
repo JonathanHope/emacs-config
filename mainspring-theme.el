@@ -190,8 +190,9 @@
  '(flyspell-incorrect ((t (:foreground "#bf616a" :weight bold))))
 
  ;; Flycheck
- '(flycheck-warning ((t (:foreground "#ebcb8b" :weight bold))))
- '(flycheck-error ((t (:foreground "#bf616a" :weight bold))))
+ '(flycheck-info ((t (:weight bold :underline t))))
+ '(flycheck-warning ((t (:foreground "#ebcb8b" :weight bold :underline t))))
+ '(flycheck-error ((t (:foreground "#bf616a" :weight bold :underline t))))
 
  ;; Flymake
  '(flymake-warning ((t (:foreground "#ebcb8b" :weight bold))))
