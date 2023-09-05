@@ -70,7 +70,7 @@
    ("C-g" . goto-line)
 
    ;; Jump to a visible location.
-   ("C-S-g" . avy-goto-char-2)
+   ("C-S-g" . avy-goto-char-timer)
 
    ;; Open a file in a project.
    ("C-p" . consult-projectile)
