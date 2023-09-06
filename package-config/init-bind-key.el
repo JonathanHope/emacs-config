@@ -175,12 +175,6 @@
    ;; Sort lines.
    ("<f9>" . sort-lines)
 
-   ;; Jump to definition.
-   ("<f12>" . dumb-jump-go)
-
-   ;; Jump back.
-   ("S-<f12>" . dumb-jump-back)
-
    ;; Move to beginning of line.
    ("<home>" . beginning-of-line)
 

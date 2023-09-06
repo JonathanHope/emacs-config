@@ -186,6 +186,7 @@
 ┃ _e_: Export      ┃
 ┃ _k_: Latex       ┃
 ┃ _v_: Visibility  ┃
+┃ _p_: Paragraphs  ┃
 ┗^^━━━━━━━━━━━━━━━━┛
 "
     ("h" (progn
@@ -214,6 +215,9 @@
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("v" (progn
            (mainspring-hydra-org-visibility/body)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("p" (progn
+           (mainspring-hydra-org-paragraph/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -440,6 +444,25 @@
     ("o" olivetti-mode :color red)
     ("q" mainspring-hydra-pop :color blue))
 
+  (defhydra mainspring-hydra-org-paragraph (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - Paragraphs  ┃
+┣^^━━━━━━━━━━━━━━━━━━━┫
+┃ _b_: Quote          ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┗^^━━━━━━━━━━━━━━━━━━━┛
+"
+    ("b" mainspring-hydra-org-insert-blockquote :color blue)
+    ("q" mainspring-hydra-pop :color blue))
+
   (defun mainspring-hydra-org-insert-headline ()
     (interactive)
     (org-insert-heading))
@@ -635,6 +658,14 @@
   (defun mainspring-hydra-org-clojure-backend ()
     (interactive)
     (cider-jack-in nil))
+
+  (defun mainspring-hydra-org-insert-blockquote()
+    (interactive)
+    (progn
+      (insert "#+begin_quote\n")
+      (newline-and-indent)
+      (insert "#+end_quote\n")
+      (previous-line 2)))
 
   ;; Clojure Hydra
 
