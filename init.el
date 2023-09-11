@@ -37,7 +37,6 @@
 (require 'init-org-mode)
 (require 'init-org-contrib)
 (require 'init-ob-restclient)
-(require 'init-ob-typescript)
 (require 'init-mainspring-org-prettify)
 (require 'init-htmlize)
 (require 'init-ox-reveal)
