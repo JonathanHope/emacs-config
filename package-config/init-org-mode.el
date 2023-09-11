@@ -36,10 +36,7 @@
 
   ;; This seems to work with imports.
   (defun org-babel-execute:typescript (body params)
-    (let* ((env (setenv "NODE_PATH" (concat (expand-file-name default-directory) "node_modules")))
-           (results (org-babel-eval "npx ts-node" body))
-           (env (setenv "NODE_PATH" nil)))
-      results))
+    (org-babel-eval "npx ts-node" body))
     
   (org-babel-do-load-languages
    'org-babel-load-languages
