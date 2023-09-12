@@ -237,5 +237,8 @@
 ;; SQL support.
 (require 'init-sql-indent)
 
+;; Emacs Lisp support.
+(require 'init-flycheck-package)
+
 ;; Run the startup function.
 (mainspring-startup)
