@@ -122,6 +122,9 @@
 ;; Auto format code.
 (require 'init-apheleia)
 
+;; direnv support.
+(require 'init-emacs-direnv)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.
