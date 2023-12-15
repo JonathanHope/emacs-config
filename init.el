@@ -125,6 +125,9 @@
 ;; direnv support.
 (require 'init-emacs-direnv)
 
+;; Prompt for GPG password in minibuffer
+(require 'init-pinentry)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.

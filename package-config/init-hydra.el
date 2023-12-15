@@ -1024,11 +1024,13 @@
 ┃^^ Notmuch - Message        ┃
 ┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ _s_: Send                  ┃
+┃ _g_: Sign                  ┃
 ┃ _c_: Cancel                ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("c" kill-this-buffer :color blue)
     ("s" mainspring-hydra-notmuch-send-messsage :color blue)
+    ("g" mml-secure-sign-pgpmime :color blue)
     ("q" nil :color blue))
 
 (defun mainspring-hydra-notmuch-inbox ()
