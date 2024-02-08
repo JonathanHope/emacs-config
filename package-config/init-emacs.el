@@ -164,6 +164,13 @@
   ;; Hide ^M characters.
   (add-hook 'after-change-major-mode-hook 'hide-dos-eol)
 
+  ;; More efficient garbage collection.
+  (setq gc-cons-threshold #x40000000)
+  (defvar k-gc-timer
+  (run-with-idle-timer 15 t
+                       (lambda ()
+                         (garbage-collect))))
+
   ;; Allow some local variables.
   (put 'cider-clojure-cli-global-options 'safe-local-variable #'stringp)
   (put 'cider-preferred-build-tool 'safe-local-variable #'stringp)

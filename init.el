@@ -43,7 +43,9 @@
 (require 'init-ox-pandoc)
 (require 'init-olivetti)
 (require 'init-jinx)
-(require' init-flycheck-vale)
+(require 'init-flycheck-vale)
+(require 'init-org-present)
+(require 'init-hide-modeline)
 
 ;; Core
 

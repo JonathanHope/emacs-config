@@ -431,7 +431,8 @@
 ┃ _h_: Hide                 ┃
 ┃ _s_: Show                 ┃
 ┃ _o_: Olivetti             ┃
-┃^^                         ┃
+┃ _p_: Present              ┃
+┃ _P_: Quit Present         ┃
 ┃^^                         ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
@@ -442,6 +443,8 @@
     ("h" outline-hide-subtree :color red)
     ("s" outline-show-subtree :color red)
     ("o" olivetti-mode :color red)
+    ("p" org-present :color red)
+    ("P" org-present-quit :color red)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-paragraph (:hint nil)
