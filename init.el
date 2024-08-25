@@ -219,6 +219,8 @@
 
 ;; Programming languages
 
+(require 'init-eglot)
+
 ;; EBNF support.
 (require 'init-ebnf-mode)
 
@@ -247,6 +249,9 @@
 
 ;; Emacs Lisp support.
 (require 'init-flycheck-package)
+
+;; Elixir support.
+(require 'init-elixir-ts-mode)
 
 ;; Run the startup function.
 (mainspring-startup)

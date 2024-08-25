@@ -238,7 +238,9 @@
      (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
      (cmake "https://github.com/uyha/tree-sitter-cmake" "v0.2.0")
      (bash "https://github.com/tree-sitter/tree-sitter-bash")
-     (toml "https://github.com/tree-sitter/tree-sitter-toml")))
+     (toml "https://github.com/tree-sitter/tree-sitter-toml")
+     (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
+     (heex "https://github.com/phoenixframework/tree-sitter-heex")))
   
   (defun treesit-install-all ()
     (interactive)
