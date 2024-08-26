@@ -82,7 +82,7 @@
  ("shackle" . "f1467db75a8fa5d51c676181fb308ccbf7b05e6f")
  ("simpleclip" . "023f239275115169c3a3637ad95fae4a036c005e")
  ("slate" . "7a05ea53448fc6eb8dffd29a18948f4cc869d1f5")
- ("smartparens" . "79a338db115f441cd47bb91e6f75816c5e78a772")
+ ("smartparens" . "c7519a1b69f196050a13e2230b7532893b077086")
  ("spinner" . "634529bb3173e09b37499f636de70abf29d9fa8a")
  ("sql-indent" . "f170a2746f8dabc888154c9fdc11ffbaae637594")
  ("straight.el" . "ff63b154bef1ef8d92c141bd189001bff74f6982")
