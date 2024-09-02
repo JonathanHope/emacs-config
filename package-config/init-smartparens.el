@@ -26,6 +26,10 @@
          (js-ts-mode . show-smartparens-mode)
          (js-ts-mode . smartparens-mode)
          (go-ts-mode . show-smartparens-mode)
-         (go-ts-mode . smartparens-mode)))
+         (go-ts-mode . smartparens-mode)
+         (org-mode . smartparens-mode)
+         (org-mode . show-smartparens-mode)
+         (elisp-mode . smartparens-mode)
+         (elisp-mode . show-smartparens-mode)))
 
 (provide 'init-smartparens)
