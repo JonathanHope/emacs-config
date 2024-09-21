@@ -11,7 +11,8 @@
     (dired-hide-details-mode 1)
     (setq ls-lisp-use-insert-directory-program nil)
     (require 'ls-lisp)
-    (setq ls-lisp-dirs-first t))
+    (setq ls-lisp-dirs-first t)
+    (setq dired-free-space nil))
   (add-hook 'dired-mode-hook 'dired-mode-setup))
 
 (provide 'init-dired)
