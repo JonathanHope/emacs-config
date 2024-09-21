@@ -41,7 +41,7 @@
 ┃ _r_: Regex   ┃ _S_: Smerge     ┃ _V_: Variable ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell  ┃ _W_: Whitespace ┃ _A_: Face     ┃ _>_: Tabify   ┃^^                 ┃
 ┃ _n_: Deft    ┃ _C_: Flycheck   ┃^^             ┃^^             ┃^^                 ┃
-┃ _t_: Slate   ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _t_: Slate   ┃ _B_: Sidebar    ┃^^             ┃^^             ┃^^                 ┃
 ┃ _c_: Calc    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _i_: Ibuffer ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _e_: Notmuch ┃^^               ┃^^             ┃^^             ┃^^                 ┃
@@ -69,6 +69,7 @@
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)
     ("C" flycheck-mode :color red)
+    ("B" dired-sidebar-toggle-sidebar :color red)
     ("W" whitespace-mode :color red)
     ("M" describe-mode :color blue)
     ("F" describe-function :color blue)
