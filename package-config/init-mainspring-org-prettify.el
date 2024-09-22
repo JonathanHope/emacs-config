@@ -6,13 +6,13 @@
 
   :init
   (setq mainspring-org-prettify-done ?)
-  (setq mainspring-org-prettify-done-pad t)
+  (setq mainspring-org-prettify-done-pad nil)
   (setq mainspring-org-prettify-todo ?)
-  (setq mainspring-org-prettify-todo-pad t)
+  (setq mainspring-org-prettify-todo-pad nil)
   (setq mainspring-org-prettify-checkbox-unchecked ?)
-  (setq mainspring-org-prettify-checkbox-unchecked-pad t)
+  (setq mainspring-org-prettify-checkbox-unchecked-pad nil)
   (setq mainspring-org-prettify-checkbox-checked ?)
-  (setq mainspring-org-prettify-checkbox-checked-pad t)
+  (setq mainspring-org-prettify-checkbox-checked-pad nil)
   (setq mainspring-org-prettify-headline-dash ?━)
   (setq mainspring-org-prettify-headline-bullet ?⬢)
   (setq mainspring-org-prettify-plain-list-plus-char ?➤)
