@@ -212,6 +212,7 @@
     (interactive)
     (cond ((bound-and-true-p iedit-mode) (iedit-mode))
           ((bound-and-true-p iedit-rectangle-mode) (iedit-rectangle-mode))
+          ((derived-mode-p 'eshell-mode) (eshell-interrupt-process))
           ((active-minibuffer-window) (keyboard-escape-quit))
           ((string-match ".*-popup.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (magit-popup-quit))
           ((string-match "\\*docker\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (magit-popup-quit))

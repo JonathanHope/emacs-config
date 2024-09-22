@@ -12,7 +12,8 @@
     (setq ls-lisp-use-insert-directory-program nil)
     (require 'ls-lisp)
     (setq ls-lisp-dirs-first t)
-    (setq dired-free-space nil))
+    (setq dired-free-space nil)
+    (setq dired-listing-switches "-aBhl --group-directories-first"))
   (add-hook 'dired-mode-hook 'dired-mode-setup))
 
 (provide 'init-dired)
