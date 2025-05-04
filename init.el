@@ -127,8 +127,11 @@
 ;; direnv support.
 (require 'init-emacs-direnv)
 
-;; Prompt for GPG password in minibuffer
+;; Prompt for GPG password in minibuffer.
 (require 'init-pinentry)
+
+;; LLM completions.
+(require 'init-copilot)
 
 ;; Apps
 
@@ -183,7 +186,7 @@
 (require 'init-feature-mode)
 
 ;; Diagrams (tree-sitter)
-(require 'init-mermaid-mode)
+(require 'init-mermaid-ts-mode)
 (require 'init-ob-mermaid)
 
 ;; DevOps stuff
@@ -225,10 +228,6 @@
 ;; EBNF support.
 (require 'init-ebnf-mode)
 
-;; Clojure support.
-(require 'init-clojure-mode)
-(require 'init-cider)
-
 ;; Octave support.
 (require 'init-octave-mode)
 
@@ -250,9 +249,6 @@
 
 ;; Emacs Lisp support.
 (require 'init-flycheck-package)
-
-;; Elixir support.
-(require 'init-elixir-ts-mode)
 
 ;; Run the startup function.
 (mainspring-startup)

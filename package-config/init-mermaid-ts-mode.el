@@ -1,5 +1,4 @@
 (use-package mermaid-ts-mode
-  :ensure nil
-  :load-path "~/Projects/mermaid-ts-mode/mermaid-ts-mode.el")
+  :straight (mermaid-ts-mode :type git :host github :repo "JonathanHope/mermaid-ts-mode"))
 
 (provide 'init-mermaid-ts-mode)

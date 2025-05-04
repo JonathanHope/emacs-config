@@ -1,8 +1,9 @@
 (use-package "eglot"
   :defer t
-  
-  :config
-  (add-to-list 'eglot-server-programs '(elixir-ts-mode "elixir-ls"))
-  (add-to-list 'eglot-server-programs '(heex-ts-mode "elixir-ls")))
+
+  :hook ((typescript-ts-mode . eglot-ensure)
+         (tsx-ts-mode . eglot-ensure)
+         (js-ts-mode . eglot-ensure)
+         (go-ts-mode . eglot-ensure)))
 
 (provide 'init-eglot)

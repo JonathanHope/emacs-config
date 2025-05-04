@@ -225,8 +225,6 @@
           ((bound-and-true-p with-editor-mode) (with-editor-cancel nil))
           ((equal major-mode 'help-mode) (kill-buffer))
           ((string-match ".* Export\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
-          ((string-match ".*cider-error.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
-          ((string-match ".*cider-result.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match ".*docker-build-output.*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match "\\*run .*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))
           ((string-match "\\*Org-Babel Error Output\\*" (buffer-name (window-buffer (minibuffer-selected-window)))) (kill-buffer))

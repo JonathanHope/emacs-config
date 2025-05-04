@@ -368,7 +368,7 @@
 ┃ _n_: New Source Block      ┃
 ┃ _s_: Set Source Block      ┃
 ┃ _e_: Execute Source Block  ┃
-┃ _c_: Start Clojure Backend ┃
+┃^^                          ┃
 ┃^^                          ┃
 ┃^^                          ┃
 ┃^^                          ┃
@@ -379,7 +379,6 @@
     ("n" mainspring-hydra-org-insert-src-block :color blue)
     ("s" org-edit-src-code :color blue)
     ("e" org-babel-execute-src-block :color blue)
-    ("c" mainspring-hydra-org-clojure-backend :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-export (:hint nil)
@@ -659,10 +658,6 @@
     (interactive)
     (org-update-statistics-cookies t))
 
-  (defun mainspring-hydra-org-clojure-backend ()
-    (interactive)
-    (cider-jack-in nil))
-
   (defun mainspring-hydra-org-insert-blockquote()
     (interactive)
     (progn
@@ -671,76 +666,6 @@
       (insert "#+end_quote\n")
       (previous-line 2)))
 
-  ;; Clojure Hydra
-
-  (defhydra mainspring-hydra-clojure (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Clojure                  ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _o_: Launch CLJ REPL       ┃
-┃ _j_: Launch CLJ REPL       ┃
-┃ _J_: Launch CLJS REPL      ┃
-┃ _l_: Load Buffer Into REPL ┃
-┃ _n_: Set REPL Namespace    ┃
-┃ _c_: Clear REPL            ┃
-┃ _r_: Refresh REPL          ┃
-┃ _k_: Close the REPL        ┃
-┃ _f_: Evaluate Form Inline  ┃
-┃ _F_: Evaluate Form         ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-"
-    ("o" mainspring-hydra-clojure-launch-clj-repl :color blue)
-    ("j" mainspring-hydra-clojure-join-clj-repl :color blue)
-    ("J" mainspring-hydra-clojure-join-cljs-repl :color blue)
-    ("l" cider-load-buffer :color blue)
-    ("n" cider-repl-set-ns :color blue)
-    ("c" mainspring-hydra-clojure-clear-repl :color blue)
-    ("r" cider-ns-refresh :color blue)
-    ("k" cider-quit :color blue)
-    ("f" cider-eval-defun-at-point :color blue)
-    ("F" cider-pprint-eval-defun-at-point :color blue)
-    ("q" nil :color blue))
-
-  (defhydra mainspring-hydra-clojure-cider (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃^^ Clojure - Cider          ┃
-┣^^━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ _c_: Clear REPL            ┃
-┗^^━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-"
-    ("c" mainspring-hydra-clojure-clear-repl :color blue)
-    ("q" nil :color blue))
-
-  (defun mainspring-hydra-clojure-clear-repl ()
-    (interactive)
-    (cider-find-and-clear-repl-output t))
-
-  (defun mainspring-hydra-clojure-launch-clj-repl ()
-    (interactive)
-    (add-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
-    (setq cider-repl-pop-to-buffer-on-connect t)
-    (cider-jack-in nil))
-
-  (defun mainspring-hydra-clojure-join-cljs-repl ()
-    (interactive)
-    (add-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
-    (setq cider-repl-pop-to-buffer-on-connect t)
-    (setq )
-    (cider-connect-cljs))
-
-  (defun mainspring-hydra-clojure-join-clj-repl ()
-    (interactive)
-    (add-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
-    (setq cider-repl-pop-to-buffer-on-connect t)
-    (cider-connect-clj))
-
-  (defun mainspring-hydra-clojure-show-repl ()
-    (interactive)
-    (remove-hook 'cider-connected-hook 'mainspring-hydra-clojure-show-repl)
-    (cider-find-and-clear-repl-output t)
-    (balance-windows))
 
   (defhydra mainspring-hydra-dired (:hint nil)
     "
@@ -753,8 +678,8 @@
 ┃ _v_: View        ┃ _G_: Change Group       ┃
 ┃ _m_: Mark        ┃ _M_: Change Permissions ┃
 ┃ _u_: Unmark      ┃ _+_: Create Directory   ┃
+┃ _U_: Unmark All  ┃ _c_: Create File        ┃
 ┃ _U_: Unmark All  ┃ _<tab>_: Cycle Subtree  ┃
-┃ _U_: Unmark All  ┃^^                       ┃
 ┃ _(_: Details     ┃^^                       ┃
 ┗^^━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
@@ -769,6 +694,7 @@
     ("D" dired-do-delete :color red)
     ("C" dired-do-copy :color red)
     ("+" dired-create-directory :color red)
+    ("c" dired-create-empty-file :color red)
     ("M" dired-do-chmod :color red)
     ("G" dired-do-chgrp :color red)
     ("(" dired-hide-details-mode :color red)

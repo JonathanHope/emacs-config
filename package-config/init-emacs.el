@@ -171,13 +171,6 @@
                        (lambda ()
                          (garbage-collect))))
 
-  ;; Allow some local variables.
-  (put 'cider-clojure-cli-global-options 'safe-local-variable #'stringp)
-  (put 'cider-preferred-build-tool 'safe-local-variable #'stringp)
-  (put 'cider-known-endpoints 'safe-local-variable #'listp)
-  (put 'cider-default-cljs-repl 'safe-local-variable (lambda (x) t))
-  (put 'cider-shadow-default-options 'safe-local-variable (lambda (x) t))
-
   (defun hide-dos-eol ()
     "Hide ^M in files containing mixed UNIX and DOS line endings."
     (interactive)
@@ -238,9 +231,7 @@
      (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
      (cmake "https://github.com/uyha/tree-sitter-cmake" "v0.2.0")
      (bash "https://github.com/tree-sitter/tree-sitter-bash")
-     (toml "https://github.com/tree-sitter/tree-sitter-toml")
-     (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
-     (heex "https://github.com/phoenixframework/tree-sitter-heex")))
+     (toml "https://github.com/tree-sitter/tree-sitter-toml")))
   
   (defun treesit-install-all ()
     (interactive)

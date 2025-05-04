@@ -41,7 +41,6 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((octave . t)
-     (clojure . t)
      (restclient . t)
      (mermaid . t)))
 
@@ -58,7 +57,6 @@
   (add-to-list 'org-src-lang-modes '("css" . css-ts))
   (add-to-list 'org-src-lang-modes '("gherkin" . feature))
 
-  (setq org-babel-clojure-backend 'cider)
 
   (add-to-list 'org-babel-tangle-lang-exts '("js" . "js"))
   (add-to-list 'org-babel-tangle-lang-exts '("ts" . "ts"))
