@@ -42,7 +42,8 @@
    'org-babel-load-languages
    '((octave . t)
      (restclient . t)
-     (mermaid . t)))
+     (mermaid . t)
+     (shell . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))

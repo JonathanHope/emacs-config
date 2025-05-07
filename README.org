@@ -24,7 +24,7 @@ There are some manual steps:
 
  - Run ~treesit-install-all~ after starting for the first time
    - This will compile a bunch of tree sitter grammars
- - If you are an NixOS you will need to start Emacs with Enchant the first time: ~nix-shell -p enchant pkgconfig  --run 'emacs'~
+ - If you are an NixOS you will need to start Emacs with Enchant the first time: ~nix-shell -p enchant pkg-config  --run 'emacs'~
    - Jinx needs to link to it, and NixOS has weird semantics around pkgconf
  - Copilot has some one time setup:
    - ~copilot-install-server~
