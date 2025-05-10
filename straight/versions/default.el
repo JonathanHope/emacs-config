@@ -32,6 +32,7 @@
  ("flycheck-package" . "3a6aaed29ff61418c48c0251e1432c30748ae739")
  ("flycheck-vale" . "7c7ebc3de058a321cb76348a01f45f02dc55d2f0")
  ("gnu-elpa-mirror" . "be1351c478935b8348c19d3197cd5d84330c708d")
+ ("gptel" . "15d056fb3fd8d0b594a5b24e96472a98e9be08dd")
  ("graphql-mode" . "0ad4ae0160cabad46109dfbb394297a185eb2525")
  ("hcl-mode" . "751b79247f326ab52e00032e805775c37ad9f080")
  ("highlight-numbers" . "8b4744c7f46c72b1d3d599d4fb75ef8183dee307")

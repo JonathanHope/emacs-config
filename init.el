@@ -166,6 +166,9 @@
 ;; Email
 (require 'init-notmuch)
 
+;; LLM Chat
+(require 'init-gptel)
+
 ;; Config file formats.
 
 ;; XML support.

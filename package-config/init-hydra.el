@@ -45,6 +45,7 @@
 ┃ _c_: Calc    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _i_: Ibuffer ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _e_: Notmuch ┃^^               ┃^^             ┃^^             ┃^^                 ┃
+┃ _a_: LLM     ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┗^^━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━┛
 ┏^^━━━━━━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━┳^^━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃^^ Resize Window           ┃^^ Select Window      ┃^^ Manage Window         ┃
@@ -65,6 +66,7 @@
     ("c" full-calc :color red)
     ("i" ibuffer :color red)
     ("e" notmuch :color red)
+    ("a" gptel :color red)
     ("L" jinx-mode :color red)
     ("R" rainbow-mode :color red)
     ("S" smerge-start-session :color red)
@@ -169,7 +171,7 @@
     (interactive "p")
     (flycheck-languagetool-setup)
     (flycheck-mode))
-
+  
 
   ;; Org-mode Hydras
 
@@ -188,6 +190,7 @@
 ┃ _k_: Latex       ┃
 ┃ _v_: Visibility  ┃
 ┃ _p_: Paragraphs  ┃
+┃ _a_: LLM         ┃
 ┗^^━━━━━━━━━━━━━━━━┛
 "
     ("h" (progn
@@ -219,6 +222,9 @@
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("p" (progn
            (mainspring-hydra-org-paragraph/body)
+           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("a" (progn
+           (mainspring-hydra-org-llm/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
     ("q" nil :color blue))
 
@@ -464,6 +470,25 @@
 ┗^^━━━━━━━━━━━━━━━━━━━┛
 "
     ("b" mainspring-hydra-org-insert-blockquote :color blue)
+    ("q" mainspring-hydra-pop :color blue))
+
+  (defhydra mainspring-hydra-org-llm (:hint nil)
+    "
+┏^^━━━━━━━━━━━━━━━━━━━┓
+┃^^ Org - LLM         ┃
+┣^^━━━━━━━━━━━━━━━━━━━┫
+┃ _e_: Send           ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┃^^                   ┃
+┗^^━━━━━━━━━━━━━━━━━━━┛
+"
+    ("e" gptel-send :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defun mainspring-hydra-org-insert-headline ()
