@@ -133,6 +133,9 @@
 ;; LLM completions.
 (require 'init-copilot)
 
+;; Better scratch files
+(require 'init-mainspring-scratch)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.

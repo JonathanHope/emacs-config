@@ -55,6 +55,7 @@
 ┃ _<left>_: Splitter Left   ┃ _3_: Select Window 3 ┃ _x_: Delete             ┃
 ┃ _<right>_: Splitter Right ┃ _4_: Select Window 4 ┃ _b_: Change Buffer      ┃
 ┃ _=_: Balance Windows      ┃^^                    ┃ _f_: Choose File        ┃
+┃ _=_: Balance Windows      ┃^^                    ┃ _c_: Scratch            ┃
 ┗^^━━━━━━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("d" dired :color red)
@@ -99,6 +100,7 @@
     ("b" consult-buffer :color red)
     ("f" find-file :color red)
     ("=" balance-windows :color red)
+    ("c" mainspring-scratch :color red)
     ("q" nil :color blue))
 
   (defun mainspring-hydra-apps-magit-status ()

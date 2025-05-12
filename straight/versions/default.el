@@ -47,6 +47,7 @@
  ("magit" . "2039619696bafeeebff245e316af640c19d5cf1c")
  ("mainspring-mode-line" . "78e085021eb7a20287064e8d7132a6ec428ab2ed")
  ("mainspring-org-prettify" . "1d3b2078b5206c11886d5713700f32f5fa57d824")
+ ("mainspring-scratch" . "a97453736632033db14428d451b88770f913afc3")
  ("marginalia" . "866e50aee4f066b0903752c69b33e9b7cab93f97")
  ("markdown-mode" . "a4305f496efb64787d820e34d6418bfcbcbbed92")
  ("melpa" . "4d9ff9717f25fd229891746044777de8a73558c2")
