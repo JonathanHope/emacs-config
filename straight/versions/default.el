@@ -58,6 +58,7 @@
  ("nix-mode" . "719feb7868fb567ecfe5578f6119892c771ac5e5")
  ("nongnu-elpa" . "c0840d025ba5ad3fc3f2dbd08d3b4ab72cf07574")
  ("notmuch" . "b6f144abe1f5aa3519240cf52f4cb9907fefcd0e")
+ ("ob-go" . "2067ed55f4c1d33a43cb3f6948609d240a8915f5")
  ("ob-mermaid" . "b4ce25699e3ebff054f523375d1cf5a17bd0dbaf")
  ("ob-restclient.el" . "ded3b7eb7b0592328a7a08ecce6f25278cba4a1d")
  ("olivetti" . "a644ee9d24c7283435ce42e11498951e100608c9")

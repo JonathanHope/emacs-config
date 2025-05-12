@@ -43,7 +43,8 @@
    '((octave . t)
      (restclient . t)
      (mermaid . t)
-     (shell . t)))
+     (shell . t)
+     (go . t)))
 
   (add-to-list 'org-src-lang-modes '("xml" . sgml))
   (add-to-list 'org-src-lang-modes '("ebnf" . ebnf))

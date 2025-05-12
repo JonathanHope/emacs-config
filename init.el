@@ -249,6 +249,7 @@
 
 ;; Go support (tree-sitter).
 (require 'init-go-mode)
+(require 'init-ob-go)
 
 ;; SQL support.
 (require 'init-sql-indent)
