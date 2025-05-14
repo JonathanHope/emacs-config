@@ -40,7 +40,7 @@
 ┃ _m_: Magit   ┃ _L_: Jinx       ┃ _F_: Function ┃ _SPC_: Spaces ┃ _-_: Zoom Out     ┃
 ┃ _r_: Regex   ┃ _S_: Smerge     ┃ _V_: Variable ┃ _._: Untabify ┃ _0_: Zoom Reset   ┃
 ┃ _s_: Eshell  ┃ _W_: Whitespace ┃ _A_: Face     ┃ _>_: Tabify   ┃^^                 ┃
-┃ _n_: Deft    ┃ _C_: Flycheck   ┃^^             ┃^^             ┃^^                 ┃
+┃ _n_: Notes   ┃ _C_: Flycheck   ┃^^             ┃^^             ┃^^                 ┃
 ┃ _t_: Slate   ┃ _B_: Sidebar    ┃^^             ┃^^             ┃^^                 ┃
 ┃ _c_: Calc    ┃^^               ┃^^             ┃^^             ┃^^                 ┃
 ┃ _i_: Ibuffer ┃^^               ┃^^             ┃^^             ┃^^                 ┃
@@ -62,7 +62,7 @@
     ("m" mainspring-hydra-apps-magit-status :color red)
     ("o" mainspring-hydra-apps-org-mode-launch :color red)
     ("s" eshell :color red)
-    ("n" deft :color red)
+    ("n" consult-notes :color red)
     ("t" slate :color red)
     ("c" full-calc :color red)
     ("i" ibuffer :color red)

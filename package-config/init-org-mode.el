@@ -62,6 +62,7 @@
 
   (add-to-list 'org-babel-tangle-lang-exts '("js" . "js"))
   (add-to-list 'org-babel-tangle-lang-exts '("ts" . "ts"))
+  (add-to-list 'org-babel-tangle-lang-exts '("go" . "go"))
   
   (defun turn-on-org-show-all-inline-images ()
     (org-display-inline-images t t)

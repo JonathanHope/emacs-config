@@ -366,6 +366,13 @@
  '(dired-subtree-depth-5-face ((t ())))
  '(dired-subtree-depth-6-face ((t ())))
 
+ ;; consult-notes
+
+ '(consult-notes-name              ((t (:foreground "#ebcb8b"))))
+ '(consult-notes-size              ((t (:foreground "#65737e" :slant italic))))
+ '(consult-notes-time              ((t (:foreground "#65737e" :slant italic))))
+ '(consult-notes-sep               ((t (:foreground "#b48ead" ))))
+ 
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
  '(font-lock-comment-delimiter-face    ((t (:foreground "#65737e" :slant italic))))

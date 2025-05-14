@@ -158,7 +158,8 @@
 (require 'init-calc)
 
 ;; Notes manager.
-(require 'init-deft)
+(require 'init-denote)
+(require 'init-consult-notes)
 
 ;; Master TODO list.
 (require 'init-slate)
