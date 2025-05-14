@@ -331,7 +331,7 @@
 ┃ _h_: New HTTP Link  ┃
 ┃ _f_: New File Link  ┃
 ┃ _i_: New Image Link ┃
-┃^^                   ┃
+┃ _n_: New Note Link  ┃
 ┃^^                   ┃
 ┃^^                   ┃
 ┃^^                   ┃
@@ -342,6 +342,7 @@
     ("h" mainspring-hydra-org-insert-http-link :color blue)
     ("f" mainspring-hydra-org-insert-file-link :color blue)
     ("i" mainspring-hydra-org-insert-image-link :color blue)
+    ("n" denote-link :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
   (defhydra mainspring-hydra-org-formatting (:hint nil)

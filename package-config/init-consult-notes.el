@@ -10,7 +10,6 @@
 
   (consult-customize consult-notes :preview-key nil)
 
-  (setq consult-notes-denote-display-id nil)
   (setq consult-notes-denote-dir nil))
 
 (provide 'init-consult-notes)
