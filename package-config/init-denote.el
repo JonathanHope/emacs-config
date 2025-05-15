@@ -6,6 +6,7 @@
   
   :config
   (setq denote-directory (expand-file-name "~/Notes"))
+  (setq denote-save-buffers t)
   (denote-rename-buffer-mode 1))
 
 (provide 'init-denote)

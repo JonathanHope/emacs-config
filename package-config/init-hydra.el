@@ -708,7 +708,8 @@
 ┃ _u_: Unmark      ┃ _+_: Create Directory   ┃
 ┃ _U_: Unmark All  ┃ _c_: Create File        ┃
 ┃ _U_: Unmark All  ┃ _<tab>_: Cycle Subtree  ┃
-┃ _(_: Details     ┃^^                       ┃
+┃ _(_: Details     ┃ _r_: Filter Regex       ┃
+┃ _._: Filter Ext  ┃ _/_: Clear Filters      ┃
 ┗^^━━━━━━━━━━━━━━━━┻^^━━━━━━━━━━━━━━━━━━━━━━━┛
 "
     ("<down>" next-line :color red)
@@ -727,6 +728,9 @@
     ("G" dired-do-chgrp :color red)
     ("(" dired-hide-details-mode :color red)
     ("<tab>" dired-subtree-toggle :color red)
+    ("." dired-filter-by-extension :color red)
+    ("r" dired-filter-by-regexp :color red)
+    ("/" dired-filter-pop-all :color red)
     ("q" nil :color blue))
 
   ;; Deft Hydra

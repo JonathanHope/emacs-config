@@ -146,6 +146,7 @@
 (require 'init-dired-subtree)
 (require 'init-nerd-icons-dired)
 (require 'init-dired-sidebar)
+(require 'init-dired-filter)
 
 ;; Git support.
 (require 'init-magit)
