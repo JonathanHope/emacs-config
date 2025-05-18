@@ -62,7 +62,7 @@
     ("m" mainspring-hydra-apps-magit-status :color red)
     ("o" mainspring-hydra-apps-org-mode-launch :color red)
     ("s" eshell :color red)
-    ("n" consult-notes :color red)
+    ("n" mainspring-consult-notes :color red)
     ("t" slate :color red)
     ("c" full-calc :color red)
     ("i" ibuffer :color red)

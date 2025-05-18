@@ -160,7 +160,7 @@
 
 ;; Notes manager.
 (require 'init-denote)
-(require 'init-consult-notes)
+(require 'init-mainspring-notes)
 
 ;; Master TODO list.
 (require 'init-slate)
