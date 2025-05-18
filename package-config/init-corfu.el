@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package corfu
   :straight (:files (:defaults "extensions/*.el"))
   :defer t

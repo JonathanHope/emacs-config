@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package html-ts-mode
   :defer t
 

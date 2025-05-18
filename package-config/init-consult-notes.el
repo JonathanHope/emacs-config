@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package consult-notes
   :straight (:type git :host github :repo "mclear-tools/consult-notes")
   :commands (consult-notes

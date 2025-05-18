@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package "emacs"
   :bind
   (:map emacs-lisp-mode-map

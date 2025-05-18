@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package ox-reveal
   :straight t
   :defer t

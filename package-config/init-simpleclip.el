@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package simpleclip
   :defer t
   :straight t

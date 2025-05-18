@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package ibuffer
   :init
   (setq ibuffer-expert t)

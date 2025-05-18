@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package visual-regexp
   :defer t
   :straight t)

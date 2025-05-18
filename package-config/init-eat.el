@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package eat
   :straight (eat
              :type git

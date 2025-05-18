@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package org-present
   :straight t
   :defer t

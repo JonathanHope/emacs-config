@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package notmuch
   :straight t
   :defer t

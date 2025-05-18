@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package ebnf-mode
   :defer t
   :straight (:type git

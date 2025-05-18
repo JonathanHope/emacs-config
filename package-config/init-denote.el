@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package denote
   :straight t
   :defer t

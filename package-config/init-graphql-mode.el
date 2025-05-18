@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package graphql-mode
   :straight t
   :defer t)

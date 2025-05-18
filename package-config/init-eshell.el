@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; t-*-
 (use-package "eshell"
   :defer t
   :commands (eshell)

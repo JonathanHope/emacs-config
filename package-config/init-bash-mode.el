@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package bash-ts-mode
   :defer t
 

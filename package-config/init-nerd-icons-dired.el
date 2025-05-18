@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package nerd-icons-dired
   :straight t
   :defer t

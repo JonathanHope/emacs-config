@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package sgml-mode
   :defer t
 

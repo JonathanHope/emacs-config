@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package flycheck-vale
   :straight t
   :defer t

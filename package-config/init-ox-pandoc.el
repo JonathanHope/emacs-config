@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package ox-pandoc
   :straight t
   :defer t

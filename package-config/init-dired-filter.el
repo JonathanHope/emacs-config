@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package dired-filter
   :straight t
   :defer t

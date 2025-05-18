@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package go-ts-mode
   :defer t
 

@@ -1,4 +1,4 @@
-;; Set Emacs to use UTF8
+;; Set Emacs to use UTF8  -*- lexical-binding: t; -*-
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 

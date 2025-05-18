@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package fish-mode
   :straight t
   :defer t

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package cmake-ts-mode
   :defer t
 

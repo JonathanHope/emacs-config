@@ -1,4 +1,4 @@
-;; mainspring-theme.el --- Custom color theme based on base16 ocean.
+;; mainspring-theme.el --- Custom color theme based on base16 ocean.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2018 Jonathan Hope
 

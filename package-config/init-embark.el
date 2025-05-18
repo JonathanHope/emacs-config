@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package embark
   :straight t
 
