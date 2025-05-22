@@ -136,6 +136,9 @@
 ;; Better scratch files
 (require 'init-mainspring-scratch)
 
+;; Solve path issues on Mac
+(require 'init-exec-path-from-shell)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.

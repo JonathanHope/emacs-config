@@ -26,6 +26,7 @@
  ("emacsmirror-mirror" . "cd860dfc8c2a2a8a6b22907fccdbec4295349beb")
  ("embark" . "923d0ec52e2e3e0ae44e497c31c7888e87d08a8f")
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
+ ("exec-path-from-shell" . "4896a797252fbfdac32fb77508500ac7d220f717")
  ("expand-region.el" . "b70feaa644310dc2d599dc277cd20a1f2b6446ac")
  ("f.el" . "931b6d0667fe03e7bf1c6c282d6d8d7006143c52")
  ("flycheck" . "5f2ef177cb21ae8b73714575802beef04abd0f5e")
