@@ -46,7 +46,7 @@
  ("let-alist" . "021fc10df2e44faba4728d849ee767cf890aa51a")
  ("magit" . "2039619696bafeeebff245e316af640c19d5cf1c")
  ("mainspring-mode-line" . "78e085021eb7a20287064e8d7132a6ec428ab2ed")
- ("mainspring-notes" . "1b7748a6514195a9624db68a29c7df467dce7a88")
+ ("mainspring-notes" . "6ea51cafa9d52cd978da47b993d993e36cce8285")
  ("mainspring-org-prettify" . "1d3b2078b5206c11886d5713700f32f5fa57d824")
  ("mainspring-scratch" . "a97453736632033db14428d451b88770f913afc3")
  ("marginalia" . "3cfba58cd56bdf5c12609a8bfc89fb97f3df37b0")

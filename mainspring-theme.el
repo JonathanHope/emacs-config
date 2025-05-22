@@ -375,6 +375,7 @@
 
  ;; mainspring-notes
  '(mainspring-notes-id-face               ((t (:foreground "#65737e" :weight bold))))
+ '(mainspring-notes-filetags-face         ((t (:foreground "#ebcb8b" :slant italic))))
  
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))
