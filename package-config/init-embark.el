@@ -21,12 +21,6 @@
      (interactive "fNote: ")
      (denote cand (denote-keywords-prompt)))
    
-  (defvar-keymap consult-notes-map
-    :doc "Keymap for Embark notes actions."
-    :parent embark-general-map
-    "d" #'delete-note)
-
-  (add-to-list 'embark-keymap-alist `(,consult-notes-category . consult-notes-map))
   (keymap-set embark-general-map "n" 'new-note)
    
   :bind
