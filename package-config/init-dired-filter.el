@@ -5,7 +5,7 @@
 
   :hook (dired-mode . dired-filter-mode)
 
-  :config
+  :init
   (setq dired-filter-stack '()))
 
 (provide 'init-dired-filter)

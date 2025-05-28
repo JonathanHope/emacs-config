@@ -1,9 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (use-package dired-subtree
   :straight t
-  :defer t
-
-  :config
-  (setq dired-filter-stack '()))
+  :defer t)
 
 (provide 'init-dired-subtree)
