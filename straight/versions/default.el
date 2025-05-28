@@ -13,6 +13,7 @@
  ("dired-hacks" . "874449d6fc98aee565e1715ec18acec3c1c2cafb")
  ("dired-sidebar" . "3bc8927ed4d14a017eefc75d5af65022343e2ac1")
  ("dockerfile-mode" . "52c6c00da1d31c0b6c29c74335b3af63ed6bf06c")
+ ("dotenv.el" . "5daf195000c9ec0b187023801495d163e388d3dd")
  ("ebnf-mode" . "73d6fb8b208fb1c158cb64f3b97828e6a98ee604")
  ("editorconfig-emacs" . "d2beb3ec2e7f84505818594124a7202d5d6d0185")
  ("el-get" . "f3f1edd434221dc6daef565ebf77fa40c4cead36")

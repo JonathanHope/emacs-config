@@ -143,6 +143,9 @@
 ;; Ephemeral shell frame
 (require 'init-shell-pop)
 
+;; Support for dotenv files
+(require 'init-dotenv)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.

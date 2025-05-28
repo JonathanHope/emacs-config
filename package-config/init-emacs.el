@@ -247,6 +247,11 @@
   
   (defun treesit-install-all ()
     (interactive)
-    (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))))
+    (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist)))
+
+  (defun mainspring-dotenv ()
+    "Source environment from .env file in project root."
+    (interactive)
+    (dotenv-update-project-env (projectile-project-root))))
 
 (provide 'init-emacs)
