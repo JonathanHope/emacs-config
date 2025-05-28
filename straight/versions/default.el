@@ -43,7 +43,6 @@
  ("iedit" . "27c61866b1b9b8d77629ac702e5f48e67dfe0d3b")
  ("jinx" . "416b76abd9c3155797329c2204cf50e535ad566c")
  ("jsdoc.el" . "f37749f252ba9b653d16ccb90886915d84e440f6")
- ("jsonrpc" . "ba4275ef5bcbfceebd7049c5669dec9edabcb1fc")
  ("let-alist" . "021fc10df2e44faba4728d849ee767cf890aa51a")
  ("magit" . "2039619696bafeeebff245e316af640c19d5cf1c")
  ("mainspring-mode-line" . "78e085021eb7a20287064e8d7132a6ec428ab2ed")
