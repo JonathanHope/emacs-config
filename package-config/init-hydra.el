@@ -7,10 +7,9 @@
   ;; Settings.
 
   (setq hydra-posframe-show-params
-        '(
-          :internal-border-width 0
+        '(:internal-border-width 0
           :internal-border-color "red"
-          :poshandler posframe-poshandler-window-center))
+          :poshandler posframe-poshandler-frame-center))
 
   ;; Support for nested Hydras
 
@@ -29,8 +28,7 @@
 
   ;; Apps Hydra
 
-  (defhydra mainspring-hydra-apps (
-                                   :hint nil
+  (defhydra mainspring-hydra-apps (:hint nil
                                    :pre (setq hydra-hint-display-type 'posframe)
                                    :post (setq hydra-hint-display-type 'lv))
     "

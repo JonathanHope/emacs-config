@@ -131,10 +131,10 @@
    ("C--" . er/contract-region)
 
    ;; Uppercase the current selection.
-   ("C-S-u" . upcase-region)
+   ("C-M-u" . upcase-region)
 
    ;; Lowercase the current selection.
-   ("C-S-l" . downcase-region)
+   ("C-M-l" . downcase-region)
 
    ;; Select an entire buffer.
    ("C-a" . mark-whole-buffer)

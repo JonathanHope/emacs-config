@@ -131,6 +131,7 @@
 (require 'init-pinentry)
 
 ;; LLM completions.
+(require 'init-jsonrpc)
 (require 'init-copilot)
 
 ;; Better scratch files
