@@ -186,7 +186,10 @@
    ("C-<home>" . beginning-of-buffer)
 
    ;; Move to end of buffer.
-   ("C-<end>" . end-of-buffer))
+   ("C-<end>" . end-of-buffer)
+
+   ;; Popup a shell on the bottom of the screen.
+   ("C-`" . shell-pop))
 
   (defun mainspring-duplicate-line()
     "Duplicate the current line."

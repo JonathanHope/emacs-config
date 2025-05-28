@@ -139,6 +139,9 @@
 ;; Solve path issues on Mac
 (require 'init-exec-path-from-shell)
 
+;; Ephemeral shell frame
+(require 'init-shell-pop)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.
