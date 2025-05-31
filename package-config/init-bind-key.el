@@ -189,7 +189,19 @@
    ("C-<end>" . end-of-buffer)
 
    ;; Popup a shell on the bottom of the screen.
-   ("C-`" . shell-pop))
+   ("C-`" . shell-pop)
+
+   ;; Select the window to the left
+   ("M-<left>" . windmove-left)
+
+   ;; Select the window to the right
+   ("M-<right>" . windmove-right)
+
+   ;; Select the window above
+   ("M-<up>" . windmove-up)
+
+   ;; Select the window below
+   ("M-<down>" . windmove-down))
 
   (defun mainspring-duplicate-line()
     "Duplicate the current line."

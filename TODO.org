@@ -1,4 +1,5 @@
 * TODO Handle statistics cookies in plain lists.
 * TODO Remove statistics cookies from slate.
 * TODO Org char replacements happening in code blocks.
-* TODO Upcase and downcase bindings are broken.
+* TODO Sidebar doesn't work first time from dired.
+* TODO Trigger dotenv automatically.
