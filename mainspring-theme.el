@@ -381,6 +381,13 @@
  '(tempel-field ((t ())))
  '(tempel-form ((t ())))
  '(tempel-default ((t ())))
+
+ ;; transient
+ '(transient-heading              ((t (:foreground "#b48ead" :weight bold))))
+ '(transient-key-exit             ((t (:foreground "#96b5b4" :weight bold))))
+ '(transient-key-stack            ((t (:foreground "#bf616a" :weight bold))))
+ '(transient-key-recurse          ((t (:foreground "#bf616a" :weight bold))))
+
  
  ;; Default font locking
  '(font-lock-builtin-face              ((t (:foreground "#96b5b4"))))

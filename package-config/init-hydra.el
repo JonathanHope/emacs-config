@@ -224,9 +224,7 @@
     ("p" (progn
            (mainspring-hydra-org-paragraph/body)
            (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
-    ("a" (progn
-           (mainspring-hydra-org-llm/body)
-           (mainspring-hydra-push '(mainspring-hydra-org/body))) :color blue)
+    ("a" (gptel-menu) :color blue)
     ("q" nil :color blue))
 
   (defhydra mainspring-hydra-org-headline (:hint nil)
@@ -474,24 +472,6 @@
     ("b" mainspring-hydra-org-insert-blockquote :color blue)
     ("q" mainspring-hydra-pop :color blue))
 
-  (defhydra mainspring-hydra-org-llm (:hint nil)
-    "
-┏^^━━━━━━━━━━━━━━━━━━━┓
-┃^^ Org - LLM         ┃
-┣^^━━━━━━━━━━━━━━━━━━━┫
-┃ _e_: Send           ┃
-┃^^                   ┃
-┃^^                   ┃
-┃^^                   ┃
-┃^^                   ┃
-┃^^                   ┃
-┃^^                   ┃
-┃^^                   ┃
-┃^^                   ┃
-┗^^━━━━━━━━━━━━━━━━━━━┛
-"
-    ("e" gptel-send :color blue)
-    ("q" mainspring-hydra-pop :color blue))
 
   (defun mainspring-hydra-org-insert-headline ()
     (interactive)
