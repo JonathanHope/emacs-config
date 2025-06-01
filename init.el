@@ -146,6 +146,9 @@
 ;; Support for dotenv files
 (require 'init-dotenv)
 
+;; Snippet support
+(require 'init-tempel)
+
 ;; Apps
 
 ;; Show the color of color codes as a background color.

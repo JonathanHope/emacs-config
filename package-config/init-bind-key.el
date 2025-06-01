@@ -201,7 +201,10 @@
    ("M-<up>" . windmove-up)
 
    ;; Select the window below
-   ("M-<down>" . windmove-down))
+   ("M-<down>" . windmove-down)
+
+   ;; Expand snippet
+   ("C-e" . tempel-expand))
 
   (defun mainspring-duplicate-line()
     "Duplicate the current line."
